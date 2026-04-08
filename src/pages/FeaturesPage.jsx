@@ -62,7 +62,38 @@ const featureCards = [
   { icon: '📋', title: 'Empty States', desc: 'Every dashboard screen has a thoughtful empty state. New users feel guided, not lost.' },
 ]
 
+const PILL_SECTIONS = [
+  { id: 'ai-demo', label: 'AI Demo' },
+  { id: 'dashboard', label: 'Dashboard' },
+  { id: 'auth', label: 'Auth' },
+  { id: 'blog', label: 'Blog & CMS' },
+  { id: 'design', label: 'Design System' },
+  { id: 'all-features', label: 'All Features' },
+]
+
+function scrollToSection(id) {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
 export default function FeaturesPage() {
+  const [activeSection, setActiveSection] = useState('ai-demo')
+
+  useEffect(() => {
+    const sectionIds = ['ai-demo', 'dashboard', 'auth', 'all-features']
+    const observers = sectionIds.map((id) => {
+      const el = document.getElementById(id)
+      if (!el) return null
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        { threshold: 0.3 }
+      )
+      obs.observe(el)
+      return obs
+    })
+    return () => observers.forEach((obs) => obs?.disconnect())
+  }, [])
+
   return (
     <div className="feat-page">
       {/* Inner page hero */}
@@ -95,12 +126,24 @@ export default function FeaturesPage() {
       <div className="feat-nav-strip">
         <div className="container">
           <div className="feat-nav-pills">
-            <a href="#ai-demo" className="feat-pill active">AI Demo</a>
-            <a href="#dashboard" className="feat-pill">Dashboard</a>
-            <a href="#auth" className="feat-pill">Auth</a>
-            <a href="#blog" className="feat-pill">Blog & CMS</a>
-            <a href="#design" className="feat-pill">Design System</a>
-            <a href="#all-features" className="feat-pill">All Features</a>
+            {PILL_SECTIONS.map(({ id, label }) => {
+              // blog → auth section, design → all-features section
+              const targetId = id === 'blog' ? 'auth' : id === 'design' ? 'all-features' : id
+              const isActive = id === 'blog'
+                ? activeSection === 'auth'
+                : id === 'design'
+                  ? activeSection === 'all-features'
+                  : activeSection === id
+              return (
+                <button
+                  key={id}
+                  className={`feat-pill${isActive ? ' active' : ''}`}
+                  onClick={() => scrollToSection(targetId)}
+                >
+                  {label}
+                </button>
+              )
+            })}
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const trustItems = [
   {
     label: 'Instant access after purchase',
@@ -78,13 +80,13 @@ export default function FinalCTA() {
 
           {/* CTAs */}
           <div className="ctac">
-            <a href="#pricing" className="ctab-cta-btn">
+            <Link to="/pricing" className="ctab-cta-btn">
               Get BaseBox Now — $49
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
-            <a href="#screens" className="btn btn-o btn-lg">View All Screens</a>
+            </Link>
+            <Link to="/features" className="btn btn-o btn-lg">View All Screens</Link>
           </div>
 
           {/* Urgency */}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Counter({ target, suffix = '', prefix = '', decimals = 0, duration = 1600 }) {
   const [value, setValue] = useState(0)
@@ -184,7 +185,7 @@ export default function MetricsWow() {
           </div>
           <div className="wow-compare-note">
             Launch price still active —{' '}
-            <a href="#pricing">get BaseBox for $49 today</a>
+            <Link to="/pricing">get BaseBox for $49 today</Link>
           </div>
         </div>
       </div>

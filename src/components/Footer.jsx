@@ -49,8 +49,8 @@ export default function Footer() {
             <ul className="flk">
               <li><Link to="/docs">Documentation</Link></li>
               <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/docs">Setup Guide</Link></li>
-              <li><Link to="/blog/post">Changelog</Link></li>
+              <li><Link to="/setup">Setup Guide</Link></li>
+              <li><Link to="/changelog">Changelog</Link></li>
               <li><Link to="/dashboard">Live Demo</Link></li>
             </ul>
           </div>
@@ -61,8 +61,8 @@ export default function Footer() {
               <li><Link to="/pricing">Get Template</Link></li>
               <li><Link to="/login">Sign In</Link></li>
               <li><Link to="/signup">Sign Up</Link></li>
-              <li><a href="#">License</a></li>
-              <li><a href="#">Privacy</a></li>
+              <li><Link to="/license">License</Link></li>
+              <li><Link to="/privacy">Privacy</Link></li>
             </ul>
           </div>
         </div>

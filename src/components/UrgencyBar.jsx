@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function UrgencyBar() {
   const [hidden, setHidden] = useState(false)
@@ -34,7 +35,7 @@ export default function UrgencyBar() {
         </div>
         <span className="ub-sep">·</span>
         Price increases after next 50 sales — lock in $49
-        <a href="#pricing" className="ub-cta">Get it now →</a>
+        <Link to="/pricing" className="ub-cta">Get it now →</Link>
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useScrollY } from '../hooks/useScrollY'
 
 const PERIOD_DATA = {
@@ -91,12 +92,12 @@ export default function Hero() {
           </p>
 
           <div className="ha">
-            <a href="#pricing" className="btn btn-g btn-xl hero-cta-primary">
+            <Link to="/pricing" className="btn btn-g btn-xl hero-cta-primary">
               Get BaseBox Now
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           <div className="h-micro-trust">

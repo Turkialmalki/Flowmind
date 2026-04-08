@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function CheckIcon({ color }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -194,10 +196,10 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="#" className={plan.ctaClass} style={plan.pop ? { padding: '15px', fontSize: '16px' } : {}}>
+              <Link to="/signup" className={plan.ctaClass} style={plan.pop ? { padding: '15px', fontSize: '16px' } : {}}>
                 {plan.cta}
                 {plan.showArrow && <ArrowIcon />}
-              </a>
+              </Link>
               {plan.savingsNote && (
                 <div className="p-savings-note">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

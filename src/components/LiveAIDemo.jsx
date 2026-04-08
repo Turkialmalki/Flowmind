@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const DEMO_RESPONSES = {
   default: "I've analyzed your SaaS metrics. Your conversion funnel has 3 drop-off points costing ~$18K/month. Top fix: simplify your onboarding step 2 — it has a 67% exit rate. Want me to generate a fix plan?",
@@ -366,12 +367,12 @@ export default function LiveAIDemo() {
               <div className="ai-demo-cta-desc">
                 This exact section ships with your template. Plug in your API key, customize the prompts, go live.
               </div>
-              <a href="#pricing" className="btn btn-g" style={{ width: '100%', justifyContent: 'center' }}>
+              <Link to="/pricing" className="btn btn-g" style={{ width: '100%', justifyContent: 'center' }}>
                 Get BaseBox — $49
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
               <div className="ai-demo-cta-sub-row">
                 <span>⚡ Instant access</span>
                 <span>·</span>

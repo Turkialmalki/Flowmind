@@ -43,6 +43,9 @@ export default function LoginPage() {
   const [githubState, setGithubState] = useState('idle')
   const [formLoading, setFormLoading] = useState(false)
   const [formSuccess, setFormSuccess] = useState(false)
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const [forgotSent, setForgotSent] = useState(false)
 
   const handleSocialLogin = (provider, setState) => {
     setState('loading')
@@ -52,9 +55,23 @@ export default function LoginPage() {
     }, 1600)
   }
 
+  const handleForgotPassword = (e) => {
+    e.preventDefault()
+    if (!email) { setEmailError('Enter your email first, then click Forgot password'); return }
+    setForgotSent(true)
+    setTimeout(() => setForgotSent(false), 4000)
+  }
+
   const handleFormSubmit = (e) => {
     e.preventDefault()
-    if (!email || !password) return
+    let valid = true
+    setEmailError('')
+    setPasswordError('')
+    if (!email) { setEmailError('Email is required'); valid = false }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setEmailError('Enter a valid email address'); valid = false }
+    if (!password) { setPasswordError('Password is required'); valid = false }
+    else if (password.length < 6) { setPasswordError('Password must be at least 6 characters'); valid = false }
+    if (!valid) return
     setFormLoading(true)
     setTimeout(() => {
       setFormLoading(false)
@@ -118,29 +135,36 @@ export default function LoginPage() {
           </div>
 
           <form onSubmit={handleFormSubmit}>
+            {forgotSent && (
+              <div className="auth-success-banner">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                Reset link sent — check your inbox
+              </div>
+            )}
             <div className="auth-field">
               <label className="auth-label">Email address</label>
               <input
                 type="email"
-                className="auth-input"
+                className={`auth-input${emailError ? ' auth-input-error' : ''}`}
                 placeholder="you@startup.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError('') }}
                 disabled={formLoading || formSuccess}
               />
+              {emailError && <div className="auth-field-error">{emailError}</div>}
             </div>
             <div className="auth-field">
               <div className="auth-label-row">
                 <label className="auth-label">Password</label>
-                <a href="#" className="auth-forgot">Forgot password?</a>
+                <button type="button" className="auth-forgot" onClick={handleForgotPassword}>Forgot password?</button>
               </div>
               <div className="auth-input-wrap">
                 <input
                   type={showPass ? 'text' : 'password'}
-                  className="auth-input"
+                  className={`auth-input${passwordError ? ' auth-input-error' : ''}`}
                   placeholder="••••••••••"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => { setPassword(e.target.value); if (passwordError) setPasswordError('') }}
                   disabled={formLoading || formSuccess}
                 />
                 <button type="button" className="auth-eye" onClick={() => setShowPass(!showPass)}>
@@ -152,6 +176,7 @@ export default function LoginPage() {
                   </svg>
                 </button>
               </div>
+              {passwordError && <div className="auth-field-error">{passwordError}</div>}
             </div>
 
             <button
