@@ -1,10 +1,12 @@
+import logoUrl from '/logo.png'
+
 // Full logo PNG — wings + 3D box with transparency.
 // Pass height; width scales automatically to preserve aspect ratio.
 
 export default function LogoIcon({ height = 32, style }) {
   return (
     <img
-      src="/logo.png"
+      src={logoUrl}
       alt="BaseBox"
       height={height}
       style={{ flexShrink: 0, display: 'block', width: 'auto', ...style }}
@@ -16,7 +18,7 @@ export default function LogoIcon({ height = 32, style }) {
 export function BoxIcon({ height = 18, style }) {
   return (
     <img
-      src="/logo.png"
+      src={logoUrl}
       alt="BaseBox"
       height={height}
       style={{ flexShrink: 0, display: 'block', width: 'auto', ...style }}
