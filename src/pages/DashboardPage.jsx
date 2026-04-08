@@ -246,6 +246,103 @@ function SettingsView() {
   )
 }
 
+/* ── Reports tab content ── */
+function ReportsView() {
+  const [generating, setGenerating] = useState(null)
+
+  const trigger = (title) => {
+    setGenerating(title)
+    setTimeout(() => setGenerating(null), 2200)
+  }
+
+  const reports = [
+    {
+      icon: '📊', title: 'Weekly Summary', desc: 'Auto-generated every Monday at 9am', status: 'Delivered',
+      date: 'Apr 1, 2026', size: '240 KB', type: 'PDF',
+    },
+    {
+      icon: '💰', title: 'MRR Report', desc: 'Monthly revenue breakdown by plan and cohort', status: 'Scheduled',
+      date: 'Apr 30, 2026', size: '—', type: 'CSV + PDF',
+    },
+    {
+      icon: '📉', title: 'Churn Analysis', desc: 'Users who cancelled and their exit reasons', status: 'Delivered',
+      date: 'Mar 31, 2026', size: '88 KB', type: 'PDF',
+    },
+    {
+      icon: '🔬', title: 'User Cohorts', desc: 'Retention curves by signup month', status: 'Processing',
+      date: 'Apr 6, 2026', size: '—', type: 'Excel',
+    },
+    {
+      icon: '🎯', title: 'Conversion Funnel', desc: 'Visitor → Trial → Paid breakdown', status: 'Delivered',
+      date: 'Apr 5, 2026', size: '156 KB', type: 'PDF',
+    },
+    {
+      icon: '📮', title: 'Email Campaign', desc: 'Open rates, clicks, and revenue attributed', status: 'Delivered',
+      date: 'Apr 3, 2026', size: '112 KB', type: 'PDF',
+    },
+  ]
+
+  return (
+    <div>
+      <div className="dash-reports-topbar">
+        <div>
+          <div className="dash-chart-title">Scheduled Reports</div>
+          <div className="dash-chart-sub">Reports are generated and delivered to your inbox automatically</div>
+        </div>
+        <button className="btn btn-g" style={{ fontSize: '12px', padding: '9px 16px' }}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          New Report
+        </button>
+      </div>
+      <div className="dash-reports-grid">
+        {reports.map((r) => (
+          <div key={r.title} className="dash-report-card">
+            <div className="dash-report-card-top">
+              <div className="dash-report-icon">{r.icon}</div>
+              <span className={`dash-status-badge dash-status-${r.status === 'Delivered' ? 'active' : r.status === 'Scheduled' ? 'trial' : 'churned'}`}>
+                {r.status}
+              </span>
+            </div>
+            <div className="dash-report-title">{r.title}</div>
+            <div className="dash-report-desc">{r.desc}</div>
+            <div className="dash-report-meta">
+              <span>{r.type}</span>
+              {r.size !== '—' && <span>{r.size}</span>}
+              <span>{r.date}</span>
+            </div>
+            <div className="dash-report-actions">
+              {r.status === 'Delivered' && (
+                <button className="dash-report-btn download">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M16 12l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download
+                </button>
+              )}
+              <button
+                className={`dash-report-btn generate${generating === r.title ? ' loading' : ''}`}
+                onClick={() => trigger(r.title)}
+                disabled={generating === r.title}
+              >
+                {generating === r.title ? (
+                  <><span className="dash-spinner-sm" /> Generating…</>
+                ) : (
+                  <><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="1 4 1 10 7 10" /><path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
+                  </svg>
+                  Run Now</>
+                )}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 /* ── Main dashboard ── */
 export default function DashboardPage() {
   const [activeNav, setActiveNav] = useState('overview')
@@ -683,26 +780,7 @@ export default function DashboardPage() {
           )}
 
           {/* ── Reports tab ── */}
-          {activeNav === 'reports' && (
-            <div className="dash-reports-grid">
-              {[
-                { title: 'Weekly Summary', desc: 'Auto-generated every Monday', status: 'Delivered', date: 'Apr 1', icon: '📊' },
-                { title: 'MRR Report', desc: 'Monthly revenue breakdown', status: 'Scheduled', date: 'Apr 30', icon: '💰' },
-                { title: 'Churn Analysis', desc: 'Users who cancelled this month', status: 'Delivered', date: 'Mar 31', icon: '📉' },
-                { title: 'User Cohorts', desc: 'Retention by signup month', status: 'Processing', date: 'Apr 6', icon: '🔬' },
-              ].map((r) => (
-                <div key={r.title} className="dash-report-card">
-                  <div className="dash-qa-icon">{r.icon}</div>
-                  <div className="dash-report-title">{r.title}</div>
-                  <div className="dash-report-desc">{r.desc}</div>
-                  <div className="dash-report-footer">
-                    <span className={`dash-status-badge dash-status-${r.status === 'Delivered' ? 'active' : r.status === 'Scheduled' ? 'trial' : 'processing'}`}>{r.status}</span>
-                    <span className="dash-cell-muted">{r.date}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          {activeNav === 'reports' && <ReportsView />}
 
           {/* ── Settings tab ── */}
           {activeNav === 'settings' && <SettingsView />}
