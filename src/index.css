@@ -4816,3 +4816,201 @@ kbd {
   .privacy-summary { grid-template-columns: 1fr; }
 }
 
+/* ═══════════════════════════════════════════════════════
+   BASEBOX v2.5 — CINEMATIC DARK HERO
+   Full-screen BG · Scroll fade · Dark nav · Premium feel
+══════════════════════════════════════════════════════════ */
+
+/* ── HERO: DARK VARIANT BASE ── */
+.hero.hero-dark {
+  background: #030611;
+}
+
+/* Ensure container sits above bg layers */
+.hero.hero-dark .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── CINEMATIC BACKGROUND IMAGE ── */
+/* Absolutely fills hero, oversized slightly for scale headroom */
+.hero-bg-image {
+  position: absolute;
+  inset: -5%;
+  z-index: 0;
+  pointer-events: none;
+  transform-origin: center center;
+  background:
+    /* Sky-light flood — top-right bright area (Revolut-style sky feel) */
+    radial-gradient(ellipse 95% 60% at 100% -8%, rgba(56, 189, 248, 0.62) 0%, rgba(14, 165, 233, 0.3) 35%, transparent 60%),
+    /* Vivid electric-indigo core — left side */
+    radial-gradient(ellipse 70% 70% at -5% 65%, rgba(79, 70, 229, 0.72) 0%, rgba(99, 102, 241, 0.4) 40%, transparent 60%),
+    /* Deep violet bloom — lower right */
+    radial-gradient(ellipse 60% 80% at 78% 100%, rgba(124, 58, 237, 0.58) 0%, transparent 55%),
+    /* Cyan/teal mid accent — upper center */
+    radial-gradient(ellipse 50% 40% at 48% 18%, rgba(6, 182, 212, 0.38) 0%, transparent 50%),
+    /* Subtle magenta warmth — center */
+    radial-gradient(ellipse 35% 30% at 55% 55%, rgba(168, 85, 247, 0.2) 0%, transparent 50%),
+    /* Warm golden light leak — top right edge (photographic flare) */
+    radial-gradient(ellipse 22% 18% at 92% 8%, rgba(251, 191, 36, 0.14) 0%, transparent 45%),
+    /* Deep dark base */
+    linear-gradient(145deg, #030611 0%, #050818 50%, #04061a 100%);
+}
+
+/* Film grain / noise texture — the key to photographic realism */
+.hero-bg-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  opacity: 0.032;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Diagonal light streak — like a lens flare / light ray cutting through */
+.hero-bg-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    108deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.012) 38%,
+    rgba(255, 255, 255, 0.045) 42%,
+    rgba(148, 210, 255, 0.05) 46%,
+    rgba(255, 255, 255, 0.012) 52%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+/* ── GRADIENT OVERLAY ── */
+/* Lighter touch — lets vivid BG colors breathe (Revolut uses almost no overlay on its sky photo) */
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* Left-side text area — darken just enough for headline readability */
+    radial-gradient(ellipse 60% 80% at 0% 50%, rgba(3, 6, 17, 0.55) 0%, transparent 65%),
+    /* Top strip — nav area contrast */
+    linear-gradient(180deg, rgba(3, 6, 17, 0.35) 0%, rgba(3, 6, 17, 0.12) 18%, transparent 38%),
+    /* Bottom fade — smooth handoff to next section */
+    linear-gradient(0deg, rgba(3, 6, 17, 0.7) 0%, transparent 30%);
+}
+
+/* ── HERO DARK: TEXT COLORS ── */
+.hero-dark h1 {
+  color: #fff;
+  text-shadow: 0 2px 60px rgba(56, 189, 248, 0.22), 0 0 120px rgba(79, 70, 229, 0.18);
+}
+.hero-dark .hsub {
+  color: rgba(255, 255, 255, 0.68);
+}
+.hero-dark .hp {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.62);
+  box-shadow: none;
+}
+.hero-dark .hp-dot {
+  background: #34d399;
+}
+.hero-dark .h-micro-trust {
+  color: rgba(255, 255, 255, 0.36);
+}
+
+/* Float badges — glass style on dark */
+.hero-dark .fl {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.11) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
+}
+.hero-dark .flt { color: rgba(255, 255, 255, 0.9) !important; }
+.hero-dark .fls { color: rgba(255, 255, 255, 0.45) !important; }
+
+/* Floating depth card */
+.hero-dark .hero-float-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.11);
+  color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Remove bottom-glow pseudo from dark hero (it was for light bg) */
+.hero.hero-dark::after { display: none; }
+
+/* ── NAV: DARK HERO VARIANT ── */
+/* Applied only on home page before scrolling (nav-dark + not .scrolled) */
+nav.nav-dark:not(.scrolled) .nl-brand {
+  color: #fff;
+}
+/* Only target the trigger button — NOT .nav-dd-panel links (those are on a white bg) */
+nav.nav-dark:not(.scrolled) .nav-dd-trigger {
+  color: rgba(255, 255, 255, 0.62);
+}
+nav.nav-dark:not(.scrolled) .nav-dd-trigger:hover,
+nav.nav-dark:not(.scrolled) .nav-dd-trigger.open {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+nav.nav-dark:not(.scrolled) .nav-dd-chevron {
+  color: rgba(255, 255, 255, 0.45);
+}
+/* Restore dropdown panel items to normal dark colors — they open on a white panel */
+nav.nav-dark:not(.scrolled) .nav-dd-panel a,
+nav.nav-dark:not(.scrolled) .nav-dd-panel a:hover {
+  color: var(--t1);
+  background: transparent;
+}
+nav.nav-dark:not(.scrolled) .nav-dd-panel a:hover {
+  background: var(--bg3);
+}
+nav.nav-dark:not(.scrolled) .btn-o {
+  color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}
+nav.nav-dark:not(.scrolled) .btn-o:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.12);
+}
+nav.nav-dark:not(.scrolled) .nm {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ── PAGE WRAPPER STUBS (layout containers, no visual style needed) ── */
+.cms-page, .ai-demo-page, .setup-page, .changelog-page,
+.feat-page, .demo-page, .legal-page { display: block; }
+
+/* ── DOCS: missing layout classes ── */
+/* Step body — flex child that holds title + text next to the number badge */
+.docs-step-body { flex: 1; min-width: 0; }
+/* Prev/next nav buttons — directional alignment handled by parent justify-content: space-between */
+.docs-page-nav-prev { margin-right: auto; }
+.docs-page-nav-next { margin-left: auto; }
+
+/* ── AUTH: signup page variant ── */
+.auth-page-signup { min-height: 100vh; }
+
+/* ── NEXT SECTION: SMOOTH FADE-IN ── */
+/* SocialProof and other sections directly after hero */
+.hero + * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── REDUCED MOTION: disable scroll-based transforms ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-image { transform: none !important; }
+  .hero.hero-dark .hc { transform: none !important; opacity: 1 !important; }
+}
+
