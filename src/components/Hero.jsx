@@ -2,6 +2,13 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollY } from '../hooks/useScrollY'
 
+// Smoothstep easing — maps scrollY in [start, end] to a curved 0→1 value.
+// Feels slow at both ends, fastest in the middle (ease-in-out).
+function ease(y, start, end) {
+  const t = Math.min(1, Math.max(0, (y - start) / (end - start)))
+  return t * t * (3 - 2 * t)
+}
+
 const PERIOD_DATA = {
   '24h': {
     fill: 'M0,92 C60,86 120,78 180,70 C240,62 290,68 350,58 C410,48 460,36 520,28 C580,20 635,26 695,17 C748,10 778,12 800,10 L800,130 L0,130Z',
@@ -30,26 +37,32 @@ export default function Hero() {
   const [chartPeriod, setChartPeriod] = useState('7d')
   const [chartKey, setChartKey] = useState(0)
 
-  // Cinematic BG: fades out + de-scales over first 600px of scroll
-  const bgOpacity = Math.max(0, 1 - scrollY / 600)
-  const bgScale = 1 + Math.max(0, (1 - scrollY / 600) * 0.05) // 1.05 → 1.0
+  // Background: eased fade over extended 750px range — slow start/end, no abrupt cut
+  const bgP = ease(scrollY, 0, 750)
+  const bgOpacity = 1 - bgP
+  const bgScale = 1.05 - bgP * 0.05  // 1.05 → 1.0
 
-  // Parallax layers — each moves at a different rate for depth
-  const parallaxY = scrollY * 0.28
-  const contentOpacity = Math.max(0.1, 1 - scrollY * 0.003)
-  const mockScale = Math.max(0.88, 1 - scrollY * 0.00018)
-  const mockOpacity = Math.max(0.3, 1 - scrollY * 0.0018)
-  const floatOffset1 = scrollY * 0.22
-  const floatOffset2 = scrollY * 0.38
+  // Text: delayed start (80px), lifts 16px upward while fading — layered vs background
+  const textP = ease(scrollY, 80, 560)
+  const contentOpacity = Math.max(0, 1 - textP)
+  const textLiftY = -(textP * 16)
 
-  // Strong 3D tilt: starts at 10deg, flattens as user scrolls
-  const mockRotateX = Math.max(0, 10 - scrollY * 0.022)
+  // Mockup: eased scale + tilt over longer range; raw parallax for crisp per-frame tracking
+  const mockP = ease(scrollY, 0, 900)
+  const mockParallaxY = scrollY * 0.18
+  const mockScale = Math.max(0.88, 1 - mockP * 0.12)
+  const mockOpacity = Math.max(0.25, 1 - mockP * 0.8)
+  const mockRotateX = Math.max(0, 10 * (1 - mockP))
 
-  // Per-card micro-parallax
-  const depth1 = -scrollY * 0.055
-  const depth2 = -scrollY * 0.032
-  const depth3 = -scrollY * 0.072
-  const depthChart = -scrollY * 0.018
+  // Float badges: lighter counter-parallax
+  const floatOffset1 = scrollY * 0.16
+  const floatOffset2 = scrollY * 0.28
+
+  // Per-card micro-parallax (raw scroll = frame-accurate depth)
+  const depth1 = -scrollY * 0.05
+  const depth2 = -scrollY * 0.028
+  const depth3 = -scrollY * 0.065
+  const depthChart = -scrollY * 0.015
 
   const handlePeriodSwitch = (p) => {
     if (p === chartPeriod) return
@@ -78,7 +91,7 @@ export default function Hero() {
         <div
           className="hc"
           style={{
-            transform: `translateY(${parallaxY}px)`,
+            transform: `translateY(${textLiftY}px)`,
             opacity: contentOpacity,
             willChange: 'transform, opacity',
           }}
@@ -120,7 +133,7 @@ export default function Hero() {
             id="preview"
             ref={mockRef}
             style={{
-              transform: `perspective(1100px) translateY(${parallaxY * 0.6}px) scale(${mockScale}) rotateX(${mockRotateX}deg)`,
+              transform: `perspective(1100px) translateY(${mockParallaxY * 0.6}px) scale(${mockScale}) rotateX(${mockRotateX}deg)`,
               opacity: mockOpacity,
               transformOrigin: 'top center',
               willChange: 'transform, opacity',

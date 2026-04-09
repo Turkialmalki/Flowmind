@@ -2172,8 +2172,8 @@ footer { background: var(--bg2); border-top: 1.5px solid var(--border); padding:
   width: 360px; height: 360px; bottom: 12%; right: 5%;
   background: radial-gradient(circle, rgba(14,165,233,0.11), transparent);
 }
-.hc { will-change: transform; }
-.hd { will-change: transform, opacity; transition: transform 0.1s linear, opacity 0.1s linear; }
+.hc { will-change: transform, opacity; transition: transform 0.06s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.08s ease-out; }
+.hd { will-change: transform, opacity; transition: transform 0.05s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.07s ease-out; }
 
 .hero-float-card {
   position: absolute; bottom: -16px; right: 40px; z-index: 3;
@@ -4125,8 +4125,8 @@ kbd {
 
 /* ── DEPTH TRANSITIONS — smoother hero mockup scroll ── */
 .hd {
-  /* Fast linear transition keeps scroll parallax smooth after entry animation */
-  transition: transform 0.06s linear, opacity 0.1s linear !important;
+  /* Ease-out prevents the mechanical linear snap; short duration keeps tracking crisp */
+  transition: transform 0.05s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.07s ease-out !important;
 }
 
 /* ── SECTION ENTRANCE: eyebrow + heading combo ── */
@@ -5012,5 +5012,6 @@ nav.nav-dark:not(.scrolled) .nm {
 @media (prefers-reduced-motion: reduce) {
   .hero-bg-image { transform: none !important; }
   .hero.hero-dark .hc { transform: none !important; opacity: 1 !important; }
+  .hero.hero-dark .hd { transform: none !important; opacity: 1 !important; }
 }
 
