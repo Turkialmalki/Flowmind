@@ -2811,7 +2811,7 @@ footer { background: var(--bg2); border-top: 1.5px solid var(--border); padding:
   font-size: 21px;
   color: var(--t1);
   letter-spacing: -0.02em;
-  transform: translateY(1px); /* optical alignment with logo icon */
+  line-height: 1;
 }
 .nl-tag {
   font-family: var(--mono);
@@ -4259,7 +4259,7 @@ kbd {
 }
 
 /* ── NAV — BRAND TEXT ── */
-.nl-brand { font-family: var(--display); font-weight: 600; font-size: 21px; color: var(--t1); letter-spacing: -0.02em; transform: translateY(1px); }
+.nl-brand { font-family: var(--display); font-weight: 600; font-size: 21px; color: var(--t1); letter-spacing: -0.02em; line-height: 1; }
 
 /* ── MOBILE MENU REDESIGN ── */
 .mm {
