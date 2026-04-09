@@ -304,7 +304,7 @@ export default function Nav() {
       <nav id="mainNav" className={[scrolled ? 'scrolled' : '', hidden ? 'nav-hidden' : '', darkHero ? 'nav-dark' : ''].filter(Boolean).join(' ')}>
         <div className="container">
           <Link to="/" className="nl">
-            <LogoIcon height={36} />
+            <LogoIcon height={40} />
             <span className="nl-brand">BaseBox</span>
           </Link>
 
@@ -340,8 +340,8 @@ export default function Nav() {
       <div className={`mm${mobileOpen ? ' open' : ''}`}>
         <div className="mm-header">
           <Link to="/" className="nl" onClick={closeMenu}>
-            <LogoIcon height={32} />
-            <span className="nl-brand" style={{ fontSize: '18px' }}>BaseBox</span>
+            <LogoIcon height={36} />
+            <span className="nl-brand" style={{ fontSize: '19px' }}>BaseBox</span>
           </Link>
           <button className="mc" onClick={closeMenu}>
             <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
