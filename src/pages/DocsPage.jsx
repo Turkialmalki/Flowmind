@@ -53,6 +53,29 @@ const CODE_COMPONENT = `// Reusable section header pattern
   <p className="sd">Supporting description text.</p>
 </div>`
 
+const SECTION_INTROS = {
+  'Installation': 'Install BaseBox by cloning the repository or duplicating the Framer template. Local development requires Node 18+ and npm 9+.',
+  'Project Structure': 'BaseBox follows a predictable file structure. Pages live in src/pages/, reusable components in src/components/, and all global styles in src/index.css.',
+  'Configuration': 'Customize site-wide settings — brand name, primary color, nav items, and pricing — through CSS variables in index.css and data objects inside each page file.',
+  'Home Page': 'The home page composes 15+ standalone section components. Each uses the .an scroll-reveal system and is independently editable without touching any other section.',
+  'Features Page': 'The features page includes a hero, a full feature grid, and three detail sub-pages at /features/dashboard, /features/ai-demo, and /features/cms.',
+  'Auth Pages': 'Login (/login) and Signup (/signup) are complete UI flows with social auth buttons, email/password forms, inline validation, and a multi-step signup with plan selection.',
+  'Dashboard': 'The dashboard at /dashboard uses a standalone layout (no Nav/Footer). It includes Analytics, Reports, Revenue, and Settings views with live SVG chart components.',
+  'Blog Setup': 'The blog at /blog uses static post data defined inside BlogPage.jsx. Connect a headless CMS or Framer CMS collection to make posts dynamic.',
+  'Pricing Page': 'The pricing page has three tier cards, a feature comparison table, and a FAQ accordion. Update prices and features directly in PricingPage.jsx.',
+  'Typography': 'BaseBox uses Sora (display headings via --display), Inter (body text via --sans), and Fira Code (code blocks via --mono). All fonts load from Google Fonts in index.html.',
+  'Components': 'All page sections are standalone React components exported from src/components/. Each uses short scoped class names and CSS variables — no third-party UI library required.',
+  'Animations': 'Scroll animations use the .an class pattern. Elements gain the .v (visible) class when they enter the viewport via IntersectionObserver in src/hooks/useScrollReveal.js.',
+  'Blog Integration': 'The blog system renders posts from a static array in BlogPage.jsx. To connect a real CMS, replace the posts array with a fetch() call or a Framer CMS collection.',
+  'Collections': 'Add new blog categories by extending the categories array in BlogPage.jsx. Each category label filters the posts array client-side — no rebuild required.',
+  'Dynamic Routes': 'Currently all posts share the /blog/post route. To support individual slugs, add a :slug route parameter in App.jsx and look up posts by slug in BlogPostPage.',
+  'SEO Settings': 'Add per-page meta tags using React Helmet or Vite\'s html-plugin. Each page should define a unique <title> and <meta name="description"> for search and social sharing.',
+  'Publishing to Framer': 'To publish as a Framer template: duplicate the project in Framer, make your changes in the visual editor, then submit through your Framer Marketplace dashboard.',
+  'Custom Domain': 'In Framer, open Site Settings → Domains and add your custom domain. For self-hosted builds, point your DNS A or CNAME record to your hosting provider.',
+  'Netlify Deploy': 'Run npm run build to generate the dist/ folder. Drag it into Netlify Drop, or connect your GitHub repo for automatic deploys on every push to main.',
+  'Performance': 'BaseBox achieves 90+ Lighthouse scores by using CSS transforms for all animations, inline SVGs instead of images, no heavy third-party scripts, and a minimal bundle.',
+}
+
 export default function DocsPage() {
   const [activeSection, setActiveSection] = useState('Quick Start')
   const [expandedSections, setExpandedSections] = useState(['Getting Started'])
@@ -263,8 +286,7 @@ export default function DocsPage() {
                   <div className="docs-badge">Documentation</div>
                   <h1 className="docs-content-title">{activeSection}</h1>
                   <p className="docs-content-lead">
-                    Documentation for {activeSection} is coming soon. In the meantime, explore the
-                    Quick Start guide to get up and running in minutes.
+                    {SECTION_INTROS[activeSection] ?? `This section walks you through ${activeSection} in BaseBox. Use the code patterns and examples below to get started.`}
                   </p>
                 </div>
 

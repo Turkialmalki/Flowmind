@@ -124,16 +124,16 @@ export default function SignupPage() {
 
               <form onSubmit={(e) => { e.preventDefault(); setStep(2) }}>
                 <div className="auth-field">
-                  <label className="auth-label">Full name</label>
-                  <input type="text" className="auth-input" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
+                  <label htmlFor="signup-name" className="auth-label">Full name</label>
+                  <input id="signup-name" type="text" className="auth-input" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="auth-field">
-                  <label className="auth-label">Work email</label>
-                  <input type="email" className="auth-input" placeholder="you@startup.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <label htmlFor="signup-email" className="auth-label">Work email</label>
+                  <input id="signup-email" type="email" className="auth-input" placeholder="you@startup.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="auth-field">
-                  <label className="auth-label">Password</label>
-                  <input type="password" className="auth-input" placeholder="Min. 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <label htmlFor="signup-password" className="auth-label">Password</label>
+                  <input id="signup-password" type="password" className="auth-input" placeholder="Min. 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} />
                   <div className="auth-hint">Use at least 8 characters with a number and symbol</div>
                 </div>
                 <button type="submit" className="auth-submit-btn">

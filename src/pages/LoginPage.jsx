@@ -142,8 +142,9 @@ export default function LoginPage() {
               </div>
             )}
             <div className="auth-field">
-              <label className="auth-label">Email address</label>
+              <label htmlFor="login-email" className="auth-label">Email address</label>
               <input
+                id="login-email"
                 type="email"
                 className={`auth-input${emailError ? ' auth-input-error' : ''}`}
                 placeholder="you@startup.com"
@@ -155,11 +156,12 @@ export default function LoginPage() {
             </div>
             <div className="auth-field">
               <div className="auth-label-row">
-                <label className="auth-label">Password</label>
+                <label htmlFor="login-password" className="auth-label">Password</label>
                 <button type="button" className="auth-forgot" onClick={handleForgotPassword}>Forgot password?</button>
               </div>
               <div className="auth-input-wrap">
                 <input
+                  id="login-password"
                   type={showPass ? 'text' : 'password'}
                   className={`auth-input${passwordError ? ' auth-input-error' : ''}`}
                   placeholder="••••••••••"

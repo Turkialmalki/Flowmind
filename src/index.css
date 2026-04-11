@@ -139,7 +139,7 @@ h2.st span {
   letter-spacing: -0.01em;
   font-weight: 700;
 }
-.btn-g:hover { transform: translateY(-2px); box-shadow: 0 4px 28px rgba(108, 92, 231, 0.50); }
+/* btn-g hover — canonical rule is at the bottom of this file under "PREMIUM INTERACTION SYSTEM" */
 .btn-o {
   background: transparent;
   color: var(--t2);
@@ -193,10 +193,11 @@ nav.scrolled {
 
 /* ── DARK HERO NAVBAR — glass bar over dark hero (homepage, at top) ── */
 nav.dark-hero {
-  background: rgba(10, 10, 20, 0.40);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 8, 22, 0.58);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.22);
 }
 nav.dark-hero .nl,
 nav.dark-hero .nl-brand { color: #ffffff; }
@@ -2982,9 +2983,8 @@ footer { background: var(--bg2); border-top: 1.5px solid var(--border); padding:
    MICRO-INTERACTIONS — enhanced global hover effects
 ══════════════════════════════════════════════════════════ */
 
-/* Buttons — spring scale on hover */
+/* Buttons — spring scale on hover (canonical btn-g:hover is below under PREMIUM INTERACTION SYSTEM) */
 .btn:hover { transform: translateY(-2px) scale(1.015); }
-.btn-g:hover { transform: translateY(-2px) scale(1.02); }
 .btn:active { transform: scale(0.97) !important; transition-duration: 0.1s !important; }
 
 /* Bento cards — smooth lift */
@@ -3372,15 +3372,7 @@ kbd {
   background: var(--bg2);
 }
 
-/* ── MAIN CTA BUTTON — STRONGER HOVER ── */
-.hero-cta-primary:hover,
-.btn-xl.btn-g:hover {
-  transform: translateY(-3px) scale(1.03) !important;
-  box-shadow: 0 8px 40px rgba(108, 92, 231, 0.58), 0 2px 12px rgba(142, 124, 255, 0.22) !important;
-}
-.btn-xl.btn-g:active {
-  transform: translateY(-1px) scale(0.99) !important;
-}
+/* ── MAIN CTA BUTTON — canonical hover is under PREMIUM INTERACTION SYSTEM below ── */
 
 /* FinalCTA white button — stronger hover */
 .ctab-cta-btn:hover {
@@ -4981,17 +4973,24 @@ kbd {
 .hero.hero-img .hp-dot { background: #10b981; }
 
 /* ── Headline — pure white, bold on dark bg ── */
-.hero.hero-img h1 { color: #ffffff; letter-spacing: -0.03em; }
+.hero.hero-img h1 {
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 32px rgba(0, 0, 0, 0.35);
+}
 .hero.hero-img h1 span {
-  background: linear-gradient(130deg, #c4b5fd 0%, #a78bfa 45%, #8b5cf6 100%);
+  background: linear-gradient(130deg, #d8b4fe 0%, #a78bfa 45%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: gx 4s ease infinite;
+  filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.40));
 }
 
 /* ── Supporting text — high-contrast whites on dark bg ── */
-.hero.hero-img .hsub          { color: rgba(255,255,255,0.85); letter-spacing: -0.01em; font-weight: 400; }
-.hero.hero-img .h-micro-trust { color: rgba(255,255,255,0.58); }
+.hero.hero-img .hsub          { color: rgba(255,255,255,0.90); letter-spacing: -0.01em; font-weight: 400; font-size: 18px; }
+.hero.hero-img .h-micro-trust { color: rgba(255,255,255,0.68); letter-spacing: 0.01em; }
 
 /* ── Product mockup — crisp white glass floats over dark bg ── */
 .hero.hero-img .dw {
@@ -5131,4 +5130,76 @@ kbd {
   .hero.hero-img .hd      { transform: none !important; opacity: 1 !important; }
   .hero-premium-card      { transform: none !important; animation: none !important; opacity: 1 !important; }
 }
+
+/* ── 404 Not Found Page ── */
+.nfp {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+.nfp-bg {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden;
+}
+.nfp-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.5;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 80%);
+}
+.nfp-orb { position: absolute; border-radius: 50%; filter: blur(90px); }
+.nfp-orb1 { width: 480px; height: 480px; background: var(--indigo); opacity: 0.12; top: -80px; right: -60px; }
+.nfp-orb2 { width: 360px; height: 360px; background: #0ea5e9; opacity: 0.10; bottom: -40px; left: -40px; }
+.nfp-inner {
+  position: relative; text-align: center;
+  max-width: 580px; margin: 0 auto; padding: 0 24px;
+}
+.nfp-code {
+  font-family: var(--display);
+  font-size: clamp(96px, 18vw, 160px);
+  font-weight: 800; line-height: 1;
+  letter-spacing: -0.06em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.nfp-icon {
+  width: 64px; height: 64px; border-radius: 18px;
+  background: rgba(91,91,214,0.08);
+  border: 1.5px solid rgba(91,91,214,0.18);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; color: var(--indigo);
+}
+.nfp-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 700; color: var(--t1);
+  margin-bottom: 14px; letter-spacing: -0.02em;
+}
+.nfp-desc {
+  font-size: 16px; color: var(--t3); line-height: 1.7;
+  margin-bottom: 36px; max-width: 400px;
+  margin-left: auto; margin-right: auto;
+}
+.nfp-actions {
+  display: flex; gap: 12px;
+  justify-content: center; flex-wrap: wrap; margin-bottom: 40px;
+}
+.nfp-links {
+  display: flex; align-items: center;
+  gap: 8px 14px; justify-content: center; flex-wrap: wrap;
+  font-size: 13.5px; color: var(--t4);
+}
+.nfp-links span { color: var(--t4); }
+.nfp-links a { color: var(--indigo); text-decoration: none; font-weight: 500; transition: opacity 0.15s; }
+.nfp-links a:hover { opacity: 0.7; }
 
