@@ -296,9 +296,11 @@ export default function Nav() {
 
   const closeMenu = () => setMobileOpen(false)
 
+  const darkHero = !scrolled && pathname === '/'
+
   return (
     <>
-      <nav id="mainNav" className={[scrolled ? 'scrolled' : '', hidden ? 'nav-hidden' : ''].filter(Boolean).join(' ')}>
+      <nav id="mainNav" className={[scrolled ? 'scrolled' : '', hidden ? 'nav-hidden' : '', darkHero ? 'dark-hero' : ''].filter(Boolean).join(' ')}>
         <div className="container">
           <Link to="/" className="nl">
             <LogoIcon height={40} />
