@@ -1,5 +1,6 @@
-// HeroSection.tsx — Pixel-perfect BaseBox hero
-// Two-column: left-aligned copy + right dashboard mockup with floating cards
+// HeroSection.tsx — Two-column layout matching reference exactly
+// LEFT: text content (max-width 520px, left-aligned)
+// RIGHT: dashboard mockup (max-width 580px) + floating cards (positioned relative to right column)
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { addPropertyControls, ControlType } from "framer"
@@ -139,25 +140,25 @@ export default function HeroSection({
   const dk = darkBackground
 
   // ── colour aliases ──────────────────────────────────────────────
-  const txt1       = dk ? "#ffffff"                         : "#0a0e1a"
-  const txt2       = dk ? "rgba(255,255,255,0.72)"          : "#374151"
-  const txt3       = dk ? "rgba(255,255,255,0.42)"          : "#9ca3af"
-  const pillBg     = dk ? "rgba(91,91,214,0.18)"            : "rgba(91,91,214,0.07)"
-  const pillBdr    = dk ? "rgba(91,91,214,0.38)"            : "rgba(91,91,214,0.16)"
-  const pillClr    = dk ? "#a5b4fc"                         : "#5b5bd6"
-  const mockBg     = dk ? "#090a1c"                         : "#ffffff"
-  const mockBdr    = dk ? "rgba(255,255,255,0.08)"          : "rgba(15,23,42,0.13)"
-  const chromeBg   = dk ? "rgba(255,255,255,0.03)"          : "#f7f8fc"
-  const chromeBdr  = dk ? "rgba(255,255,255,0.06)"          : "rgba(15,23,42,0.07)"
-  const statBg     = dk ? "rgba(255,255,255,0.04)"          : "#f7f8fc"
-  const statBdr    = dk ? "rgba(255,255,255,0.07)"          : "rgba(15,23,42,0.07)"
-  const gridLine   = dk ? "rgba(255,255,255,0.04)"          : "rgba(15,23,42,0.05)"
-  const chartFill  = dk ? "rgba(91,91,214,0.22)"            : "rgba(91,91,214,0.14)"
-  const dotStroke  = dk ? "rgba(255,255,255,0.2)"           : "white"
-  const urlBg      = dk ? "rgba(255,255,255,0.05)"          : "#eff1f8"
-  const floatBg    = dk ? "rgba(9,10,26,0.96)"              : "#ffffff"
-  const floatBdr   = dk ? "rgba(255,255,255,0.09)"          : "rgba(15,23,42,0.1)"
-  const floatSh    = dk
+  const txt1      = dk ? "#ffffff"                        : "#0a0e1a"
+  const txt2      = dk ? "rgba(255,255,255,0.72)"         : "#374151"
+  const txt3      = dk ? "rgba(255,255,255,0.42)"         : "#9ca3af"
+  const pillBg    = dk ? "rgba(91,91,214,0.18)"           : "rgba(91,91,214,0.07)"
+  const pillBdr   = dk ? "rgba(91,91,214,0.38)"           : "rgba(91,91,214,0.16)"
+  const pillClr   = dk ? "#a5b4fc"                        : "#5b5bd6"
+  const mockBg    = dk ? "#090a1c"                        : "#ffffff"
+  const mockBdr   = dk ? "rgba(255,255,255,0.08)"         : "rgba(15,23,42,0.13)"
+  const chromeBg  = dk ? "rgba(255,255,255,0.03)"         : "#f7f8fc"
+  const chromeBdr = dk ? "rgba(255,255,255,0.06)"         : "rgba(15,23,42,0.07)"
+  const statBg    = dk ? "rgba(255,255,255,0.04)"         : "#f7f8fc"
+  const statBdr   = dk ? "rgba(255,255,255,0.07)"         : "rgba(15,23,42,0.07)"
+  const gridLine  = dk ? "rgba(255,255,255,0.04)"         : "rgba(15,23,42,0.05)"
+  const chartFill = dk ? "rgba(91,91,214,0.22)"           : "rgba(91,91,214,0.14)"
+  const dotStroke = dk ? "rgba(255,255,255,0.2)"          : "white"
+  const urlBg     = dk ? "rgba(255,255,255,0.05)"         : "#eff1f8"
+  const floatBg   = dk ? "rgba(9,10,26,0.96)"             : "#ffffff"
+  const floatBdr  = dk ? "rgba(255,255,255,0.09)"         : "rgba(15,23,42,0.1)"
+  const floatSh   = dk
     ? "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)"
     : "0 8px 28px rgba(15,23,42,0.1), 0 2px 8px rgba(15,23,42,0.04)"
 
@@ -179,7 +180,8 @@ export default function HeroSection({
         background: heroBg,
         display: "flex",
         alignItems: "center",
-        padding: "120px 24px 96px",
+        // No horizontal padding here — container handles it
+        padding: "120px 0 96px",
         position: "relative",
         overflow: "hidden",
         boxSizing: "border-box",
@@ -211,263 +213,362 @@ export default function HeroSection({
         )}
       </div>
 
-      {/* ── Two-column grid ─────────────────────────────────── */}
+      {/* ── CENTERED CONTAINER (1200px max-width, 0 24px padding) ── */}
       <div style={{
-        maxWidth: "1200px", width: "100%", margin: "0 auto",
-        display: "grid", gridTemplateColumns: "1fr 1.08fr",
-        gap: "72px", alignItems: "center",
-        position: "relative", zIndex: 1,
+        maxWidth: "1200px",
+        width: "100%",
+        margin: "0 auto",
+        padding: "0 24px",
+        boxSizing: "border-box",
+        position: "relative",
+        zIndex: 1,
       }}>
 
-        {/* ── LEFT: Copy ──────────────────────────────────────── */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+        {/* ── TWO-COLUMN GRID ─────────────────────────────────── */}
+        {/* Left: text (520px) | gap: 72px | Right: mockup (1fr, max 580px) */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "520px 1fr",
+          gap: "72px",
+          alignItems: "center",
+        }}>
 
-          {/* Pill badge */}
+          {/* ══════════════════════════════════════════════════════
+              LEFT COLUMN — Text content, max-width 520px, left-aligned
+              Exact spacing per spec:
+                Pill        → margin-bottom: 24px
+                Headline    → margin-bottom: 16px
+                Accent line → margin-bottom: 24px
+                Subheadline → margin-bottom: 32px
+                CTA         → margin-bottom: 12px
+          ══════════════════════════════════════════════════════ */}
           <div style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            background: pillBg, border: `1.5px solid ${pillBdr}`,
-            borderRadius: "9999px", padding: "5px 14px 5px 10px",
-            fontSize: "12.5px",
-            fontFamily: "'Fira Code', 'Cascadia Code', monospace",
-            color: pillClr, letterSpacing: "0.03em", marginBottom: "28px",
-            animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) both",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            maxWidth: "520px",
           }}>
-            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e", flexShrink: 0, animation: "bb-pulse 2s ease infinite" }} />
-            {pillText}
-          </div>
 
-          {/* Headline */}
-          <h1 style={{
-            fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
-            fontSize: "clamp(38px, 4.2vw, 62px)", fontWeight: 800,
-            lineHeight: 1.05, letterSpacing: "-0.03em",
-            color: txt1, margin: "0 0 4px",
-            animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.08s both",
-          }}>
-            {headline}
-          </h1>
-
-          {accentLine && (
+            {/* Pill badge — margin-bottom: 24px */}
             <div style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              background: pillBg, border: `1.5px solid ${pillBdr}`,
+              borderRadius: "9999px", padding: "5px 14px 5px 10px",
+              fontSize: "12.5px",
+              fontFamily: "'Fira Code', 'Cascadia Code', monospace",
+              color: pillClr, letterSpacing: "0.03em",
+              marginBottom: "24px",
+              animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) both",
+            }}>
+              <span style={{
+                width: "6px", height: "6px", borderRadius: "50%",
+                background: "#22c55e", flexShrink: 0,
+                animation: "bb-pulse 2s ease infinite",
+              }} />
+              {pillText}
+            </div>
+
+            {/* Headline — margin-bottom: 16px */}
+            <h1 style={{
               fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
               fontSize: "clamp(38px, 4.2vw, 62px)", fontWeight: 800,
-              lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "24px",
-              background: dk
-                ? "linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c4dff 100%)"
-                : "linear-gradient(135deg, #6C5CE7 0%, #7C4DFF 50%, #8E7CFF 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-              animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both",
+              lineHeight: 1.05, letterSpacing: "-0.03em",
+              color: txt1,
+              margin: "0 0 16px",
+              animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.08s both",
             }}>
-              {accentLine}
-            </div>
-          )}
+              {headline}
+            </h1>
 
-          {/* Sub-headline */}
-          <p style={{
-            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-            fontSize: "18px", lineHeight: 1.68, color: txt2,
-            maxWidth: "480px", margin: "0 0 40px",
-            animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.18s both",
-          }}>
-            {subheadline}
-          </p>
+            {/* Accent line — margin-bottom: 24px */}
+            {accentLine && (
+              <div style={{
+                fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
+                fontSize: "clamp(38px, 4.2vw, 62px)", fontWeight: 800,
+                lineHeight: 1.05, letterSpacing: "-0.03em",
+                marginBottom: "24px",
+                background: dk
+                  ? "linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c4dff 100%)"
+                  : "linear-gradient(135deg, #6C5CE7 0%, #7C4DFF 50%, #8E7CFF 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+                animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both",
+              }}>
+                {accentLine}
+              </div>
+            )}
 
-          {/* CTA button */}
-          <a href={ctaPrimaryLink} className="bb-cta-btn" style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            padding: "18px 44px", fontSize: "17px",
-            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-            fontWeight: 700, letterSpacing: "-0.01em", color: "#ffffff",
-            background: "linear-gradient(135deg, #6C5CE7 0%, #7C4DFF 50%, #8E7CFF 100%)",
-            border: "none", borderRadius: "9999px", textDecoration: "none",
-            boxShadow: "0 0 0 1px rgba(109,40,217,0.3), 0 8px 32px rgba(109,40,217,0.38)",
-            marginBottom: "20px", cursor: "pointer",
-            animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.26s both",
-          }}>
-            {ctaPrimaryText}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-
-          {/* Micro-trust */}
-          {microTrust && (
+            {/* Sub-headline — margin-bottom: 32px */}
             <p style={{
               fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontSize: "13px", color: txt3, letterSpacing: "0.01em", margin: 0,
-              animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.32s both",
+              fontSize: "18px", lineHeight: 1.68, color: txt2,
+              margin: "0 0 32px",
+              animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.18s both",
             }}>
-              {microTrust}
+              {subheadline}
             </p>
-          )}
-        </div>
 
-        {/* ── RIGHT: Dashboard + floating cards ────────────────── */}
-        <div style={{ position: "relative", paddingTop: "52px", paddingBottom: "96px" }}>
+            {/* CTA button — width: fit-content, left-aligned, margin-bottom: 12px */}
+            <a
+              href={ctaPrimaryLink}
+              className="bb-cta-btn"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                padding: "18px 44px", fontSize: "17px",
+                fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+                fontWeight: 700, letterSpacing: "-0.01em", color: "#ffffff",
+                background: "linear-gradient(135deg, #6C5CE7 0%, #7C4DFF 50%, #8E7CFF 100%)",
+                border: "none", borderRadius: "9999px", textDecoration: "none",
+                boxShadow: "0 0 0 1px rgba(109,40,217,0.3), 0 8px 32px rgba(109,40,217,0.38)",
+                marginBottom: "12px",
+                cursor: "pointer",
+                // fit-content: inline-flex already achieves this — do NOT use width: 100%
+                animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.26s both",
+              }}
+            >
+              {ctaPrimaryText}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
 
-          {/* ── FLOATING CARD: AI Insights (top-left, tilt+float) ── */}
-          <div className="bb-flpm" style={{
-            position: "absolute", top: 0, left: "-22px", zIndex: 3,
-            background: floatBg, border: `1px solid ${floatBdr}`,
-            borderRadius: "16px", padding: "14px 16px",
-            boxShadow: floatSh, minWidth: "174px",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-              <div style={{ width: "26px", height: "26px", borderRadius: "8px", background: "rgba(91,91,214,0.12)", color: "#5b5bd6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
-              </div>
-              <span style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", fontWeight: 600, color: dk ? "rgba(255,255,255,0.6)" : "#6b7280" }}>AI Insights</span>
-              <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e", marginLeft: "auto", animation: "bb-pulse 2s ease infinite" }} />
-            </div>
-            <div style={{ fontFamily: "'Sora', 'Inter', system-ui, sans-serif", fontSize: "24px", fontWeight: 800, letterSpacing: "-0.03em", color: dk ? "#fff" : "#0a0e1a", lineHeight: 1, marginBottom: "2px" }}>
-              94.8%
-            </div>
-            <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", color: txt3, marginBottom: "10px" }}>
-              Response Accuracy
-            </div>
-            <svg viewBox="0 0 90 26" style={{ width: "100%", height: "26px" }} preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="hpc-sg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="rgba(91,91,214,0.18)" />
-                  <stop offset="100%" stopColor="rgba(91,91,214,0)" />
-                </linearGradient>
-              </defs>
-              <path d="M0,22 C10,19 20,21 30,15 C40,9 50,10 60,6 L75,3 L75,26 L0,26Z" fill="url(#hpc-sg)" />
-              <polyline points="0,22 10,19 20,21 30,15 40,9 50,10 60,6 75,3" stroke="#5B5BD6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            </svg>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", marginTop: "8px" }}>
-              <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e" }} />
-              <span style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "10px", color: txt3 }}>1,240 requests today</span>
-            </div>
+            {/* Micro-trust line */}
+            {microTrust && (
+              <p style={{
+                fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+                fontSize: "13px", color: txt3, letterSpacing: "0.01em", margin: 0,
+                animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.32s both",
+              }}>
+                {microTrust}
+              </p>
+            )}
           </div>
 
-          {/* ── FLOATING BADGE: Dashboard Included (top-right) ── */}
-          <div className="bb-fl1" style={{
-            position: "absolute", top: "52px", right: "-20px", zIndex: 3,
-            background: floatBg, border: `1px solid ${floatBdr}`,
-            borderRadius: "14px", padding: "10px 14px", boxShadow: floatSh,
-            display: "flex", alignItems: "center", gap: "10px",
-          }}>
-            <div style={{ width: "28px", height: "28px", borderRadius: "8px", background: "rgba(5,150,105,0.10)", color: "#059669", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "13px", fontWeight: 700, flexShrink: 0 }}>✓</div>
-            <div>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "12px", fontWeight: 600, color: dk ? "#fff" : "#0a0e1a" }}>Dashboard Included</div>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", color: txt3 }}>Charts, metrics, activity</div>
-            </div>
-          </div>
-
-          {/* ── FLOATING BADGE: 10+ Full Screens (bottom-left) ── */}
-          <div className="bb-fl2" style={{
-            position: "absolute", bottom: "18px", left: "-16px", zIndex: 3,
-            background: floatBg, border: `1px solid ${floatBdr}`,
-            borderRadius: "14px", padding: "10px 14px", boxShadow: floatSh,
-            display: "flex", alignItems: "center", gap: "10px",
-          }}>
-            <div style={{ width: "28px", height: "28px", borderRadius: "8px", background: "rgba(91,91,214,0.10)", color: "#5b5bd6", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, flexShrink: 0 }}>10+</div>
-            <div>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "12px", fontWeight: 600, color: dk ? "#fff" : "#0a0e1a" }}>Full Screens</div>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", color: txt3 }}>Landing to dashboard</div>
-            </div>
-          </div>
-
-          {/* ── LIVE USERS PILL (bottom-right inside mockup) ── */}
+          {/* ══════════════════════════════════════════════════════
+              RIGHT COLUMN — Dashboard mockup + floating cards
+              position: relative so cards are anchored to this column
+              paddingTop/Bottom: give space for cards that overflow
+              Floating card positions:
+                Card 1 (AI Insights)        → top-left   (top: 0,    left: -20px)
+                Card 2 (Dashboard Included) → upper-right (top: 48px, right: -16px)
+                Card 3 (Full Screens)       → bottom-right (bottom: 0, right: -16px)
+          ══════════════════════════════════════════════════════ */}
           <div style={{
-            position: "absolute", bottom: "96px", right: "20px", zIndex: 3,
-            background: floatBg, border: `1px solid ${floatBdr}`,
-            borderRadius: "9999px", padding: "7px 14px",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
-            display: "flex", alignItems: "center", gap: "8px",
+            position: "relative",
+            // Padding creates room for cards that extend outside the mockup
+            paddingTop: "56px",
+            paddingBottom: "56px",
+            // Prevent overflow from clipping the floating cards
+            overflow: "visible",
+            // Constrain right column
+            maxWidth: "580px",
+            width: "100%",
           }}>
-            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#059669", flexShrink: 0, animation: "bb-pulse 2s ease infinite" }} />
-            <span style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", color: dk ? "rgba(255,255,255,0.72)" : "#374151", fontWeight: 500, whiteSpace: "nowrap" }}>12 users joined this week</span>
-          </div>
 
-          {/* ── MAIN DASHBOARD MOCKUP ── */}
-          <div style={{
-            background: mockBg,
-            border: `1.5px solid ${mockBdr}`,
-            borderRadius: "20px", overflow: "hidden",
-            boxShadow: dk
-              ? "0 48px 120px rgba(0,0,0,0.54), 0 12px 36px rgba(91,91,214,0.14)"
-              : "0 48px 120px rgba(15,23,42,0.22), 0 12px 36px rgba(91,91,214,0.12)",
-            transform: "perspective(1100px) rotateX(4deg)",
-            transformOrigin: "top center",
-          }}>
-            {/* Browser chrome */}
-            <div style={{
-              display: "flex", alignItems: "center",
-              padding: "11px 16px", background: chromeBg,
-              borderBottom: `1.5px solid ${chromeBdr}`,
+            {/* ── CARD 1: AI Insights — top-left of mockup ── */}
+            <div className="bb-flpm" style={{
+              position: "absolute",
+              top: 0,
+              left: "-20px",
+              zIndex: 3,
+              background: floatBg,
+              border: `1px solid ${floatBdr}`,
+              borderRadius: "16px",
+              padding: "14px 16px",
+              boxShadow: floatSh,
+              minWidth: "174px",
             }}>
-              <div style={{ display: "flex", gap: "6px" }}>
-                {["#ff5f57", "#febc2e", "#28c840"].map((c, i) => (
-                  <div key={i} style={{ width: "10px", height: "10px", borderRadius: "50%", background: c }} />
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                <div style={{
+                  width: "26px", height: "26px", borderRadius: "8px",
+                  background: "rgba(91,91,214,0.12)", color: "#5b5bd6",
+                  display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                }}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                </div>
+                <span style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", fontWeight: 600, color: dk ? "rgba(255,255,255,0.6)" : "#6b7280" }}>AI Insights</span>
+                <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e", marginLeft: "auto", animation: "bb-pulse 2s ease infinite" }} />
+              </div>
+              <div style={{ fontFamily: "'Sora', 'Inter', system-ui, sans-serif", fontSize: "24px", fontWeight: 800, letterSpacing: "-0.03em", color: dk ? "#fff" : "#0a0e1a", lineHeight: 1, marginBottom: "2px" }}>
+                94.8%
+              </div>
+              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", color: txt3, marginBottom: "10px" }}>
+                Response Accuracy
+              </div>
+              <svg viewBox="0 0 90 26" style={{ width: "100%", height: "26px" }} preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="hpc-sg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="rgba(91,91,214,0.18)" />
+                    <stop offset="100%" stopColor="rgba(91,91,214,0)" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,22 C10,19 20,21 30,15 C40,9 50,10 60,6 L75,3 L75,26 L0,26Z" fill="url(#hpc-sg)" />
+                <polyline points="0,22 10,19 20,21 30,15 40,9 50,10 60,6 75,3" stroke="#5B5BD6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginTop: "8px" }}>
+                <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e" }} />
+                <span style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "10px", color: txt3 }}>1,240 requests today</span>
+              </div>
+            </div>
+
+            {/* ── CARD 2: Dashboard Included — upper-right ── */}
+            <div className="bb-fl1" style={{
+              position: "absolute",
+              top: "48px",
+              right: "-16px",
+              zIndex: 3,
+              background: floatBg,
+              border: `1px solid ${floatBdr}`,
+              borderRadius: "14px",
+              padding: "10px 14px",
+              boxShadow: floatSh,
+              display: "flex", alignItems: "center", gap: "10px",
+            }}>
+              <div style={{
+                width: "28px", height: "28px", borderRadius: "8px",
+                background: "rgba(5,150,105,0.10)", color: "#059669",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "13px", fontWeight: 700, flexShrink: 0,
+              }}>✓</div>
+              <div>
+                <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "12px", fontWeight: 600, color: dk ? "#fff" : "#0a0e1a" }}>Dashboard Included</div>
+                <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", color: txt3 }}>Charts, metrics, activity</div>
+              </div>
+            </div>
+
+            {/* ── CARD 3: Full Screens — bottom-right ── */}
+            <div className="bb-fl2" style={{
+              position: "absolute",
+              bottom: 0,
+              right: "-16px",
+              zIndex: 3,
+              background: floatBg,
+              border: `1px solid ${floatBdr}`,
+              borderRadius: "14px",
+              padding: "10px 14px",
+              boxShadow: floatSh,
+              display: "flex", alignItems: "center", gap: "10px",
+            }}>
+              <div style={{
+                width: "28px", height: "28px", borderRadius: "8px",
+                background: "rgba(91,91,214,0.10)", color: "#5b5bd6",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "11px", fontWeight: 700, flexShrink: 0,
+              }}>10+</div>
+              <div>
+                <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "12px", fontWeight: 600, color: dk ? "#fff" : "#0a0e1a" }}>Full Screens</div>
+                <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "11px", color: txt3 }}>Landing to dashboard</div>
+              </div>
+            </div>
+
+            {/* ── MAIN DASHBOARD MOCKUP ── */}
+            <div style={{
+              background: mockBg,
+              border: `1.5px solid ${mockBdr}`,
+              borderRadius: "20px",
+              overflow: "hidden",
+              boxShadow: dk
+                ? "0 48px 120px rgba(0,0,0,0.54), 0 12px 36px rgba(91,91,214,0.14)"
+                : "0 48px 120px rgba(15,23,42,0.22), 0 12px 36px rgba(91,91,214,0.12)",
+              transform: "perspective(1100px) rotateX(4deg)",
+              transformOrigin: "top center",
+            }}>
+
+              {/* Browser chrome */}
+              <div style={{
+                display: "flex", alignItems: "center",
+                padding: "11px 16px",
+                background: chromeBg,
+                borderBottom: `1.5px solid ${chromeBdr}`,
+              }}>
+                <div style={{ display: "flex", gap: "6px" }}>
+                  {["#ff5f57", "#febc2e", "#28c840"].map((c, i) => (
+                    <div key={i} style={{ width: "10px", height: "10px", borderRadius: "50%", background: c }} />
+                  ))}
+                </div>
+                <div style={{
+                  flex: 1, background: urlBg, borderRadius: "6px",
+                  padding: "4px 12px", margin: "0 24px",
+                  fontSize: "11px", fontFamily: "'Fira Code', 'Cascadia Code', monospace",
+                  color: txt3, textAlign: "center",
+                }}>
+                  your-ai-startup.com/dashboard
+                </div>
+                <div style={{ width: "50px" }} />
+              </div>
+
+              {/* Stat cards row */}
+              <div style={{ padding: "20px 20px 0", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
+                {[
+                  { label: stat1Label, value: stat1Value, delta: cd.delta },
+                  { label: stat2Label, value: stat2Value, delta: stat2Delta },
+                  { label: stat3Label, value: stat3Value, delta: stat3Delta },
+                ].map((s, i) => (
+                  <div key={i} style={{
+                    background: statBg,
+                    border: `1.5px solid ${statBdr}`,
+                    borderRadius: "10px",
+                    padding: "16px",
+                  }}>
+                    <div style={{ fontSize: "11px", fontFamily: "'Inter', system-ui, sans-serif", color: txt3, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "6px" }}>{s.label}</div>
+                    <div style={{ fontSize: "24px", fontFamily: "'Sora', 'Inter', system-ui, sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: dk ? "#fff" : "#0a0e1a", lineHeight: 1 }}>{s.value}</div>
+                    <div style={{ fontSize: "11px", fontWeight: 600, marginTop: "3px", color: "#059669" }}>{s.delta}</div>
+                  </div>
                 ))}
               </div>
-              <div style={{
-                flex: 1, background: urlBg, borderRadius: "6px",
-                padding: "4px 12px", margin: "0 24px",
-                fontSize: "11px", fontFamily: "'Fira Code', 'Cascadia Code', monospace",
-                color: txt3, textAlign: "center",
-              }}>
-                your-ai-startup.com/dashboard
-              </div>
-              <div style={{ width: "50px" }} />
-            </div>
 
-            {/* Stat cards row */}
-            <div style={{ padding: "20px 20px 0", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
-              {[
-                { label: stat1Label, value: stat1Value, delta: cd.delta },
-                { label: stat2Label, value: stat2Value, delta: stat2Delta },
-                { label: stat3Label, value: stat3Value, delta: stat3Delta },
-              ].map((s, i) => (
-                <div key={i} style={{ background: statBg, border: `1.5px solid ${statBdr}`, borderRadius: "10px", padding: "16px" }}>
-                  <div style={{ fontSize: "11px", fontFamily: "'Inter', system-ui, sans-serif", color: txt3, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "6px" }}>{s.label}</div>
-                  <div style={{ fontSize: "24px", fontFamily: "'Sora', 'Inter', system-ui, sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: dk ? "#fff" : "#0a0e1a", lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: "11px", fontWeight: 600, marginTop: "3px", color: "#059669" }}>{s.delta}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Chart */}
-            <div style={{ padding: "14px 20px 20px" }}>
-              <div style={{ background: statBg, border: `1.5px solid ${statBdr}`, borderRadius: "10px", padding: "18px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
-                  <span style={{ fontSize: "13px", fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 600, color: dk ? "#fff" : "#0a0e1a" }}>User Growth</span>
-                  <div style={{ display: "flex", gap: "4px" }}>
-                    {(["24h", "7d", "30d"] as Period[]).map((p) => (
-                      <button key={p} onClick={() => handlePeriod(p)} style={{
-                        fontSize: "10px", padding: "4px 10px", borderRadius: "9999px",
-                        background: period === p ? "#5b5bd6" : "transparent",
-                        border: `1.5px solid ${period === p ? "#5b5bd6" : (dk ? "rgba(255,255,255,0.13)" : "rgba(15,23,42,0.13)")}`,
-                        color: period === p ? "#fff" : txt3,
-                        cursor: "pointer", fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 500,
-                      }}>{p}</button>
-                    ))}
+              {/* Chart */}
+              <div style={{ padding: "14px 20px 20px" }}>
+                <div style={{
+                  background: statBg,
+                  border: `1.5px solid ${statBdr}`,
+                  borderRadius: "10px",
+                  padding: "18px",
+                }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
+                    <span style={{ fontSize: "13px", fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 600, color: dk ? "#fff" : "#0a0e1a" }}>User Growth</span>
+                    <div style={{ display: "flex", gap: "4px" }}>
+                      {(["24h", "7d", "30d"] as Period[]).map((p) => (
+                        <button key={p} onClick={() => handlePeriod(p)} style={{
+                          fontSize: "10px", padding: "4px 10px", borderRadius: "9999px",
+                          background: period === p ? "#5b5bd6" : "transparent",
+                          border: `1.5px solid ${period === p ? "#5b5bd6" : (dk ? "rgba(255,255,255,0.13)" : "rgba(15,23,42,0.13)")}`,
+                          color: period === p ? "#fff" : txt3,
+                          cursor: "pointer", fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 500,
+                        }}>{p}</button>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <svg style={{ width: "100%", height: "130px" }} viewBox="0 0 800 130" preserveAspectRatio="none" aria-label="User growth chart" role="img">
-                  <defs>
-                    <linearGradient id="hero-chart-g" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor={chartFill} />
-                      <stop offset="100%" stopColor="rgba(91,91,214,0)" />
-                    </linearGradient>
-                  </defs>
-                  <line x1="0" y1="33" x2="800" y2="33" stroke={gridLine} />
-                  <line x1="0" y1="65" x2="800" y2="65" stroke={gridLine} />
-                  <line x1="0" y1="97" x2="800" y2="97" stroke={gridLine} />
-                  <path key={`fill-${chartKey}`} className="bb-chart-fill" d={cd.fill} fill="url(#hero-chart-g)" />
-                  <path key={`stroke-${chartKey}`} className="bb-chart-line" pathLength="1" d={cd.stroke} fill="none" stroke="#5b5bd6" strokeWidth="2" strokeLinecap="round" />
-                  <circle key={`dot-${chartKey}`} cx={cd.dot.cx} cy={cd.dot.cy} r="4" fill="#5b5bd6" stroke={dotStroke} strokeWidth="2" />
-                </svg>
+                  <svg style={{ width: "100%", height: "130px" }} viewBox="0 0 800 130" preserveAspectRatio="none" aria-label="User growth chart" role="img">
+                    <defs>
+                      <linearGradient id="hero-chart-g" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor={chartFill} />
+                        <stop offset="100%" stopColor="rgba(91,91,214,0)" />
+                      </linearGradient>
+                    </defs>
+                    <line x1="0" y1="33" x2="800" y2="33" stroke={gridLine} />
+                    <line x1="0" y1="65" x2="800" y2="65" stroke={gridLine} />
+                    <line x1="0" y1="97" x2="800" y2="97" stroke={gridLine} />
+                    <path key={`fill-${chartKey}`} className="bb-chart-fill" d={cd.fill} fill="url(#hero-chart-g)" />
+                    <path key={`stroke-${chartKey}`} className="bb-chart-line" pathLength="1" d={cd.stroke} fill="none" stroke="#5b5bd6" strokeWidth="2" strokeLinecap="round" />
+                    <circle key={`dot-${chartKey}`} cx={cd.dot.cx} cy={cd.dot.cy} r="4" fill="#5b5bd6" stroke={dotStroke} strokeWidth="2" />
+                  </svg>
+                </div>
               </div>
             </div>
+            {/* ── END MOCKUP ── */}
+
           </div>
+          {/* ── END RIGHT COLUMN ── */}
+
         </div>
+        {/* ── END TWO-COLUMN GRID ── */}
+
       </div>
+      {/* ── END CONTAINER ── */}
+
     </section>
   )
 }
@@ -492,20 +593,20 @@ HeroSection.defaultProps = {
 }
 
 addPropertyControls(HeroSection, {
-  pillText:      { type: ControlType.String,  title: "Pill Badge",    defaultValue: "Full SaaS System · Not Just a Template" },
-  headline:      { type: ControlType.String,  title: "Headline",      defaultValue: "A Complete AI SaaS System" },
-  accentLine:    { type: ControlType.String,  title: "Accent Line",   defaultValue: "Ready to Launch in Minutes" },
-  subheadline:   { type: ControlType.String,  title: "Subheadline",   displayTextArea: true, defaultValue: "Landing page, dashboard, authentication, and CMS — everything structured and ready inside Framer." },
-  ctaPrimaryText:{ type: ControlType.String,  title: "CTA Text",      defaultValue: "Get BaseBox Now" },
-  ctaPrimaryLink:{ type: ControlType.Link,    title: "CTA Link" },
-  microTrust:    { type: ControlType.String,  title: "Micro Trust",   defaultValue: "No subscription · Instant access · Lifetime updates" },
-  stat1Label:    { type: ControlType.String,  title: "Stat 1 Label",  defaultValue: "Active Users" },
-  stat1Value:    { type: ControlType.String,  title: "Stat 1 Value",  defaultValue: "12.4K" },
-  stat2Label:    { type: ControlType.String,  title: "Stat 2 Label",  defaultValue: "Conversion Rate" },
-  stat2Value:    { type: ControlType.String,  title: "Stat 2 Value",  defaultValue: "4.8%" },
-  stat2Delta:    { type: ControlType.String,  title: "Stat 2 Delta",  defaultValue: "↑ 1.2% vs avg" },
-  stat3Label:    { type: ControlType.String,  title: "Stat 3 Label",  defaultValue: "MRR" },
-  stat3Value:    { type: ControlType.String,  title: "Stat 3 Value",  defaultValue: "$48K" },
-  stat3Delta:    { type: ControlType.String,  title: "Stat 3 Delta",  defaultValue: "↑ Growing fast" },
-  darkBackground:{ type: ControlType.Boolean, title: "Dark Background", defaultValue: true },
+  pillText:       { type: ControlType.String,  title: "Pill Badge",      defaultValue: "Full SaaS System · Not Just a Template" },
+  headline:       { type: ControlType.String,  title: "Headline",        defaultValue: "A Complete AI SaaS System" },
+  accentLine:     { type: ControlType.String,  title: "Accent Line",     defaultValue: "Ready to Launch in Minutes" },
+  subheadline:    { type: ControlType.String,  title: "Subheadline",     displayTextArea: true, defaultValue: "Landing page, dashboard, authentication, and CMS — everything structured and ready inside Framer." },
+  ctaPrimaryText: { type: ControlType.String,  title: "CTA Text",        defaultValue: "Get BaseBox Now" },
+  ctaPrimaryLink: { type: ControlType.Link,    title: "CTA Link" },
+  microTrust:     { type: ControlType.String,  title: "Micro Trust",     defaultValue: "No subscription · Instant access · Lifetime updates" },
+  stat1Label:     { type: ControlType.String,  title: "Stat 1 Label",    defaultValue: "Active Users" },
+  stat1Value:     { type: ControlType.String,  title: "Stat 1 Value",    defaultValue: "12.4K" },
+  stat2Label:     { type: ControlType.String,  title: "Stat 2 Label",    defaultValue: "Conversion Rate" },
+  stat2Value:     { type: ControlType.String,  title: "Stat 2 Value",    defaultValue: "4.8%" },
+  stat2Delta:     { type: ControlType.String,  title: "Stat 2 Delta",    defaultValue: "↑ 1.2% vs avg" },
+  stat3Label:     { type: ControlType.String,  title: "Stat 3 Label",    defaultValue: "MRR" },
+  stat3Value:     { type: ControlType.String,  title: "Stat 3 Value",    defaultValue: "$48K" },
+  stat3Delta:     { type: ControlType.String,  title: "Stat 3 Delta",    defaultValue: "↑ Growing fast" },
+  darkBackground: { type: ControlType.Boolean, title: "Dark Background", defaultValue: true },
 })
