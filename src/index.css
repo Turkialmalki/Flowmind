@@ -281,9 +281,9 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 }
 .hero h1 {
   font-family: var(--display);
-  font-size: clamp(38px, 5vw, 62px);
-  font-weight: 800; line-height: 1.05; letter-spacing: -0.028em;
-  margin-bottom: 28px; color: var(--t1);
+  font-size: clamp(30px, 5vw, 62px);
+  font-weight: 350; line-height: 1.05; letter-spacing: -0.028em;
+  margin-bottom: 40px; color: var(--t1);
 }
 .hero .h1-line-2 {
   background: var(--grad2);
@@ -4863,7 +4863,8 @@ kbd {
 .hero.hero-img .container {
   position: relative;
   z-index: 2;
-  max-width: 1100px;
+  max-width: 1320px;
+  padding: 0 40px;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -5078,8 +5079,8 @@ kbd {
 /* ── REVOLUT-STYLE FLOATING PRODUCT CARD ── */
 .hero-premium-card {
   position: absolute;
-  top: 52px;
-  left: -28px;
+  top: 44px;
+  left: -16px;
   z-index: 4;
   width: 200px;
   background: rgba(255, 255, 255, 0.92);
@@ -5232,18 +5233,17 @@ kbd {
 .hero-flex {
   display: flex;
   align-items: center;
-  gap: 100px;
+  gap: 120px;
   width: 100%;
 }
 
 /* ── LEFT COLUMN: text content ── */
 .hero-flex .hc {
-  flex: 1;
+  flex: 0 0 auto;
   min-width: 0;
-  max-width: 420px;
+  max-width: 520px;
   text-align: left;
   margin: 0;
-  padding-top: 32px;
 }
 
 /* ── STRICT SPACING SYSTEM (8/16/24/32/48/64/80) ── */
@@ -5257,32 +5257,38 @@ kbd {
 .hero-flex h1 {
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;  /* space after accent line to subheadline */
-  font-size: clamp(32px, 4.2vw, 51px);
+  margin-bottom: 0;
+  font-size: clamp(48px, 5vw, 72px);
   line-height: 1.05;
 }
 
 /* First headline line → gap to accent line */
 .hero-flex .h1-line-1 {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-/* Accent (gradient) line — no bottom margin; h1 handles the gap below */
+/* Accent (gradient) line — smaller than line-1 for visual hierarchy */
 .hero-flex .h1-line-2 {
   display: block;
+  font-size: 0.50em;
+  letter-spacing: -0.01em;
+  font-weight: 700;
 }
 
-/* Subtitle: remove auto-centering, set generous bottom margin */
+/* Subtitle: left-aligned, breathing gap from headline, button handles its own top margin */
 .hero-flex .hc .hsub {
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 36px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  max-width: 420px;
 }
 
-/* CTA button row: left-aligned, micro-trust handles its own spacing */
+/* CTA button row: left-aligned, 32px gap from subtitle */
 .hero-flex .hc .ha {
   justify-content: flex-start;
+  margin-top: 32px;
   margin-bottom: 0;
 }
 
@@ -5300,8 +5306,13 @@ kbd {
 .hero-flex .hd-wrap {
   flex-shrink: 0;
   width: 100%;
-  max-width: 580px;
+  max-width: 680px;
   margin-top: 0; /* override the stacked-layout 96px top margin */
+  animation: heroFlexEntry 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+@keyframes heroFlexEntry {
+  from { opacity: 0; transform: translateY(40px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
 }
 
 /* ── RESPONSIVE: tablet (≤1024px) — collapse to vertical stack ── */
@@ -5329,12 +5340,8 @@ kbd {
 
   .hero-flex .hc .ha {
     justify-content: center;
-    margin-bottom: 8px;
-  }
-
-  /* Re-center micro-trust when layout stacks vertically */
-  .hero-flex .hc .h-micro-trust {
-    text-align: center;
+    margin-top: 28px;
+    margin-bottom: 0;
   }
 
   /* Let dashboard use full container width when stacked */
@@ -5386,8 +5393,8 @@ kbd {
 /* ── 3RD FLOATING CARD — upper-right of mockup ── */
 .hero-upper-right-card {
   position: absolute;
-  top: 28px;
-  right: -38px;
+  top: 24px;
+  right: -22px;
   z-index: 4;
   width: 168px;
   background: rgba(255, 255, 255, 0.92);

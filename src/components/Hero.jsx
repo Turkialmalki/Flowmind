@@ -163,12 +163,12 @@ export default function Hero() {
           </div>
 
           <h1>
-            <span className="h1-line-1">A Complete SaaS System</span>
+            <span className="h1-line-1">A Complete AI SaaS System</span>
             <span className="h1-line-2">Ready to Launch in Minutes</span>
           </h1>
 
           <p className="hsub">
-            The complete system, ready to ship.
+            Your system, ready to ship.
           </p>
 
           <div className="ha">
@@ -180,9 +180,6 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="h-micro-trust">
-            No subscription · Instant access · Lifetime updates
-          </div>
         </div>
 
         {/* Product mockup wrapper */}
