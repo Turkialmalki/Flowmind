@@ -316,8 +316,8 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 /* ── HERO MOCKUP ── */
 .hd-wrap { margin-top: 96px; position: relative; animation: heroWrapEntry 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
 @keyframes heroWrapEntry {
-  from { opacity: 0; transform: translateY(80px) scale(0.9); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateX(20px) translateY(80px) scale(0.9); }
+  to   { opacity: 1; transform: translateX(20px) translateY(0) scale(1); }
 }
 .hd { position: relative; }
 .hd::before {
@@ -5215,7 +5215,7 @@ kbd {
 .hero-flex {
   display: flex;
   align-items: center;
-  gap: 80px;
+  gap: 100px;
   width: 100%;
 }
 
@@ -5223,23 +5223,24 @@ kbd {
 .hero-flex .hc {
   flex: 1;
   min-width: 0;
-  max-width: 480px;
+  max-width: 440px;
   text-align: left;
   margin: 0;
 }
 
 /* ── STRICT SPACING SYSTEM (8/16/24/32/48/64/80) ── */
 
-/* Pill badge → 20px gap to headline */
+/* Pill badge → 16px gap to headline */
 .hero-flex .hc .hp {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 /* h1 → flex column so each line has individual control */
 .hero-flex h1 {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;  /* space after accent line to subheadline */
+  margin-bottom: 12px;  /* space after accent line to subheadline */
+  font-size: clamp(32px, 4.2vw, 51px);
   line-height: 1.05;
 }
 
@@ -5258,21 +5259,22 @@ kbd {
 .hero-flex .hc .hsub {
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-/* CTA button row: left-aligned, 8px gap to micro-trust */
+/* CTA button row: left-aligned, micro-trust handles its own spacing */
 .hero-flex .hc .ha {
   justify-content: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 /* Micro-trust: left-aligned under CTA, matches CTA left edge */
 .hero-flex .hc .h-micro-trust {
   text-align: left;
-  margin-top: 8px;
-  font-size: 13px;
-  opacity: 0.80;
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.6;
+  max-width: 320px;
 }
 
 /* ── RIGHT COLUMN: dashboard mockup ── */
@@ -5280,8 +5282,9 @@ kbd {
 .hero-flex .hd-wrap {
   flex-shrink: 0;
   width: 100%;
-  max-width: 560px;
+  max-width: 540px;
   margin-top: 0; /* override the stacked-layout 96px top margin */
+  transform: translateX(20px);
 }
 
 /* ── RESPONSIVE: tablet (≤1024px) — collapse to vertical stack ── */

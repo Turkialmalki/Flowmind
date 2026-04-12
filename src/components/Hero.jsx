@@ -166,8 +166,7 @@ export default function Hero() {
           </h1>
 
           <p className="hsub">
-            Landing page, dashboard, authentication, and CMS — everything structured
-            and ready inside Framer.
+            Landing page, dashboard, auth, and CMS — all structured and ready inside Framer.
           </p>
 
           <div className="ha">
