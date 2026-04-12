@@ -43,6 +43,7 @@ export default function Hero() {
   const card3Ref   = useRef(null)
   const chartRef       = useRef(null)
   const premiumCardRef = useRef(null)
+  const heroCard3Ref   = useRef(null)
 
   const [chartPeriod, setChartPeriod] = useState('7d')
   const [chartKey, setChartKey] = useState(0)
@@ -58,10 +59,10 @@ export default function Hero() {
       sy = lerp(sy, window.scrollY, 0.08)
 
       // ── Background image ──
-      // Fades out + slow parallax up + slight scale shrink
+      // Fades out + slow parallax up + Ken Burns zoom-in (premium depth)
       const bgP  = smoothstep(sy, 0, 800)
       const bgTY = -(sy * 0.06)                   // parallax up: 0 → ~-48px
-      const bgSc = 1.05 - bgP * 0.05              // scale: 1.05 → 1.0
+      const bgSc = 1.02 + bgP * 0.02              // scale: 1.02 → 1.04 (slow zoom-in)
       if (bgRef.current) {
         bgRef.current.style.opacity   = (1 - bgP).toFixed(4)
         bgRef.current.style.transform = `translate3d(0,${bgTY.toFixed(2)}px,0) scale(${bgSc.toFixed(4)})`
@@ -83,10 +84,10 @@ export default function Hero() {
       }
 
       // ── Product mockup ──
-      // Perspective tilt flattens, scale shrinks, opacity fades — longer range for overlap
+      // Perspective tilt flattens, scale grows slightly (zoom-in depth), opacity fades
       const mockP = smoothstep(sy, 0, 900)
-      const mTY   = sy * 0.11                     // parallax down (slower than content)
-      const mSc   = Math.max(0.88, 1 - mockP * 0.12)
+      const mTY   = sy * 0.15                     // parallax down (slower than content)
+      const mSc   = Math.min(1.04, 1 + mockP * 0.03) // scale: 1.0 → 1.03 (subtle grow)
       const mOp   = Math.max(0.25, 1 - mockP * 0.8)
       const mRX   = Math.max(0, 10 * (1 - mockP)) // tilt: 10deg → 0deg
       if (mockRef.current) {
@@ -100,16 +101,27 @@ export default function Hero() {
       if (card3Ref.current)  card3Ref.current.style.transform  = `translate3d(0,${(-sy * 0.065).toFixed(2)}px,0)`
       if (chartRef.current)  chartRef.current.style.transform  = `translate3d(0,${(-sy * 0.015).toFixed(2)}px,0)`
 
-      // ── Premium floating card — float (±10px) + tilt (±3deg) + parallax ──
-      // All motion computed in RAF: sin wave gives natural ease-in-out, no CSS keyframe conflict
+      // ── Premium floating card (top-left) — floatSlow: 6s / ±14px + tilt + parallax ──
+      // RAF sin wave gives natural ease-in-out without CSS keyframe conflict
       if (premiumCardRef.current) {
         const tNow    = performance.now() / 1000
-        const phase   = tNow * (Math.PI * 2 / 5)          // 5 s period
-        const floatY  = Math.sin(phase) * 10               // ±10 px vertical float
-        const tiltDeg = Math.sin(phase) * 3                // ±3 deg tilt, in-phase
-        const pY      = -sy * 0.085 + floatY               // parallax faster than content
+        const phase   = tNow * (Math.PI * 2 / 6)          // floatSlow: 6s period
+        const floatAmt  = Math.sin(phase) * 14             // floatSlow: ±14px vertical
+        const tiltDeg = Math.sin(phase) * 2.5              // ±2.5 deg tilt, in-phase
+        const pY      = -sy * 0.085 + floatAmt             // parallax faster than content
         premiumCardRef.current.style.transform =
           `translate3d(0,${pY.toFixed(2)}px,0) rotate(${tiltDeg.toFixed(2)}deg)`
+      }
+
+      // ── 3rd floating card (upper-right) — floatFast: 5s / ±8px + tilt + parallax ──
+      if (heroCard3Ref.current) {
+        const tNow3  = performance.now() / 1000
+        const phase3 = tNow3 * (Math.PI * 2 / 5) + Math.PI * 0.55    // floatFast: 5s period, phase offset
+        const float3 = Math.sin(phase3) * 8                            // floatFast: ±8px float
+        const tilt3  = Math.sin(phase3) * 1.5                          // ±1.5deg tilt
+        const pY3    = -sy * 0.04 + float3                             // slowest parallax
+        heroCard3Ref.current.style.transform =
+          `translate3d(0,${pY3.toFixed(2)}px,0) rotate(${tilt3.toFixed(2)}deg)`
       }
 
       raf = requestAnimationFrame(tick)
@@ -156,7 +168,7 @@ export default function Hero() {
           </div>
 
           <h1>
-            <span className="h1-line-1">A Complete AI SaaS System</span>
+            <span className="h1-line-1">A Complete SaaS System</span>
             <span className="h1-line-2">Ready to Launch in Minutes</span>
           </h1>
 
@@ -186,6 +198,18 @@ export default function Hero() {
             ref={mockRef}
             style={{ transformOrigin: 'top center', willChange: 'transform, opacity' }}
           >
+            {/* 3rd floating card — upper-right of mockup, RAF-driven float + tilt + parallax */}
+            <div
+              ref={heroCard3Ref}
+              className="hero-upper-right-card"
+              style={{ willChange: 'transform' }}
+            >
+              <div className="hurc-label">Monthly Revenue</div>
+              <div className="hurc-value">$48K</div>
+              <div className="hurc-delta">↑ 22% this month</div>
+              <div className="hurc-bar"><div className="hurc-bar-fill" /></div>
+            </div>
+
             {/* Premium floating product card — RAF-driven float + tilt + parallax */}
             <div
               ref={premiumCardRef}
