@@ -1,4 +1,5 @@
 import Hero from '../components/Hero'
+import DashboardReveal from '../components/DashboardReveal'
 import SocialProof from '../components/SocialProof'
 import WhySection from '../components/WhySection'
 import HowItWorks from '../components/HowItWorks'
@@ -19,6 +20,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <DashboardReveal />
       <SocialProof />
       <WhySection />
       <HowItWorks />

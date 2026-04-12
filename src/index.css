@@ -248,8 +248,9 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 
 /* ── HERO ── */
 .hero {
-  padding: 160px 0 120px;
+  padding: 160px 0 40px;
   position: relative;
+  z-index: 1;              /* explicit stacking context — isolates hero */
   overflow: hidden;
   background: linear-gradient(180deg, #f0f1ff 0%, #f6f7ff 40%, #fafbff 65%, #ffffff 90%);
   min-height: 110vh;
@@ -322,7 +323,9 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 .hd::before {
   content: ''; position: absolute; inset: -4px; border-radius: 23px;
   background: var(--grad); opacity: 0.28; z-index: -1; filter: blur(44px);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s cubic-bezier(0.22, 1, 0.36, 1), inset 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.hd:hover::before { opacity: 0.46; filter: blur(64px); inset: -12px; }
 .dw { background: #fff; border: 1.5px solid var(--border2); border-radius: 20px; overflow: hidden; box-shadow: 0 48px 120px rgba(15, 23, 42, 0.22), 0 12px 36px rgba(91, 91, 214, 0.12); }
 .db { display: flex; align-items: center; padding: 11px 16px; background: var(--bg2); border-bottom: 1.5px solid var(--border); }
 .dd { display: flex; gap: 6px; }
@@ -785,7 +788,7 @@ footer { background: var(--bg2); border-top: 1.5px solid var(--border); padding:
   .section { padding: 72px 0; }
   .nk { display: none; }
   .nm { display: block; }
-  .hero { padding: 120px 0 72px; min-height: auto; }
+  .hero { padding: 120px 0 24px; min-height: auto; }
   .dby { grid-template-columns: 1fr; }
   .bento { grid-template-columns: 1fr; }
   .bc.c8, .bc.c6, .bc.c4 { grid-column: span 1; }
@@ -4147,8 +4150,8 @@ kbd {
 
 /* ── DEPTH TRANSITIONS — smoother hero mockup scroll ── */
 .hd {
-  /* Ease-out prevents the mechanical linear snap; short duration keeps tracking crisp */
-  transition: transform 0.05s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.07s ease-out !important;
+  /* Near-zero transition — RAF lerp provides all smoothing; this just prevents hard snaps */
+  transition: transform 0.04s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.07s ease-out !important;
 }
 
 /* ── SECTION ENTRANCE: eyebrow + heading combo ── */
@@ -4955,20 +4958,13 @@ kbd {
 }
 
 /* ── GRADIENT OVERLAY — DARK MODE ── */
-/* Fades in on scroll — white veil bridges hero into the next section.
-   No central veil needed — dark bg already provides strong text contrast. */
+/* Opacity animated by JS on scroll — but background is transparent now (no white bleed). */
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background:
-    /* Bottom handoff — dissolve to white page background below */
-    linear-gradient(0deg,
-      rgba(255,255,255,0.98) 0%,
-      rgba(255,255,255,0.80) 8%,
-      rgba(255,255,255,0.18) 22%,
-      transparent 40%);
+  background: transparent;
 }
 
 /* ── CTA BUTTON — rich purple glow on dark bg ── */
@@ -5079,7 +5075,7 @@ kbd {
 /* ── REVOLUT-STYLE FLOATING PRODUCT CARD ── */
 .hero-premium-card {
   position: absolute;
-  top: 32px;
+  top: 28px;
   left: -28px;
   z-index: 4;
   width: 200px;
@@ -5233,7 +5229,7 @@ kbd {
 .hero-flex {
   display: flex;
   align-items: center;
-  gap: 140px;
+  gap: 160px;
   width: 100%;
 }
 
@@ -5241,7 +5237,7 @@ kbd {
 .hero-flex .hc {
   flex: 0 0 auto;
   min-width: 0;
-  max-width: 480px;
+  max-width: 420px;
   text-align: left;
   margin: 0;
 }
@@ -5259,8 +5255,8 @@ kbd {
   flex-direction: column;
   margin-bottom: 0;
   font-size: clamp(48px, 5vw, 72px);
-  line-height: 1.05;
-  max-width: 500px;
+  line-height: 1.04;
+  max-width: 420px;
 }
 
 /* First headline line → gap to accent line */
@@ -5281,23 +5277,23 @@ kbd {
 .hero-flex .hc .hsub {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 20px;
+  margin-top: 24px;
   margin-bottom: 0;
   max-width: 420px;
   line-height: 1.7;
 }
 
-/* CTA button row: left-aligned, 28px gap from subtitle */
+/* CTA button row: left-aligned, 32px gap from subtitle */
 .hero-flex .hc .ha {
   justify-content: flex-start;
-  margin-top: 28px;
+  margin-top: 32px;
   margin-bottom: 0;
 }
 
 /* Micro-trust: left-aligned under CTA, matches CTA left edge */
 .hero-flex .hc .h-micro-trust {
   text-align: left;
-  margin-top: 14px;
+  margin-top: 16px;
   font-size: 11px;
   opacity: 0.5;
   max-width: 320px;
@@ -5310,11 +5306,11 @@ kbd {
   width: 100%;
   max-width: 680px;
   margin-top: 0; /* override the stacked-layout 96px top margin */
-  animation: heroFlexEntry 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  animation: heroFlexEntry 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
 }
 @keyframes heroFlexEntry {
-  from { opacity: 0; transform: translateX(60px) translateY(40px) scale(0.97); }
-  to   { opacity: 1; transform: translateX(60px) scale(1.02); }
+  from { opacity: 0; transform: translateX(80px) translateY(40px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(80px); }
 }
 @keyframes heroFlexEntryMobile {
   from { opacity: 0; transform: translateY(40px) scale(0.97); }
@@ -5355,6 +5351,41 @@ kbd {
     max-width: 100%;
     animation: heroFlexEntryMobile 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
   }
+}
+
+/* ── HERO-FLEX DEPTH GLOW — wider, softer radial behind dashboard ── */
+/* Overrides the base .hd::before (inset:-4px blur:44px) for a more
+   premium floating-on-air effect in the two-column layout.            */
+.hero-flex .hd::before {
+  inset: -56px;
+  opacity: 0.28;
+  filter: blur(88px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s cubic-bezier(0.22, 1, 0.36, 1), inset 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Focus effect: glow blooms when hovering hero (dashboard shadow deepens too) */
+.hero-flex .hd:hover::before { inset: -96px; opacity: 0.62; filter: blur(120px); }
+/* Dashboard shadow deepens on hero hover — signals interaction depth */
+.hero-flex:hover .dw {
+  box-shadow:
+    0 64px 160px rgba(15, 23, 42, 0.30),
+    0 16px 48px rgba(91, 91, 214, 0.18);
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── STAT CARD HOVER SHADOW — smooth glow on hover ── */
+/* Transform is RAF-driven (can't use CSS hover for transform).
+   Box-shadow and background are safe to transition via CSS.    */
+.ds {
+  transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ds:hover {
+  background: linear-gradient(145deg, #ffffff 55%, rgba(91, 91, 214, 0.03) 100%);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.14),
+              0 4px 12px rgba(91, 91, 214, 0.14),
+              0 0 0 1px rgba(91, 91, 214, 0.06);
+  border-color: rgba(91, 91, 214, 0.28);
 }
 
 
@@ -5474,34 +5505,46 @@ kbd {
 /* ── FLOATING CARD HOVER INTERACTIONS ── */
 /* CSS-driven card: full translateY + scale lift */
 .hero-float-card {
-  transition: transform 0.28s var(--ease2), box-shadow 0.28s var(--ease2);
+  transition: transform 0.30s var(--ease2), box-shadow 0.30s var(--ease2);
 }
 .hero-float-card:hover {
-  transform: translateY(-6px) scale(1.02) !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.10);
+  transform: translateY(-10px) scale(1.04) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26), 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 /* RAF-driven cards: glow on hover (can't override JS transform) */
 .hero-premium-card {
-  transition: box-shadow 0.28s var(--ease2), border-color 0.28s var(--ease2);
+  transition: box-shadow 0.30s var(--ease2), border-color 0.30s var(--ease2);
 }
 .hero-premium-card:hover {
   box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.12),
-    0 16px 48px rgba(0, 0, 0, 0.28),
-    0 0 0 1px rgba(255, 255, 255, 0.78),
-    0 0 56px rgba(91, 91, 214, 0.30) !important;
-  border-color: rgba(91, 91, 214, 0.40) !important;
+    0 4px 8px rgba(0, 0, 0, 0.14),
+    0 20px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.82),
+    0 0 72px rgba(108, 92, 231, 0.38) !important;
+  border-color: rgba(108, 92, 231, 0.50) !important;
 }
 .hero-upper-right-card {
-  transition: box-shadow 0.28s var(--ease2), border-color 0.28s var(--ease2);
+  transition: box-shadow 0.30s var(--ease2), border-color 0.30s var(--ease2);
 }
 .hero-upper-right-card:hover {
   box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.12),
-    0 16px 48px rgba(0, 0, 0, 0.28),
-    0 0 0 1px rgba(255, 255, 255, 0.78),
-    0 0 48px rgba(16, 185, 129, 0.28) !important;
-  border-color: rgba(16, 185, 129, 0.36) !important;
+    0 4px 8px rgba(0, 0, 0, 0.14),
+    0 20px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.82),
+    0 0 64px rgba(16, 185, 129, 0.36) !important;
+  border-color: rgba(16, 185, 129, 0.46) !important;
+}
+
+/* ── CURSOR SPOTLIGHT — interactive depth glow on dashboard surface ──
+   Positioned absolute within .hd. RAF drives background-gradient position
+   and opacity, creating a live cursor-tracking light source.              */
+.hd-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 /* ── TEXT STAGGER ENTRY — hero-flex context ──
@@ -5525,5 +5568,426 @@ kbd {
   .hero-upper-right-card { transform: none !important; animation: none !important; opacity: 1 !important; }
   .hero-bg-image::before { animation: none !important; opacity: 1 !important; }
   .hero-float-card       { animation: none !important; opacity: 1 !important; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   DASHBOARD REVEAL — cinematic scroll reveal section
+   Emerges from beneath hero, scales up, pins briefly,
+   then continues as normal page content.
+   ══════════════════════════════════════════════════════════ */
+
+.section-dashboard-reveal {
+  position: relative;
+  z-index: 2;               /* above hero (z-index:1), clean stacking */
+  margin-top: -120px;       /* overlap hero bottom */
+  padding-top: 80px;
+  padding-bottom: 120px;
+  /* Top 120px overlaps the dark hero — keep it transparent so hero shows through.
+     White only begins at the 120px mark where the hero ends. */
+  background: linear-gradient(to bottom,
+    transparent 0px,
+    transparent 120px,
+    #ffffff 120px
+  );
+  overflow: visible;        /* allow panel shadow to spill out */
+}
+
+/* Ambient indigo glow behind the panel — sits within the white zone */
+.sdr-glow {
+  position: absolute;
+  left: 50%;
+  top: 120px;              /* start at the white zone, not the transparent overlap */
+  transform: translateX(-50%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%,
+    rgba(91,91,214,0.10) 0%,
+    rgba(91,91,214,0.04) 50%,
+    transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Section header kept for legacy — hidden now */
+.sdr-header { display: none; }
+
+/* Section header */
+.sdr-header {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 52px;
+}
+.sdr-sd {
+  margin: 16px auto 0;
+  text-align: center;
+}
+
+/* ── PANEL: the full-width dashboard mockup ── */
+.sdr-panel {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid var(--border2);
+  background: #fff;
+  transform-origin: center center;
+  /* smooth chase behind RAF — 150ms lag creates premium inertia feel */
+  transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), opacity 0.15s ease;
+  /* box-shadow driven by JS */
+}
+
+/* ── BROWSER CHROME BAR ── */
+.sdr-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--bg2);
+  border-bottom: 1.5px solid var(--border);
+}
+.sdr-dots {
+  display: flex;
+  gap: 6px;
+}
+.sdr-dots > div {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.sdr-dots > div:nth-child(1) { background: #ff5f57; }
+.sdr-dots > div:nth-child(2) { background: #ffbd2e; }
+.sdr-dots > div:nth-child(3) { background: #28c840; }
+.sdr-url {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  color: var(--t4);
+  font-family: var(--mono);
+}
+
+/* ── DASHBOARD BODY ── */
+.sdr-body {
+  display: flex;
+  height: 460px;
+}
+
+/* ── DARK SIDEBAR ── */
+.sdr-sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  background: #0f1628;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+}
+.sdr-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--display);
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 8px;
+}
+.sdr-nav-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.28);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0 10px;
+  margin: 4px 0 3px;
+}
+.sdr-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.46);
+  cursor: default;
+  position: relative;
+}
+.sdr-nav-item.active {
+  background: rgba(99,102,241,0.16);
+  color: #a5b4fc;
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 #6d6ade;
+}
+.sdr-nav-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+.sdr-nav-item.active .sdr-nav-icon { opacity: 1; }
+.sdr-nav-ping {
+  position: absolute;
+  right: 10px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.18);
+  animation: sdrPing 2s ease infinite;
+}
+@keyframes sdrPing {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.18); }
+  50%       { box-shadow: 0 0 0 6px rgba(16,185,129,0.06); }
+}
+.sdr-sidebar-user {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 6px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  cursor: default;
+}
+.sdr-user-av {
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5b5bd6, #7c3aed);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.sdr-user-name { font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.78); line-height: 1.2; }
+.sdr-user-role { font-size: 9px; color: rgba(255,255,255,0.32); line-height: 1.2; }
+.sdr-user-more { margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.28); }
+
+/* ── MAIN AREA ── */
+.sdr-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+/* ── TOPBAR ── */
+.sdr-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(15,23,42,0.07);
+  background: #fff;
+  flex-shrink: 0;
+}
+.sdr-topbar-title { font-size: 13px; font-weight: 700; font-family: var(--display); color: var(--t1); line-height: 1.2; }
+.sdr-topbar-sub   { font-size: 10px; color: var(--t4); margin-top: 1px; }
+.sdr-topbar-right { display: flex; align-items: center; gap: 7px; }
+.sdr-live-badge {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 600; color: #059669;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.20);
+  border-radius: var(--rf); padding: 3px 8px;
+}
+.sdr-live-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: #10b981;
+  animation: sdrPing 1.8s ease infinite;
+}
+.sdr-range-pill {
+  font-size: 10.5px; font-weight: 500; color: var(--t3);
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--rf); padding: 3px 9px; cursor: default;
+}
+.sdr-avatar-pill {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: linear-gradient(135deg, #5b5bd6, #7c3aed);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: #fff;
+}
+
+/* ── KPI CARDS ── */
+.sdr-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 12px 14px 10px;
+  flex-shrink: 0;
+  background: #fff;
+  border-bottom: 1px solid rgba(15,23,42,0.07);
+}
+.sdr-kpi {
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 10px;
+  padding: 11px 12px 8px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.sdr-kpi-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 4px; }
+.sdr-kpi-label {
+  font-size: 9px; font-weight: 600; color: var(--t4);
+  text-transform: uppercase; letter-spacing: 0.07em; line-height: 1.4; max-width: 68px;
+}
+.sdr-kpi-trend {
+  font-size: 9px; font-weight: 700; border-radius: 5px;
+  padding: 2px 5px; white-space: nowrap; flex-shrink: 0;
+}
+.sdr-kpi-val {
+  font-size: 22px; font-weight: 800; font-family: var(--display);
+  letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px;
+}
+.sdr-kpi-spark { position: absolute; bottom: 6px; right: 8px; }
+/* Sparkline draw animations */
+.sdr-spark-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.sdr-spark-fill { opacity: 0; }
+.sdr-charts-in .sdr-spark-line { animation: sdrLineIn 1.2s cubic-bezier(0.22,1,0.36,1) 0.3s both; }
+.sdr-charts-in .sdr-spark-fill { animation: sdrFadeIn 0.6s ease 1.1s both; }
+
+/* ── BOTTOM ROW: chart + feed ── */
+.sdr-bottom-row {
+  display: grid;
+  grid-template-columns: 1.75fr 1fr;
+  gap: 10px;
+  padding: 10px 14px 12px;
+  flex: 1;
+  min-height: 0;
+}
+.sdr-chart-card,
+.sdr-activity-card {
+  background: #fff;
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.sdr-chart-hd {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px; flex-shrink: 0;
+}
+.sdr-chart-title {
+  font-size: 12px; font-weight: 700; color: var(--t1);
+  display: flex; align-items: center; gap: 7px; margin-bottom: 8px;
+}
+.sdr-chart-hd .sdr-chart-title { margin-bottom: 0; }
+.sdr-chart-sub { font-size: 10px; color: var(--t4); margin-top: 2px; }
+.sdr-chart-tabs { display: flex; gap: 3px; }
+.sdr-tab {
+  font-size: 9px; padding: 3px 8px; border-radius: var(--rf);
+  border: 1px solid var(--border2); background: transparent;
+  color: var(--t4); cursor: default; font-family: var(--sans); font-weight: 600;
+}
+.sdr-tab.on { background: #5b5bd6; color: #fff; border-color: #5b5bd6; }
+.sdr-svg { flex: 1; width: 100%; display: block; min-height: 0; overflow: visible; }
+
+/* ── CHART LINE ANIMATIONS ── */
+.sdr-chart-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.sdr-chart-fill { opacity: 0; }
+.sdr-chart-dot  { opacity: 0; }
+.sdr-charts-in .sdr-chart-line { animation: sdrLineIn 1.6s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
+.sdr-charts-in .sdr-chart-fill { animation: sdrFadeIn 0.8s ease 0.9s both; }
+.sdr-charts-in .sdr-chart-dot  { animation: sdrFadeIn 0.3s ease 1.5s both; }
+@keyframes sdrLineIn {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes sdrFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── LIVE ACTIVITY FEED ── */
+.sdr-feed-count {
+  font-size: 9px; font-weight: 700; color: #5b5bd6;
+  background: rgba(91,91,214,0.09); border-radius: 5px; padding: 2px 6px;
+}
+.sdr-activity-card { gap: 0; }
+.sdr-activity-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(15,23,42,0.05);
+  opacity: 0;
+}
+.sdr-activity-row:last-child { border-bottom: none; }
+/* Staggered slide-in when panel reveals */
+.sdr-charts-in .sdr-activity-row { animation: sdrSlideIn 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+.sdr-charts-in .sdr-activity-row:nth-child(1) { animation-delay: 0.35s; }
+.sdr-charts-in .sdr-activity-row:nth-child(2) { animation-delay: 0.48s; }
+.sdr-charts-in .sdr-activity-row:nth-child(3) { animation-delay: 0.61s; }
+.sdr-charts-in .sdr-activity-row:nth-child(4) { animation-delay: 0.74s; }
+.sdr-charts-in .sdr-activity-row:nth-child(5) { animation-delay: 0.87s; }
+@keyframes sdrSlideIn {
+  from { opacity: 0; transform: translateX(14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.sdr-act-av {
+  width: 27px; height: 27px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.sdr-act-content { flex: 1; min-width: 0; }
+.sdr-act-text {
+  font-size: 11px; font-weight: 600; color: var(--t2); line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sdr-act-sub {
+  font-size: 9.5px; color: var(--t4); line-height: 1.3; margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sdr-act-time {
+  font-size: 9.5px; color: var(--t4);
+  white-space: nowrap; font-family: var(--mono);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1140px) {
+  .sdr-panel { margin: 0 24px; }
+}
+
+@media (max-width: 768px) {
+  .section-dashboard-reveal {
+    margin-top: -60px;
+    padding-top: 60px;
+    background: linear-gradient(to bottom, transparent 0px, transparent 60px, #ffffff 60px);
+  }
+  .sdr-body {
+    height: auto;
+    flex-direction: column;
+  }
+  .sdr-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+    padding: 10px;
+  }
+  .sdr-brand {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+  }
+  .sdr-nav-label { display: none; }
+  .sdr-sidebar-user { display: none; }
+  .sdr-nav-item { font-size: 11px; padding: 5px 8px; border-radius: 7px; }
+  .sdr-nav-item.active { box-shadow: none; background: rgba(99,102,241,0.20); }
+  .sdr-kpi-grid { grid-template-columns: 1fr 1fr; }
+  .sdr-bottom-row { grid-template-columns: 1fr; }
+  .sdr-activity-card { display: none; }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .sdr-panel {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .section-dashboard-reveal { margin-top: 0; }
 }
 

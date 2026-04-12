@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 function lerp(a, b, t) { return a + (b - a) * t }
 
 // Smoothstep — maps scroll y in [start, end] to a curved 0→1 value.
-// Slow at both ends, fastest in the middle (true ease-in-out feel).
 function smoothstep(y, start, end) {
   const t = Math.min(1, Math.max(0, (y - start) / (end - start)))
   return t * t * (3 - 2 * t)
@@ -37,86 +36,186 @@ export default function Hero() {
   const bgRef      = useRef(null)
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
-  const mockRef    = useRef(null)
+  const hdWrapRef  = useRef(null)   // scroll parallax wrapper
+  const mockRef    = useRef(null)   // dashboard — rotation only
   const card1Ref   = useRef(null)
   const card2Ref   = useRef(null)
   const card3Ref   = useRef(null)
   const chartRef       = useRef(null)
   const premiumCardRef = useRef(null)
   const heroCard3Ref   = useRef(null)
+  const heroRef        = useRef(null)
+  const spotlightRef   = useRef(null)
+
+  // ── MOUSE PARALLAX STATE ──
+  const mouseNX = useRef(0)   // raw normalized mouse X: -1 → +1
+  const mouseNY = useRef(0)   // raw normalized mouse Y: -1 → +1
+
+  // ── 3-TIER CASCADING LERP — creates organic micro-delay between layers ──
+  // Layer 1: dashboard (fastest — reacts first)
+  const mxL = useRef(0)
+  const myL = useRef(0)
+  // Layer 2: stat cards (~30ms lag behind dashboard)
+  const mxC = useRef(0)
+  const myC = useRef(0)
+  // Layer 3: floating premium cards (~60ms total lag)
+  const mxF = useRef(0)
+  const myF = useRef(0)
+
+  const mouseActive    = useRef(false)
+  const spotlightAlpha = useRef(0)
+  // Idle breathing scale for dashboard when mouse is still
+  const breatheS = useRef(1)
+
+  // ── Hover lift state ──
+  const premHover = useRef(false);  const premHY = useRef(0);  const premHS = useRef(1)
+  const urcHover  = useRef(false);  const urcHY  = useRef(0);  const urcHS  = useRef(1)
+  const ds1Hover  = useRef(false);  const ds1HY  = useRef(0);  const ds1HS  = useRef(1)
+  const ds2Hover  = useRef(false);  const ds2HY  = useRef(0);  const ds2HS  = useRef(1)
+  const ds3Hover  = useRef(false);  const ds3HY  = useRef(0);  const ds3HS  = useRef(1)
 
   const [chartPeriod, setChartPeriod] = useState('7d')
   const [chartKey, setChartKey] = useState(0)
 
   useEffect(() => {
-    // Inertial smooth-Y — lerps toward real scroll each frame.
-    // Factor 0.08 = heavy damping → buttery, never mechanical.
     let sy = window.scrollY
     let raf
 
     function tick() {
-      // Pull toward real scroll position — inertia smoothing
       sy = lerp(sy, window.scrollY, 0.08)
+      const tNow = performance.now() / 1000
 
-      // ── Background image ──
-      // Fades out + slow parallax up + Ken Burns zoom-in (premium depth)
+      // ── Hover lift — lerped spring feel ──
+      premHY.current = lerp(premHY.current, premHover.current ? -10 : 0, 0.12)
+      premHS.current = lerp(premHS.current, premHover.current ? 1.04 : 1, 0.12)
+      urcHY.current  = lerp(urcHY.current,  urcHover.current  ? -10 : 0, 0.12)
+      urcHS.current  = lerp(urcHS.current,  urcHover.current  ? 1.04 : 1, 0.12)
+      ds1HY.current  = lerp(ds1HY.current,  ds1Hover.current  ? -10 : 0, 0.12)
+      ds1HS.current  = lerp(ds1HS.current,  ds1Hover.current  ? 1.04 : 1, 0.12)
+      ds2HY.current  = lerp(ds2HY.current,  ds2Hover.current  ? -10 : 0, 0.12)
+      ds2HS.current  = lerp(ds2HS.current,  ds2Hover.current  ? 1.04 : 1, 0.12)
+      ds3HY.current  = lerp(ds3HY.current,  ds3Hover.current  ? -10 : 0, 0.12)
+      ds3HS.current  = lerp(ds3HS.current,  ds3Hover.current  ? 1.04 : 1, 0.12)
+
+      // ── CASCADING LERP — 3-tier micro-delay depth system ──
+      // Dashboard responds first, then cards follow, then floating cards follow cards.
+      // Each tier lerps toward the PREVIOUS tier (not raw mouse) = cascaded lag.
+      mxL.current = lerp(mxL.current, mouseNX.current, 0.10)  // L1: fast
+      myL.current = lerp(myL.current, mouseNY.current, 0.10)
+      mxC.current = lerp(mxC.current, mxL.current,     0.075) // L2: ~30ms lag
+      myC.current = lerp(myC.current, myL.current,     0.075)
+      mxF.current = lerp(mxF.current, mxC.current,     0.065) // L3: ~60ms lag
+      myF.current = lerp(myF.current, myC.current,     0.065)
+
+      const mx = mxL.current  // dashboard-speed
+      const my = myL.current
+      const cx = mxC.current  // card-speed
+      const cy = myC.current
+      const fx = mxF.current  // float-speed (slowest)
+      const fy = myF.current
+
+      // ── Cursor spotlight — premium interactive surface glow ──
+      spotlightAlpha.current = lerp(spotlightAlpha.current, mouseActive.current ? 1 : 0, 0.09)
+      if (spotlightRef.current) {
+        const sxPct = ((mx + 1) * 50).toFixed(1)
+        const syPct = ((my + 1) * 50).toFixed(1)
+        spotlightRef.current.style.opacity = spotlightAlpha.current.toFixed(3)
+        spotlightRef.current.style.background =
+          `radial-gradient(circle 500px at ${sxPct}% ${syPct}%, rgba(108,92,231,0.18) 0%, rgba(91,91,214,0.07) 40%, transparent 70%)`
+      }
+
+      // ── Background image — fade + parallax + Ken Burns zoom ──
       const bgP  = smoothstep(sy, 0, 800)
-      const bgTY = -(sy * 0.06)                   // parallax up: 0 → ~-48px
-      const bgSc = 1.02 + bgP * 0.02              // scale: 1.02 → 1.04 (slow zoom-in)
+      const bgTY = -(sy * 0.06)
+      const bgSc = 1.02 + bgP * 0.02
       if (bgRef.current) {
         bgRef.current.style.opacity   = (1 - bgP).toFixed(4)
         bgRef.current.style.transform = `translate3d(0,${bgTY.toFixed(2)}px,0) scale(${bgSc.toFixed(4)})`
       }
 
-      // ── Gradient overlay ──
-      // Fades IN as background fades OUT — prevents hard visual cutoff.
-      // Starts near-invisible (0.06), rises to full (1.0) as bg disappears.
+      // ── Gradient overlay — fades IN as bg fades OUT ──
       if (overlayRef.current) {
         overlayRef.current.style.opacity = Math.min(1, 0.06 + bgP * 0.94).toFixed(4)
       }
 
-      // ── Text content ──
-      // Fades from 1→0 across 0–500px scroll range
+      // ── Text content — fade + subtle opposite-direction parallax ──
       const textP = smoothstep(sy, 0, 500)
       if (contentRef.current) {
         contentRef.current.style.opacity   = Math.max(0, 1 - textP).toFixed(4)
-        contentRef.current.style.transform = `translate3d(0,${(-(textP * 20)).toFixed(2)}px,0)`
+        contentRef.current.style.transform =
+          `translate3d(${(mx * -5).toFixed(2)}px,${(-(textP * 20)).toFixed(2)}px,0)`
       }
 
-      // ── Product mockup ──
-      // translateY(scrollY * 0.15) — dashboard moves slower than page = parallax
-      const mTY = sy * 0.15
+      // ── Dashboard wrapper — scroll parallax only ──
+      if (hdWrapRef.current) {
+        hdWrapRef.current.style.transform = `translateY(${(sy * 0.15).toFixed(2)}px)`
+      }
+
+      // ── DASHBOARD — ROTATION + IDLE BREATHING SCALE ──
+      // Pure rotation creates the 3D plane. Small translate adds a natural pan feel.
+      // Rotation increased to 11/12deg (was 7/9) for more obvious depth.
+      // breatheS: 1.0 → 1.006 when idle, snaps to 1.0 when mouse is active.
+      const breatheTarget = mouseActive.current
+        ? 1
+        : 1 + Math.sin(tNow * 0.38) * 0.006
+      breatheS.current = lerp(breatheS.current, breatheTarget, 0.025)
+
       if (mockRef.current) {
-        mockRef.current.style.transform = `translateY(${mTY.toFixed(2)}px)`
+        mockRef.current.style.transform =
+          `perspective(1000px) rotateX(${(my * -11).toFixed(2)}deg) rotateY(${(mx * 12).toFixed(2)}deg) translate3d(${(mx * 4).toFixed(2)}px,${(my * 3).toFixed(2)}px,0) scale(${breatheS.current.toFixed(4)})`
       }
 
-      // ── Depth cards — micro-parallax at different speeds ──
-      if (card1Ref.current)  card1Ref.current.style.transform  = `translate3d(0,${(-sy * 0.05).toFixed(2)}px,0)`
-      if (card2Ref.current)  card2Ref.current.style.transform  = `translate3d(0,${(-sy * 0.028).toFixed(2)}px,0)`
-      if (card3Ref.current)  card3Ref.current.style.transform  = `translate3d(0,${(-sy * 0.065).toFixed(2)}px,0)`
-      if (chartRef.current)  chartRef.current.style.transform  = `translate3d(0,${(-sy * 0.015).toFixed(2)}px,0)`
+      // ── IDLE FLOAT — stat cards breathe at different rates when mouse is still ──
+      // Async phases + different amplitudes = organic, never lockstep.
+      const idle1 = Math.sin(tNow * 0.75 + 0.0) * 3.5   // ~8.4s period, ±3.5px
+      const idle2 = Math.sin(tNow * 0.62 + 1.1) * 4.5   // ~10.1s period, ±4.5px
+      const idle3 = Math.sin(tNow * 0.88 + 2.3) * 2.5   // ~7.1s period, ±2.5px
 
-      // ── Premium floating card (top-left) — floatSlow: 6s / ±14px + tilt + parallax ──
-      // RAF sin wave gives natural ease-in-out without CSS keyframe conflict
+      // ── DEPTH CARD SYSTEM — TRUE LAYER SEPARATION ──
+      // Cards use cx/cy (Layer 2 — follows dashboard with ~30ms delay).
+      // Multiplier hierarchy creates clear depth stack:
+      //   card1: 0.6x base  → middle ground
+      //   card2: 0.8x base  → closer to viewer
+      //   card3: OPPOSITE X → strongest depth cue (counter-motion = clear parallax)
+      // chart: background element, barely moves
+      if (card1Ref.current) {
+        card1Ref.current.style.transform =
+          `translate3d(${(cx * 8).toFixed(2)}px,${(-sy*0.050 + idle1 + ds1HY.current + cy * 5).toFixed(2)}px,0) scale(${ds1HS.current.toFixed(4)})`
+      }
+      if (card2Ref.current) {
+        card2Ref.current.style.transform =
+          `translate3d(${(cx * 11).toFixed(2)}px,${(-sy*0.028 + idle2 + ds2HY.current + cy * 7).toFixed(2)}px,0) scale(${ds2HS.current.toFixed(4)})`
+      }
+      if (card3Ref.current) {
+        // Negative X: moves OPPOSITE to mouse direction — the signature depth pop
+        card3Ref.current.style.transform =
+          `translate3d(${(cx * -16).toFixed(2)}px,${(-sy*0.065 + idle3 + ds3HY.current + cy * 4).toFixed(2)}px,0) scale(${ds3HS.current.toFixed(4)})`
+      }
+      if (chartRef.current) {
+        chartRef.current.style.transform =
+          `translate3d(${(cx * 3).toFixed(2)}px,${(-sy * 0.015).toFixed(2)}px,0)`
+      }
+
+      // ── PREMIUM FLOATING CARD — foreground (slowest: fx/fy) ──
+      // floatSlow: 6s / ±14px. Uses fx/fy = trails furthest behind mouse.
       if (premiumCardRef.current) {
-        const tNow    = performance.now() / 1000
-        const phase   = tNow * (Math.PI * 2 / 6)          // floatSlow: 6s period
-        const floatAmt  = Math.sin(phase) * 14             // floatSlow: ±14px vertical
-        const tiltDeg = Math.sin(phase) * 2.5              // ±2.5 deg tilt, in-phase
-        const pY      = -sy * 0.085 + floatAmt             // parallax faster than content
+        const phase    = tNow * (Math.PI * 2 / 6)
+        const floatAmt = Math.sin(phase) * 14
+        const tiltDeg  = Math.sin(phase) * 2.5
+        const pY       = -sy * 0.085 + floatAmt + premHY.current + fy * 11
         premiumCardRef.current.style.transform =
-          `translate3d(0,${pY.toFixed(2)}px,0) rotate(${tiltDeg.toFixed(2)}deg)`
+          `translate3d(${(fx * 20).toFixed(2)}px,${pY.toFixed(2)}px,0) rotate(${tiltDeg.toFixed(2)}deg) scale(${premHS.current.toFixed(4)})`
       }
 
-      // ── 3rd floating card (upper-right) — floatFast: 5s / ±8px + tilt + parallax ──
+      // ── UPPER-RIGHT CARD — mid-foreground (slowest: fx/fy) ──
+      // floatFast: 5s / ±8px, offset phase for async motion.
       if (heroCard3Ref.current) {
-        const tNow3  = performance.now() / 1000
-        const phase3 = tNow3 * (Math.PI * 2 / 5) + Math.PI * 0.55    // floatFast: 5s period, phase offset
-        const float3 = Math.sin(phase3) * 8                            // floatFast: ±8px float
-        const tilt3  = Math.sin(phase3) * 1.5                          // ±1.5deg tilt
-        const pY3    = -sy * 0.04 + float3                             // slowest parallax
+        const phase3 = tNow * (Math.PI * 2 / 5) + Math.PI * 0.55
+        const float3 = Math.sin(phase3) * 8
+        const tilt3  = Math.sin(phase3) * 1.5
+        const pY3    = -sy * 0.04 + float3 + urcHY.current + fy * 8
         heroCard3Ref.current.style.transform =
-          `translate3d(0,${pY3.toFixed(2)}px,0) rotate(${tilt3.toFixed(2)}deg)`
+          `translate3d(${(fx * 15).toFixed(2)}px,${pY3.toFixed(2)}px,0) rotate(${tilt3.toFixed(2)}deg) scale(${urcHS.current.toFixed(4)})`
       }
 
       raf = requestAnimationFrame(tick)
@@ -125,6 +224,15 @@ export default function Hero() {
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
   }, [])
+
+  // Mouse move — normalized coords: -1 to +1 on each axis
+  const handleHeroMouseMove = (e) => {
+    const rect = heroRef.current?.getBoundingClientRect()
+    if (!rect) return
+    mouseActive.current = true
+    mouseNX.current = ((e.clientX - rect.left)  / rect.width  - 0.5) * 2
+    mouseNY.current = ((e.clientY - rect.top)   / rect.height - 0.5) * 2
+  }
 
   const handlePeriodSwitch = (p) => {
     if (p === chartPeriod) return
@@ -135,14 +243,19 @@ export default function Hero() {
   const cd = PERIOD_DATA[chartPeriod]
 
   return (
-    <section className="hero hero-img">
-      {/* Cinematic background — fades, parallaxes, and scales via RAF loop */}
+    <section
+      className="hero hero-img"
+      ref={heroRef}
+      onMouseMove={handleHeroMouseMove}
+      onMouseLeave={() => { mouseNX.current = 0; mouseNY.current = 0; mouseActive.current = false }}
+    >
+      {/* Cinematic background */}
       <div
         ref={bgRef}
         className="hero-bg-image"
         style={{ willChange: 'opacity, transform' }}
       />
-      {/* Gradient overlay — fades IN as background fades OUT (dual-layer system) */}
+      {/* Gradient overlay */}
       <div
         ref={overlayRef}
         className="hero-bg-overlay"
@@ -151,7 +264,7 @@ export default function Hero() {
 
       <div className="container">
         <div className="hero-flex">
-        {/* Text content — RAF-driven lift + fade */}
+        {/* Text content */}
         <div
           ref={contentRef}
           className="hc"
@@ -176,21 +289,32 @@ export default function Hero() {
             </Link>
           </div>
 
+          <p className="h-micro-trust">One-time payment · Lifetime updates · Full source code</p>
+
         </div>
 
-        {/* Product mockup wrapper */}
-        <div className="hd-wrap">
+        {/* Product mockup wrapper — scroll parallax */}
+        <div className="hd-wrap" ref={hdWrapRef} style={{ willChange: 'transform' }}>
           <div
             className="hd"
             id="preview"
             ref={mockRef}
-            style={{ transformOrigin: 'top center', willChange: 'transform, opacity' }}
+            style={{ transformOrigin: 'center center', willChange: 'transform' }}
           >
-            {/* 3rd floating card — upper-right of mockup, RAF-driven float + tilt + parallax */}
+            {/* Cursor spotlight */}
+            <div
+              ref={spotlightRef}
+              className="hd-spotlight"
+              style={{ willChange: 'background, opacity', opacity: 0 }}
+            />
+
+            {/* Upper-right floating card */}
             <div
               ref={heroCard3Ref}
               className="hero-upper-right-card"
               style={{ willChange: 'transform' }}
+              onMouseEnter={() => { urcHover.current = true }}
+              onMouseLeave={() => { urcHover.current = false }}
             >
               <div className="hurc-label">Monthly Revenue</div>
               <div className="hurc-value">$48K</div>
@@ -198,11 +322,13 @@ export default function Hero() {
               <div className="hurc-bar"><div className="hurc-bar-fill" /></div>
             </div>
 
-            {/* Premium floating product card — RAF-driven float + tilt + parallax */}
+            {/* Premium floating card — most foreground */}
             <div
               ref={premiumCardRef}
               className="hero-premium-card"
               style={{ willChange: 'transform' }}
+              onMouseEnter={() => { premHover.current = true }}
+              onMouseLeave={() => { premHover.current = false }}
             >
               <div className="hpc-header">
                 <div className="hpc-icon">
@@ -260,26 +386,34 @@ export default function Hero() {
               </div>
 
               <div className="dby">
-                {/* Each stat card at a different depth speed — micro-parallax */}
-                <div ref={card1Ref} className="ds" style={{ willChange: 'transform' }}>
+                <div ref={card1Ref} className="ds" style={{ willChange: 'transform' }}
+                  onMouseEnter={() => { ds1Hover.current = true }}
+                  onMouseLeave={() => { ds1Hover.current = false }}
+                >
                   <div className="dsl">Active Users</div>
                   <div className="dsv">12.4K</div>
                   <div className="dsc" key={chartPeriod}>{cd.delta}</div>
                 </div>
 
-                <div ref={card2Ref} className="ds" style={{ willChange: 'transform' }}>
+                <div ref={card2Ref} className="ds" style={{ willChange: 'transform' }}
+                  onMouseEnter={() => { ds2Hover.current = true }}
+                  onMouseLeave={() => { ds2Hover.current = false }}
+                >
                   <div className="dsl">Conversion Rate</div>
                   <div className="dsv">4.8%</div>
                   <div className="dsc">↑ 1.2% vs avg</div>
                 </div>
 
-                <div ref={card3Ref} className="ds" style={{ willChange: 'transform' }}>
+                <div ref={card3Ref} className="ds" style={{ willChange: 'transform' }}
+                  onMouseEnter={() => { ds3Hover.current = true }}
+                  onMouseLeave={() => { ds3Hover.current = false }}
+                >
                   <div className="dsl">MRR</div>
                   <div className="dsv">$48K</div>
                   <div className="dsc">↑ Growing fast</div>
                 </div>
 
-                {/* Chart — slowest layer */}
+                {/* Chart — background element, slowest parallax */}
                 <div ref={chartRef} className="dch" style={{ willChange: 'transform' }}>
                   <div className="dchh">
                     <div className="dcht">User Growth</div>
