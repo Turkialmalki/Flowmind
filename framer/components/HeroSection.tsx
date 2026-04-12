@@ -164,9 +164,9 @@ export default function HeroSection({
 
   const heroBg = dk
     ? [
-        "radial-gradient(ellipse 62% 55% at 14% 20%, rgba(108,92,231,0.52) 0%, rgba(108,92,231,0.18) 44%, transparent 72%)",
-        "radial-gradient(ellipse 54% 50% at 86% 16%, rgba(124,77,255,0.38) 0%, rgba(124,77,255,0.11) 46%, transparent 72%)",
-        "radial-gradient(ellipse 80% 45% at 50% 58%, rgba(37,99,235,0.12) 0%, transparent 70%)",
+        "radial-gradient(ellipse 62% 55% at 14% 20%, rgba(108,92,231,0.34) 0%, rgba(108,92,231,0.11) 44%, transparent 72%)",
+        "radial-gradient(ellipse 54% 50% at 86% 16%, rgba(124,77,255,0.24) 0%, rgba(124,77,255,0.07) 46%, transparent 72%)",
+        "radial-gradient(ellipse 80% 45% at 50% 58%, rgba(37,99,235,0.09) 0%, transparent 70%)",
         "radial-gradient(ellipse 94% 40% at 50% 114%, rgba(4,6,18,0.78) 0%, transparent 66%)",
         "linear-gradient(170deg, #050617 0%, #07081c 20%, #090b26 50%, #070a24 78%, #040616 100%)",
       ].join(", ")
@@ -225,31 +225,31 @@ export default function HeroSection({
       }}>
 
         {/* ── TWO-COLUMN GRID ─────────────────────────────────── */}
-        {/* Left: text (520px) | gap: 72px | Right: mockup (1fr, max 580px) */}
+        {/* Left: text (480px) | gap: 80px | Right: mockup (1fr, max 560px) */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "520px 1fr",
-          gap: "72px",
+          gridTemplateColumns: "480px 1fr",
+          gap: "80px",
           alignItems: "center",
         }}>
 
           {/* ══════════════════════════════════════════════════════
               LEFT COLUMN — Text content, max-width 520px, left-aligned
               Exact spacing per spec:
-                Pill        → margin-bottom: 24px
-                Headline    → margin-bottom: 16px
-                Accent line → margin-bottom: 24px
-                Subheadline → margin-bottom: 32px
+                Pill        → margin-bottom: 20px
+                Headline    → margin-bottom: 12px
+                Accent line → margin-bottom: 20px
+                Subheadline → margin-bottom: 28px
                 CTA         → margin-bottom: 12px
           ══════════════════════════════════════════════════════ */}
           <div style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
-            maxWidth: "520px",
+            maxWidth: "480px",
           }}>
 
-            {/* Pill badge — margin-bottom: 24px */}
+            {/* Pill badge — margin-bottom: 20px */}
             <div style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: pillBg, border: `1.5px solid ${pillBdr}`,
@@ -257,7 +257,7 @@ export default function HeroSection({
               fontSize: "12.5px",
               fontFamily: "'Fira Code', 'Cascadia Code', monospace",
               color: pillClr, letterSpacing: "0.03em",
-              marginBottom: "24px",
+              marginBottom: "20px",
               animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) both",
             }}>
               <span style={{
@@ -268,25 +268,25 @@ export default function HeroSection({
               {pillText}
             </div>
 
-            {/* Headline — margin-bottom: 16px */}
+            {/* Headline — margin-bottom: 12px */}
             <h1 style={{
               fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
               fontSize: "clamp(38px, 4.2vw, 62px)", fontWeight: 800,
               lineHeight: 1.05, letterSpacing: "-0.03em",
               color: txt1,
-              margin: "0 0 16px",
+              margin: "0 0 12px",
               animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.08s both",
             }}>
               {headline}
             </h1>
 
-            {/* Accent line — margin-bottom: 24px */}
+            {/* Accent line — margin-bottom: 20px */}
             {accentLine && (
               <div style={{
                 fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
                 fontSize: "clamp(38px, 4.2vw, 62px)", fontWeight: 800,
                 lineHeight: 1.05, letterSpacing: "-0.03em",
-                marginBottom: "24px",
+                marginBottom: "20px",
                 background: dk
                   ? "linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c4dff 100%)"
                   : "linear-gradient(135deg, #6C5CE7 0%, #7C4DFF 50%, #8E7CFF 100%)",
@@ -297,17 +297,17 @@ export default function HeroSection({
               </div>
             )}
 
-            {/* Sub-headline — margin-bottom: 32px */}
+            {/* Sub-headline — margin-bottom: 28px */}
             <p style={{
               fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
               fontSize: "18px", lineHeight: 1.68, color: txt2,
-              margin: "0 0 32px",
+              margin: "0 0 28px",
               animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.18s both",
             }}>
               {subheadline}
             </p>
 
-            {/* CTA button — width: fit-content, left-aligned, margin-bottom: 12px */}
+            {/* CTA button — width: fit-content, left-aligned, margin-bottom: 8px */}
             <a
               href={ctaPrimaryLink}
               className="bb-cta-btn"
@@ -319,7 +319,7 @@ export default function HeroSection({
                 background: "linear-gradient(135deg, #6C5CE7 0%, #7C4DFF 50%, #8E7CFF 100%)",
                 border: "none", borderRadius: "9999px", textDecoration: "none",
                 boxShadow: "0 0 0 1px rgba(109,40,217,0.3), 0 8px 32px rgba(109,40,217,0.38)",
-                marginBottom: "12px",
+                marginBottom: "8px",
                 cursor: "pointer",
                 // fit-content: inline-flex already achieves this — do NOT use width: 100%
                 animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.26s both",
@@ -331,11 +331,12 @@ export default function HeroSection({
               </svg>
             </a>
 
-            {/* Micro-trust line */}
+            {/* Micro-trust line — left-aligned under CTA, 8px gap */}
             {microTrust && (
               <p style={{
                 fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-                fontSize: "13px", color: txt3, letterSpacing: "0.01em", margin: 0,
+                fontSize: "13px", color: txt3, letterSpacing: "0.01em",
+                margin: "8px 0 0", opacity: 0.80,
                 animation: "bb-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.32s both",
               }}>
                 {microTrust}
@@ -360,7 +361,7 @@ export default function HeroSection({
             // Prevent overflow from clipping the floating cards
             overflow: "visible",
             // Constrain right column
-            maxWidth: "580px",
+            maxWidth: "560px",
             width: "100%",
           }}>
 

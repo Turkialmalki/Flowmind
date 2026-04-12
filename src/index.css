@@ -282,11 +282,11 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 .hero h1 {
   font-family: var(--display);
   font-size: clamp(38px, 5vw, 62px);
-  font-weight: 800; line-height: 1.08; letter-spacing: -0.028em;
+  font-weight: 800; line-height: 1.05; letter-spacing: -0.028em;
   margin-bottom: 28px; color: var(--t1);
   animation: fadeUp 0.6s var(--ease2) 0.1s both;
 }
-.hero h1 span {
+.hero .h1-line-2 {
   background: var(--grad2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -4867,14 +4867,14 @@ kbd {
        Warm indigo bloom anchored top-left, creates depth
        and energy without harsh contrast.                     */
     radial-gradient(ellipse 58% 52% at 18% 22%,
-      rgba(108, 92, 231, 0.45) 0%,
-      rgba(108, 92, 231, 0.16) 42%,
+      rgba(108, 92, 231, 0.32) 0%,
+      rgba(108, 92, 231, 0.10) 42%,
       transparent 70%),
 
     /* Lavender accent — upper right, asymmetric balance */
     radial-gradient(ellipse 52% 46% at 82% 18%,
-      rgba(124, 77, 255, 0.32) 0%,
-      rgba(124, 77, 255, 0.10) 44%,
+      rgba(124, 77, 255, 0.22) 0%,
+      rgba(124, 77, 255, 0.07) 44%,
       transparent 70%),
 
     /* Center blue halo — subtle mid-field glow */
@@ -4978,14 +4978,14 @@ kbd {
   letter-spacing: -0.03em;
   text-shadow: 0 2px 32px rgba(0, 0, 0, 0.35);
 }
-.hero.hero-img h1 span {
+.hero.hero-img .h1-line-2 {
   background: linear-gradient(130deg, #d8b4fe 0%, #a78bfa 45%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% 200%;
   animation: gx 4s ease infinite;
-  filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.40));
+  filter: drop-shadow(0 0 16px rgba(167, 139, 250, 0.28));
 }
 
 /* ── Supporting text — high-contrast whites on dark bg ── */
@@ -5011,7 +5011,7 @@ kbd {
   border-color: rgba(255,255,255,0.78) !important;
   backdrop-filter: blur(18px) !important;
   -webkit-backdrop-filter: blur(18px) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.42), 0 1px 4px rgba(0,0,0,0.22) !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.32), 0 1px 4px rgba(0,0,0,0.16) !important;
 }
 
 /* ── Hero float card — frosted glass over dark bg ── */
@@ -5020,7 +5020,7 @@ kbd {
   border-color: rgba(255,255,255,0.76);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.32);
 }
 
 /* ── Premium AI floating card — bright glass with purple glow ── */
@@ -5028,11 +5028,11 @@ kbd {
   background: rgba(255,255,255,0.93);
   border-color: rgba(255,255,255,0.80);
   box-shadow:
-    0 2px 4px rgba(0,0,0,0.18),
-    0 8px 24px rgba(0,0,0,0.40),
-    0 28px 56px rgba(0,0,0,0.34),
+    0 2px 4px rgba(0,0,0,0.14),
+    0 8px 24px rgba(0,0,0,0.30),
+    0 20px 48px rgba(0,0,0,0.24),
     0 0 0 1px rgba(255,255,255,0.72),
-    0 0 80px rgba(108,92,231,0.28);
+    0 0 48px rgba(108,92,231,0.18);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -5215,7 +5215,7 @@ kbd {
 .hero-flex {
   display: flex;
   align-items: center;
-  gap: 64px;
+  gap: 80px;
   width: 100%;
 }
 
@@ -5223,20 +5223,56 @@ kbd {
 .hero-flex .hc {
   flex: 1;
   min-width: 0;
-  max-width: 520px;
+  max-width: 480px;
   text-align: left;
   margin: 0;
 }
 
-/* Subtitle: remove auto-centering left/right margins */
+/* ── STRICT SPACING SYSTEM (8/16/24/32/48/64/80) ── */
+
+/* Pill badge → 20px gap to headline */
+.hero-flex .hc .hp {
+  margin-bottom: 20px;
+}
+
+/* h1 → flex column so each line has individual control */
+.hero-flex h1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;  /* space after accent line to subheadline */
+  line-height: 1.05;
+}
+
+/* First headline line → 12px gap to accent line */
+.hero-flex .h1-line-1 {
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Accent (gradient) line — no bottom margin; h1 handles the gap below */
+.hero-flex .h1-line-2 {
+  display: block;
+}
+
+/* Subtitle: remove auto-centering, set strict bottom margin */
 .hero-flex .hc .hsub {
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 28px;
 }
 
-/* CTA button row: left-aligned */
+/* CTA button row: left-aligned, 8px gap to micro-trust */
 .hero-flex .hc .ha {
   justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+/* Micro-trust: left-aligned under CTA, matches CTA left edge */
+.hero-flex .hc .h-micro-trust {
+  text-align: left;
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.80;
 }
 
 /* ── RIGHT COLUMN: dashboard mockup ── */
@@ -5262,6 +5298,10 @@ kbd {
     margin: 0 auto;
   }
 
+  .hero-flex h1 {
+    align-items: center;
+  }
+
   .hero-flex .hc .hsub {
     margin-left: auto;
     margin-right: auto;
@@ -5269,6 +5309,12 @@ kbd {
 
   .hero-flex .hc .ha {
     justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  /* Re-center micro-trust when layout stacks vertically */
+  .hero-flex .hc .h-micro-trust {
+    text-align: center;
   }
 
   /* Let dashboard use full container width when stacked */

@@ -39,7 +39,6 @@ export default function Hero() {
   const contentRef = useRef(null)
   const mockRef    = useRef(null)
   const badge1Ref  = useRef(null)
-  const badge2Ref  = useRef(null)
   const card1Ref   = useRef(null)
   const card2Ref   = useRef(null)
   const card3Ref   = useRef(null)
@@ -100,10 +99,6 @@ export default function Hero() {
       if (badge1Ref.current) {
         badge1Ref.current.style.transform = `translate3d(0,${(-sy * 0.072).toFixed(2)}px,0)`
       }
-      if (badge2Ref.current) {
-        badge2Ref.current.style.transform = `translate3d(0,${(sy * 0.098).toFixed(2)}px,0)`
-      }
-
       // ── Depth cards — micro-parallax at different speeds ──
       if (card1Ref.current)  card1Ref.current.style.transform  = `translate3d(0,${(-sy * 0.05).toFixed(2)}px,0)`
       if (card2Ref.current)  card2Ref.current.style.transform  = `translate3d(0,${(-sy * 0.028).toFixed(2)}px,0)`
@@ -166,8 +161,8 @@ export default function Hero() {
           </div>
 
           <h1>
-            A Complete AI SaaS System<br />
-            <span>Ready to Launch in Minutes</span>
+            <span className="h1-line-1">A Complete AI SaaS System</span>
+            <span className="h1-line-2">Ready to Launch in Minutes</span>
           </h1>
 
           <p className="hsub">
@@ -259,25 +254,6 @@ export default function Hero() {
                   <div>
                     <div className="flt">Dashboard Included</div>
                     <div className="fls">Charts, metrics, activity</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Float badge 2 — counter-parallax down */}
-            <div
-              ref={badge2Ref}
-              style={{
-                position: 'absolute', bottom: '80px', left: '-16px', zIndex: 2,
-                willChange: 'transform',
-              }}
-            >
-              <div className="fl" style={{ position: 'relative', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto', animation: 'float 5s ease-in-out 1.5s infinite' }}>
-                <div className="flr">
-                  <div className="fli" style={{ background: 'var(--indigo-g)', color: 'var(--indigo)' }}>10+</div>
-                  <div>
-                    <div className="flt">Full Screens</div>
-                    <div className="fls">Landing to dashboard</div>
                   </div>
                 </div>
               </div>
