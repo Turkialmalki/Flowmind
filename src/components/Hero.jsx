@@ -38,7 +38,6 @@ export default function Hero() {
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
   const mockRef    = useRef(null)
-  const badge1Ref  = useRef(null)
   const card1Ref   = useRef(null)
   const card2Ref   = useRef(null)
   const card3Ref   = useRef(null)
@@ -95,10 +94,6 @@ export default function Hero() {
         mockRef.current.style.transform = `perspective(1100px) translate3d(0,${mTY.toFixed(2)}px,0) scale(${mSc.toFixed(4)}) rotateX(${mRX.toFixed(2)}deg)`
       }
 
-      // ── Float badges — counter-parallax (lighter offset) ──
-      if (badge1Ref.current) {
-        badge1Ref.current.style.transform = `translate3d(0,${(-sy * 0.072).toFixed(2)}px,0)`
-      }
       // ── Depth cards — micro-parallax at different speeds ──
       if (card1Ref.current)  card1Ref.current.style.transform  = `translate3d(0,${(-sy * 0.05).toFixed(2)}px,0)`
       if (card2Ref.current)  card2Ref.current.style.transform  = `translate3d(0,${(-sy * 0.028).toFixed(2)}px,0)`
@@ -166,12 +161,12 @@ export default function Hero() {
           </h1>
 
           <p className="hsub">
-            Landing page, dashboard, auth, and CMS — all structured and ready inside Framer.
+            The complete system, ready to ship.
           </p>
 
           <div className="ha">
             <Link to="/pricing" className="btn btn-g btn-xl hero-cta-primary">
-              Get BaseBox Now
+              Get BaseBox
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -236,25 +231,6 @@ export default function Hero() {
               <div className="hpc-footer">
                 <div className="hpc-foot-dot" />
                 <span>1,240 requests today</span>
-              </div>
-            </div>
-
-            {/* Float badge 1 — counter-parallax up */}
-            <div
-              ref={badge1Ref}
-              style={{
-                position: 'absolute', top: '56px', right: '-20px', zIndex: 2,
-                willChange: 'transform',
-              }}
-            >
-              <div className="fl" style={{ position: 'relative', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto', animation: 'float 5s ease-in-out infinite' }}>
-                <div className="flr">
-                  <div className="fli" style={{ background: 'var(--emerald-bg)', color: 'var(--emerald)' }}>✓</div>
-                  <div>
-                    <div className="flt">Dashboard Included</div>
-                    <div className="fls">Charts, metrics, activity</div>
-                  </div>
-                </div>
               </div>
             </div>
 
