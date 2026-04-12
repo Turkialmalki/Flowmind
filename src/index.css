@@ -5272,7 +5272,7 @@ kbd {
 /* Accent (gradient) line — smaller than line-1 for visual hierarchy */
 .hero-flex .h1-line-2 {
   display: block;
-  font-size: 0.50em;
+  font-size: 0.60em;
   letter-spacing: -0.01em;
   font-weight: 700;
 }

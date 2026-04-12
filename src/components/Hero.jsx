@@ -163,7 +163,8 @@ export default function Hero() {
           </h1>
 
           <p className="hsub">
-            Your system, ready to ship.
+          Landing page, dashboard, authentication, CMS and more.
+          Everything structured and ready!
           </p>
 
           <div className="ha">
