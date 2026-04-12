@@ -157,11 +157,6 @@ export default function Hero() {
           className="hc"
           style={{ willChange: 'transform, opacity' }}
         >
-          <div className="hp">
-            <span className="hp-dot" />
-            Full SaaS System&nbsp;•&nbsp;Not Just a Template
-          </div>
-
           <h1>
             <span className="h1-line-1">A Complete AI SaaS System</span>
             <span className="h1-line-2">Ready to Launch in Minutes</span>
