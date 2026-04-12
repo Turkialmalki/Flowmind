@@ -76,23 +76,18 @@ export default function Hero() {
       }
 
       // ── Text content ──
-      // Slightly delayed start, gentle lift upward while fading
-      const textP = smoothstep(sy, 80, 560)
+      // Fades from 1→0 across 0–500px scroll range
+      const textP = smoothstep(sy, 0, 500)
       if (contentRef.current) {
         contentRef.current.style.opacity   = Math.max(0, 1 - textP).toFixed(4)
-        contentRef.current.style.transform = `translate3d(0,${(-(textP * 16)).toFixed(2)}px,0)`
+        contentRef.current.style.transform = `translate3d(0,${(-(textP * 20)).toFixed(2)}px,0)`
       }
 
       // ── Product mockup ──
-      // Perspective tilt flattens, scale grows slightly (zoom-in depth), opacity fades
-      const mockP = smoothstep(sy, 0, 900)
-      const mTY   = sy * 0.15                     // parallax down (slower than content)
-      const mSc   = Math.min(1.04, 1 + mockP * 0.03) // scale: 1.0 → 1.03 (subtle grow)
-      const mOp   = Math.max(0.25, 1 - mockP * 0.8)
-      const mRX   = Math.max(0, 10 * (1 - mockP)) // tilt: 10deg → 0deg
+      // translateY(scrollY * 0.15) — dashboard moves slower than page = parallax
+      const mTY = sy * 0.15
       if (mockRef.current) {
-        mockRef.current.style.opacity   = mOp.toFixed(4)
-        mockRef.current.style.transform = `perspective(1100px) translate3d(0,${mTY.toFixed(2)}px,0) scale(${mSc.toFixed(4)}) rotateX(${mRX.toFixed(2)}deg)`
+        mockRef.current.style.transform = `translateY(${mTY.toFixed(2)}px)`
       }
 
       // ── Depth cards — micro-parallax at different speeds ──

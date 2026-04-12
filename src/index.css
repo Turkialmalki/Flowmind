@@ -86,7 +86,7 @@ h2.st span {
 .sd { font-size: 17px; line-height: 1.7; color: var(--t2); max-width: 540px; }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes float {
@@ -284,7 +284,6 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
   font-size: clamp(38px, 5vw, 62px);
   font-weight: 800; line-height: 1.05; letter-spacing: -0.028em;
   margin-bottom: 28px; color: var(--t1);
-  animation: fadeUp 0.6s var(--ease2) 0.1s both;
 }
 .hero .h1-line-2 {
   background: var(--grad2);
@@ -3492,7 +3491,7 @@ kbd {
 
 /* ── HERO FLOAT CARD — PULSING BADGE ── */
 .hero-float-card {
-  animation: floatFast 5s ease-in-out infinite, fadeUp 0.8s var(--ease2) 0.7s both !important;
+  animation: floatSlow 6s ease-in-out infinite, fadeUp 0.8s var(--ease2) 0.7s both !important;
 }
 
 /* ── HOW IT WORKS CARDS — HOVER SCALE ── */
@@ -5376,10 +5375,10 @@ kbd {
   animation: heroBgBreath 14s ease-in-out infinite;
 }
 
-/* ── BOTTOM FLOAT CARD: floatFast (no RAF ref — CSS-driven) ── */
+/* ── BOTTOM FLOAT CARD: floatSlow (no RAF ref — CSS-driven) ── */
 .hero-float-card {
   animation: fadeUp 0.8s var(--ease2) 0.7s both,
-             floatFast 5s ease-in-out 2.4s infinite !important;
+             floatSlow 6s ease-in-out 1.5s infinite !important;
   bottom: -20px;
   right: 36px;
 }
@@ -5460,13 +5459,15 @@ kbd {
 
 /* ── TEXT STAGGER ENTRY — hero-flex context ──
    Each element fades up in sequence for a premium on-load reveal.
-   Delay ladder: badge (0.08) → headline (0.22) → sub (0.40) → CTA (0.52) → trust (0.64)
+   fadeUp: opacity 0→1, translateY 40px→0 (set in @keyframes fadeUp)
+   Delay ladder: badge (0.08) → line-1 (0.20) → line-2 (0.34) → sub (0.48) → CTA (0.60) → trust (0.72)
    Using `both` fill-mode so elements start invisible before the animation fires.  */
-.hero-flex .hc .hp         { animation: fadeUp 0.65s var(--ease2) 0.08s both; }
-.hero-flex h1              { animation: fadeUp 0.70s var(--ease2) 0.22s both; }
-.hero-flex .hc .hsub       { animation: fadeUp 0.65s var(--ease2) 0.40s both; }
-.hero-flex .hc .ha         { animation: fadeUp 0.65s var(--ease2) 0.52s both !important; }
-.hero-flex .hc .h-micro-trust { animation: fadeUp 0.55s var(--ease2) 0.64s both; }
+.hero-flex .hc .hp            { animation: fadeUp 0.65s var(--ease2) 0.08s both; }
+.hero-flex .h1-line-1          { animation: fadeUp 0.70s var(--ease2) 0.20s both; }
+.hero-flex .h1-line-2          { animation: fadeUp 0.70s var(--ease2) 0.34s both; }
+.hero-flex .hc .hsub           { animation: fadeUp 0.65s var(--ease2) 0.48s both; }
+.hero-flex .hc .ha             { animation: fadeUp 0.65s var(--ease2) 0.60s both !important; }
+.hero-flex .hc .h-micro-trust  { animation: fadeUp 0.55s var(--ease2) 0.72s both; }
 
 /* Hide 3rd card on mobile — too cramped */
 @media (max-width: 768px) {
