@@ -1,0 +1,305 @@
+{
+  "note": "BaseBox — Framer CMS Collection Schemas. Create each collection in Framer: CMS → Add Collection → name it exactly as shown. Then add fields in the order listed.",
+
+  "collections": [
+    {
+      "name": "Blog Posts",
+      "slug": "blog-posts",
+      "description": "Main blog / content marketing articles",
+      "fields": [
+        {
+          "name": "Title",
+          "type": "string",
+          "required": true,
+          "example": "How to Launch Your AI SaaS in 60 Minutes with Framer"
+        },
+        {
+          "name": "Slug",
+          "type": "string",
+          "required": true,
+          "note": "URL-safe slug, auto-generated from Title",
+          "example": "launch-ai-saas-60-minutes"
+        },
+        {
+          "name": "Excerpt",
+          "type": "string",
+          "required": true,
+          "note": "Short summary shown on cards and meta description (160 chars max)",
+          "example": "Most founders waste weeks on landing page design. Here's how to go from zero to live in under an hour."
+        },
+        {
+          "name": "Cover Image",
+          "type": "image",
+          "required": true,
+          "note": "Recommended: 1200×630px, WEBP or JPG. Use Unsplash free images.",
+          "example": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200"
+        },
+        {
+          "name": "Cover Image Alt",
+          "type": "string",
+          "required": true,
+          "note": "Accessibility alt text for the cover image",
+          "example": "Dashboard analytics on a laptop screen"
+        },
+        {
+          "name": "Content",
+          "type": "richText",
+          "required": true,
+          "note": "Full post body. Use H2/H3 headings, paragraphs, and bullet lists."
+        },
+        {
+          "name": "Category",
+          "type": "string",
+          "required": true,
+          "note": "Single category label shown as a tag",
+          "example": "Growth"
+        },
+        {
+          "name": "Published Date",
+          "type": "date",
+          "required": true,
+          "example": "2026-04-10"
+        },
+        {
+          "name": "Read Time",
+          "type": "string",
+          "required": false,
+          "example": "5 min read"
+        },
+        {
+          "name": "Author Name",
+          "type": "string",
+          "required": true,
+          "example": "Alex Chen"
+        },
+        {
+          "name": "Author Avatar",
+          "type": "image",
+          "required": false,
+          "note": "Author headshot. 80×80px, circular crop. Free to use from Unsplash or generated avatar.",
+          "example": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=160"
+        },
+        {
+          "name": "Author Role",
+          "type": "string",
+          "required": false,
+          "example": "Founder, Novu AI"
+        },
+        {
+          "name": "Featured",
+          "type": "boolean",
+          "required": false,
+          "note": "Flag to pin posts to the top of the blog listing"
+        },
+        {
+          "name": "SEO Title",
+          "type": "string",
+          "required": false,
+          "note": "Override the page <title> for SEO. Defaults to Title if empty.",
+          "example": "Launch AI SaaS in 60 Minutes | BaseBox Blog"
+        },
+        {
+          "name": "SEO Description",
+          "type": "string",
+          "required": false,
+          "note": "Meta description override. Max 160 chars."
+        }
+      ],
+      "sample_entries": [
+        {
+          "Title": "How to Launch Your AI SaaS in 60 Minutes with Framer",
+          "Slug": "launch-ai-saas-60-minutes",
+          "Excerpt": "Most founders waste weeks agonizing over landing page design. Here's how to go from zero to live in under an hour.",
+          "Category": "Growth",
+          "Published Date": "2026-04-10",
+          "Read Time": "5 min read",
+          "Author Name": "Alex Chen",
+          "Featured": true
+        },
+        {
+          "Title": "The Complete Guide to SaaS Pricing Strategy in 2026",
+          "Slug": "saas-pricing-strategy-2026",
+          "Excerpt": "Freemium, flat-rate, or usage-based? This guide breaks down which pricing model actually converts for early-stage AI products.",
+          "Category": "Pricing",
+          "Published Date": "2026-03-28",
+          "Read Time": "8 min read",
+          "Author Name": "Jordan Lee",
+          "Featured": false
+        },
+        {
+          "Title": "Why Your Landing Page Isn't Converting (And How to Fix It)",
+          "Slug": "landing-page-not-converting-fix",
+          "Excerpt": "Conversion experts analyzed 500 SaaS landing pages. These are the 7 mistakes killing your signups — and how BaseBox solves all of them.",
+          "Category": "Design",
+          "Published Date": "2026-03-15",
+          "Read Time": "6 min read",
+          "Author Name": "Sarah Kim",
+          "Featured": false
+        }
+      ]
+    },
+    {
+      "name": "Changelog",
+      "slug": "changelog",
+      "description": "Product version history and release notes",
+      "fields": [
+        {
+          "name": "Version",
+          "type": "string",
+          "required": true,
+          "example": "v2.5"
+        },
+        {
+          "name": "Title",
+          "type": "string",
+          "required": true,
+          "example": "Dashboard UI overhaul + new chart types"
+        },
+        {
+          "name": "Release Date",
+          "type": "date",
+          "required": true,
+          "example": "2026-04-08"
+        },
+        {
+          "name": "Tag",
+          "type": "string",
+          "required": true,
+          "note": "Release type label: Major, Minor, Fix, or Hotfix",
+          "example": "Major"
+        },
+        {
+          "name": "Summary",
+          "type": "string",
+          "required": true,
+          "note": "One-paragraph summary for the changelog listing",
+          "example": "Complete redesign of the Dashboard page with 4 new chart types, improved sidebar navigation, and mobile-responsive layout."
+        },
+        {
+          "name": "Changes",
+          "type": "richText",
+          "required": true,
+          "note": "Bullet list of individual changes. Use H3 for groupings: New, Improved, Fixed."
+        },
+        {
+          "name": "Breaking Changes",
+          "type": "boolean",
+          "required": false,
+          "note": "Flag if this version contains breaking changes buyers should know about"
+        }
+      ],
+      "sample_entries": [
+        {
+          "Version": "v2.5",
+          "Title": "Framer Marketplace compliance + full accessibility pass",
+          "Release Date": "2026-04-11",
+          "Tag": "Major",
+          "Summary": "Full compliance update for Framer Marketplace submission. Adds 404 page, resolves all broken links, improves keyboard navigation and ARIA labels.",
+          "Breaking Changes": false
+        },
+        {
+          "Version": "v2.4",
+          "Title": "3-dropdown navigation + 7 new pages",
+          "Release Date": "2026-04-08",
+          "Tag": "Major",
+          "Summary": "Expanded the nav to a 3-dropdown system. Added AI Demo, CMS, Setup Guide, Changelog, Demo, License, and Privacy pages.",
+          "Breaking Changes": false
+        },
+        {
+          "Version": "v2.3",
+          "Title": "Dark hero + gradient button system",
+          "Release Date": "2026-03-22",
+          "Tag": "Minor",
+          "Summary": "Introduced dark mode hero section, unified gradient button system (blue→purple), and improved glass navbar visibility.",
+          "Breaking Changes": false
+        }
+      ]
+    },
+    {
+      "name": "Team Members",
+      "slug": "team",
+      "description": "Optional: team/about page roster",
+      "fields": [
+        {
+          "name": "Name",
+          "type": "string",
+          "required": true,
+          "example": "Alex Chen"
+        },
+        {
+          "name": "Role",
+          "type": "string",
+          "required": true,
+          "example": "Co-founder & CEO"
+        },
+        {
+          "name": "Bio",
+          "type": "string",
+          "required": false,
+          "example": "Previously at Stripe. Built 3 SaaS products before 30."
+        },
+        {
+          "name": "Avatar",
+          "type": "image",
+          "required": true,
+          "note": "Square headshot, 400×400px minimum"
+        },
+        {
+          "name": "Twitter URL",
+          "type": "link",
+          "required": false
+        },
+        {
+          "name": "LinkedIn URL",
+          "type": "link",
+          "required": false
+        },
+        {
+          "name": "Order",
+          "type": "number",
+          "required": false,
+          "note": "Display order (1 = first)"
+        }
+      ]
+    }
+  ],
+
+  "page_bindings": {
+    "blog_listing": {
+      "page": "Blog",
+      "component": "Collection List",
+      "collection": "Blog Posts",
+      "sort": "Published Date DESC",
+      "limit": 9,
+      "item_component": "BlogCard"
+    },
+    "blog_detail": {
+      "page": "Blog Post (Dynamic)",
+      "url_pattern": "/blog/:slug",
+      "collection": "Blog Posts",
+      "note": "In Framer: Pages → Blog Post → set as CMS Page → bind to Blog Posts collection"
+    },
+    "changelog_listing": {
+      "page": "Changelog",
+      "component": "Collection List",
+      "collection": "Changelog",
+      "sort": "Release Date DESC",
+      "limit": 20
+    }
+  },
+
+  "framer_setup_steps": [
+    "1. Open your Framer project",
+    "2. Click CMS in the left panel",
+    "3. Click + New Collection",
+    "4. Name it exactly as above (e.g. 'Blog Posts')",
+    "5. Add each field with the correct type",
+    "6. Add at least 3 sample entries (required for Marketplace review)",
+    "7. On the Blog page, add a Collection List frame",
+    "8. Set the collection to 'Blog Posts'",
+    "9. Drop a BlogCard component inside the Collection List",
+    "10. Bind each BlogCard prop to the matching CMS field",
+    "11. Create a 'Blog Post' page, mark it as CMS Page",
+    "12. Bind the page to the Blog Posts collection"
+  ]
+}

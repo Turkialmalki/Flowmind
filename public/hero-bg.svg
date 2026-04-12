@@ -1,0 +1,316 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Base gradient -->
+    <linearGradient id="base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#f0eeff"/>
+      <stop offset="40%"  stop-color="#f5f4ff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+
+    <!-- Orb gradients -->
+    <radialGradient id="orb-purple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#a78bfa" stop-opacity="0.50"/>
+      <stop offset="60%"  stop-color="#8b5cf6" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb-blue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.48"/>
+      <stop offset="55%"  stop-color="#0ea5e9" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb-indigo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#818cf8" stop-opacity="0.42"/>
+      <stop offset="60%"  stop-color="#6366f1" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb-cyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#22d3ee" stop-opacity="0.36"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb-emerald" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#34d399" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Blur filters for bokeh -->
+    <filter id="blur-xl">  <feGaussianBlur stdDeviation="90"/> </filter>
+    <filter id="blur-lg">  <feGaussianBlur stdDeviation="60"/> </filter>
+    <filter id="blur-md">  <feGaussianBlur stdDeviation="36"/> </filter>
+    <filter id="blur-sm">  <feGaussianBlur stdDeviation="18"/> </filter>
+
+    <!-- Card shadow -->
+    <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="28" flood-color="#6366f1" flood-opacity="0.13"/>
+      <feDropShadow dx="0" dy="4"  stdDeviation="8"  flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+    <filter id="badge-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+
+    <!-- Gradient stroke for the chart line -->
+    <linearGradient id="chart-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="chart-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#6366f1" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="card-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="btn-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="emerald-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="amber-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <!-- Clip path for dashboard card -->
+    <clipPath id="card-clip">
+      <rect x="0" y="0" width="680" height="480" rx="20"/>
+    </clipPath>
+    <clipPath id="small-clip">
+      <rect x="0" y="0" width="220" height="104" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 1. BASE BACKGROUND                      -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect width="1600" height="900" fill="url(#base)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 2. BOKEH DEPTH ORBS (background layer) -->
+  <!-- ═══════════════════════════════════════ -->
+  <!-- Large purple orb — top-left -->
+  <ellipse cx="120"  cy="80"  rx="480" ry="420" fill="url(#orb-purple)" filter="url(#blur-xl)"/>
+  <!-- Large blue orb — top-right -->
+  <ellipse cx="1520" cy="60"  rx="500" ry="380" fill="url(#orb-blue)"   filter="url(#blur-xl)"/>
+  <!-- Mid indigo — right-center -->
+  <ellipse cx="1480" cy="700" rx="420" ry="360" fill="url(#orb-indigo)" filter="url(#blur-lg)"/>
+  <!-- Cyan accent — bottom-left -->
+  <ellipse cx="80"   cy="820" rx="360" ry="300" fill="url(#orb-cyan)"   filter="url(#blur-lg)"/>
+  <!-- Small emerald bloom — mid -->
+  <ellipse cx="920"  cy="780" rx="200" ry="160" fill="url(#orb-emerald)" filter="url(#blur-md)"/>
+  <!-- Tight purple highlight — upper-center -->
+  <ellipse cx="700"  cy="120" rx="160" ry="120" fill="url(#orb-purple)" filter="url(#blur-md)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 3. SUBTLE GRID TEXTURE                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <g opacity="0.28">
+    <!-- Horizontal lines -->
+    <line x1="0" y1="180" x2="1600" y2="180" stroke="#c7d2fe" stroke-width="0.7"/>
+    <line x1="0" y1="360" x2="1600" y2="360" stroke="#c7d2fe" stroke-width="0.7"/>
+    <line x1="0" y1="540" x2="1600" y2="540" stroke="#c7d2fe" stroke-width="0.7"/>
+    <line x1="0" y1="720" x2="1600" y2="720" stroke="#c7d2fe" stroke-width="0.7"/>
+    <!-- Vertical lines -->
+    <line x1="320"  y1="0" x2="320"  y2="900" stroke="#c7d2fe" stroke-width="0.7"/>
+    <line x1="640"  y1="0" x2="640"  y2="900" stroke="#c7d2fe" stroke-width="0.7"/>
+    <line x1="960"  y1="0" x2="960"  y2="900" stroke="#c7d2fe" stroke-width="0.7"/>
+    <line x1="1280" y1="0" x2="1280" y2="900" stroke="#c7d2fe" stroke-width="0.7"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 4. MAIN DASHBOARD CARD (right side)     -->
+  <!-- ═══════════════════════════════════════ -->
+  <g transform="translate(830, 100) rotate(-1.5)" filter="url(#card-shadow)">
+    <rect width="680" height="480" rx="20" fill="white"/>
+
+    <!-- Browser chrome bar -->
+    <rect width="680" height="48" rx="20" fill="#f8f7ff"/>
+    <rect x="0" y="28" width="680" height="20" fill="#f8f7ff"/>
+    <circle cx="22" cy="24" r="5.5" fill="#fc8181"/>
+    <circle cx="42" cy="24" r="5.5" fill="#fbbf24"/>
+    <circle cx="62" cy="24" r="5.5" fill="#34d399"/>
+    <rect x="90" y="14" width="300" height="20" rx="7" fill="#ede9fe"/>
+    <text x="140" y="27.5" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">your-startup.app/dashboard</text>
+
+    <!-- ── Metric cards row ── -->
+    <g transform="translate(16, 64)">
+      <!-- Card 1 -->
+      <rect width="148" height="78" rx="10" fill="#fafafa"/>
+      <text x="12" y="24" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Active Users</text>
+      <text x="12" y="46" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#1e1b4b">12.4K</text>
+      <rect x="12" y="56" width="64" height="14" rx="5" fill="#d1fae5"/>
+      <text x="18" y="67" font-family="system-ui,sans-serif" font-size="9" fill="#059669">↑ 4.2% today</text>
+
+      <!-- Card 2 -->
+      <g transform="translate(160, 0)">
+        <rect width="148" height="78" rx="10" fill="#fafafa"/>
+        <text x="12" y="24" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">MRR</text>
+        <text x="12" y="46" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#1e1b4b">$48K</text>
+        <rect x="12" y="56" width="72" height="14" rx="5" fill="#ede9fe"/>
+        <text x="18" y="67" font-family="system-ui,sans-serif" font-size="9" fill="#7c3aed">↑ 18% MoM</text>
+      </g>
+
+      <!-- Card 3 -->
+      <g transform="translate(320, 0)">
+        <rect width="148" height="78" rx="10" fill="#fafafa"/>
+        <text x="12" y="24" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Conversion</text>
+        <text x="12" y="46" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#1e1b4b">4.8%</text>
+        <rect x="12" y="56" width="68" height="14" rx="5" fill="#fef3c7"/>
+        <text x="18" y="67" font-family="system-ui,sans-serif" font-size="9" fill="#d97706">↑ 1.2% avg</text>
+      </g>
+
+      <!-- Card 4 -->
+      <g transform="translate(480, 0)">
+        <rect width="168" height="78" rx="10" fill="#fafafa"/>
+        <text x="12" y="24" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Churn Rate</text>
+        <text x="12" y="46" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#1e1b4b">1.1%</text>
+        <rect x="12" y="56" width="60" height="14" rx="5" fill="#d1fae5"/>
+        <text x="18" y="67" font-family="system-ui,sans-serif" font-size="9" fill="#059669">↓ Low risk</text>
+      </g>
+    </g>
+
+    <!-- ── Chart section ── -->
+    <g transform="translate(16, 158)">
+      <rect width="454" height="188" rx="10" fill="#fafafa"/>
+
+      <!-- Chart header -->
+      <text x="16" y="24" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#1e1b4b">User Growth</text>
+      <rect x="354" y="10" width="30" height="18" rx="5" fill="#ede9fe"/>
+      <text x="360" y="23" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#7c3aed">24h</text>
+      <rect x="388" y="10" width="30" height="18" rx="5" fill="#6366f1"/>
+      <text x="394" y="23" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#fff">7d</text>
+      <rect x="422" y="10" width="30" height="18" rx="5" fill="#ede9fe"/>
+      <text x="428" y="23" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#7c3aed">30d</text>
+
+      <!-- Chart grid lines -->
+      <line x1="16" y1="50"  x2="438" y2="50"  stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="16" y1="82"  x2="438" y2="82"  stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="16" y1="114" x2="438" y2="114" stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="16" y1="146" x2="438" y2="146" stroke="#e5e7eb" stroke-width="0.8"/>
+
+      <!-- Chart area fill -->
+      <path d="M16,140 C80,130 140,118 200,100 C260,82 320,65 380,48 C400,42 420,38 438,35 L438,160 L16,160 Z"
+            fill="url(#chart-fill)"/>
+      <!-- Chart line -->
+      <path d="M16,140 C80,130 140,118 200,100 C260,82 320,65 380,48 C400,42 420,38 438,35"
+            fill="none" stroke="url(#chart-line)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Dot on peak -->
+      <circle cx="438" cy="35" r="4.5" fill="#6366f1" stroke="white" stroke-width="2.5"/>
+    </g>
+
+    <!-- ── Right panel (activity) ── -->
+    <g transform="translate(486, 158)">
+      <rect width="178" height="188" rx="10" fill="#fafafa"/>
+      <text x="14" y="24" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#1e1b4b">Activity</text>
+
+      <!-- Activity items -->
+      <circle cx="24" cy="50"  r="8" fill="#ede9fe"/>
+      <rect x="40" y="44" width="110" height="8"  rx="3" fill="#e5e7eb"/>
+      <rect x="40" y="58" width="80"  height="6"  rx="3" fill="#f3f4f6"/>
+
+      <circle cx="24" cy="86"  r="8" fill="#d1fae5"/>
+      <rect x="40" y="80" width="100" height="8"  rx="3" fill="#e5e7eb"/>
+      <rect x="40" y="94" width="70"  height="6"  rx="3" fill="#f3f4f6"/>
+
+      <circle cx="24" cy="122" r="8" fill="#fef3c7"/>
+      <rect x="40" y="116" width="120" height="8" rx="3" fill="#e5e7eb"/>
+      <rect x="40" y="130" width="90"  height="6" rx="3" fill="#f3f4f6"/>
+
+      <circle cx="24" cy="158" r="8" fill="#ede9fe"/>
+      <rect x="40" y="152" width="95"  height="8" rx="3" fill="#e5e7eb"/>
+      <rect x="40" y="166" width="65"  height="6" rx="3" fill="#f3f4f6"/>
+    </g>
+
+    <!-- ── Bottom row (quick stats) ── -->
+    <g transform="translate(16, 362)">
+      <rect x="0"   y="0" width="200" height="40" rx="8" fill="#f8f7ff"/>
+      <rect x="210" y="0" width="200" height="40" rx="8" fill="#f8f7ff"/>
+      <rect x="420" y="0" width="244" height="40" rx="8" fill="#f8f7ff"/>
+      <rect x="8"   y="12" width="80" height="8" rx="3" fill="#e5e7eb"/>
+      <rect x="8"   y="24" width="50" height="8" rx="3" fill="#c7d2fe"/>
+      <rect x="218" y="12" width="80" height="8" rx="3" fill="#e5e7eb"/>
+      <rect x="218" y="24" width="60" height="8" rx="3" fill="#d1fae5"/>
+      <rect x="428" y="12" width="80" height="8" rx="3" fill="#e5e7eb"/>
+      <rect x="428" y="24" width="70" height="8" rx="3" fill="#fef3c7"/>
+    </g>
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 5. FLOATING BADGE — top-left of card   -->
+  <!-- ═══════════════════════════════════════ -->
+  <g transform="translate(770, 68)" filter="url(#badge-shadow)">
+    <rect width="220" height="56" rx="14" fill="white"/>
+    <rect x="12" y="12" width="32" height="32" rx="8" fill="url(#card-accent)"/>
+    <!-- Check icon -->
+    <path d="M20 28 L26 34 L36 22" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="54" y="28" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1e1b4b">Dashboard Included</text>
+    <text x="54" y="43" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Charts · Metrics · Activity</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 6. FLOATING BADGE — bottom-left card   -->
+  <!-- ═══════════════════════════════════════ -->
+  <g transform="translate(780, 548)" filter="url(#badge-shadow)">
+    <rect width="200" height="56" rx="14" fill="white"/>
+    <rect x="12" y="12" width="32" height="32" rx="8" fill="rgba(16,185,129,0.12)"/>
+    <text x="22" y="31" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#10b981">10+</text>
+    <text x="54" y="28" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1e1b4b">Full Screens</text>
+    <text x="54" y="43" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Landing to dashboard</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 7. SMALL FEATURE PILLS (scattered)     -->
+  <!-- ═══════════════════════════════════════ -->
+  <!-- Auth pill — left side -->
+  <g transform="translate(50, 320)" filter="url(#badge-shadow)">
+    <rect width="180" height="48" rx="12" fill="white"/>
+    <rect x="10" y="10" width="28" height="28" rx="7" fill="url(#btn-grad)"/>
+    <path d="M17 24 L23 24 M23 19 L23 29 M27 22 L31 26 L27 30" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="46" y="27" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1e1b4b">Auth Ready</text>
+    <text x="46" y="40" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Login · Signup · OAuth</text>
+  </g>
+
+  <!-- CMS pill — left side lower -->
+  <g transform="translate(120, 560)" filter="url(#badge-shadow)">
+    <rect width="176" height="48" rx="12" fill="white"/>
+    <rect x="10" y="10" width="28" height="28" rx="7" fill="rgba(16,185,129,0.12)"/>
+    <path d="M17 21 L31 21 M17 26 L27 26 M17 31 L31 31" fill="none" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="46" y="27" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1e1b4b">CMS &amp; Blog</text>
+    <text x="46" y="40" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Instant content layer</text>
+  </g>
+
+  <!-- Pricing pill — right far -->
+  <g transform="translate(1440, 480)" filter="url(#badge-shadow)">
+    <rect width="148" height="48" rx="12" fill="white"/>
+    <rect x="10" y="10" width="28" height="28" rx="7" fill="rgba(251,191,36,0.15)"/>
+    <text x="24" y="30" font-family="system-ui,sans-serif" font-size="13" fill="#d97706">$</text>
+    <text x="46" y="27" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1e1b4b">Pricing Page</text>
+    <text x="46" y="40" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Plans · Checkout</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 8. CONNECTING LINES (depth/network feel)-->
+  <!-- ═══════════════════════════════════════ -->
+  <g opacity="0.18" stroke="#6366f1" stroke-width="1.2" fill="none" stroke-dasharray="4,6">
+    <path d="M230 344 C 400 320 600 310 770 100"/>
+    <path d="M296 584 C 450 560 620 550 780 576"/>
+    <path d="M808 96  C 820 82 826 74 828 100"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 9. DECORATIVE CIRCLES (bokeh spots)    -->
+  <!-- ═══════════════════════════════════════ -->
+  <circle cx="400"  cy="200" r="6"  fill="#a78bfa" opacity="0.5" filter="url(#blur-sm)"/>
+  <circle cx="680"  cy="750" r="8"  fill="#38bdf8" opacity="0.45" filter="url(#blur-sm)"/>
+  <circle cx="1200" cy="160" r="5"  fill="#34d399" opacity="0.5" filter="url(#blur-sm)"/>
+  <circle cx="1480" cy="680" r="10" fill="#a78bfa" opacity="0.4" filter="url(#blur-sm)"/>
+  <circle cx="240"  cy="700" r="7"  fill="#f59e0b" opacity="0.35" filter="url(#blur-sm)"/>
+  <circle cx="1060" cy="820" r="9"  fill="#38bdf8" opacity="0.4" filter="url(#blur-sm)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 10. FINAL BRIGHT HIGHLIGHT (center-top) -->
+  <!-- ═══════════════════════════════════════ -->
+  <ellipse cx="800" cy="0" rx="500" ry="300" fill="white" opacity="0.55" filter="url(#blur-xl)"/>
+</svg>

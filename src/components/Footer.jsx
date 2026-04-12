@@ -63,6 +63,7 @@ export default function Footer() {
               <li><Link to="/signup">Sign Up</Link></li>
               <li><Link to="/license">License</Link></li>
               <li><Link to="/privacy">Privacy</Link></li>
+              <li><Link to="/404">404 Page</Link></li>
             </ul>
           </div>
         </div>
@@ -70,8 +71,14 @@ export default function Footer() {
         <div className="fbo">
           <span>© 2026 BaseBox. All rights reserved.</span>
           <div className="fsc">
-            <a aria-label="Twitter/X"><TwitterIcon /></a>
-            <a aria-label="GitHub"><GitHubIcon /></a>
+            <a href="mailto:hello@basebox.io" aria-label="Email us at hello@basebox.io">
+              <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Follow BaseBox on X (Twitter)"><TwitterIcon /></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="View BaseBox on GitHub"><GitHubIcon /></a>
           </div>
         </div>
       </div>

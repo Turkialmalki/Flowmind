@@ -5203,3 +5203,77 @@ kbd {
 .nfp-links a { color: var(--indigo); text-decoration: none; font-weight: 500; transition: opacity 0.15s; }
 .nfp-links a:hover { opacity: 0.7; }
 
+/* ══════════════════════════════════════════════════════════
+   HERO FLEX LAYOUT — Two-column desktop layout
+   LEFT: text content  |  RIGHT: dashboard mockup
+   Outer .hero fills 100% width (background only).
+   .container (max-width: 1200px) constrains all content.
+   .hero-flex creates the two-column split inside .container.
+══════════════════════════════════════════════════════════ */
+
+/* Flex row: text left, dashboard right */
+.hero-flex {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+}
+
+/* ── LEFT COLUMN: text content ── */
+.hero-flex .hc {
+  flex: 1;
+  min-width: 0;
+  max-width: 520px;
+  text-align: left;
+  margin: 0;
+}
+
+/* Subtitle: remove auto-centering left/right margins */
+.hero-flex .hc .hsub {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* CTA button row: left-aligned */
+.hero-flex .hc .ha {
+  justify-content: flex-start;
+}
+
+/* ── RIGHT COLUMN: dashboard mockup ── */
+/* max-width prevents dashboard from stretching to fill screen */
+.hero-flex .hd-wrap {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 560px;
+  margin-top: 0; /* override the stacked-layout 96px top margin */
+}
+
+/* ── RESPONSIVE: tablet (≤1024px) — collapse to vertical stack ── */
+@media (max-width: 1024px) {
+  .hero-flex {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* Restore centered text when stacked */
+  .hero-flex .hc {
+    max-width: 640px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .hero-flex .hc .hsub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-flex .hc .ha {
+    justify-content: center;
+  }
+
+  /* Let dashboard use full container width when stacked */
+  .hero-flex .hd-wrap {
+    max-width: 100%;
+  }
+}
+

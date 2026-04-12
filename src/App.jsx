@@ -42,6 +42,7 @@ export default function App() {
           <Route path="/blog/post" element={<BlogPostPage />} />
           <Route path="/docs" element={<DocsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
         <Route path="/dashboard" element={<DashboardPage />} />

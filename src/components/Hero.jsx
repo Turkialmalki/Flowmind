@@ -153,6 +153,7 @@ export default function Hero() {
       />
 
       <div className="container">
+        <div className="hero-flex">
         {/* Text content — RAF-driven lift + fade */}
         <div
           ref={contentRef}
@@ -373,6 +374,7 @@ export default function Hero() {
             </div>
           </div>
         </div>{/* /hd-wrap */}
+        </div>{/* /hero-flex */}
       </div>
     </section>
   )
