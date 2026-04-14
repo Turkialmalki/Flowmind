@@ -102,40 +102,40 @@ const chartData = {
 const navItems = [
   { label: 'Overview', path: 'overview', icon: <><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></> },
   { label: 'Analytics', path: 'analytics', icon: <><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></> },
-  { label: 'Users', path: 'users', icon: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></> },
+  { label: 'Workflows', path: 'users', icon: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></> },
   { label: 'Revenue', path: 'revenue', icon: <><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></> },
   { label: 'Reports', path: 'reports', icon: <><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></> },
   { label: 'Settings', path: 'settings', icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.68 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" /></> },
 ]
 
-/* ── Users table data ── */
+/* ── Workflow table data ── */
 const users = [
-  { name: 'Maya Chen', email: 'maya@techco.io', plan: 'Pro', status: 'active', joined: 'Mar 28', mrr: '$49' },
-  { name: 'Jordan Park', email: 'jordan@b2bsaas.com', plan: 'Team', status: 'active', joined: 'Mar 22', mrr: '$99' },
-  { name: 'Sarah Williams', email: 'sarah@startup.co', plan: 'Pro', status: 'trial', joined: 'Apr 1', mrr: '—' },
-  { name: 'Alex Kim', email: 'alex@growthco.io', plan: 'Starter', status: 'active', joined: 'Feb 15', mrr: '$29' },
-  { name: 'Chris Patel', email: 'chris@aibuilds.com', plan: 'Pro', status: 'active', joined: 'Mar 10', mrr: '$49' },
-  { name: 'Emma Rodriguez', email: 'emma@saasfound.co', plan: 'Team', status: 'churned', joined: 'Jan 8', mrr: '—' },
+  { name: 'Email Nurture Campaign', email: 'CRM → Email', plan: 'Active', status: 'active', joined: 'Mar 28', mrr: '248 runs' },
+  { name: 'Lead Scoring Engine', email: 'Data → CRM', plan: 'Active', status: 'active', joined: 'Mar 22', mrr: '1,420 runs' },
+  { name: 'Onboarding Sequence', email: 'Signup → Slack', plan: 'Active', status: 'trial', joined: 'Apr 1', mrr: '63 runs' },
+  { name: 'Invoice Automation', email: 'Stripe → PDF', plan: 'Active', status: 'active', joined: 'Feb 15', mrr: '312 runs' },
+  { name: 'Churn Risk Alerts', email: 'Analytics → Slack', plan: 'Active', status: 'active', joined: 'Mar 10', mrr: '89 runs' },
+  { name: 'Weekly Summary Report', email: 'DB → Email', plan: 'Paused', status: 'churned', joined: 'Jan 8', mrr: '—' },
 ]
 
 /* ── Base activity feed ── */
 const baseActivity = [
-  { dot: '#059669', text: 'maya@techco.io signed up for Pro', time: '2 min ago', id: 1 },
-  { dot: '#5b5bd6', text: 'jordan@b2bsaas.com upgraded to Team', time: '8 min ago', id: 2 },
-  { dot: '#0ea5e9', text: 'API usage spike — auto-scaled to handle load', time: '14 min ago', id: 3 },
-  { dot: '#d97706', text: '3 trial accounts expiring in 48 hours', time: '1 hour ago', id: 4 },
-  { dot: '#059669', text: 'emma@saasfound.co reactivated Pro plan', time: '2 hours ago', id: 5 },
-  { dot: '#e11d48', text: 'chris@aibuilds.com cancelled — reason: pricing', time: '3 hours ago', id: 6 },
-  { dot: '#5b5bd6', text: 'Monthly report generated and emailed', time: '5 hours ago', id: 7 },
+  { dot: '#059669', text: 'Email Nurture Campaign — triggered for 248 contacts', time: '0.3s ago', id: 1 },
+  { dot: '#5b5bd6', text: 'Lead Scoring Workflow processed 1,420 new records', time: '4 min ago', id: 2 },
+  { dot: '#0ea5e9', text: 'AI Task: Churn prediction model retrained — 94.2% accuracy', time: '11 min ago', id: 3 },
+  { dot: '#d97706', text: 'Slack Alert: 3 workflows exceeded 10s avg run time', time: '1 hour ago', id: 4 },
+  { dot: '#059669', text: 'CRM Sync Workflow completed — 840 records updated', time: '2 hours ago', id: 5 },
+  { dot: '#e11d48', text: 'Invoice Automation failed — Stripe webhook timeout', time: '3 hours ago', id: 6 },
+  { dot: '#5b5bd6', text: 'Weekly Automation Report generated and emailed', time: '5 hours ago', id: 7 },
 ]
 
 const liveEvents = [
-  { dot: '#059669', text: 'new@founder.io just signed up', time: 'just now' },
-  { dot: '#5b5bd6', text: 'startup@labs.com upgraded to Team', time: 'just now' },
-  { dot: '#0ea5e9', text: 'AI API processed 1,200 requests', time: 'just now' },
-  { dot: '#059669', text: 'dev@saasco.io started free trial', time: 'just now' },
-  { dot: '#d97706', text: '2 new support tickets opened', time: 'just now' },
-  { dot: '#5b5bd6', text: 'growth@startup.io enabled SSO', time: 'just now' },
+  { dot: '#059669', text: 'Onboarding Workflow triggered for new signup', time: 'just now' },
+  { dot: '#5b5bd6', text: 'AI summarized 38 support tickets automatically', time: 'just now' },
+  { dot: '#0ea5e9', text: 'Data Enrichment run — 320 tasks processed', time: 'just now' },
+  { dot: '#059669', text: 'Lead handoff automation delivered to sales team', time: 'just now' },
+  { dot: '#d97706', text: 'Retry triggered for 2 failed workflow runs', time: 'just now' },
+  { dot: '#5b5bd6', text: 'Monthly workflow insights report ready', time: 'just now' },
 ]
 
 /* ── Analytics tab content ── */
@@ -376,12 +376,12 @@ export default function DashboardPage() {
   const chart = chartData[timeframe]
 
   const pageHeaders = {
-    overview: { title: 'Dashboard Overview', sub: 'Your product at a glance — updated in real time' },
-    analytics: { title: 'Analytics', sub: 'Deep dive into engagement, retention, and growth' },
-    users: { title: 'User Management', sub: 'Manage accounts, plans, and user activity' },
+    overview: { title: 'Dashboard Overview', sub: 'Your automation system at a glance — updated in real time' },
+    analytics: { title: 'Analytics', sub: 'Deep dive into workflow performance and automation insights' },
+    users: { title: 'Workflows', sub: 'Manage workflow runs, statuses, and automation activity' },
     revenue: { title: 'Revenue', sub: 'MRR, churn, LTV, and revenue trends' },
-    reports: { title: 'Reports', sub: 'Scheduled reports and data exports' },
-    settings: { title: 'Settings', sub: 'Account, billing, and integration settings' },
+    reports: { title: 'Reports', sub: 'Scheduled reports and automation data exports' },
+    settings: { title: 'Settings', sub: 'Account, integrations, and automation settings' },
   }
 
   return (
@@ -391,7 +391,7 @@ export default function DashboardPage() {
         <div className="dash-sidebar-top">
           <Link to="/" className="dash-logo">
             <LogoIcon height={48} />
-            <span className="dash-logo-text">BaseBox</span>
+            <span className="dash-logo-text">FlowMind</span>
           </Link>
           <button className="dash-sidebar-close" onClick={() => setSidebarOpen(false)}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -461,7 +461,7 @@ export default function DashboardPage() {
           <div className="dash-topbar-right">
             <div className="dash-search">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
-              <input placeholder="Search users, reports…" />
+              <input placeholder="Search workflows, reports…" />
             </div>
             <div style={{ position: 'relative' }}>
               <button className="dash-icon-btn" onClick={() => setNotifOpen(!notifOpen)}>
@@ -525,20 +525,20 @@ export default function DashboardPage() {
               {/* KPI Stats */}
               <div className="dash-stat-grid">
                 <AnimatedStat
-                  label="Total Users" value={12481} delta="↑ 23% this week"
-                  icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>}
+                  label="Workflows Run" value={847320} delta="↑ 23% this week"
+                  icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>}
                 />
                 <AnimatedStat
-                  label="Monthly Revenue" value={48320} prefix="$" delta="↑ 18% MoM" color="var(--emerald)"
-                  icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>}
-                />
-                <AnimatedStat
-                  label="Active Plans" value={847} delta="32 upgrades today" color="var(--indigo)"
+                  label="Automation Rate" value={94} suffix="%" delta="↑ 3.1% vs last week" color="var(--emerald)"
                   icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>}
                 />
                 <AnimatedStat
-                  label="Churn Rate" value={11} suffix="%" delta="↓ 0.3% improvement" color="var(--amber)"
-                  icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>}
+                  label="AI Tasks Processed" value={12481} delta="↑ 1,240 today" color="var(--indigo)"
+                  icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>}
+                />
+                <AnimatedStat
+                  label="Hours Saved" value={312} delta="↑ 48 hrs this month" color="var(--amber)"
+                  icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>}
                 />
               </div>
 
@@ -548,17 +548,17 @@ export default function DashboardPage() {
                 <div className="dash-chart-card">
                   <div className="dash-chart-header">
                     <div>
-                      <div className="dash-chart-title">User Growth</div>
-                      <div className="dash-chart-sub">New signups — {timeframe} view</div>
+                      <div className="dash-chart-title">Automation Runs</div>
+                      <div className="dash-chart-sub">Workflow executions — {timeframe} view</div>
                     </div>
                     <div className="dash-chart-legend">
                       <div className="dash-legend-item">
                         <div className="dash-legend-dot" style={{ background: 'var(--indigo)' }} />
-                        <span>Users</span>
+                        <span>Workflows</span>
                       </div>
                       <div className="dash-legend-item">
                         <div className="dash-legend-dot" style={{ background: 'var(--sky)' }} />
-                        <span>Trials</span>
+                        <span>AI Tasks</span>
                       </div>
                     </div>
                   </div>
@@ -626,30 +626,30 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              {/* Users table */}
+              {/* Workflows table */}
               <div className="dash-table-card">
                 <div className="dash-table-header">
                   <div>
-                    <div className="dash-chart-title">Users</div>
-                    <div className="dash-chart-sub">All registered accounts and their current status</div>
+                    <div className="dash-chart-title">Active Workflows</div>
+                    <div className="dash-chart-sub">All automation runs and their current status</div>
                   </div>
                   <div className="dash-table-actions">
                     <div className="dash-search" style={{ width: '200px' }}>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
-                      <input placeholder="Search users…" />
+                      <input placeholder="Search workflows…" />
                     </div>
                     <button className="btn btn-o" style={{ fontSize: '12px', padding: '8px 14px' }}>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="4" y1="6" x2="20" y2="6" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="12" y1="18" x2="12" y2="18" /></svg>
                       Filter
                     </button>
-                    <button className="btn btn-g" style={{ fontSize: '12px', padding: '8px 14px' }}>+ Invite User</button>
+                    <button className="btn btn-g" style={{ fontSize: '12px', padding: '8px 14px' }}>+ New Workflow</button>
                   </div>
                 </div>
                 <div className="dash-table-wrap">
                   <table className="dash-table">
                     <thead>
                       <tr>
-                        <th>User</th><th>Plan</th><th>Status</th><th>Joined</th><th>MRR</th><th></th>
+                        <th>Workflow</th><th>Status</th><th>State</th><th>Created</th><th>Runs</th><th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -675,7 +675,7 @@ export default function DashboardPage() {
                   </table>
                 </div>
                 <div className="dash-table-footer">
-                  <span>Showing 6 of 12,481 users</span>
+                  <span>Showing 6 of 847 active workflows</span>
                   <div className="dash-pagination">
                     <button className="dash-page-btn">← Prev</button>
                     <button className="dash-page-btn active">1</button>
@@ -691,10 +691,10 @@ export default function DashboardPage() {
                 <div className="dash-quick-actions">
                   <div className="dash-chart-title" style={{ marginBottom: '16px' }}>Quick Actions</div>
                   {[
-                    { icon: '✉️', label: 'Send announcement', desc: 'Email all active users' },
-                    { icon: '📊', label: 'Generate report', desc: 'Weekly summary PDF' },
+                    { icon: '⚡', label: 'Run workflow now', desc: 'Trigger any automation manually' },
+                    { icon: '📊', label: 'Generate report', desc: 'Workflow performance summary' },
                     { icon: '🔑', label: 'Rotate API key', desc: 'Generate new credentials' },
-                    { icon: '🎯', label: 'Create segment', desc: 'Filter users by criteria' },
+                    { icon: '🎯', label: 'Create automation', desc: 'Build a new workflow from scratch' },
                   ].map((action) => (
                     <button key={action.label} className="dash-quick-action-btn">
                       <span className="dash-qa-icon">{action.icon}</span>

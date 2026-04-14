@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const steps = [
   {
     n: '01',
-    title: 'Purchase BaseBox',
+    title: 'Purchase FlowMind',
     desc: 'One-time payment. You get instant access to the full template — all pages, all components, all code.',
     detail: 'After checkout, you\'ll receive an email with your download link and a Framer workspace duplicate link. No waiting, no approval. Access is instant.',
     time: '2 min',
@@ -20,7 +20,7 @@ const steps = [
   {
     n: '02',
     title: 'Duplicate to Framer',
-    desc: 'Click your unique duplicate link. BaseBox opens in your Framer workspace with all 12+ pages ready to edit.',
+    desc: 'Click your unique duplicate link. FlowMind opens in your Framer workspace with all 12+ pages ready to edit.',
     detail: 'You\'ll see every section immediately — hero, features, pricing, blog, dashboard, auth pages. Everything is named, grouped, and organized for fast editing.',
     time: '3 min',
     tag: 'Setup',
@@ -53,7 +53,7 @@ const steps = [
     n: '04',
     title: 'Connect your brand colors',
     desc: 'Update the 3 color tokens in Framer\'s Variables panel. Every component updates instantly across the entire site.',
-    detail: 'BaseBox uses CSS custom properties for all colors. Change --indigo and --sky to match your brand — every button, badge, gradient, and highlight updates automatically. No hunting through components.',
+    detail: 'FlowMind uses CSS custom properties for all colors. Change --indigo and --sky to match your brand — every button, badge, gradient, and highlight updates automatically. No hunting through components.',
     time: '10 min',
     tag: 'Brand',
     tagColor: '#7c3aed',
@@ -69,7 +69,7 @@ const steps = [
   {
     n: '05',
     title: 'Connect your integrations',
-    desc: 'Wire up your auth provider, payment system, and analytics. BaseBox is built to integrate, not lock you in.',
+    desc: 'Wire up your auth provider, payment system, and analytics. FlowMind is built to integrate, not lock you in.',
     detail: 'The template includes ready-to-go integration slots for Clerk, Auth0, Supabase, Stripe, Lemon Squeezy, and Paddle. Each auth and payment section has comments marking exactly where to drop in your API calls.',
     time: '20–30 min',
     tag: 'Integrate',
@@ -103,7 +103,7 @@ const faqs = [
   { q: 'Do I need to know how to code?', a: 'No. For Framer, everything is visual. If you want to customize the React source (for self-hosting), basic React knowledge helps, but it\'s not required for the main setup.' },
   { q: 'How long does setup actually take?', a: 'Most founders are live in 2–3 hours. The technical steps (duplicate, domain, publish) take under 30 minutes. The most time goes into writing your own copy — which is time well spent.' },
   { q: 'Can I host this myself, not on Framer?', a: 'Yes. The template includes the full React + Vite source. Run npm install && npm run build and deploy the dist folder to Vercel, Netlify, Cloudflare Pages, or any static host.' },
-  { q: 'What if I get stuck?', a: 'BaseBox includes a detailed documentation site (/docs) that covers every section. You can also reach us via the Framer marketplace support chat — typical response time is under 2 hours.' },
+  { q: 'What if I get stuck?', a: 'FlowMind includes a detailed documentation site (/docs) that covers every section. You can also reach us via the Framer marketplace support chat — typical response time is under 2 hours.' },
   { q: 'Do I need a Framer paid plan?', a: 'A free Framer account lets you duplicate and edit. To publish to a custom domain, you\'ll need Framer\'s Mini plan ($5/mo). Framer hosting is entirely optional if you self-host.' },
 ]
 
@@ -127,7 +127,7 @@ export default function SetupPage() {
               From purchase to <span>live in 3 hours</span>
             </h1>
             <p className="iph-desc" style={{ margin: '0 auto 36px' }}>
-              Six steps. No surprises. BaseBox is built so that any founder — technical or not — can go
+              Six steps. No surprises. FlowMind is built so that any founder — technical or not — can go
               from zero to a fully branded, live SaaS site in an afternoon.
             </p>
             <div className="setup-time-chips">
@@ -239,7 +239,7 @@ export default function SetupPage() {
             <p className="sd" style={{ margin: '0 auto 36px' }}>One payment. Instant access. Live in an afternoon.</p>
             <div className="ctac">
               <Link to="/pricing" className="ctab-cta-btn">
-                Get BaseBox — $49
+                Get FlowMind — $49
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/docs" className="btn btn-o">Read the Docs</Link>

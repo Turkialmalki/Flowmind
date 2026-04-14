@@ -10,7 +10,7 @@ const sections = [
       },
       {
         subtitle: 'Usage data',
-        text: 'We collect information about how you use BaseBox — pages visited, features used, time spent, and click patterns. This data is aggregated and anonymized where possible.',
+        text: 'We collect information about how you use FlowMind — pages visited, features used, time spent, and click patterns. This data is aggregated and anonymized where possible.',
       },
       {
         subtitle: 'Payment information',
@@ -25,7 +25,7 @@ const sections = [
   {
     title: 'How We Use Your Information',
     content: [
-      { subtitle: null, text: 'To create and maintain your BaseBox account.' },
+      { subtitle: null, text: 'To create and maintain your FlowMind account.' },
       { subtitle: null, text: 'To process your purchase and deliver template access.' },
       { subtitle: null, text: 'To send transactional emails (receipts, account alerts, password resets).' },
       { subtitle: null, text: 'To send product update emails — you can unsubscribe at any time.' },
@@ -79,7 +79,7 @@ const sections = [
     title: 'Changes to This Policy',
     content: [
       { subtitle: null, text: 'We may update this Privacy Policy to reflect changes in our practices or legal requirements. When we make material changes, we will notify you by email and update the "Last updated" date below.' },
-      { subtitle: null, text: 'Continued use of BaseBox after policy updates constitutes acceptance of the updated terms.' },
+      { subtitle: null, text: 'Continued use of FlowMind after policy updates constitutes acceptance of the updated terms.' },
     ],
   },
 ]
@@ -156,9 +156,9 @@ export default function PrivacyPage() {
           <div className="legal-meta an">
             <span>Last updated: April 5, 2026</span>
             <span>·</span>
-            <span>Applies to: basebox.ai and all BaseBox products</span>
+            <span>Applies to: flowmind.ai and all FlowMind products</span>
             <span>·</span>
-            <span>Controller: BaseBox AI Ltd.</span>
+            <span>Controller: FlowMind AI Ltd.</span>
           </div>
 
           {sections.map((section, i) => (
@@ -179,7 +179,7 @@ export default function PrivacyPage() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 8v4M12 16h.01" /></svg>
             <div>
               Privacy questions?{' '}
-              <a href="mailto:privacy@basebox.ai" style={{ color: 'var(--indigo)', fontWeight: 600 }}>privacy@basebox.ai</a>
+              <a href="mailto:privacy@flowmind.ai" style={{ color: 'var(--indigo)', fontWeight: 600 }}>privacy@flowmind.ai</a>
               {' '}· We respond within 48 hours.
               {' '}<Link to="/license" style={{ color: 'var(--indigo)', fontWeight: 600 }}>View License →</Link>
             </div>

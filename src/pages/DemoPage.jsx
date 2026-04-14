@@ -40,9 +40,9 @@ function MiniDashboard() {
       <div className="demo-dash-sidebar">
         <div className="demo-dash-logo">
           <LogoIcon height={28} />
-          <span>BaseBox</span>
+          <span>FlowMind</span>
         </div>
-        {['overview', 'analytics', 'users', 'revenue'].map(tab => (
+        {['overview', 'analytics', 'workflows', 'revenue'].map(tab => (
           <button
             key={tab}
             className={`demo-nav-item${activeTab === tab ? ' active' : ''}`}
@@ -76,7 +76,7 @@ function MiniDashboard() {
           <>
             <div className="demo-stats">
               <div className="demo-stat-card">
-                <div className="demo-stat-label">Total Users</div>
+                <div className="demo-stat-label">Workflows Run</div>
                 <div className="demo-stat-value" style={{ color: 'var(--indigo)' }}>
                   {counts.users.toLocaleString()}
                 </div>
@@ -99,7 +99,7 @@ function MiniDashboard() {
             </div>
             {/* Mini chart */}
             <div className="demo-chart-wrap">
-              <div className="demo-chart-label">User Growth</div>
+              <div className="demo-chart-label">Automation Runs</div>
               <svg viewBox="0 0 400 80" preserveAspectRatio="none" style={{ width: '100%', height: '64px' }}>
                 <defs>
                   <linearGradient id="dg1" x1="0" y1="0" x2="0" y2="1">
@@ -116,9 +116,9 @@ function MiniDashboard() {
             {/* Activity */}
             <div className="demo-activity">
               {[
-                { dot: '#059669', text: 'maya@techco.io signed up' },
-                { dot: '#5b5bd6', text: 'jordan@b2b.com upgraded to Team' },
-                { dot: '#0ea5e9', text: 'API processed 1,200 requests' },
+                { dot: '#059669', text: 'Email Nurture — triggered for 248 contacts' },
+                { dot: '#5b5bd6', text: 'Lead Scoring processed 1,420 records' },
+                { dot: '#0ea5e9', text: 'AI Tasks: 312 processed · 0.3s avg' },
               ].map((item, i) => (
                 <div key={i} className="demo-activity-item">
                   <div className="demo-activity-dot" style={{ background: item.dot }} />
@@ -145,7 +145,7 @@ function MiniDashboard() {
           </div>
         )}
 
-        {activeTab === 'users' && (
+        {activeTab === 'workflows' && (
           <div className="demo-users">
             {[
               { name: 'Maya Chen', plan: 'Pro', status: 'active', mrr: '$49' },
@@ -216,7 +216,7 @@ export default function DemoPage() {
               Click the tabs, change the timeframes, and explore the full dashboard system.
             </p>
             <div className="demo-hero-actions">
-              <Link to="/pricing" className="btn btn-g btn-lg">Get BaseBox — $49</Link>
+              <Link to="/pricing" className="btn btn-g btn-lg">Get FlowMind — $49</Link>
               <Link to="/dashboard" className="btn btn-o btn-lg">Full Dashboard →</Link>
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function DemoPage() {
                 <span style={{ background: '#febc2e' }} />
                 <span style={{ background: '#28c840' }} />
               </div>
-              <div className="demo-frame-url">basebox.ai/dashboard</div>
+              <div className="demo-frame-url">flowmind.ai/dashboard</div>
               <div className="demo-frame-badge">LIVE PREVIEW</div>
             </div>
             <MiniDashboard />
@@ -316,7 +316,7 @@ export default function DemoPage() {
             </p>
             <div className="ctac">
               <Link to="/pricing" className="ctab-cta-btn">
-                Get BaseBox — $49
+                Get FlowMind — $49
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/features" className="btn btn-o">Explore Features</Link>

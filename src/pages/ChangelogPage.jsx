@@ -161,7 +161,7 @@ export default function ChangelogPage() {
               We ship <span>every week</span>
             </h1>
             <p className="iph-desc" style={{ margin: '0 auto 32px' }}>
-              Every update to BaseBox is documented here. New pages, design improvements, bug fixes — all tracked and explained.
+              Every update to FlowMind is documented here. New pages, design improvements, bug fixes — all tracked and explained.
             </p>
             <div className="cl-filter-bar">
               {[
@@ -276,7 +276,7 @@ export default function ChangelogPage() {
               </svg>
             </div>
             <h3 className="cl-subscribe-title">Get notified on new releases</h3>
-            <p className="cl-subscribe-desc">Every BaseBox update ships to your inbox. No spam — just release notes.</p>
+            <p className="cl-subscribe-desc">Every FlowMind update ships to your inbox. No spam — just release notes.</p>
             <div className="cl-subscribe-form">
               <input className="cl-subscribe-input" type="email" placeholder="you@startup.com" />
               <button className="btn btn-p" style={{ borderRadius: '10px' }}>Subscribe</button>

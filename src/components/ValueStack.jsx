@@ -52,7 +52,7 @@ export default function ValueStack() {
           </h2>
           <p className="sd">
             No hunting for pieces. No stitching templates together. One purchase — the complete
-            BaseBox kit, ready to ship.
+            FlowMind kit, ready to ship.
           </p>
         </div>
         <div className="vs-grid">

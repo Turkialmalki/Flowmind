@@ -28,12 +28,12 @@ const SPARKS = [
   { s: 'M0,30 C8,26 18,28 28,20 C38,12 48,14 58,8 C63,5 67,3 72,0',  f: 'M0,30 C8,26 18,28 28,20 C38,12 48,14 58,8 C63,5 67,3 72,0 L72,32 L0,32Z' },
 ]
 
-const NAV_ITEMS = ['Overview', 'Analytics', 'Users', 'Revenue']
+const NAV_ITEMS = ['Overview', 'Analytics', 'Workflows', 'Reports']
 
 const YAXIS = [
-  { y: 43,  label: '$48K' },
-  { y: 90,  label: '$36K' },
-  { y: 136, label: '$24K' },
+  { y: 43,  label: '847K' },
+  { y: 90,  label: '600K' },
+  { y: 136, label: '350K' },
 ]
 
 const SIDEBAR_NAV = [
@@ -103,13 +103,16 @@ const SIDEBAR_BOTTOM = [
 ]
 
 export default function DashboardReveal() {
-  const scrollZoneRef = useRef(null)
-  const panelRef      = useRef(null)
-  const svgRef        = useRef(null)
-  const chartWrapRef  = useRef(null)
-  const triggered     = useRef(false)
-  const chartsShown   = useRef(false)
-  const [counts, setCounts]         = useState({ mrr: 0, users: 0, conv: '0.0', churn: '0.0' })
+  const scrollZoneRef  = useRef(null)
+  const panelRef       = useRef(null)
+  const svgRef         = useRef(null)
+  const chartWrapRef   = useRef(null)
+  const bgOverlayRef   = useRef(null)
+  const bodyRef        = useRef(null)
+  const glowRef        = useRef(null)
+  const triggered      = useRef(false)
+  const chartsShown    = useRef(false)
+  const [counts, setCounts]         = useState({ workflows: 0, tasks: 0, rate: '0.0', saved: 0 })
   const [chartReady, setChartReady] = useState(false)
   const [tooltip, setTooltip]       = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -122,17 +125,17 @@ export default function DashboardReveal() {
   }, [])
 
   function animateCounts() {
-    const targets = { mrr: 48, users: 12400, conv: 4.8, churn: 2.1 }
+    const targets = { workflows: 847, tasks: 1200, rate: 94.2, saved: 312 }
     const dur = 1600
     const t0  = performance.now()
     function step(now) {
       const p = Math.min(1, (now - t0) / dur)
       const e = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p
       setCounts({
-        mrr:   Math.round(targets.mrr * e),
-        users: Math.round(targets.users * e),
-        conv:  (targets.conv * e).toFixed(1),
-        churn: (targets.churn * e).toFixed(1),
+        workflows: Math.round(targets.workflows * e),
+        tasks:     Math.round(targets.tasks * e),
+        rate:      (targets.rate * e).toFixed(1),
+        saved:     Math.round(targets.saved * e),
       })
       if (p < 1) requestAnimationFrame(step)
     }
@@ -142,48 +145,94 @@ export default function DashboardReveal() {
   useEffect(() => {
     const zoneEl  = scrollZoneRef.current
     const panelEl = panelRef.current
+    const bgEl    = bgOverlayRef.current
     if (!zoneEl || !panelEl) return
+
+    // Lerp state — start at initial visual values
+    let curScale   = 0.92
+    let curTY      = 40
+    let curOpacity = 0.85
+    let curDepth   = 0
+    // Parallax layer lerp state
+    let curGlowTY  = 0
+    let curPanelPX = 0
+    let curBodyPX  = 0
     let raf
+
     function tick() {
-      const rect     = zoneEl.getBoundingClientRect()
-      const vh       = window.innerHeight
-      const animDist = vh * 0.90
-      const rel      = vh - rect.top
-      const progress = Math.min(1, Math.max(0, rel / animDist))
-      const eased    = 1 - Math.pow(1 - progress, 3)
+      const rect        = zoneEl.getBoundingClientRect()
+      const vh          = window.innerHeight
+      const animDist    = vh * 0.85
+      const rel         = vh - rect.top
+      const rawProgress = Math.min(1, Math.max(0, rel / animDist))
 
-      const scale   = 0.84 + eased * 0.16
-      const ty      = (1 - eased) * 90
-      const rotateX = (1 - eased) * 8
+      // Scroll distance from top of zone
+      const scrollY = Math.max(0, -rect.top)
 
-      panelEl.style.opacity   = eased.toFixed(4)
+      // Targets
+      const tScale   = 0.92 + rawProgress * 0.08
+      const tTY      = 40 * (1 - rawProgress)
+      const tOpacity = 0.85 + rawProgress * 0.15
+      const tDepth   = rawProgress
+
+      // Parallax targets
+      const tGlowTY  = scrollY * 0.05   // hero bg layer — slowest
+      const tPanelPX = scrollY * 0.02   // dashboard panel layer
+      const tBodyPX  = scrollY * 0.01   // chart inner layer — fastest response
+
+      // Lerp — organic, physics-like smoothing
+      const L  = 0.08
+      const LP = 0.10  // parallax lerp — slightly faster for responsiveness
+      curScale   += (tScale   - curScale)   * L
+      curTY      += (tTY      - curTY)      * L
+      curOpacity += (tOpacity - curOpacity) * L
+      curDepth   += (tDepth   - curDepth)   * L
+      curGlowTY  += (tGlowTY  - curGlowTY)  * LP
+      curPanelPX += (tPanelPX - curPanelPX) * LP
+      curBodyPX  += (tBodyPX  - curBodyPX)  * LP
+
+      // Panel: scale + lift + parallax
       panelEl.style.transform =
-        `perspective(1200px) translateY(${ty.toFixed(2)}px) rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(4)})`
-      panelEl.style.boxShadow =
-        `0 ${(eased * 40).toFixed(0)}px ${(eased * 80).toFixed(0)}px rgba(0,0,0,${(eased * 0.10).toFixed(3)}),` +
-        `0 ${(eased * 8).toFixed(0)}px ${(eased * 24).toFixed(0)}px rgba(0,0,0,${(eased * 0.06).toFixed(3)})`
+        `translateY(${(curTY + curPanelPX).toFixed(3)}px) scale(${curScale.toFixed(4)})`
+      panelEl.style.opacity = curOpacity.toFixed(4)
 
-      if (!triggered.current && progress > 0.08) { triggered.current = true; animateCounts() }
-      if (!chartsShown.current && progress > 0.45) {
+      // Shadow deepens as panel expands
+      panelEl.style.boxShadow =
+        `0 ${(curDepth * 48).toFixed(0)}px ${(curDepth * 96).toFixed(0)}px rgba(0,0,0,${(curDepth * 0.12).toFixed(3)}),` +
+        `0 ${(curDepth * 10).toFixed(0)}px ${(curDepth * 28).toFixed(0)}px rgba(0,0,0,${(curDepth * 0.07).toFixed(3)})`
+
+      // Hero background glow: parallax layer (slowest — moves least)
+      const glowEl = glowRef.current
+      if (glowEl) glowEl.style.transform = `translateX(-50%) translateY(${curGlowTY.toFixed(2)}px)`
+
+      // Hero background subtly darkens
+      if (bgEl) bgEl.style.opacity = (curDepth * 0.07).toFixed(4)
+
+      // Chart parallax — body content lags panel by 40% for depth
+      const body = bodyRef.current
+      if (body) body.style.transform =
+        `translateY(${(((1 - rawProgress) * 16) - curBodyPX).toFixed(2)}px)`
+
+      // Triggers
+      if (!triggered.current && rawProgress > 0.08) { triggered.current = true; animateCounts() }
+      if (!chartsShown.current && rawProgress > 0.45) {
         chartsShown.current = true
         panelEl.classList.add('sdr-charts-in')
         setChartReady(true)
       }
+
       raf = requestAnimationFrame(tick)
     }
+
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
   }, [])
 
-  const usersK = counts.users >= 1000
-    ? `${(counts.users / 1000).toFixed(1)}K`
-    : String(counts.users)
-
   const kpis = [
-    { label: 'MRR',          val: `$${counts.mrr}K`, trend: '+22%',  up: true,  color: '#818cf8', spark: SPARKS[0] },
-    { label: 'Active Users',  val: usersK,             trend: '+18%',  up: true,  color: '#34d399', spark: SPARKS[1] },
-    { label: 'Conv. Rate',    val: `${counts.conv}%`,  trend: '+1.2%', up: true,  color: '#60a5fa', spark: SPARKS[2] },
-    { label: 'Churn',         val: `${counts.churn}%`, trend: '-0.4%', up: false, color: '#f472b6', spark: SPARKS[3] },
+    { label: 'Workflows Run',   val: `${counts.workflows}K`,                         trend: '+18%',  up: true, color: '#818cf8', spark: SPARKS[0] },
+    { label: 'AI Tasks',        val: `${(counts.tasks / 1000).toFixed(1)}M`,          trend: '+22%',  up: true, color: '#34d399', spark: SPARKS[1] },
+    { label: 'Automation Rate', val: `${counts.rate}%`,                              trend: '+3.1%', up: true, color: '#60a5fa', spark: SPARKS[2] },
+    { label: 'Time Saved',      val: `${counts.saved}h`,                             trend: '+12%',  up: true, color: '#f472b6', spark: SPARKS[3] },
   ]
 
   function handleSvgMove(e) {
@@ -229,10 +278,11 @@ export default function DashboardReveal() {
   return (
     <div ref={scrollZoneRef} className="sdr-scroll-zone">
       <section className="section-dashboard-reveal">
-        <div className="sdr-glow" aria-hidden="true" />
+        <div ref={glowRef} className="sdr-glow" aria-hidden="true" />
+        <div ref={bgOverlayRef} className="sdr-bg-overlay" aria-hidden="true" />
 
         <div ref={panelRef} className="ndb-panel"
-          style={{ opacity: 0, willChange: 'transform, opacity, box-shadow' }}>
+          style={{ opacity: 0.85, transform: 'translateY(40px) scale(0.92)', willChange: 'transform, opacity, box-shadow' }}>
 
           {/* ── COLLAPSIBLE SIDEBAR ── */}
           <aside className={`ndb-sidebar${sidebarOpen ? '' : ' collapsed'}`}>
@@ -244,7 +294,7 @@ export default function DashboardReveal() {
                   <rect x="3"  y="13" width="8" height="8" rx="2.5" fill="#818cf8" opacity=".30" />
                   <rect x="13" y="13" width="8" height="8" rx="2.5" fill="#818cf8" opacity=".15" />
                 </svg>
-                {sidebarOpen && <span className="ndb-sidebar-brand-name">BaseBox</span>}
+                {sidebarOpen && <span className="ndb-sidebar-brand-name">FlowMind</span>}
               </div>
               <button
                 className="ndb-sidebar-toggle"
@@ -330,14 +380,14 @@ export default function DashboardReveal() {
             </header>
 
             {/* ── BODY ── */}
-            <div className="ndb-body">
+            <div ref={bodyRef} className="ndb-body" style={{ willChange: 'transform' }}>
 
               {/* ── CHART HEADER ── */}
               <div className="ndb-chart-hd">
                 <div className="ndb-chart-meta">
-                  <span className="ndb-chart-label">Monthly Recurring Revenue</span>
-                  <div className="ndb-chart-bignum">${counts.mrr}K</div>
-                  <span className="ndb-chart-badge">↑ +22% vs last month</span>
+                  <span className="ndb-chart-label">Automation Runs</span>
+                  <div className="ndb-chart-bignum">{counts.workflows}K</div>
+                  <span className="ndb-chart-badge">↑ +18% vs last month</span>
                 </div>
                 <div className="ndb-chart-tabs">
                   {['7d', '30d', '90d'].map((t, i) => (
@@ -476,6 +526,52 @@ export default function DashboardReveal() {
                       </div>
                     </div>
                   ))}
+                </div>
+              )}
+
+              {/* ── BOTTOM ROW: Upcoming + Integrations ── */}
+              {!loading && (
+                <div className="ndb-bottom-row">
+                  <div className="ndb-upcoming">
+                    <div className="ndb-section-label">Upcoming Automations</div>
+                    <div className="ndb-upcoming-list">
+                      <div className="ndb-up-item">
+                        <div className="ndb-up-dot ndb-up-active" />
+                        <span className="ndb-up-name">Meeting sync</span>
+                        <span className="ndb-up-time">in 2 min</span>
+                      </div>
+                      <div className="ndb-up-item">
+                        <div className="ndb-up-dot" />
+                        <span className="ndb-up-name">Report generation</span>
+                        <span className="ndb-up-time">in 10 min</span>
+                      </div>
+                      <div className="ndb-up-item">
+                        <div className="ndb-up-dot ndb-up-active" />
+                        <span className="ndb-up-name">AI processed 1.2K tasks</span>
+                        <span className="ndb-up-time">just now</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="ndb-integrations">
+                    <div className="ndb-section-label">Integrations</div>
+                    <div className="ndb-int-row">
+                      <div className="ndb-int-item">
+                        <div className="ndb-int-dot ndb-dot-active" />
+                        <span className="ndb-int-name">OpenAI</span>
+                        <span className="ndb-int-status">Active</span>
+                      </div>
+                      <div className="ndb-int-item">
+                        <div className="ndb-int-dot ndb-dot-active" />
+                        <span className="ndb-int-name">Slack</span>
+                        <span className="ndb-int-status">Connected</span>
+                      </div>
+                      <div className="ndb-int-item">
+                        <div className="ndb-int-dot ndb-dot-sync" />
+                        <span className="ndb-int-name">Google Calendar</span>
+                        <span className="ndb-int-status ndb-status-sync">Syncing...</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 

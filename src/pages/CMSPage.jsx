@@ -135,11 +135,11 @@ export default function CMSPage() {
               Publish content that <span>converts visitors</span>
             </h1>
             <p className="iph-desc" style={{ margin: '0 auto 36px' }}>
-              BaseBox ships with a fully-configured CMS — blog, changelog, case studies, team pages, and help center.
+              FlowMind ships with a fully-configured CMS — blog, changelog, case studies, team pages, and help center.
               Write, publish, and grow without touching a line of code.
             </p>
             <div className="iph-actions" style={{ justifyContent: 'center' }}>
-              <Link to="/pricing" className="btn btn-g btn-lg">Get BaseBox — $49</Link>
+              <Link to="/pricing" className="btn btn-g btn-lg">Get FlowMind — $49</Link>
               <Link to="/blog" className="btn btn-o btn-lg">Read the Blog</Link>
             </div>
           </div>
@@ -304,14 +304,14 @@ export default function CMSPage() {
       <section className="ctas">
         <div className="container">
           <div className="ctab">
-            <div className="eyebrow">Included in BaseBox</div>
+            <div className="eyebrow">Included in FlowMind</div>
             <h2 className="st">Full CMS, zero monthly fees.<br /><span>Just one payment.</span></h2>
             <p className="sd" style={{ margin: '0 auto 36px' }}>
               Blog, changelog, help center, team pages — all powered by your own CMS. Publish without developers.
             </p>
             <div className="ctac">
               <Link to="/pricing" className="ctab-cta-btn">
-                Get BaseBox — $49
+                Get FlowMind — $49
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/blog" className="btn btn-o">See it Live</Link>

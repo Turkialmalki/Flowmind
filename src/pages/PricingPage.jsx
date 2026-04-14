@@ -17,7 +17,7 @@ const plans = [
     id: 'pro',
     name: 'Pro',
     badge: 'Most Popular',
-    desc: 'The complete BaseBox kit — every screen, page, and UI component you need to launch and grow.',
+    desc: 'The complete FlowMind kit — every screen, page, and UI component you need to launch and grow.',
     monthly: 49, annual: 35,
     urgency: 'Save $50 vs hiring a designer',
     features: [
@@ -70,7 +70,7 @@ const faqs = [
   { q: 'Can I use this for client projects?', a: 'Starter and Pro include a personal license — use on your own projects. The Team plan includes an extended commercial license for unlimited client work and delivery.' },
   { q: 'Is there a trial or refund policy?', a: 'Due to the digital nature of the product, we don\'t offer refunds. We provide a complete live demo with every screen visible before purchase so you know exactly what you\'re getting.' },
   { q: 'How do the lifetime updates work?', a: 'Every new screen, section, design improvement, or bug fix we ship is available to all buyers. You\'ll get a notification and can pull the latest version anytime — no extra charge.' },
-  { q: 'Do I need to know Framer to use this?', a: 'No. Framer\'s visual editor lets you change text, images, colors, and layout without writing any code. If you can use Figma or Canva, you can edit BaseBox.' },
+  { q: 'Do I need to know Framer to use this?', a: 'No. Framer\'s visual editor lets you change text, images, colors, and layout without writing any code. If you can use Figma or Canva, you can edit FlowMind.' },
 ]
 
 export default function PricingPage() {
@@ -221,7 +221,7 @@ export default function PricingPage() {
               <div className="pr-ctable-head">
                 <div className="pr-cth">What's included</div>
                 <div className="pr-cth">Market rate</div>
-                <div className="pr-cth accent">BaseBox Pro</div>
+                <div className="pr-cth accent">FlowMind Pro</div>
               </div>
               {[
                 { item: 'Professional landing page design', market: '~$1,500', launchy: '✓ Included' },
@@ -253,7 +253,7 @@ export default function PricingPage() {
           <div className="fqh an">
             <div className="eyebrow">FAQ</div>
             <h2 className="st">Questions before <span>you buy</span></h2>
-            <p className="sd">Straight answers to common questions about BaseBox.</p>
+            <p className="sd">Straight answers to common questions about FlowMind.</p>
           </div>
           <div className="fql">
             {faqs.map((faq, i) => {
@@ -300,7 +300,7 @@ export default function PricingPage() {
             <div className="pricing-guarantee-card">
               <div className="pricing-guarantee-icon">💬</div>
               <div className="pricing-guarantee-title">Priority Support</div>
-              <div className="pricing-guarantee-desc">Pro and Team buyers get priority support directly from the BaseBox team. Real humans.</div>
+              <div className="pricing-guarantee-desc">Pro and Team buyers get priority support directly from the FlowMind team. Real humans.</div>
             </div>
           </div>
         </div>

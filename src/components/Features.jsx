@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
 
 const AI_RESPONSE =
-  'Analyzed 847 data points. Found 3 revenue leaks worth $14K/month, 2 churn patterns, and your best-performing user segment. Want a full report?'
+  'Your team saved 312 hours this month. 4 workflows are underperforming — fixing them would cut processing time by 40%. Want me to auto-optimize them now?'
 
 const PAGES = ['Home', 'Pricing', 'Blog', 'Dashboard', 'Auth']
 const PAGE_DESC = {
-  Home: 'Hero, features, social proof, pricing, FAQ — every conversion section pre-built and wired up.',
-  Pricing: 'Plan comparison table, urgency messaging, and FAQs engineered for maximum conversions.',
-  Blog: 'CMS-powered blog with categories, author pages, and SEO-ready structure. Zero developer needed.',
-  Dashboard: 'Analytics cards, charts, activity feed, and sidebar nav — show your product before users sign up.',
-  Auth: 'Login, signup, and password reset with social OAuth. Ready to connect to your auth provider.',
+  Home: 'Hero, AI demo, social proof, pricing, FAQ — every conversion section pre-built for AI SaaS.',
+  Pricing: 'Plan comparison table, urgency messaging, and FAQs engineered to convert AI tool buyers.',
+  Blog: 'CMS-powered blog for product updates, automation guides, and SEO. Zero developer needed.',
+  Dashboard: 'Workflow metrics, automation charts, activity feed, sidebar nav — show your AI product live.',
+  Auth: 'Login, signup, and password reset with social OAuth. Ready to wire to any auth provider.',
 }
 
 function AnimatedChat() {
@@ -45,7 +45,7 @@ function AnimatedChat() {
 
   return (
     <div className="mch" ref={ref}>
-      <div className="mm1 u">Show me what this AI can do with my data</div>
+      <div className="mm1 u">How many hours did my team save with automation this month?</div>
       <div className="mm1 a" style={{ minHeight: '72px' }}>
         {typed || '\u00A0'}
         {typing && <span className="typing-cursor" />}
@@ -88,13 +88,13 @@ export default function Features() {
     <section className="section" id="features">
       <div className="container">
         <div className="fh an-scale">
-          <div className="eyebrow">What Makes It Different</div>
+          <div className="eyebrow">Built for AI Automation Founders</div>
           <h2 className="st">
-            Everything a funded startup has — <span>at $49</span>
+            Every screen your AI SaaS needs — <span>at $49</span>
           </h2>
           <p className="sd">
             Not just aesthetics. Every element is placed and worded to drive signups, reduce bounce,
-            and build instant credibility from the moment a visitor lands.
+            and build instant credibility from the moment a visitor lands on your AI product.
           </p>
         </div>
 
@@ -107,11 +107,11 @@ export default function Features() {
                 <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
               </svg>
             </div>
-            <div className="bt">Show Your AI Product Before They Sign Up</div>
+            <div className="bt">Let Visitors Experience Your Automation Before They Sign Up</div>
             <div className="bds">
-              The interactive demo section lets visitors experience your AI in action — generating real
-              output, answering questions, showing value — all before they click "Get Started." More
-              engagement means more conversions.
+              The interactive AI demo lets visitors see real automation output — workflows triggered,
+              hours saved, insights surfaced — before they click "Get Started." Showing beats telling,
+              every time.
             </div>
             <AnimatedChat />
           </div>
@@ -156,7 +156,7 @@ export default function Features() {
             </div>
             <div className="bt">Flawless on Every Screen Size</div>
             <div className="bds">
-              40% of your visitors are on mobile. BaseBox looks pixel-perfect on every device —
+              40% of your visitors are on mobile. FlowMind looks pixel-perfect on every device —
               never lose a conversion to a broken layout.
             </div>
             <ul className="bc-bullets">
@@ -228,7 +228,7 @@ export default function Features() {
               </div>
               <div className="bcomp-divider" />
               <div className="bcomp-row">
-                <span className="bcomp-label" style={{ fontWeight: 700, color: 'var(--t1)' }}>BaseBox Pro</span>
+                <span className="bcomp-label" style={{ fontWeight: 700, color: 'var(--t1)' }}>FlowMind Pro</span>
                 <span className="bcomp-good">$49 · 60 min</span>
               </div>
             </div>
@@ -266,12 +266,12 @@ export default function Features() {
             <div className="bt">Built for Speed to Revenue</div>
             <div className="bds">
               Every week without a live site is a week your competitors collect signups you're not.
-              BaseBox eliminates that gap — permanently.
+              FlowMind eliminates that gap — permanently.
             </div>
             <ul className="bc-bullets">
-              <li>From zero to live in 60 minutes</li>
-              <li>No designer or developer needed</li>
-              <li>Your first users, this week</li>
+              <li>From zero to live in under 60 minutes</li>
+              <li>AI-ready components, no design work</li>
+              <li>Your first paying users, this week</li>
             </ul>
           </div>
 

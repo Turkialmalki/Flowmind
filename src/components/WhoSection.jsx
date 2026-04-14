@@ -20,7 +20,7 @@ const cards = [
       </svg>
     ),
     title: 'Indie Hackers',
-    desc: 'Stop overthinking design. Ship your idea this weekend, start collecting signups Monday, and iterate based on real user feedback — not hypotheticals.',
+    desc: 'Stop overthinking design. Ship your AI automation idea this weekend, collect signups Monday, and iterate on real feedback — not hypotheticals.',
   },
   {
     iconBg: 'var(--sky-g)',
@@ -32,7 +32,7 @@ const cards = [
       </svg>
     ),
     title: 'SaaS Developers',
-    desc: "You built the product. BaseBox handles everything users see before they log in. Go live without touching Figma or hiring a designer.",
+    desc: "You built the product. FlowMind handles everything users see before they log in. Go live without touching Figma or hiring a designer.",
   },
   {
     iconBg: 'var(--emerald-bg)',
@@ -61,11 +61,11 @@ export default function WhoSection() {
         <div className="fh an">
           <div className="eyebrow">Who Is This For</div>
           <h2 className="st">
-            Built for builders who <span>ship fast</span>
+            Built for AI founders who <span>ship fast</span>
           </h2>
           <p className="sd">
-            If you're launching an AI product and can't afford to spend weeks on a website —
-            BaseBox is your unfair advantage.
+            If you're building an AI automation product and can't spend weeks on a website —
+            FlowMind is your unfair advantage.
           </p>
         </div>
         <div className="wh-grid">

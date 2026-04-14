@@ -67,7 +67,7 @@ export default function BlogPostPage() {
                 <div className="blog-avatar" style={{ background: '#5b5bd6' }}>A</div>
                 <div>
                   <div className="post-author-name">Alex Kim</div>
-                  <div className="post-author-title">Founder, BaseBox</div>
+                  <div className="post-author-title">Founder, FlowMind</div>
                 </div>
               </div>
               <div className="post-meta-details">
@@ -107,7 +107,7 @@ export default function BlogPostPage() {
                 <div className="post-toc-cta">
                   <div className="post-toc-cta-label">Get the full kit</div>
                   <Link to="/pricing" className="btn btn-g" style={{ fontSize: '12px', padding: '8px 16px', width: '100%', justifyContent: 'center' }}>
-                    BaseBox — $49
+                    FlowMind — $49
                   </Link>
                 </div>
               </div>
@@ -170,7 +170,7 @@ in [timeframe] — [credibility hook].
 
 Example:
 "Help your SaaS founders reduce churn by 30% in 90 days —
-join 500+ teams who've used BaseBox to ship faster."`}
+join 500+ teams who've used FlowMind to ship faster."`}
                 </pre>
               </div>
 
@@ -211,7 +211,7 @@ join 500+ teams who've used BaseBox to ship faster."`}
               <p className="post-p">
                 Your CTA button text is doing more work than you think. "Get started" is neutral.
                 "Start your free trial" implies risk. "Get instant access" implies speed and ease.
-                The best CTAs are specific: "Get BaseBox — $49" outperforms "Buy now" by up to 40%
+                The best CTAs are specific: "Get FlowMind — $49" outperforms "Buy now" by up to 40%
                 because it answers the two questions visitors have: what am I getting, and how much
                 is it?
               </p>
@@ -221,9 +221,9 @@ join 500+ teams who've used BaseBox to ship faster."`}
                 <div className="blog-avatar" style={{ background: '#5b5bd6', width: '52px', height: '52px', fontSize: '20px', flexShrink: 0 }}>A</div>
                 <div>
                   <div className="post-bio-name">Alex Kim</div>
-                  <div className="post-bio-title">Founder of BaseBox · 4× SaaS founder</div>
+                  <div className="post-bio-title">Founder of FlowMind · 4× SaaS founder</div>
                   <div className="post-bio-desc">
-                    Alex built four SaaS products from zero to revenue. He created BaseBox after
+                    Alex built four SaaS products from zero to revenue. He created FlowMind after
                     spending 3 months redesigning landing pages for early-stage founders and noticing
                     the same conversion problems over and over.
                   </div>

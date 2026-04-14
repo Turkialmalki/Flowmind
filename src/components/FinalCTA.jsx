@@ -51,17 +51,17 @@ export default function FinalCTA() {
       <div className="container">
         <div className="ctab an">
           {/* Eyebrow */}
-          <div className="eyebrow" style={{ justifyContent: 'center' }}>Your Startup. Live Today.</div>
+          <div className="eyebrow" style={{ justifyContent: 'center' }}>Your AI SaaS. Live Today.</div>
 
           {/* Headline */}
           <h2 className="st" style={{ textAlign: 'center', marginBottom: '18px' }}>
-            Stop waiting. Launch your<br />AI startup <span>today.</span>
+            Stop waiting. Ship your<br />AI automation SaaS <span>today.</span>
           </h2>
 
           {/* Subtext — urgency + social proof */}
           <p className="sd" style={{ textAlign: 'center', margin: '0 auto 14px' }}>
             Every week you wait is a week your competitors are collecting signups you're not.
-            847+ founders already shipped with BaseBox — most went live in under 60 minutes.
+            847+ founders already shipped with FlowMind — most went live in under 60 minutes.
           </p>
 
           {/* Social proof mini stats */}
@@ -81,12 +81,12 @@ export default function FinalCTA() {
           {/* CTAs */}
           <div className="ctac">
             <Link to="/pricing" className="ctab-cta-btn">
-              Get BaseBox Now — $49
+              Get the Template — $49
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
-            <Link to="/features" className="btn btn-o btn-lg">View All Screens</Link>
+            <Link to="/demo" className="btn btn-o btn-lg">See Live Demo</Link>
           </div>
 
           {/* Urgency */}

@@ -17,7 +17,7 @@ const SUGGESTIONS = [
 ]
 
 const ACTIVITY_FEED = [
-  { icon: '🚀', text: 'nova-saas.io launched with BaseBox', time: '2m ago', color: '#5b5bd6' },
+  { icon: '🚀', text: 'nova-saas.io launched with FlowMind', time: '2m ago', color: '#5b5bd6' },
   { icon: '💰', text: 'stripe-labs.co made their first $1K MRR', time: '7m ago', color: '#059669' },
   { icon: '⭐', text: 'getflow.ai left a 5-star review', time: '14m ago', color: '#d97706' },
   { icon: '🎯', text: 'pitch-deck.io converted 3 enterprise leads', time: '21m ago', color: '#0ea5e9' },
@@ -207,7 +207,7 @@ export default function LiveAIDemo() {
             Your AI product, <span>live before they sign up.</span>
           </h2>
           <p className="sd ai-demo-sd">
-            Type anything below. This exact demo ships with BaseBox — your visitors
+            Type anything below. This exact demo ships with FlowMind — your visitors
             experience your product <strong>in real-time</strong> before they ever click "Get Started."
             No setup needed. Plug in your API key and go live.
           </p>
@@ -368,7 +368,7 @@ export default function LiveAIDemo() {
                 This exact section ships with your template. Plug in your API key, customize the prompts, go live.
               </div>
               <Link to="/pricing" className="btn btn-g" style={{ width: '100%', justifyContent: 'center' }}>
-                Get BaseBox — $49
+                Get FlowMind — $49
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>

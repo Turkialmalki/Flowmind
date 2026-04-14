@@ -110,12 +110,12 @@ export default function FeaturesPage() {
               Every building block your<br /><span>AI SaaS needs to launch</span>
             </h1>
             <p className="iph-desc">
-              BaseBox is not a collection of pretty screens — it's a complete, conversion-engineered
+              FlowMind is not a collection of pretty screens — it's a complete, conversion-engineered
               product system. Every section, interaction, and design detail built for one purpose: getting
               you from idea to revenue, fast.
             </p>
             <div className="iph-actions">
-              <Link to="/pricing" className="btn btn-g btn-lg">Get BaseBox — $49</Link>
+              <Link to="/pricing" className="btn btn-g btn-lg">Get FlowMind — $49</Link>
               <Link to="/dashboard" className="btn btn-o btn-lg">View Live Demo</Link>
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function FeaturesPage() {
               </h2>
               <p className="feat-showcase-desc">
                 Login, signup, password reset, settings, profile, blog — all the pages your users
-                will navigate after they convert. BaseBox includes them all so you're shipping a
+                will navigate after they convert. FlowMind includes them all so you're shipping a
                 complete product, not just a marketing site.
               </p>
               <div className="feat-dual-badges">
@@ -316,7 +316,7 @@ export default function FeaturesPage() {
                 <div className="feat-auth-card">
                   <div className="feat-auth-logo">
                     <BoxIcon height={26} />
-                    <span style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: '13px' }}>BaseBox</span>
+                    <span style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: '13px' }}>FlowMind</span>
                   </div>
                   <div style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: '15px', marginBottom: '4px' }}>Welcome back</div>
                   <div style={{ fontSize: '11px', color: 'var(--t3)', marginBottom: '14px' }}>Sign in to your account</div>
@@ -378,7 +378,7 @@ export default function FeaturesPage() {
             <p className="sd" style={{ margin: '0 auto 36px' }}>One payment. Everything included. Instant access after purchase.</p>
             <div className="ctac">
               <Link to="/pricing" className="ctab-cta-btn">
-                Get BaseBox — $49
+                Get FlowMind — $49
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/dashboard" className="btn btn-o">View Live Demo</Link>

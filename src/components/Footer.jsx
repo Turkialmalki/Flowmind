@@ -25,7 +25,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="nl">
               <LogoIcon height={52} />
-              <span className="nl-brand">BaseBox</span>
+              <span className="nl-brand">FlowMind</span>
             </Link>
             <p className="fbd">
               The complete AI SaaS launch kit. Landing pages, dashboard, auth flows, and every screen
@@ -69,16 +69,16 @@ export default function Footer() {
         </div>
 
         <div className="fbo">
-          <span>© 2026 BaseBox. All rights reserved.</span>
+          <span>© 2026 FlowMind. All rights reserved.</span>
           <div className="fsc">
-            <a href="mailto:hello@basebox.io" aria-label="Email us at hello@basebox.io">
+            <a href="mailto:hello@flowmind.ai" aria-label="Email us at hello@flowmind.ai">
               <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
               </svg>
             </a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Follow BaseBox on X (Twitter)"><TwitterIcon /></a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="View BaseBox on GitHub"><GitHubIcon /></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Follow FlowMind on X (Twitter)"><TwitterIcon /></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="View FlowMind on GitHub"><GitHubIcon /></a>
           </div>
         </div>
       </div>

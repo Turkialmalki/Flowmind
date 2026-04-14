@@ -12,7 +12,7 @@ const cards = [
     stat: '60 min',
     statLabel: 'to launch',
     title: 'Launch in 60 minutes, not weeks',
-    desc: 'Stop losing to competitors who ship faster. BaseBox gives you every screen, every section, every conversion element — ready the moment you open it.',
+    desc: 'Stop losing to competitors who ship faster. FlowMind gives you every screen, every section, every conversion element — ready the moment you open it.',
     bullets: ['All 12 pages pre-built', 'Zero design decisions needed', 'Duplicate in Framer, go live'],
     accentColor: 'var(--indigo)',
     accentBg: 'var(--indigo-g)',
@@ -28,7 +28,7 @@ const cards = [
     stat: '$0',
     statLabel: 'designer needed',
     title: 'Look like a funded startup — instantly',
-    desc: 'First impressions determine if visitors stay or bounce. BaseBox makes your product look backed by a $5M seed round, even if you built it alone over the weekend.',
+    desc: 'First impressions determine if visitors stay or bounce. FlowMind makes your product look backed by a $5M seed round, even if you built it alone over the weekend.',
     bullets: ['Premium visual design system', 'Used by 847+ AI founders', 'Converts 3× better than DIY'],
     accentColor: 'var(--emerald)',
     accentBg: 'var(--emerald-bg)',
@@ -61,7 +61,7 @@ const cards = [
     stat: '$49',
     statLabel: 'one-time only',
     title: 'No designer. No developer. No subscription.',
-    desc: 'Agencies charge $8K+ and take 8 weeks. BaseBox costs $49, takes 60 minutes, and looks better. One payment. Yours forever. Lifetime updates included.',
+    desc: 'Agencies charge $8K+ and take 8 weeks. FlowMind costs $49, takes 60 minutes, and looks better. One payment. Yours forever. Lifetime updates included.',
     bullets: ['One-time payment, not a subscription', 'Use on unlimited projects', 'Early buyers get all future updates'],
     accentColor: 'var(--amber)',
     accentBg: 'rgba(217,119,6,0.08)',
@@ -114,13 +114,13 @@ export default function WhySection() {
     <section className="section" id="why">
       <div className="container">
         <div className="fh an-scale">
-          <div className="eyebrow">Why BaseBox?</div>
+          <div className="eyebrow">Why FlowMind?</div>
           <h2 className="st">
             Stop building from scratch.<br /><span>Start shipping.</span>
           </h2>
           <p className="sd">
             Every week without a live product is a week your competitors collect signups you're not.
-            BaseBox removes every excuse to delay.
+            FlowMind removes every excuse to delay.
           </p>
         </div>
         <div className="why-grid">

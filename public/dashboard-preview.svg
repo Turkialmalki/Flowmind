@@ -1,0 +1,415 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="bg-rg" cx="50%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#0d1035"/>
+      <stop offset="60%" stop-color="#070920"/>
+      <stop offset="100%" stop-color="#040610"/>
+    </radialGradient>
+    <radialGradient id="orb-a" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb-b" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb-c" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="chart-fill-g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.32"/>
+      <stop offset="70%" stop-color="#6366f1" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="chart-line-g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="sidebar-g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c0f1e"/>
+      <stop offset="100%" stop-color="#090b18"/>
+    </linearGradient>
+    <linearGradient id="mrr-spark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="users-spark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="conv-spark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="churn-spark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+    <linearGradient id="avatar-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+
+    <filter id="win-shadow" x="-8%" y="-8%" width="116%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="20" flood-color="#6366f1" flood-opacity="0.10"/>
+      <feDropShadow dx="0" dy="40" stdDeviation="80" flood-color="#000000" flood-opacity="0.70"/>
+    </filter>
+    <filter id="glow-dot" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="float-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+
+    <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#6366f1" opacity="0.10"/>
+    </pattern>
+
+    <clipPath id="win-clip">
+      <rect x="185" y="85" width="1550" height="910" rx="16"/>
+    </clipPath>
+    <clipPath id="chart-clip">
+      <rect x="437" y="325" width="1270" height="270"/>
+    </clipPath>
+    <clipPath id="spark1-clip"><rect x="614" y="648" width="114" height="80"/></clipPath>
+    <clipPath id="spark2-clip"><rect x="934" y="648" width="114" height="80"/></clipPath>
+    <clipPath id="spark3-clip"><rect x="1254" y="648" width="114" height="80"/></clipPath>
+    <clipPath id="spark4-clip"><rect x="1574" y="648" width="114" height="80"/></clipPath>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <rect width="1920" height="1080" fill="url(#bg-rg)"/>
+  <rect width="1920" height="1080" fill="url(#dot-grid)"/>
+
+  <!-- Ambient orbs -->
+  <ellipse cx="960" cy="320" rx="820" ry="580" fill="url(#orb-a)"/>
+  <ellipse cx="220" cy="900" rx="460" ry="340" fill="url(#orb-b)"/>
+  <ellipse cx="1700" cy="780" rx="480" ry="360" fill="url(#orb-c)"/>
+
+  <!-- Subtle grid accent lines -->
+  <line x1="0" y1="540" x2="1920" y2="540" stroke="#6366f1" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="960" y1="0" x2="960" y2="1080" stroke="#6366f1" stroke-width="1" stroke-opacity="0.06"/>
+
+  <!-- ── APP WINDOW ── -->
+  <g filter="url(#win-shadow)">
+    <!-- Window base -->
+    <rect x="185" y="85" width="1550" height="910" rx="16" fill="#0b0f1a"/>
+
+    <!-- Clipped content -->
+    <g clip-path="url(#win-clip)">
+
+      <!-- ── TITLE BAR ── -->
+      <rect x="185" y="85" width="1550" height="48" fill="url(#sidebar-g)"/>
+      <line x1="185" y1="133" x2="1735" y2="133" stroke="#1a2240" stroke-width="1"/>
+      <!-- Traffic lights -->
+      <circle cx="220" cy="109" r="6" fill="#ff5f57"/>
+      <circle cx="244" cy="109" r="6" fill="#febc2e"/>
+      <circle cx="268" cy="109" r="6" fill="#28c840"/>
+      <!-- URL bar -->
+      <rect x="730" y="97" width="460" height="24" rx="12" fill="#12192e"/>
+      <circle cx="754" cy="109" r="5" fill="none" stroke="#2a3550" stroke-width="1.5"/>
+      <text x="790" y="114" fill="#3d4e6b" font-family="'SF Mono',monospace" font-size="11">app.basebox.io/dashboard</text>
+
+      <!-- ── SIDEBAR ── -->
+      <rect x="185" y="133" width="224" height="862" fill="url(#sidebar-g)"/>
+      <line x1="409" y1="133" x2="409" y2="995" stroke="#1a2240" stroke-width="1"/>
+
+      <!-- Sidebar brand -->
+      <rect x="204" y="156" width="11" height="11" rx="2.5" fill="#6366f1"/>
+      <rect x="220" y="156" width="11" height="11" rx="2.5" fill="#6366f1" opacity="0.55"/>
+      <rect x="204" y="171" width="11" height="11" rx="2.5" fill="#6366f1" opacity="0.30"/>
+      <rect x="220" y="171" width="11" height="11" rx="2.5" fill="#6366f1" opacity="0.15"/>
+      <text x="242" y="169" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="14" font-weight="700" letter-spacing="-0.02em">BaseBox</text>
+
+      <!-- Sidebar divider -->
+      <line x1="204" y1="196" x2="389" y2="196" stroke="#1a2240" stroke-width="1"/>
+
+      <!-- Nav: Overview (active) -->
+      <rect x="196" y="208" width="200" height="34" rx="8" fill="#6366f1" opacity="0.12"/>
+      <!-- Active indicator -->
+      <rect x="196" y="218" width="3" height="14" rx="1.5" fill="#6366f1"/>
+      <!-- Icon placeholder: grid -->
+      <rect x="210" y="216" width="7" height="7" rx="1.5" fill="#6366f1" opacity="0.8"/>
+      <rect x="220" y="216" width="7" height="7" rx="1.5" fill="#6366f1" opacity="0.8"/>
+      <rect x="210" y="226" width="7" height="7" rx="1.5" fill="#6366f1" opacity="0.8"/>
+      <rect x="220" y="226" width="7" height="7" rx="1.5" fill="#6366f1" opacity="0.8"/>
+      <text x="238" y="230" fill="#6366f1" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Overview</text>
+
+      <!-- Nav: Analytics -->
+      <polyline points="209,259 213,255 217,260 221,253 225,257 229,253" fill="none" stroke="#4b5563" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="238" y="262" fill="#4b5563" font-family="system-ui,sans-serif" font-size="13">Analytics</text>
+
+      <!-- Nav: Users -->
+      <path d="M213,294a3,3 0 1,0 0-.01M209,300v-1a4,4 0 0,1 4-4 M221,291a3,3 0 0,1 0 5.3M225,300v-1a4,4 0 0,0-4-4" fill="none" stroke="#4b5563" stroke-width="1.6" stroke-linecap="round"/>
+      <text x="238" y="298" fill="#4b5563" font-family="system-ui,sans-serif" font-size="13">Users</text>
+
+      <!-- Nav: Revenue -->
+      <line x1="217" y1="326" x2="217" y2="334" stroke="#4b5563" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M214,328h4a2,2 0 0,1 0 4h-2a2,2 0 0,0 0 4h4" fill="none" stroke="#4b5563" stroke-width="1.6" stroke-linecap="round"/>
+      <text x="238" y="334" fill="#4b5563" font-family="system-ui,sans-serif" font-size="13">Revenue</text>
+
+      <!-- Nav: Reports -->
+      <path d="M210,362v6M214,360v8M218,358v10M222,364v4" fill="none" stroke="#4b5563" stroke-width="1.6" stroke-linecap="round"/>
+      <text x="238" y="370" fill="#4b5563" font-family="system-ui,sans-serif" font-size="13">Reports</text>
+
+      <!-- Sidebar bottom -->
+      <line x1="204" y1="896" x2="389" y2="896" stroke="#1a2240" stroke-width="1"/>
+      <!-- Settings icon -->
+      <circle cx="217" cy="916" r="4" fill="none" stroke="#4b5563" stroke-width="1.6"/>
+      <circle cx="217" cy="916" r="1.5" fill="#4b5563"/>
+      <text x="234" y="920" fill="#4b5563" font-family="system-ui,sans-serif" font-size="12">Settings</text>
+      <!-- Help icon -->
+      <circle cx="217" cy="940" r="4" fill="none" stroke="#4b5563" stroke-width="1.6"/>
+      <text x="216" y="944" fill="#4b5563" font-family="system-ui,sans-serif" font-size="8" text-anchor="middle">?</text>
+      <text x="234" y="944" fill="#4b5563" font-family="system-ui,sans-serif" font-size="12">Help</text>
+      <!-- Avatar -->
+      <rect x="204" y="958" width="26" height="26" rx="8" fill="url(#avatar-g)"/>
+      <text x="217" y="975" fill="#fff" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">TK</text>
+      <text x="238" y="968" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Turki K.</text>
+      <text x="238" y="982" fill="#475569" font-family="system-ui,sans-serif" font-size="10">Admin</text>
+
+      <!-- ── MAIN AREA ── -->
+      <rect x="409" y="133" width="1326" height="862" fill="#111827"/>
+
+      <!-- TOP NAV -->
+      <line x1="409" y1="185" x2="1735" y2="185" stroke="#1a2240" stroke-width="1"/>
+      <!-- Nav links -->
+      <text x="437" y="165" fill="#6366f1" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Overview</text>
+      <rect x="437" y="179" width="58" height="2" rx="1" fill="#6366f1"/>
+      <text x="515" y="165" fill="#4b5563" font-family="system-ui,sans-serif" font-size="13">Analytics</text>
+      <text x="591" y="165" fill="#4b5563" font-family="system-ui,sans-serif" font-size="13">Users</text>
+      <text x="643" y="165" fill="#4b5563" font-family="system-ui,sans-serif" font-size="13">Revenue</text>
+      <!-- Right: live pill -->
+      <rect x="1598" y="151" width="56" height="22" rx="11" fill="#059669" fill-opacity="0.10"/>
+      <rect x="1598" y="151" width="56" height="22" rx="11" fill="none" stroke="#059669" stroke-width="1" stroke-opacity="0.30"/>
+      <circle cx="1614" cy="162" r="3" fill="#10b981"/>
+      <text x="1626" y="167" fill="#059669" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Live</text>
+      <!-- Bell -->
+      <rect x="1664" y="151" width="28" height="28" rx="8" fill="#1a2240"/>
+      <path d="M1678,159 a4,4 0 0,1 4,4v3l2,2h-12l2-2v-3 a4,4 0 0,1 4-4z" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M1676,171 a2,2 0 0,0 4,0" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="1685" cy="157" r="3" fill="#f472b6"/>
+      <!-- Avatar -->
+      <rect x="1702" y="151" width="28" height="28" rx="8" fill="url(#avatar-g)"/>
+      <text x="1716" y="168" fill="#fff" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">TK</text>
+
+      <!-- ── BODY ── -->
+      <!-- Chart header -->
+      <text x="437" y="222" fill="#64748b" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.12em">MONTHLY RECURRING REVENUE</text>
+      <text x="437" y="268" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="46" font-weight="800" letter-spacing="-0.04em">$48K</text>
+      <!-- Badge -->
+      <rect x="437" y="280" width="142" height="20" rx="10" fill="#059669" fill-opacity="0.10"/>
+      <rect x="437" y="280" width="142" height="20" rx="10" fill="none" stroke="#059669" stroke-width="1" stroke-opacity="0.25"/>
+      <text x="447" y="294" fill="#059669" font-family="system-ui,sans-serif" font-size="11" font-weight="700">↑ +22% vs last month</text>
+      <!-- Tabs -->
+      <rect x="1604" y="213" width="38" height="24" rx="8" fill="#1a2240"/>
+      <text x="1623" y="229" fill="#64748b" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">7d</text>
+      <rect x="1648" y="213" width="42" height="24" rx="8" fill="#6366f1" fill-opacity="0.15"/>
+      <text x="1669" y="229" fill="#6366f1" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">30d</text>
+      <rect x="1696" y="213" width="38" height="24" rx="8" fill="#1a2240"/>
+      <text x="1715" y="229" fill="#64748b" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">90d</text>
+
+      <!-- CHART CARD -->
+      <rect x="437" y="312" width="1282" height="284" rx="14" fill="#0f1523" stroke="#1a2240" stroke-width="1"/>
+
+      <!-- Y-axis grid lines -->
+      <line x1="437" y1="362" x2="1719" y2="362" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,8"/>
+      <line x1="437" y1="412" x2="1719" y2="412" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,8"/>
+      <line x1="437" y1="462" x2="1719" y2="462" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,8"/>
+      <line x1="437" y1="512" x2="1719" y2="512" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,8"/>
+      <!-- Y labels -->
+      <text x="447" y="356" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">$48K</text>
+      <text x="447" y="406" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">$36K</text>
+      <text x="447" y="456" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">$24K</text>
+      <text x="447" y="506" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">$12K</text>
+
+      <!-- Chart paths (clipped) -->
+      <g clip-path="url(#chart-clip)">
+        <!-- Fill -->
+        <path d="M437,533 C477,533 487,516 528,516 C572,516 582,499 622,499 C666,499 676,508 715,508 C759,508 769,483 808,483 C852,483 862,457 900,457 C944,457 954,432 993,432 C1037,432 1047,407 1086,407 C1130,407 1139,382 1178,382 C1219,382 1225,357 1264,357 C1302,357 1310,332 1349,332 C1390,332 1396,356 1435,356 C1476,356 1482,332 1521,332 C1555,332 1562,312 1595,312 L1595,595 L437,595 Z"
+          fill="url(#chart-fill-g)"/>
+        <!-- Glow -->
+        <path d="M437,533 C477,533 487,516 528,516 C572,516 582,499 622,499 C666,499 676,508 715,508 C759,508 769,483 808,483 C852,483 862,457 900,457 C944,457 954,432 993,432 C1037,432 1047,407 1086,407 C1130,407 1139,382 1178,382 C1219,382 1225,357 1264,357 C1302,357 1310,332 1349,332 C1390,332 1396,356 1435,356 C1476,356 1482,332 1521,332 C1555,332 1562,312 1595,312"
+          fill="none" stroke="#6366f1" stroke-width="8" stroke-opacity="0.18" stroke-linecap="round"/>
+        <!-- Line -->
+        <path d="M437,533 C477,533 487,516 528,516 C572,516 582,499 622,499 C666,499 676,508 715,508 C759,508 769,483 808,483 C852,483 862,457 900,457 C944,457 954,432 993,432 C1037,432 1047,407 1086,407 C1130,407 1139,382 1178,382 C1219,382 1225,357 1264,357 C1302,357 1310,332 1349,332 C1390,332 1396,356 1435,356 C1476,356 1482,332 1521,332 C1555,332 1562,312 1595,312"
+          fill="none" stroke="url(#chart-line-g)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Endpoint -->
+        <circle cx="1595" cy="312" r="10" fill="#6366f1" fill-opacity="0.12"/>
+        <circle cx="1595" cy="312" r="4" fill="#6366f1" stroke="#0f1523" stroke-width="2.5" filter="url(#glow-dot)"/>
+        <!-- Drop line -->
+        <line x1="1595" y1="312" x2="1595" y2="595" stroke="#6366f1" stroke-width="1" stroke-opacity="0.10" stroke-dasharray="3,4"/>
+      </g>
+
+      <!-- X-axis labels -->
+      <text x="437" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Oct</text>
+      <text x="551" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Nov</text>
+      <text x="665" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Dec</text>
+      <text x="779" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Jan</text>
+      <text x="893" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Feb</text>
+      <text x="1007" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Mar</text>
+      <text x="1121" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Apr</text>
+      <text x="1235" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">May</text>
+      <text x="1349" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Jun</text>
+      <text x="1463" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Jul</text>
+      <text x="1577" y="612" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="9">Aug</text>
+
+      <!-- ── KPI ROW ── -->
+      <!-- Card 1: MRR -->
+      <rect x="437" y="628" width="300" height="124" rx="14" fill="#0f1523" stroke="#1a2240" stroke-width="1"/>
+      <rect x="437" y="668" width="3" height="44" rx="1.5" fill="#818cf8"/>
+      <circle cx="453" cy="648" r="3" fill="#818cf8" fill-opacity="0.85"/>
+      <text x="462" y="652" fill="#64748b" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">MRR</text>
+      <rect x="668" y="638" width="58" height="18" rx="9" fill="#818cf8" fill-opacity="0.12"/>
+      <text x="697" y="651" fill="#818cf8" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↑ +22%</text>
+      <text x="455" y="706" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.03em">$48K</text>
+      <g clip-path="url(#spark1-clip)">
+        <polyline points="614,728 630,718 644,706 657,694 671,680 684,668" fill="none" stroke="url(#mrr-spark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Card 2: Active Users -->
+      <rect x="749" y="628" width="300" height="124" rx="14" fill="#0f1523" stroke="#1a2240" stroke-width="1"/>
+      <rect x="749" y="668" width="3" height="44" rx="1.5" fill="#34d399"/>
+      <circle cx="765" cy="648" r="3" fill="#34d399" fill-opacity="0.85"/>
+      <text x="774" y="652" fill="#64748b" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">ACTIVE USERS</text>
+      <rect x="960" y="638" width="58" height="18" rx="9" fill="#34d399" fill-opacity="0.12"/>
+      <text x="989" y="651" fill="#34d399" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↑ +18%</text>
+      <text x="767" y="706" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.03em">12.4K</text>
+      <g clip-path="url(#spark2-clip)">
+        <polyline points="934,728 950,718 963,709 977,700 990,688 1004,676" fill="none" stroke="url(#users-spark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Card 3: Conv. Rate -->
+      <rect x="1061" y="628" width="300" height="124" rx="14" fill="#0f1523" stroke="#1a2240" stroke-width="1"/>
+      <rect x="1061" y="668" width="3" height="44" rx="1.5" fill="#60a5fa"/>
+      <circle cx="1077" cy="648" r="3" fill="#60a5fa" fill-opacity="0.85"/>
+      <text x="1086" y="652" fill="#64748b" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">CONV. RATE</text>
+      <rect x="1280" y="638" width="58" height="18" rx="9" fill="#60a5fa" fill-opacity="0.12"/>
+      <text x="1309" y="651" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↑ +1.2%</text>
+      <text x="1079" y="706" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.03em">4.8%</text>
+      <g clip-path="url(#spark3-clip)">
+        <polyline points="1254,726 1270,718 1283,711 1297,703 1310,694 1324,684" fill="none" stroke="url(#conv-spark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Card 4: Churn -->
+      <rect x="1373" y="628" width="300" height="124" rx="14" fill="#0f1523" stroke="#1a2240" stroke-width="1"/>
+      <rect x="1373" y="668" width="3" height="44" rx="1.5" fill="#f472b6"/>
+      <circle cx="1389" cy="648" r="3" fill="#f472b6" fill-opacity="0.85"/>
+      <text x="1398" y="652" fill="#64748b" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">CHURN</text>
+      <rect x="1584" y="638" width="58" height="18" rx="9" fill="#f472b6" fill-opacity="0.12"/>
+      <text x="1613" y="651" fill="#f472b6" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↓ -0.4%</text>
+      <text x="1391" y="706" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.03em">2.1%</text>
+      <g clip-path="url(#spark4-clip)">
+        <polyline points="1574,722 1590,720 1604,724 1617,718 1630,712 1644,704 1657,696" fill="none" stroke="url(#churn-spark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Activity section (bottom) -->
+      <text x="437" y="782" fill="#64748b" font-family="system-ui,sans-serif" font-size="11" font-weight="600" letter-spacing="0.08em">RECENT ACTIVITY</text>
+      <line x1="437" y1="796" x2="1719" y2="796" stroke="#1a2240" stroke-width="1"/>
+
+      <!-- Activity rows -->
+      <rect x="437" y="808" width="28" height="28" rx="8" fill="#6366f1" fill-opacity="0.15"/>
+      <circle cx="451" cy="822" r="5" fill="#6366f1"/>
+      <text x="477" y="820" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="12" font-weight="500">New user signup</text>
+      <text x="477" y="836" fill="#4b5563" font-family="system-ui,sans-serif" font-size="11">sarah.chen@company.io joined</text>
+      <text x="1660" y="828" fill="#4b5563" font-family="system-ui,sans-serif" font-size="11">2m ago</text>
+
+      <rect x="437" y="848" width="28" height="28" rx="8" fill="#059669" fill-opacity="0.12"/>
+      <text x="451" y="866" fill="#10b981" font-family="system-ui,sans-serif" font-size="14" text-anchor="middle">$</text>
+      <text x="477" y="860" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="12" font-weight="500">Payment received</text>
+      <text x="477" y="876" fill="#4b5563" font-family="system-ui,sans-serif" font-size="11">$1,200 — Pro Annual plan</text>
+      <text x="1660" y="868" fill="#4b5563" font-family="system-ui,sans-serif" font-size="11">14m ago</text>
+
+      <rect x="437" y="888" width="28" height="28" rx="8" fill="#8b5cf6" fill-opacity="0.12"/>
+      <text x="451" y="906" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle">↑</text>
+      <text x="477" y="900" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="12" font-weight="500">Feature upgrade</text>
+      <text x="477" y="916" fill="#4b5563" font-family="system-ui,sans-serif" font-size="11">Team plan → Enterprise</text>
+      <text x="1660" y="908" fill="#4b5563" font-family="system-ui,sans-serif" font-size="11">1h ago</text>
+
+      <line x1="437" y1="844" x2="1719" y2="844" stroke="#12192e" stroke-width="1"/>
+      <line x1="437" y1="884" x2="1719" y2="884" stroke="#12192e" stroke-width="1"/>
+
+      <!-- Bottom fade -->
+      <defs>
+        <linearGradient id="fade-bot" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#111827" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#111827" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <rect x="409" y="880" width="1326" height="115" fill="url(#fade-bot)"/>
+
+    </g><!-- /clip -->
+
+    <!-- Window border overlay -->
+    <rect x="185" y="85" width="1550" height="910" rx="16" fill="none" stroke="#2a3550" stroke-width="1.5"/>
+  </g><!-- /filter -->
+
+  <!-- ── FLOATING ACCENT CARDS ── -->
+  <!-- Top-left: New signup notification -->
+  <g transform="translate(30, 280)" filter="url(#float-shadow)">
+    <rect width="192" height="80" rx="16" fill="#111827"/>
+    <rect width="192" height="80" rx="16" fill="none" stroke="#1e2d44" stroke-width="1.5"/>
+    <!-- Glow border top -->
+    <rect width="192" height="80" rx="16" fill="none" stroke="#6366f1" stroke-width="1" stroke-opacity="0.25"/>
+    <circle cx="24" cy="24" r="8" fill="#059669" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="4" fill="#10b981"/>
+    <text x="40" y="20" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">New Signup</text>
+    <text x="40" y="34" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">sarah.chen@co.io</text>
+    <text x="16" y="58" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="18" font-weight="700">+1,240</text>
+    <text x="80" y="58" fill="#34d399" font-family="system-ui,sans-serif" font-size="11" font-weight="600">users</text>
+    <text x="130" y="58" fill="#34d399" font-family="system-ui,sans-serif" font-size="10">↑18%</text>
+    <text x="16" y="72" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10">this week</text>
+  </g>
+
+  <!-- Top-right: Revenue goal -->
+  <g transform="translate(1700, 160)" filter="url(#float-shadow)">
+    <rect width="184" height="80" rx="16" fill="#111827"/>
+    <rect width="184" height="80" rx="16" fill="none" stroke="#1e2d44" stroke-width="1.5"/>
+    <rect width="184" height="80" rx="16" fill="none" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.25"/>
+    <!-- Progress bar bg -->
+    <rect x="16" y="56" width="152" height="6" rx="3" fill="#1a2240"/>
+    <!-- Progress bar fill -->
+    <rect x="16" y="56" width="146" height="6" rx="3" fill="url(#avatar-g)"/>
+    <text x="16" y="20" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Monthly Goal</text>
+    <text x="16" y="46" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="22" font-weight="700">$48K</text>
+    <text x="82" y="46" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="13" font-weight="700"> / $50K</text>
+    <text x="16" y="76" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="10" font-weight="600">96% complete</text>
+  </g>
+
+  <!-- Bottom-left: Churn alert (good news) -->
+  <g transform="translate(30, 720)" filter="url(#float-shadow)">
+    <rect width="188" height="72" rx="16" fill="#111827"/>
+    <rect width="188" height="72" rx="16" fill="none" stroke="#1e2d44" stroke-width="1.5"/>
+    <rect width="188" height="72" rx="16" fill="none" stroke="#6366f1" stroke-width="1" stroke-opacity="0.20"/>
+    <text x="16" y="22" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Churn Rate</text>
+    <text x="16" y="48" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="24" font-weight="700">2.1%</text>
+    <rect x="68" y="36" width="60" height="18" rx="9" fill="#059669" fill-opacity="0.12"/>
+    <text x="98" y="49" fill="#10b981" font-family="system-ui,sans-serif" font-size="11" font-weight="700" text-anchor="middle">↓ -0.4%</text>
+    <text x="16" y="64" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10">lowest in 6 months</text>
+  </g>
+
+  <!-- Bottom-right: Conv rate -->
+  <g transform="translate(1704, 720)" filter="url(#float-shadow)">
+    <rect width="180" height="72" rx="16" fill="#111827"/>
+    <rect width="180" height="72" rx="16" fill="none" stroke="#1e2d44" stroke-width="1.5"/>
+    <rect width="180" height="72" rx="16" fill="none" stroke="#60a5fa" stroke-width="1" stroke-opacity="0.22"/>
+    <text x="16" y="22" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Conversion Rate</text>
+    <text x="16" y="48" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="24" font-weight="700">4.8%</text>
+    <rect x="72" y="36" width="60" height="18" rx="9" fill="#60a5fa" fill-opacity="0.12"/>
+    <text x="102" y="49" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="11" font-weight="700" text-anchor="middle">↑ +1.2%</text>
+    <text x="16" y="64" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10">vs. prior period</text>
+  </g>
+
+  <!-- ── DECORATIVE CORNER LINES ── -->
+  <line x1="0" y1="0" x2="100" y2="0" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.25"/>
+  <line x1="0" y1="0" x2="0" y2="100" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.25"/>
+  <line x1="1920" y1="0" x2="1820" y2="0" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.25"/>
+  <line x1="1920" y1="0" x2="1920" y2="100" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.25"/>
+  <line x1="0" y1="1080" x2="100" y2="1080" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.25"/>
+  <line x1="0" y1="1080" x2="0" y2="980" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.25"/>
+  <line x1="1920" y1="1080" x2="1820" y2="1080" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.25"/>
+  <line x1="1920" y1="1080" x2="1920" y2="980" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.25"/>
+
+</svg>

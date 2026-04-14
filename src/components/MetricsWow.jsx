@@ -98,7 +98,7 @@ const metrics = [
 ]
 
 const LIVE_EVENTS = [
-  { icon: '🚀', text: 'nova-saas.io just launched with BaseBox' },
+  { icon: '🚀', text: 'nova-saas.io just launched with FlowMind' },
   { icon: '💰', text: 'ai-invoice.co hit $2K MRR today' },
   { icon: '⭐', text: 'New 5-star review from @JoshBuildsSaaS' },
   { icon: '🎯', text: '3 new signups in the last 5 minutes' },
@@ -144,7 +144,7 @@ export default function MetricsWow() {
             Numbers from founders<br /><span>who already shipped</span>
           </h2>
           <p className="sd">
-            These aren't projections. They're outcomes from real founders who used BaseBox
+            These aren't projections. They're outcomes from real founders who used FlowMind
             to get their AI products in front of users — fast.
           </p>
         </div>
@@ -170,14 +170,14 @@ export default function MetricsWow() {
         <div className="wow-compare an-scale">
           <div className="wow-compare-title">Time from idea to live site</div>
           <div className="wow-bar-row">
-            <div className="wow-bar-label without">Without BaseBox</div>
+            <div className="wow-bar-label without">Without FlowMind</div>
             <div className="wow-bar-track">
               <div className="wow-bar-fill without" />
             </div>
             <div className="wow-bar-time without">6–8 weeks</div>
           </div>
           <div className="wow-bar-row">
-            <div className="wow-bar-label with">With BaseBox</div>
+            <div className="wow-bar-label with">With FlowMind</div>
             <div className="wow-bar-track">
               <div className="wow-bar-fill with" />
             </div>
@@ -185,7 +185,7 @@ export default function MetricsWow() {
           </div>
           <div className="wow-compare-note">
             Launch price still active —{' '}
-            <Link to="/pricing">get BaseBox for $49 today</Link>
+            <Link to="/pricing">get FlowMind for $49 today</Link>
           </div>
         </div>
       </div>

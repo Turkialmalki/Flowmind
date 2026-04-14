@@ -77,7 +77,7 @@ export default function SignupPage() {
       <div className="auth-box auth-box-wide">
         <Link to="/" className="auth-brand">
           <LogoIcon height={52} />
-          <span className="auth-brand-name">BaseBox</span>
+          <span className="auth-brand-name">FlowMind</span>
         </Link>
 
         {/* Step indicator */}
@@ -180,7 +180,7 @@ export default function SignupPage() {
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5" /></svg>
                 </div>
                 <h1 className="auth-box-title" style={{ marginTop: '16px' }}>You're all set!</h1>
-                <p className="auth-box-sub">Welcome to BaseBox. Your template is ready.</p>
+                <p className="auth-box-sub">Welcome to FlowMind. Your workflows are ready.</p>
                 <div className="auth-success-details">
                   <div className="auth-success-row">
                     <span>Plan</span>

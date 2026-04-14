@@ -50,7 +50,7 @@ function DashboardMock() {
       <div className="db-sidebar">
         <div className="db-logo">
           <div className="db-logo-mark"><BoxIcon height={26} /></div>
-          <div className="db-logo-t">BaseBox</div>
+          <div className="db-logo-t">FlowMind</div>
         </div>
         <div className="db-nav">
           {navItems.map((item) => (
@@ -151,7 +151,7 @@ function AuthMocks() {
         <div className="auth-card-label">Login</div>
         <div className="auth-logo">
           <div className="auth-logo-mark"><BoxIcon height={28} /></div>
-          <div className="auth-logo-t">BaseBox</div>
+          <div className="auth-logo-t">FlowMind</div>
         </div>
         <div className="auth-h">Welcome back</div>
         <div className="auth-sub">Sign in to your account</div>
@@ -184,7 +184,7 @@ function AuthMocks() {
         <div className="auth-card-label">Sign Up</div>
         <div className="auth-logo">
           <div className="auth-logo-mark"><BoxIcon height={28} /></div>
-          <div className="auth-logo-t">BaseBox</div>
+          <div className="auth-logo-t">FlowMind</div>
         </div>
         <div className="auth-h">Start for free</div>
         <div className="auth-sub">No credit card required</div>
@@ -269,7 +269,7 @@ function EmptyStateMock() {
         </div>
         <div className="empty-t">No API keys yet</div>
         <div className="empty-d">
-          Create your first API key to start integrating BaseBox into your product.
+          Create your first API key to start integrating FlowMind into your product.
         </div>
         <button className="empty-cta">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -293,7 +293,7 @@ export default function ProductScreens() {
             Every screen your SaaS needs, <span>already designed</span>
           </h2>
           <p className="sd">
-            BaseBox isn't just a landing page. It's a complete UI kit — dashboard, auth flows,
+            FlowMind isn't just a landing page. It's a complete UI kit — dashboard, auth flows,
             settings, and empty states. Ship a real product from day one.
           </p>
         </div>

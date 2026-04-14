@@ -3,7 +3,7 @@ import { useState } from 'react'
 const faqs = [
   {
     q: 'Do I need to know how to code?',
-    a: "No. Everything is built in Framer's visual editor. Swap text, update images, change colors — all drag and drop. If you can use Canva, you can launch with BaseBox.",
+    a: "No. Everything is built in Framer's visual editor. Swap text, update images, change colors — all drag and drop. If you can use Canva, you can launch with FlowMind.",
   },
   {
     q: "What's included in the Pro plan exactly?",
@@ -53,7 +53,7 @@ export default function FAQ() {
           <h2 className="st">
             Questions before <span>you buy</span>
           </h2>
-          <p className="sd">Straight answers to the most common questions about BaseBox.</p>
+          <p className="sd">Straight answers to the most common questions about FlowMind.</p>
         </div>
         <div className="fql">
           {faqs.map((faq, i) => {

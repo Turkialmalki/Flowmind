@@ -39,7 +39,7 @@ export default function FeatureCMS() {
                 Publish content without<br /><span>touching a line of code</span>
               </h1>
               <p className="fd-hero-desc">
-                Content marketing is the highest-ROI growth channel for early SaaS. BaseBox gives you
+                Content marketing is the highest-ROI growth channel for early SaaS. FlowMind gives you
                 a full blog system — Framer CMS powers the content, the design stays perfect automatically,
                 and you ship articles in minutes. SEO-friendly from post one.
               </p>
@@ -119,7 +119,7 @@ export default function FeatureCMS() {
               <p className="sd" style={{ maxWidth: 'none' }}>
                 A single well-ranked article can drive hundreds of qualified signups every month — for years.
                 Every AI SaaS founder who invests in content early sees compounding returns that paid ads
-                can't match. BaseBox removes every friction point between you and publishing.
+                can't match. FlowMind removes every friction point between you and publishing.
               </p>
               <div style={{ display: 'flex', gap: '12px', marginTop: '28px', flexWrap: 'wrap' }}>
                 <Link to="/blog" className="btn btn-g">View Blog Example</Link>
@@ -157,7 +157,7 @@ export default function FeatureCMS() {
             <p className="sd" style={{ margin: '0 auto 36px' }}>Blog included in Pro and Team plans.</p>
             <div className="ctac">
               <Link to="/pricing" className="ctab-cta-btn">
-                Get BaseBox — from $49
+                Get FlowMind — from $49
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/blog" className="btn btn-o">See Blog Example</Link>

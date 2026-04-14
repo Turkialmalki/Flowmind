@@ -32,15 +32,15 @@ export default function NotFoundPage() {
             </svg>
           </div>
 
-          <h1 className="nfp-title">Page not found</h1>
+          <h1 className="nfp-title">Workflow not found</h1>
           <p className="nfp-desc">
-            The page you're looking for doesn't exist or may have been moved.
+            This automation doesn't exist yet — or it may have been moved.
             Let's get you back on track.
           </p>
 
           <div className="nfp-actions">
-            <Link to="/" className="btn btn-g btn-xl">
-              Back to Home
+            <Link to="/dashboard" className="btn btn-g btn-xl">
+              Back to Dashboard
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                 <polyline points="9 22 9 12 15 12 15 22" />

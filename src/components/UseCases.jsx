@@ -57,7 +57,7 @@ export default function UseCases() {
             Built for every type of <span>AI product</span>
           </h2>
           <p className="sd">
-            No matter what you're shipping — BaseBox has the layout, sections, and copy structure
+            No matter what you're shipping — FlowMind has the layout, sections, and copy structure
             to make it land.
           </p>
         </div>

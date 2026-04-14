@@ -27,8 +27,8 @@ const docSections = [
 const CODE_VITE = `# 1. Duplicate the template in Framer
 # 2. Or clone this repo for local dev
 
-git clone https://github.com/basebox-ai/template
-cd basebox-ai
+git clone https://github.com/flowmind-ai/template
+cd flowmind-ai
 npm install
 npm run dev`
 
@@ -54,8 +54,8 @@ const CODE_COMPONENT = `// Reusable section header pattern
 </div>`
 
 const SECTION_INTROS = {
-  'Installation': 'Install BaseBox by cloning the repository or duplicating the Framer template. Local development requires Node 18+ and npm 9+.',
-  'Project Structure': 'BaseBox follows a predictable file structure. Pages live in src/pages/, reusable components in src/components/, and all global styles in src/index.css.',
+  'Installation': 'Install FlowMind by cloning the repository or duplicating the Framer template. Local development requires Node 18+ and npm 9+.',
+  'Project Structure': 'FlowMind follows a predictable file structure. Pages live in src/pages/, reusable components in src/components/, and all global styles in src/index.css.',
   'Configuration': 'Customize site-wide settings — brand name, primary color, nav items, and pricing — through CSS variables in index.css and data objects inside each page file.',
   'Home Page': 'The home page composes 15+ standalone section components. Each uses the .an scroll-reveal system and is independently editable without touching any other section.',
   'Features Page': 'The features page includes a hero, a full feature grid, and three detail sub-pages at /features/dashboard, /features/ai-demo, and /features/cms.',
@@ -63,7 +63,7 @@ const SECTION_INTROS = {
   'Dashboard': 'The dashboard at /dashboard uses a standalone layout (no Nav/Footer). It includes Analytics, Reports, Revenue, and Settings views with live SVG chart components.',
   'Blog Setup': 'The blog at /blog uses static post data defined inside BlogPage.jsx. Connect a headless CMS or Framer CMS collection to make posts dynamic.',
   'Pricing Page': 'The pricing page has three tier cards, a feature comparison table, and a FAQ accordion. Update prices and features directly in PricingPage.jsx.',
-  'Typography': 'BaseBox uses Sora (display headings via --display), Inter (body text via --sans), and Fira Code (code blocks via --mono). All fonts load from Google Fonts in index.html.',
+  'Typography': 'FlowMind uses Sora (display headings via --display), Inter (body text via --sans), and Fira Code (code blocks via --mono). All fonts load from Google Fonts in index.html.',
   'Components': 'All page sections are standalone React components exported from src/components/. Each uses short scoped class names and CSS variables — no third-party UI library required.',
   'Animations': 'Scroll animations use the .an class pattern. Elements gain the .v (visible) class when they enter the viewport via IntersectionObserver in src/hooks/useScrollReveal.js.',
   'Blog Integration': 'The blog system renders posts from a static array in BlogPage.jsx. To connect a real CMS, replace the posts array with a fetch() call or a Framer CMS collection.',
@@ -73,7 +73,7 @@ const SECTION_INTROS = {
   'Publishing to Framer': 'To publish as a Framer template: duplicate the project in Framer, make your changes in the visual editor, then submit through your Framer Marketplace dashboard.',
   'Custom Domain': 'In Framer, open Site Settings → Domains and add your custom domain. For self-hosted builds, point your DNS A or CNAME record to your hosting provider.',
   'Netlify Deploy': 'Run npm run build to generate the dist/ folder. Drag it into Netlify Drop, or connect your GitHub repo for automatic deploys on every push to main.',
-  'Performance': 'BaseBox achieves 90+ Lighthouse scores by using CSS transforms for all animations, inline SVGs instead of images, no heavy third-party scripts, and a minimal bundle.',
+  'Performance': 'FlowMind achieves 90+ Lighthouse scores by using CSS transforms for all animations, inline SVGs instead of images, no heavy third-party scripts, and a minimal bundle.',
 }
 
 export default function DocsPage() {
@@ -98,7 +98,7 @@ export default function DocsPage() {
           <div className="docs-hero-inner">
             <div className="eyebrow">Documentation</div>
             <h1 className="iph-title" style={{ fontSize: 'clamp(28px, 4vw, 48px)', marginBottom: '16px' }}>
-              BaseBox <span>Docs</span>
+              FlowMind <span>Docs</span>
             </h1>
             <p className="iph-desc" style={{ marginBottom: '28px' }}>
               Everything you need to duplicate, customize, and launch your AI SaaS in 60 minutes.
@@ -184,7 +184,7 @@ export default function DocsPage() {
                   <div className="docs-badge">Getting Started</div>
                   <h1 className="docs-content-title">Quick Start</h1>
                   <p className="docs-content-lead">
-                    Get BaseBox running in your Framer workspace in under 5 minutes.
+                    Get FlowMind running in your Framer workspace in under 5 minutes.
                     No code required for Framer — use the dev setup below only if you want to customize
                     the React source.
                   </p>
@@ -195,7 +195,7 @@ export default function DocsPage() {
                     {
                       n: '1',
                       title: 'Get your copy',
-                      body: 'Purchase BaseBox from the Framer marketplace or from basebox.ai. You\'ll receive an instant email with your template link.',
+                      body: 'Purchase FlowMind from the Framer marketplace or from flowmind.ai. You\'ll receive an instant email with your template link.',
                     },
                     {
                       n: '2',
@@ -286,12 +286,12 @@ export default function DocsPage() {
                   <div className="docs-badge">Documentation</div>
                   <h1 className="docs-content-title">{activeSection}</h1>
                   <p className="docs-content-lead">
-                    {SECTION_INTROS[activeSection] ?? `This section walks you through ${activeSection} in BaseBox. Use the code patterns and examples below to get started.`}
+                    {SECTION_INTROS[activeSection] ?? `This section walks you through ${activeSection} in FlowMind. Use the code patterns and examples below to get started.`}
                   </p>
                 </div>
 
                 <h2 className="docs-h2">Component patterns</h2>
-                <p className="docs-p">All BaseBox components follow a consistent pattern for scroll animations, section headers, and responsive layouts:</p>
+                <p className="docs-p">All FlowMind components follow a consistent pattern for scroll animations, section headers, and responsive layouts:</p>
                 <div className="docs-code-block an">
                   <div className="docs-code-header"><span>JSX pattern</span><button className="docs-code-copy">Copy</button></div>
                   <pre>{CODE_COMPONENT}</pre>

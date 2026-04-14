@@ -146,7 +146,7 @@ export default function FeatureAIDemo() {
               </h1>
               <p className="fd-hero-desc">
                 The most effective conversion tool in SaaS isn't a testimonial or a feature list —
-                it's a live product demo. BaseBox's interactive chat section lets visitors experience
+                it's a live product demo. FlowMind's interactive chat section lets visitors experience
                 your AI in action, building trust and desire before they ever hit the signup button.
               </p>
               <div className="fd-hero-stats">
@@ -242,11 +242,11 @@ export default function FeatureAIDemo() {
         <div className="container">
           <div className="ctab">
             <div className="eyebrow">Get the AI Demo</div>
-            <h2 className="st">This feature is included in <span>every BaseBox plan</span></h2>
+            <h2 className="st">This feature is included in <span>every FlowMind plan</span></h2>
             <p className="sd" style={{ margin: '0 auto 36px' }}>One payment. Instant access. No subscription.</p>
             <div className="ctac">
               <Link to="/pricing" className="ctab-cta-btn">
-                Get BaseBox — from $29
+                Get FlowMind — from $29
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/features" className="btn btn-o">Back to all features</Link>

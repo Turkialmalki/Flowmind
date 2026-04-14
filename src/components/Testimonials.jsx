@@ -45,7 +45,7 @@ const reviews = [
   },
   {
     outcome: 'Looks like a Series A product',
-    quote: '"I\'m a backend engineer. Design was always my weak point. BaseBox fixed that — the whole thing looks like we raised money to build it. My users had no idea it was a template. I\'m never starting from scratch again."',
+    quote: '"I\'m a backend engineer. Design was always my weak point. FlowMind fixed that — the whole thing looks like we raised money to build it. My users had no idea it was a template. I\'m never starting from scratch again."',
     name: 'David L.',
     role: 'Solo developer, AI code assistant',
     initial: 'D',
@@ -60,7 +60,7 @@ export default function Testimonials() {
         <div className="teh an">
           <div className="eyebrow">From Real Customers</div>
           <h2 className="st">
-            Founders shipping faster <span>with BaseBox</span>
+            Founders shipping faster <span>with FlowMind</span>
           </h2>
           <p className="sd">
             Real results from people who bought it, shipped it, and got users — not just a pretty site.

@@ -4,7 +4,7 @@ const sections = [
   {
     title: 'License Grant',
     content: [
-      'BaseBox grants you a personal, non-exclusive, non-transferable license to use the template for one (1) commercial project or business.',
+      'FlowMind grants you a personal, non-exclusive, non-transferable license to use the template for one (1) commercial project or business.',
       'You may customize and modify the template to fit your product.',
       'The license is per-project. Each distinct product, app, or business requires its own license.',
     ],
@@ -12,7 +12,7 @@ const sections = [
   {
     title: 'What You Can Do',
     content: [
-      'Use BaseBox to build and launch your own SaaS product or website.',
+      'Use FlowMind to build and launch your own SaaS product or website.',
       'Modify any component, page, design token, or code.',
       'Deploy to any hosting platform (Framer, Vercel, Netlify, Cloudflare Pages, etc.).',
       'Use for client projects when you are the end-customer (i.e., the template is not resold to the client).',
@@ -22,10 +22,10 @@ const sections = [
   {
     title: 'What You Cannot Do',
     content: [
-      'Resell, redistribute, or sub-license the BaseBox template or source code to others.',
-      'Create a competing template, UI kit, or design system using BaseBox as a foundation.',
+      'Resell, redistribute, or sub-license the FlowMind template or source code to others.',
+      'Create a competing template, UI kit, or design system using FlowMind as a foundation.',
       'Share your download link, duplicate link, or purchase access with other people.',
-      'Use BaseBox to create multiple separate commercial projects without purchasing additional licenses.',
+      'Use FlowMind to create multiple separate commercial projects without purchasing additional licenses.',
       'Remove copyright notices or attribution from any source files.',
     ],
   },
@@ -34,13 +34,13 @@ const sections = [
     content: [
       'If your team has multiple designers or developers who will access the source files, an Extended License is required.',
       'Extended licenses are available for $149 and cover unlimited team members for a single project.',
-      'For agency use (building multiple client products), contact us at license@basebox.ai for bulk pricing.',
+      'For agency use (building multiple client products), contact us at license@flowmind.ai for bulk pricing.',
     ],
   },
   {
     title: 'Intellectual Property',
     content: [
-      'BaseBox and its design system, component architecture, and visual language remain the intellectual property of BaseBox AI Ltd.',
+      'FlowMind and its design system, component architecture, and visual language remain the intellectual property of FlowMind AI Ltd.',
       'You retain full ownership of the content you add (copy, images, logos, brand assets).',
       'The underlying template structure, CSS system, and React component patterns are licensed, not sold.',
     ],
@@ -48,16 +48,16 @@ const sections = [
   {
     title: 'Updates and Support',
     content: [
-      'All license holders receive lifetime updates to the version of BaseBox they purchased.',
-      'Support is provided via the Framer marketplace chat and at docs.basebox.ai.',
-      'BaseBox reserves the right to change the template design, features, or structure in future updates.',
+      'All license holders receive lifetime updates to the version of FlowMind they purchased.',
+      'Support is provided via the Framer marketplace chat and at docs.flowmind.ai.',
+      'FlowMind reserves the right to change the template design, features, or structure in future updates.',
     ],
   },
   {
     title: 'Disclaimer',
     content: [
-      'BaseBox is provided "as-is" without warranty of any kind, express or implied.',
-      'BaseBox AI Ltd. is not liable for any loss of business, revenue, data, or consequential damages arising from use of the template.',
+      'FlowMind is provided "as-is" without warranty of any kind, express or implied.',
+      'FlowMind AI Ltd. is not liable for any loss of business, revenue, data, or consequential damages arising from use of the template.',
       'It is your responsibility to comply with applicable laws and regulations when building your product.',
     ],
   },
@@ -79,7 +79,7 @@ export default function LicensePage() {
               Standard <span>License Terms</span>
             </h1>
             <p className="iph-desc" style={{ margin: '0 auto 0' }}>
-              One license. One product. Unlimited builds with that product. Everything you need to know about what you can and cannot do with BaseBox.
+              One license. One product. Unlimited builds with that product. Everything you need to know about what you can and cannot do with FlowMind.
             </p>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function LicensePage() {
                 <li>Extended license — $149</li>
                 <li>Unlimited team members</li>
                 <li>Agency bulk pricing</li>
-                <li>license@basebox.ai</li>
+                <li>license@flowmind.ai</li>
               </ul>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function LicensePage() {
           <div className="legal-meta an">
             <span>Last updated: April 5, 2026</span>
             <span>·</span>
-            <span>Applies to: BaseBox v2.0+</span>
+            <span>Applies to: FlowMind v2.0+</span>
           </div>
 
           {sections.map((section, i) => (
@@ -153,7 +153,7 @@ export default function LicensePage() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 8v4M12 16h.01" /></svg>
             <div>
               Have questions about the license?{' '}
-              <a href="mailto:license@basebox.ai" style={{ color: 'var(--indigo)', fontWeight: 600 }}>Email us</a>{' '}
+              <a href="mailto:license@flowmind.ai" style={{ color: 'var(--indigo)', fontWeight: 600 }}>Email us</a>{' '}
               or check our <Link to="/docs" style={{ color: 'var(--indigo)', fontWeight: 600 }}>documentation</Link>.
               We respond within 24 hours.
             </div>

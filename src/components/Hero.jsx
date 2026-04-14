@@ -46,6 +46,7 @@ export default function Hero() {
   const heroCard3Ref   = useRef(null)
   const heroRef        = useRef(null)
   const spotlightRef   = useRef(null)
+  const workflowRef    = useRef(null)
 
   // ── MOUSE PARALLAX STATE ──
   const mouseNX = useRef(0)   // raw normalized mouse X: -1 → +1
@@ -73,6 +74,7 @@ export default function Hero() {
   const ds1Hover  = useRef(false);  const ds1HY  = useRef(0);  const ds1HS  = useRef(1)
   const ds2Hover  = useRef(false);  const ds2HY  = useRef(0);  const ds2HS  = useRef(1)
   const ds3Hover  = useRef(false);  const ds3HY  = useRef(0);  const ds3HS  = useRef(1)
+  const wfHover   = useRef(false);  const wfHY   = useRef(0);  const wfHS   = useRef(1)
 
   const [chartPeriod, setChartPeriod] = useState('7d')
   const [chartKey, setChartKey] = useState(0)
@@ -96,6 +98,8 @@ export default function Hero() {
       ds2HS.current  = lerp(ds2HS.current,  ds2Hover.current  ? 1.04 : 1, 0.12)
       ds3HY.current  = lerp(ds3HY.current,  ds3Hover.current  ? -10 : 0, 0.12)
       ds3HS.current  = lerp(ds3HS.current,  ds3Hover.current  ? 1.04 : 1, 0.12)
+      wfHY.current   = lerp(wfHY.current,   wfHover.current   ? -8  : 0, 0.12)
+      wfHS.current   = lerp(wfHS.current,   wfHover.current   ? 1.03: 1, 0.12)
 
       // ── CASCADING LERP — 3-tier micro-delay depth system ──
       // Dashboard responds first, then cards follow, then floating cards follow cards.
@@ -218,6 +222,16 @@ export default function Hero() {
           `translate3d(${(fx * 15).toFixed(2)}px,${pY3.toFixed(2)}px,0) rotate(${tilt3.toFixed(2)}deg) scale(${urcHS.current.toFixed(4)})`
       }
 
+      // ── WORKFLOW DIAGRAM CARD — bottom-left, counter-direction from premium card ──
+      if (workflowRef.current) {
+        const phaseWf = tNow * (Math.PI * 2 / 7.5) + Math.PI * 0.25
+        const floatWf = Math.sin(phaseWf) * 6
+        const tiltWf  = Math.sin(phaseWf) * 1.2
+        const wfY     = -sy * 0.05 + floatWf + wfHY.current + fy * 9
+        workflowRef.current.style.transform =
+          `translate3d(${(fx * -16).toFixed(2)}px,${wfY.toFixed(2)}px,0) rotate(${tiltWf.toFixed(2)}deg) scale(${wfHS.current.toFixed(4)})`
+      }
+
       raf = requestAnimationFrame(tick)
     }
 
@@ -271,21 +285,24 @@ export default function Hero() {
           style={{ willChange: 'transform, opacity' }}
         >
           <h1>
-            <span className="h1-line-1">A Complete AI SaaS System</span>
-            <span className="h1-line-2">Ready to Launch in Minutes</span>
+            <span className="h1-line-1">Ship Your AI Automation SaaS</span>
+            <span className="h1-line-2">In Days, Not Months</span>
           </h1>
 
           <p className="hsub">
-          Landing page, dashboard, authentication, CMS and more.
-          Everything structured and ready!
+            The complete React template for AI founders — workflow dashboard,
+            AI demo, auth, integrations, and every conversion page. Zero design required.
           </p>
 
           <div className="ha">
             <Link to="/pricing" className="btn btn-g btn-xl hero-cta-primary">
-              Get BaseBox
+              Get Template — $49
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
+            </Link>
+            <Link to="/demo" className="btn btn-o btn-xl">
+              Live Demo
             </Link>
           </div>
 
@@ -308,7 +325,7 @@ export default function Hero() {
               style={{ willChange: 'background, opacity', opacity: 0 }}
             />
 
-            {/* Upper-right floating card */}
+            {/* Upper-right floating card — AI assistant chat */}
             <div
               ref={heroCard3Ref}
               className="hero-upper-right-card"
@@ -316,10 +333,15 @@ export default function Hero() {
               onMouseEnter={() => { urcHover.current = true }}
               onMouseLeave={() => { urcHover.current = false }}
             >
-              <div className="hurc-label">Monthly Revenue</div>
-              <div className="hurc-value">$48K</div>
-              <div className="hurc-delta">↑ 22% this month</div>
-              <div className="hurc-bar"><div className="hurc-bar-fill" /></div>
+              <div className="hurc-chat-header">
+                <div className="hurc-chat-avatar">AI</div>
+                <span className="hurc-chat-name">FlowMind AI</span>
+                <div className="hpc-live" />
+              </div>
+              <div className="hurc-chat-messages">
+                <div className="hurc-chat-bubble hurc-user">Which workflows need attention?</div>
+                <div className="hurc-chat-bubble hurc-ai">4 underperforming. Efficiency +18% if optimized.</div>
+              </div>
             </div>
 
             {/* Premium floating card — most foreground */}
@@ -341,7 +363,7 @@ export default function Hero() {
               </div>
 
               <div className="hpc-metric">94.8%</div>
-              <div className="hpc-sub">Response Accuracy</div>
+              <div className="hpc-sub">Automation Accuracy</div>
 
               <div className="hpc-spark">
                 <svg viewBox="0 0 90 26" preserveAspectRatio="none">
@@ -375,7 +397,55 @@ export default function Hero() {
             {/* Floating depth card */}
             <div className="hero-float-card">
               <div className="hero-float-card-dot" style={{ background: '#059669' }} />
-              <span>12 users joined this week</span>
+              <span>Last workflow triggered · 0.3s ago</span>
+            </div>
+
+            {/* Workflow diagram card — bottom-left, automation scenario */}
+            <div
+              ref={workflowRef}
+              className="hero-workflow-card"
+              style={{ willChange: 'transform' }}
+              onMouseEnter={() => { wfHover.current = true }}
+              onMouseLeave={() => { wfHover.current = false }}
+            >
+              <div className="hwf-header">
+                <div className="hwf-live-dot" />
+                <span className="hwf-title">Calendar Automation</span>
+                <span className="hwf-badge">LIVE</span>
+              </div>
+              <div className="hwf-nodes">
+                <div className="hwf-node">
+                  <div className="hwf-node-icon">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </div>
+                  <span className="hwf-node-label">New Meeting</span>
+                </div>
+                <span className="hwf-arrow">→</span>
+                <div className="hwf-node">
+                  <div className="hwf-node-icon">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                  </div>
+                  <span className="hwf-node-label">AI Checks</span>
+                </div>
+                <span className="hwf-arrow">→</span>
+                <div className="hwf-node hwf-active">
+                  <div className="hwf-node-icon">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                  </div>
+                  <span className="hwf-node-label">Sync Cal</span>
+                </div>
+                <span className="hwf-arrow">→</span>
+                <div className="hwf-node">
+                  <div className="hwf-node-icon">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <span className="hwf-node-label">Notify Slack</span>
+                </div>
+              </div>
+              <div className="hwf-status">
+                <div className="hwf-status-dot" />
+                <span>Running now · step 3 of 4</span>
+              </div>
             </div>
 
             <div className="dw">
@@ -390,8 +460,8 @@ export default function Hero() {
                   onMouseEnter={() => { ds1Hover.current = true }}
                   onMouseLeave={() => { ds1Hover.current = false }}
                 >
-                  <div className="dsl">Active Users</div>
-                  <div className="dsv">12.4K</div>
+                  <div className="dsl">Workflows Run</div>
+                  <div className="dsv">847K</div>
                   <div className="dsc" key={chartPeriod}>{cd.delta}</div>
                 </div>
 
@@ -399,24 +469,24 @@ export default function Hero() {
                   onMouseEnter={() => { ds2Hover.current = true }}
                   onMouseLeave={() => { ds2Hover.current = false }}
                 >
-                  <div className="dsl">Conversion Rate</div>
-                  <div className="dsv">4.8%</div>
-                  <div className="dsc">↑ 1.2% vs avg</div>
+                  <div className="dsl">Automation Rate</div>
+                  <div className="dsv">94.2%</div>
+                  <div className="dsc">↑ 3.1% vs last week</div>
                 </div>
 
                 <div ref={card3Ref} className="ds" style={{ willChange: 'transform' }}
                   onMouseEnter={() => { ds3Hover.current = true }}
                   onMouseLeave={() => { ds3Hover.current = false }}
                 >
-                  <div className="dsl">MRR</div>
-                  <div className="dsv">$48K</div>
-                  <div className="dsc">↑ Growing fast</div>
+                  <div className="dsl">AI Tasks</div>
+                  <div className="dsv">1.2M</div>
+                  <div className="dsc">↑ 3.4K today</div>
                 </div>
 
                 {/* Chart — background element, slowest parallax */}
                 <div ref={chartRef} className="dch" style={{ willChange: 'transform' }}>
                   <div className="dchh">
-                    <div className="dcht">User Growth</div>
+                    <div className="dcht">Automation Runs</div>
                     <div className="dtb">
                       {['24h', '7d', '30d'].map((p) => (
                         <button

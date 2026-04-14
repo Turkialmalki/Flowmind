@@ -28,7 +28,7 @@ const posts = [
   {
     tag: 'Launch',
     tagColor: '#0ea5e9',
-    title: 'How We Hit $10K MRR in 60 Days Using BaseBox',
+    title: 'How We Hit $10K MRR in 60 Days Using FlowMind',
     excerpt: 'A step-by-step breakdown of our launch: what we shipped first, which pages converted best, and the one change that 3×\'d our trial-to-paid rate.',
     author: 'Jordan Park',
     date: 'Mar 28, 2026',

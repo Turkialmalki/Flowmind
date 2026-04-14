@@ -106,12 +106,12 @@ export default function LoginPage() {
       <div className="auth-box">
         <Link to="/" className="auth-brand">
           <LogoIcon height={52} />
-          <span className="auth-brand-name">BaseBox</span>
+          <span className="auth-brand-name">FlowMind</span>
         </Link>
 
         <div className="auth-box-inner">
           <h1 className="auth-box-title">Welcome back</h1>
-          <p className="auth-box-sub">Sign in to your BaseBox account</p>
+          <p className="auth-box-sub">Access your automation dashboard</p>
 
           <div className="auth-socials">
             <SocialButton
@@ -200,7 +200,7 @@ export default function LoginPage() {
                 </>
               ) : (
                 <>
-                  Sign in to BaseBox
+                  Sign in to FlowMind
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>

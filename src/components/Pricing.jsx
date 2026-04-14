@@ -68,7 +68,7 @@ const plans = [
     id: 'pro',
     name: 'Pro',
     badge: '⭐ Best Value — Most Popular',
-    desc: 'The complete BaseBox kit — every screen, page, and UI component you need to launch and grow.',
+    desc: 'The complete FlowMind kit — every screen, page, and UI component you need to launch and grow.',
     orig: '$99',
     price: '49',
     urgency: 'Launch price — save $50 today',
@@ -134,7 +134,7 @@ export default function Pricing() {
     <section className="section" id="pricing">
       <div className="container">
         <div className="prh an">
-          <div className="eyebrow">Get BaseBox</div>
+          <div className="eyebrow">Get FlowMind</div>
           <h2 className="st">
             One payment. <span>Everything included.</span><br />Launch this week.
           </h2>
@@ -228,7 +228,7 @@ export default function Pricing() {
             <div className="pr-ctable-head">
               <div className="pr-cth">What's included</div>
               <div className="pr-cth">Market rate</div>
-              <div className="pr-cth accent">BaseBox Pro</div>
+              <div className="pr-cth accent">FlowMind Pro</div>
             </div>
             {compareRows.map((row) => (
               <div className="pr-ctable-row" key={row.item}>

@@ -14,7 +14,7 @@ const RESPONSES = {
   default: `I've analyzed your product data. Here's what I found:\n\n• **Churn rate**: 4.2% MoM — above your 3% target\n• **Top exit reason**: Onboarding friction (38% of churned users never completed setup)\n• **Revenue at risk**: $8,400/month from likely churners\n• **Quick win**: Add a 3-step onboarding checklist — estimated 22% churn reduction\n\nWant me to generate the onboarding checklist now?`,
   churn: `**Churn Analysis — Last 90 Days**\n\nI found 3 root causes driving 78% of your churn:\n\n1. **No activation** (41%) — Users sign up but never connect their data source\n2. **Feature confusion** (26%) — Dashboard's analytics tab has 60% drop-off at first use\n3. **Pricing mismatch** (11%) — Team plan users downgrading after 45-day trial\n\n**Recommended actions:**\n• Send Day 2 setup reminder email\n• Add tooltip walkthrough to analytics tab\n• Offer Pro annual discount before trial ends\n\nShall I draft those emails?`,
   content: `**30-Day SaaS Content Calendar**\n\nWeek 1 — Awareness\n• Mon: "5 Signs Your SaaS Is Ready to Scale" (LinkedIn)\n• Wed: "How We Went From 0 to 500 Users in 60 Days" (Blog)\n• Fri: Product screenshot thread (Twitter/X)\n\nWeek 2 — Authority\n• Mon: Customer success story (Blog + Newsletter)\n• Wed: "AI vs Manual: Real Data From Our Users" (LinkedIn)\n• Fri: Behind-the-scenes product update (Twitter/X)\n\nWeek 3 — Conversion\n• Mon: "Free vs Pro: What You Actually Get" (Blog)\n• Wed: Limited-time offer announcement\n• Fri: FAQ thread based on support tickets\n\nWeek 4 — Retention\n• Mon: Feature spotlight video (Loom)\n• Wed: Community roundup & wins\n• Fri: Monthly metrics transparency post\n\nWant me to write any of these in full?`,
-  email: `**Cold Email Sequence — Free to Paid Conversion**\n\n**Email 1 — Day 0 (Welcome)**\nSubject: Your free trial starts now — here's how to get the most from it\n\nHi {{first_name}}, you just unlocked access to BaseBox...\n[Full email draft ready]\n\n**Email 2 — Day 3 (Value)**\nSubject: {{first_name}}, 3 things top users do in week 1\n\n**Email 3 — Day 7 (Social Proof)**\nSubject: Maya went from idea to $10K MRR in 45 days using this\n\n**Email 4 — Day 12 (Urgency)**\nSubject: Your trial expires in 3 days — here's a special offer\n\n**Email 5 — Day 14 (Last Chance)**\nSubject: Last chance: 30% off Pro — expires tonight\n\nEstimated lift: +18% free-to-paid conversion based on similar sequences. Export full drafts?`,
+  email: `**Cold Email Sequence — Free to Paid Conversion**\n\n**Email 1 — Day 0 (Welcome)**\nSubject: Your free trial starts now — here's how to get the most from it\n\nHi {{first_name}}, you just unlocked access to FlowMind...\n[Full email draft ready]\n\n**Email 2 — Day 3 (Value)**\nSubject: {{first_name}}, 3 things top users do in week 1\n\n**Email 3 — Day 7 (Social Proof)**\nSubject: Maya went from idea to $10K MRR in 45 days using this\n\n**Email 4 — Day 12 (Urgency)**\nSubject: Your trial expires in 3 days — here's a special offer\n\n**Email 5 — Day 14 (Last Chance)**\nSubject: Last chance: 30% off Pro — expires tonight\n\nEstimated lift: +18% free-to-paid conversion based on similar sequences. Export full drafts?`,
 }
 
 function getResponse(input) {
@@ -128,7 +128,7 @@ export default function AIDemoPage() {
               Talk to your product.<br /><span>In plain English.</span>
             </h1>
             <p className="iph-desc" style={{ margin: '0 auto 36px' }}>
-              BaseBox's AI layer understands your SaaS metrics, content goals, and user data.
+              FlowMind's AI layer understands your SaaS metrics, content goals, and user data.
               Type any question below — no training, no setup, no prompt engineering required.
             </p>
             <div className="ai-demo-trust">
@@ -153,7 +153,7 @@ export default function AIDemoPage() {
                 <div className="ai-demo-chat-header">
                   <div className="ai-demo-chat-status">
                     <div className="ai-demo-status-dot" />
-                    <span>BaseBox AI</span>
+                    <span>FlowMind AI</span>
                     <span className="ai-demo-status-tag">GPT-4o</span>
                   </div>
                   <div className="ai-demo-chat-actions">
@@ -292,7 +292,7 @@ export default function AIDemoPage() {
             <div className="eyebrow">Capabilities</div>
             <h2 className="st">Built for every SaaS workflow</h2>
             <p className="sd" style={{ margin: '0 auto' }}>
-              BaseBox AI connects to your product data and adapts its responses to your specific context — not generic advice.
+              FlowMind AI connects to your product data and adapts its responses to your specific context — not generic advice.
             </p>
           </div>
           <div className="ai-caps-grid">
@@ -314,11 +314,11 @@ export default function AIDemoPage() {
             <div className="eyebrow">Ready to ship?</div>
             <h2 className="st">Add this AI demo to your<br /><span>SaaS in 60 minutes.</span></h2>
             <p className="sd" style={{ margin: '0 auto 36px' }}>
-              BaseBox includes the full interactive demo — ready to connect to your backend.
+              FlowMind includes the full interactive demo — ready to connect to your backend.
             </p>
             <div className="ctac">
               <Link to="/pricing" className="ctab-cta-btn">
-                Get BaseBox — $49
+                Get FlowMind — $49
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/docs" className="btn btn-o">Read the Docs</Link>

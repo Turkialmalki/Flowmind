@@ -18,7 +18,7 @@ function DashMockFull() {
       <div className="db-sidebar">
         <div className="db-logo">
           <div className="db-logo-mark"><BoxIcon height={26} /></div>
-          <div className="db-logo-t">BaseBox</div>
+          <div className="db-logo-t">FlowMind</div>
         </div>
         <div className="db-nav">
           {[
@@ -180,7 +180,7 @@ export default function FeatureDashboard() {
               <p className="sd" style={{ maxWidth: 'none' }}>
                 Visitors who see a polished dashboard preview before signing up convert at significantly
                 higher rates. It answers the question "What will I get?" before they even have to ask.
-                BaseBox's dashboard UI is designed to make your product look established and capable
+                FlowMind's dashboard UI is designed to make your product look established and capable
                 — even on day one.
               </p>
               <Link to="/pricing" className="btn btn-g" style={{ marginTop: '28px', display: 'inline-flex' }}>
