@@ -1,0 +1,385 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- Background -->
+    <radialGradient id="hv-bg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#0c0f26"/>
+      <stop offset="55%" stop-color="#07091a"/>
+      <stop offset="100%" stop-color="#030508"/>
+    </radialGradient>
+
+    <!-- Orb gradients -->
+    <radialGradient id="hv-orb1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.40"/>
+      <stop offset="60%" stop-color="#6366f1" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hv-orb2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hv-orb3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hv-orb4" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hv-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Gradients for elements -->
+    <linearGradient id="hv-indigo-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="hv-sky-g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="hv-chart-g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hv-line-g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="hv-h-fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hv-v-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="hv-glow-sm">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="hv-glow-md">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="hv-glow-lg" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="hv-float-shadow" x="-15%" y="-20%" width="130%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="28" flood-color="#000" flood-opacity="0.60"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#6366f1" flood-opacity="0.15"/>
+    </filter>
+    <filter id="hv-card-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+
+    <pattern id="hv-dots" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1.2" fill="#6366f1" opacity="0.09"/>
+    </pattern>
+
+    <clipPath id="hv-dash-clip">
+      <rect x="240" y="160" width="1440" height="760" rx="20"/>
+    </clipPath>
+    <clipPath id="hv-chart-clip">
+      <rect x="360" y="445" width="1060" height="280"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <rect width="1920" height="1080" fill="url(#hv-bg)"/>
+  <rect width="1920" height="1080" fill="url(#hv-dots)"/>
+
+  <!-- Ambient orbs -->
+  <ellipse cx="440" cy="320" rx="720" ry="580" fill="url(#hv-orb1)"/>
+  <ellipse cx="1560" cy="780" rx="600" ry="480" fill="url(#hv-orb2)"/>
+  <ellipse cx="1400" cy="200" rx="480" ry="360" fill="url(#hv-orb3)"/>
+  <ellipse cx="200" cy="900" rx="400" ry="300" fill="url(#hv-orb4)"/>
+
+  <!-- Central glow spotlight -->
+  <ellipse cx="960" cy="540" rx="700" ry="480" fill="url(#hv-center)"/>
+
+  <!-- ── GRID ACCENT LINES ── -->
+  <!-- Horizontal -->
+  <line x1="0" y1="540" x2="1920" y2="540" stroke="url(#hv-h-fade)" stroke-width="1.5"/>
+  <line x1="0" y1="270" x2="1920" y2="270" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.07"/>
+  <line x1="0" y1="810" x2="1920" y2="810" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.07"/>
+  <!-- Vertical -->
+  <line x1="960" y1="0" x2="960" y2="1080" stroke="url(#hv-v-fade)" stroke-width="1.5"/>
+  <line x1="480" y1="0" x2="480" y2="1080" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.07"/>
+  <line x1="1440" y1="0" x2="1440" y2="1080" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.07"/>
+
+  <!-- ── MAIN DASHBOARD PANEL (central, slight tilt) ── -->
+  <g filter="url(#hv-float-shadow)" transform="perspective(2200px) rotateX(4deg) rotateY(-2deg) translateY(-20px)">
+    <!-- Panel background -->
+    <rect x="240" y="160" width="1440" height="760" rx="20" fill="#0b0f1a"/>
+    <g clip-path="url(#hv-dash-clip)">
+
+      <!-- ── TITLE BAR ── -->
+      <rect x="240" y="160" width="1440" height="44" fill="#090b18"/>
+      <line x1="240" y1="204" x2="1680" y2="204" stroke="#1a2240" stroke-width="1"/>
+      <circle cx="274" cy="182" r="6" fill="#ff5f57"/>
+      <circle cx="298" cy="182" r="6" fill="#febc2e"/>
+      <circle cx="322" cy="182" r="6" fill="#28c840"/>
+      <rect x="720" y="172" width="480" height="20" rx="10" fill="#0d1225"/>
+      <text x="960" y="186" fill="#2a3550" font-family="'SF Mono',monospace" font-size="11" text-anchor="middle">app.basebox.io/dashboard</text>
+
+      <!-- ── SIDEBAR ── -->
+      <rect x="240" y="204" width="200" height="716" fill="#0a0c1c"/>
+      <line x1="440" y1="204" x2="440" y2="920" stroke="#1a2240" stroke-width="1"/>
+
+      <!-- Logo -->
+      <rect x="260" y="224" width="12" height="12" rx="3" fill="#6366f1"/>
+      <rect x="277" y="224" width="12" height="12" rx="3" fill="#6366f1" fill-opacity="0.55"/>
+      <rect x="260" y="240" width="12" height="12" rx="3" fill="#6366f1" fill-opacity="0.30"/>
+      <rect x="277" y="240" width="12" height="12" rx="3" fill="#6366f1" fill-opacity="0.15"/>
+      <text x="300" y="240" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="14" font-weight="700" letter-spacing="-0.02em">BaseBox</text>
+
+      <line x1="256" y1="266" x2="424" y2="266" stroke="#1a2240" stroke-width="1"/>
+
+      <!-- Sidebar nav -->
+      <rect x="252" y="278" width="176" height="32" rx="8" fill="#6366f1" fill-opacity="0.14"/>
+      <rect x="252" y="287" width="3" height="14" rx="1.5" fill="#6366f1"/>
+      <text x="270" y="299" fill="#6366f1" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Overview</text>
+      <text x="270" y="335" fill="#374151" font-family="system-ui,sans-serif" font-size="13">Analytics</text>
+      <text x="270" y="368" fill="#374151" font-family="system-ui,sans-serif" font-size="13">Users</text>
+      <text x="270" y="401" fill="#374151" font-family="system-ui,sans-serif" font-size="13">Revenue</text>
+      <text x="270" y="434" fill="#374151" font-family="system-ui,sans-serif" font-size="13">Reports</text>
+
+      <line x1="256" y1="836" x2="424" y2="836" stroke="#1a2240" stroke-width="1"/>
+      <text x="270" y="858" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="12">Settings</text>
+      <text x="270" y="880" fill="#2d3d55" font-family="system-ui,sans-serif" font-size="12">Help</text>
+      <rect x="258" y="892" width="24" height="24" rx="7" fill="url(#hv-indigo-g)"/>
+      <text x="270" y="908" fill="#fff" font-family="system-ui,sans-serif" font-size="8" font-weight="700" text-anchor="middle">TK</text>
+      <text x="291" y="902" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Turki K.</text>
+      <text x="291" y="916" fill="#374151" font-family="system-ui,sans-serif" font-size="10">Admin</text>
+
+      <!-- ── MAIN AREA ── -->
+      <rect x="440" y="204" width="1240" height="716" fill="#111827"/>
+
+      <!-- TOP NAV -->
+      <line x1="440" y1="252" x2="1680" y2="252" stroke="#1a2240" stroke-width="1"/>
+      <text x="466" y="234" fill="#6366f1" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Overview</text>
+      <rect x="466" y="247" width="56" height="2.5" rx="1.25" fill="#6366f1"/>
+      <text x="542" y="234" fill="#374151" font-family="system-ui,sans-serif" font-size="13">Analytics</text>
+      <text x="614" y="234" fill="#374151" font-family="system-ui,sans-serif" font-size="13">Users</text>
+      <text x="666" y="234" fill="#374151" font-family="system-ui,sans-serif" font-size="13">Revenue</text>
+
+      <!-- Live pill -->
+      <rect x="1536" y="219" width="58" height="24" rx="12" fill="#059669" fill-opacity="0.10"/>
+      <rect x="1536" y="219" width="58" height="24" rx="12" fill="none" stroke="#059669" stroke-width="1" stroke-opacity="0.28"/>
+      <circle cx="1552" cy="231" r="3.5" fill="#10b981"/>
+      <text x="1563" y="236" fill="#059669" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Live</text>
+      <!-- Bell -->
+      <rect x="1604" y="219" width="30" height="30" rx="8" fill="#1a2240"/>
+      <path d="M1619,226 a5,5 0 0,1 5,5v4l2.5,2.5h-15l2.5-2.5v-4 a5,5 0 0,1 5-5z" fill="none" stroke="#4b5563" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M1617,242 a2,2 0 0,0 4,0" fill="none" stroke="#4b5563" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="1627" cy="223" r="3.5" fill="#f472b6"/>
+      <!-- Avatar -->
+      <rect x="1644" y="219" width="30" height="30" rx="9" fill="url(#hv-indigo-g)"/>
+      <text x="1659" y="238" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">TK</text>
+
+      <!-- ── BODY ── -->
+      <!-- Chart header -->
+      <text x="466" y="286" fill="#64748b" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.12em">MONTHLY RECURRING REVENUE</text>
+      <text x="466" y="334" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="52" font-weight="800" letter-spacing="-0.04em">$48K</text>
+      <rect x="466" y="347" width="152" height="22" rx="11" fill="#059669" fill-opacity="0.10"/>
+      <rect x="466" y="347" width="152" height="22" rx="11" fill="none" stroke="#059669" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="476" y="362" fill="#059669" font-family="system-ui,sans-serif" font-size="11" font-weight="700">↑ +22% vs last month</text>
+
+      <!-- Tabs -->
+      <rect x="1560" y="280" width="40" height="26" rx="8" fill="#1a2240"/>
+      <text x="1580" y="297" fill="#64748b" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">7d</text>
+      <rect x="1606" y="280" width="46" height="26" rx="8" fill="#6366f1" fill-opacity="0.16"/>
+      <text x="1629" y="297" fill="#6366f1" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">30d</text>
+      <rect x="1658" y="280" width="40" height="26" rx="8" fill="#1a2240"/>
+      <text x="1678" y="297" fill="#64748b" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">90d</text>
+
+      <!-- CHART CARD -->
+      <rect x="456" y="385" width="1204" height="320" rx="14" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
+
+      <!-- Grid lines -->
+      <line x1="456" y1="440" x2="1660" y2="440" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
+      <line x1="456" y1="500" x2="1660" y2="500" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
+      <line x1="456" y1="560" x2="1660" y2="560" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
+      <line x1="456" y1="620" x2="1660" y2="620" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
+
+      <!-- Y labels -->
+      <text x="468" y="434" fill="#222f44" font-family="system-ui,sans-serif" font-size="9">$48K</text>
+      <text x="468" y="494" fill="#222f44" font-family="system-ui,sans-serif" font-size="9">$36K</text>
+      <text x="468" y="554" fill="#222f44" font-family="system-ui,sans-serif" font-size="9">$24K</text>
+      <text x="468" y="614" fill="#222f44" font-family="system-ui,sans-serif" font-size="9">$12K</text>
+
+      <!-- Chart path -->
+      <g clip-path="url(#hv-chart-clip)">
+        <path d="M360,655 C412,655 426,635 478,635 C534,635 548,613 600,613 C656,613 670,623 720,623 C776,623 790,595 840,595 C896,595 910,566 960,566 C1016,566 1029,536 1079,536 C1135,536 1148,506 1198,506 C1254,506 1265,476 1315,476 C1368,476 1376,446 1420,446 L1420,725 L360,725 Z"
+          fill="url(#hv-chart-g)"/>
+        <!-- Glow -->
+        <path d="M360,655 C412,655 426,635 478,635 C534,635 548,613 600,613 C656,613 670,623 720,623 C776,623 790,595 840,595 C896,595 910,566 960,566 C1016,566 1029,536 1079,536 C1135,536 1148,506 1198,506 C1254,506 1265,476 1315,476 C1368,476 1376,446 1420,446"
+          fill="none" stroke="#6366f1" stroke-width="10" stroke-opacity="0.16" stroke-linecap="round"/>
+        <!-- Line -->
+        <path d="M360,655 C412,655 426,635 478,635 C534,635 548,613 600,613 C656,613 670,623 720,623 C776,623 790,595 840,595 C896,595 910,566 960,566 C1016,566 1029,536 1079,536 C1135,536 1148,506 1198,506 C1254,506 1265,476 1315,476 C1368,476 1376,446 1420,446"
+          fill="none" stroke="url(#hv-line-g)" stroke-width="3" stroke-linecap="round"/>
+        <!-- Endpoint -->
+        <circle cx="1420" cy="446" r="12" fill="#6366f1" fill-opacity="0.10"/>
+        <circle cx="1420" cy="446" r="5" fill="#6366f1" stroke="#0d1220" stroke-width="3" filter="url(#hv-glow-sm)"/>
+        <line x1="1420" y1="446" x2="1420" y2="725" stroke="#6366f1" stroke-width="1" stroke-opacity="0.08" stroke-dasharray="3,5"/>
+      </g>
+
+      <!-- X labels -->
+      <text x="360" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Oct</text>
+      <text x="468" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Nov</text>
+      <text x="576" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Dec</text>
+      <text x="684" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Jan</text>
+      <text x="792" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Feb</text>
+      <text x="900" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Mar</text>
+      <text x="1008" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Apr</text>
+      <text x="1116" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">May</text>
+      <text x="1224" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Jun</text>
+      <text x="1332" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Jul</text>
+      <text x="1400" y="720" fill="#1e2d44" font-family="system-ui,sans-serif" font-size="9">Aug</text>
+
+      <!-- KPI CARDS (4) -->
+      <!-- Card 1: MRR -->
+      <rect x="456" y="722" width="280" height="120" rx="14" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
+      <rect x="456" y="756" width="3" height="44" rx="1.5" fill="#818cf8"/>
+      <circle cx="474" cy="742" r="4" fill="#818cf8" fill-opacity="0.85"/>
+      <text x="484" y="746" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">MRR</text>
+      <rect x="664" y="733" width="62" height="18" rx="9" fill="#818cf8" fill-opacity="0.12"/>
+      <text x="695" y="746" fill="#818cf8" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↑ +22%</text>
+      <text x="468" y="796" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="32" font-weight="700" letter-spacing="-0.03em">$48K</text>
+      <polyline points="612,822 626,810 638,798 650,784 662,768 674,754 686,740 698,728 710,716 722,706 734,696" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Card 2: Users -->
+      <rect x="750" y="722" width="280" height="120" rx="14" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
+      <rect x="750" y="756" width="3" height="44" rx="1.5" fill="#34d399"/>
+      <circle cx="768" cy="742" r="4" fill="#34d399" fill-opacity="0.85"/>
+      <text x="778" y="746" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">ACTIVE USERS</text>
+      <rect x="962" y="733" width="62" height="18" rx="9" fill="#34d399" fill-opacity="0.12"/>
+      <text x="993" y="746" fill="#34d399" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↑ +18%</text>
+      <text x="762" y="796" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="32" font-weight="700" letter-spacing="-0.03em">12.4K</text>
+      <polyline points="906,822 920,810 932,800 944,789 956,776 968,762 980,750 992,738 1004,726 1016,716 1028,704" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Card 3: Conv -->
+      <rect x="1044" y="722" width="280" height="120" rx="14" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
+      <rect x="1044" y="756" width="3" height="44" rx="1.5" fill="#60a5fa"/>
+      <circle cx="1062" cy="742" r="4" fill="#60a5fa" fill-opacity="0.85"/>
+      <text x="1072" y="746" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">CONV. RATE</text>
+      <rect x="1252" y="733" width="62" height="18" rx="9" fill="#60a5fa" fill-opacity="0.12"/>
+      <text x="1283" y="746" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↑ +1.2%</text>
+      <text x="1056" y="796" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="32" font-weight="700" letter-spacing="-0.03em">4.8%</text>
+      <polyline points="1200,822 1214,812 1226,803 1238,793 1250,782 1262,770 1274,758 1286,746 1298,736 1310,726 1322,714" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Card 4: Churn -->
+      <rect x="1338" y="722" width="280" height="120" rx="14" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
+      <rect x="1338" y="756" width="3" height="44" rx="1.5" fill="#f472b6"/>
+      <circle cx="1356" cy="742" r="4" fill="#f472b6" fill-opacity="0.85"/>
+      <text x="1366" y="746" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">CHURN</text>
+      <rect x="1546" y="733" width="62" height="18" rx="9" fill="#f472b6" fill-opacity="0.12"/>
+      <text x="1577" y="746" fill="#f472b6" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">↓ -0.4%</text>
+      <text x="1350" y="796" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="32" font-weight="700" letter-spacing="-0.03em">2.1%</text>
+      <polyline points="1494,822 1508,820 1520,823 1532,817 1544,811 1556,804 1568,797 1580,789 1592,780 1604,770 1616,760" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    </g>
+    <!-- Panel border -->
+    <rect x="240" y="160" width="1440" height="760" rx="20" fill="none" stroke="#2a3550" stroke-width="1.5"/>
+  </g>
+
+  <!-- ── FLOATING METRIC CARDS (outside panel) ── -->
+  <!-- Top-left: User signup notification -->
+  <g transform="translate(48, 260)" filter="url(#hv-card-shadow)">
+    <rect width="210" height="90" rx="18" fill="#111827"/>
+    <rect width="210" height="90" rx="18" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.30"/>
+    <!-- Subtle inner glow top -->
+    <rect width="210" height="2" rx="1" fill="url(#hv-line-g)" opacity="0.4"/>
+    <circle cx="26" cy="26" r="10" fill="#059669" fill-opacity="0.14"/>
+    <circle cx="26" cy="26" r="5" fill="#10b981"/>
+    <text x="44" y="21" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11" font-weight="600">New Signup</text>
+    <text x="44" y="36" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10">sarah.chen@company.io</text>
+    <text x="18" y="63" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="24" font-weight="700">+1,240</text>
+    <text x="100" y="63" fill="#34d399" font-family="system-ui,sans-serif" font-size="12" font-weight="600"> users</text>
+    <text x="18" y="79" fill="#374151" font-family="system-ui,sans-serif" font-size="10">↑ 18% this week · 2m ago</text>
+  </g>
+
+  <!-- Top-right: Revenue goal -->
+  <g transform="translate(1668, 170)" filter="url(#hv-card-shadow)">
+    <rect width="204" height="90" rx="18" fill="#111827"/>
+    <rect width="204" height="90" rx="18" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.30"/>
+    <rect width="204" height="2" rx="1" fill="url(#hv-indigo-g)" opacity="0.5"/>
+    <text x="18" y="22" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Monthly Goal</text>
+    <text x="18" y="50" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="24" font-weight="700">$48K</text>
+    <text x="82" y="50" fill="#64748b" font-family="system-ui,sans-serif" font-size="14" font-weight="500"> / $50K</text>
+    <!-- Progress bar -->
+    <rect x="18" y="60" width="168" height="7" rx="3.5" fill="#1a2240"/>
+    <rect x="18" y="60" width="161" height="7" rx="3.5" fill="url(#hv-indigo-g)"/>
+    <text x="18" y="80" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="10" font-weight="600">96% complete</text>
+    <text x="140" y="80" fill="#374151" font-family="system-ui,sans-serif" font-size="10">$2K left</text>
+  </g>
+
+  <!-- Bottom-left: Churn -->
+  <g transform="translate(48, 730)" filter="url(#hv-card-shadow)">
+    <rect width="196" height="82" rx="18" fill="#111827"/>
+    <rect width="196" height="82" rx="18" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.22"/>
+    <text x="18" y="22" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Churn Rate</text>
+    <text x="18" y="52" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="28" font-weight="700">2.1%</text>
+    <rect x="82" y="40" width="66" height="18" rx="9" fill="#059669" fill-opacity="0.12"/>
+    <text x="115" y="53" fill="#10b981" font-family="system-ui,sans-serif" font-size="11" font-weight="700" text-anchor="middle">↓ -0.4%</text>
+    <text x="18" y="70" fill="#374151" font-family="system-ui,sans-serif" font-size="10">lowest in 6 months</text>
+  </g>
+
+  <!-- Bottom-right: Active users pulse -->
+  <g transform="translate(1676, 726)" filter="url(#hv-card-shadow)">
+    <rect width="196" height="82" rx="18" fill="#111827"/>
+    <rect width="196" height="82" rx="18" fill="none" stroke="#34d399" stroke-width="1.5" stroke-opacity="0.25"/>
+    <circle cx="18" cy="20" r="6" fill="#10b981" fill-opacity="0.20"/>
+    <circle cx="18" cy="20" r="3.5" fill="#10b981"/>
+    <text x="32" y="18" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Active Now</text>
+    <text x="32" y="32" fill="#4b5563" font-family="system-ui,sans-serif" font-size="10">real-time</text>
+    <text x="14" y="60" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="28" font-weight="700">847</text>
+    <rect x="74" y="48" width="60" height="18" rx="9" fill="#34d399" fill-opacity="0.12"/>
+    <text x="104" y="61" fill="#34d399" font-family="system-ui,sans-serif" font-size="11" font-weight="700" text-anchor="middle">↑ +23</text>
+    <text x="14" y="76" fill="#374151" font-family="system-ui,sans-serif" font-size="10">users online right now</text>
+  </g>
+
+  <!-- ── FLOATING PARTICLES (subtle) ── -->
+  <g filter="url(#hv-glow-md)">
+    <circle cx="140" cy="150" r="2.5" fill="#6366f1" opacity="0.85"/>
+    <circle cx="380" cy="80" r="2" fill="#8b5cf6" opacity="0.75"/>
+    <circle cx="1600" cy="100" r="2.5" fill="#6366f1" opacity="0.80"/>
+    <circle cx="1800" cy="400" r="3" fill="#8b5cf6" opacity="0.70"/>
+    <circle cx="1760" cy="900" r="2.5" fill="#0ea5e9" opacity="0.75"/>
+    <circle cx="120" cy="960" r="2" fill="#6366f1" opacity="0.65"/>
+    <circle cx="960" cy="60" r="2.5" fill="#8b5cf6" opacity="0.80"/>
+    <circle cx="960" cy="1020" r="2" fill="#6366f1" opacity="0.70"/>
+    <circle cx="50" cy="540" r="2" fill="#8b5cf6" opacity="0.60"/>
+    <circle cx="1870" cy="540" r="2.5" fill="#6366f1" opacity="0.65"/>
+  </g>
+
+  <!-- ── CORNER ACCENTS ── -->
+  <g filter="url(#hv-glow-sm)" opacity="0.5">
+    <line x1="0" y1="0" x2="120" y2="0" stroke="#6366f1" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#6366f1" stroke-width="2"/>
+    <circle cx="0" cy="0" r="4" fill="#6366f1"/>
+    <line x1="1920" y1="0" x2="1800" y2="0" stroke="#8b5cf6" stroke-width="2"/>
+    <line x1="1920" y1="0" x2="1920" y2="120" stroke="#8b5cf6" stroke-width="2"/>
+    <circle cx="1920" cy="0" r="4" fill="#8b5cf6"/>
+    <line x1="0" y1="1080" x2="120" y2="1080" stroke="#6366f1" stroke-width="2"/>
+    <line x1="0" y1="1080" x2="0" y2="960" stroke="#6366f1" stroke-width="2"/>
+    <circle cx="0" cy="1080" r="4" fill="#6366f1"/>
+    <line x1="1920" y1="1080" x2="1800" y2="1080" stroke="#8b5cf6" stroke-width="2"/>
+    <line x1="1920" y1="1080" x2="1920" y2="960" stroke="#8b5cf6" stroke-width="2"/>
+    <circle cx="1920" cy="1080" r="4" fill="#8b5cf6"/>
+  </g>
+
+  <!-- ── FLOWING BACKGROUND CURVES (very subtle) ── -->
+  <g fill="none" stroke="#6366f1" stroke-opacity="0.04" stroke-width="1.5">
+    <path d="M0,360 Q480,280 960,480 Q1440,680 1920,520"/>
+    <path d="M0,720 Q480,640 960,600 Q1440,560 1920,660"/>
+    <path d="M0,180 Q480,380 960,200 Q1440,20 1920,300"/>
+  </g>
+
+</svg>
