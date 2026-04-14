@@ -27,7 +27,7 @@ function PageTransition({ children }) {
 export default function Layout() {
   useScrollReveal()
   return (
-    <>
+    <div className="site-layout">
       <Nav />
       <main>
         <PageTransition>
@@ -35,6 +35,6 @@ export default function Layout() {
         </PageTransition>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
