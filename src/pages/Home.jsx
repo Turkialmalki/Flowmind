@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import DashboardReveal from '../components/DashboardReveal'
+import AutomationPipeline from '../components/AutomationPipeline'
 import SocialProof from '../components/SocialProof'
 import WhySection from '../components/WhySection'
 import HowItWorks from '../components/HowItWorks'
@@ -21,6 +22,7 @@ export default function Home() {
     <>
       <Hero />
       <DashboardReveal />
+      <AutomationPipeline />
       <SocialProof />
       <WhySection />
       <HowItWorks />

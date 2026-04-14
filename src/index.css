@@ -6656,3 +6656,472 @@ kbd {
 .ndb-int-status { font-size: 9.5px; font-weight: 600; color: #10b981; }
 .ndb-status-sync { color: #f59e0b; }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   AUTOMATION PIPELINE SECTION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section shell ── */
+.ap-section {
+  position: relative;
+  background: #09090f;
+  padding: 112px 0 88px;
+  overflow: hidden;
+  /* Scroll-reveal — starts offscreen */
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity  0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ap-section.ap-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ambient radial glows */
+.ap-bg-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%,  rgba(91,91,214,.13) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 35% at 15% 65%,  rgba(139,92,246,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 35% at 85% 40%,  rgba(99,102,241,.07) 0%, transparent 60%);
+}
+
+.ap-container { position: relative; z-index: 1; }
+
+/* ── Header ── */
+.ap-header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1) .1s,
+              transform .85s cubic-bezier(.16,1,.3,1) .1s;
+}
+.ap-visible .ap-header { opacity: 1; transform: translateY(0); }
+
+.ap-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #818cf8;
+  background: rgba(129,140,248,.08);
+  border: 1px solid rgba(129,140,248,.2);
+  border-radius: 99px;
+  padding: 5px 14px 5px 10px;
+  margin-bottom: 22px;
+}
+.ap-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #818cf8;
+  box-shadow: 0 0 6px rgba(129,140,248,.8);
+  animation: ap-live-pulse 2s ease infinite;
+  flex-shrink: 0;
+}
+
+.ap-title {
+  font-family: var(--display);
+  font-size: clamp(30px, 4.5vw, 46px);
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -.025em;
+  line-height: 1.12;
+  margin: 0 0 16px;
+}
+
+.ap-subtitle {
+  font-size: 16px;
+  color: rgba(148,163,184,.75);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.68;
+}
+
+/* ── Pipeline card (glass) ── */
+.ap-pipeline-wrap {
+  position: relative;
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 20px;
+  padding: 52px 44px 40px;
+  box-shadow:
+    0 0 0 1px rgba(129,140,248,.05),
+    0 28px 72px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.045);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1) .22s,
+              transform .85s cubic-bezier(.16,1,.3,1) .22s;
+}
+.ap-visible .ap-pipeline-wrap { opacity: 1; transform: translateY(0); }
+
+/* ── LIVE badge ── */
+.ap-live-badge {
+  position: absolute;
+  top: 16px; right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16,185,129,.07);
+  border: 1px solid rgba(16,185,129,.18);
+  border-radius: 99px;
+  padding: 4px 11px 4px 7px;
+}
+.ap-live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 7px rgba(16,185,129,.75);
+  animation: ap-live-pulse 2s ease infinite;
+  flex-shrink: 0;
+}
+.ap-live-word {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .07em;
+  color: #10b981;
+}
+.ap-live-sub {
+  font-size: 10px;
+  color: rgba(16,185,129,.65);
+}
+
+/* ── Pipeline row ── */
+.ap-pipeline {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Each node column */
+.ap-pipeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+}
+
+/* Node container (rings + card) */
+.ap-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .45s cubic-bezier(.16,1,.3,1);
+}
+.ap-node-active { transform: translateY(-4px); }
+
+/* Pulsing rings — hidden by default, animate when active */
+.ap-ring {
+  position: absolute;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(129,140,248,.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.ap-ring2 {
+  width: 94px; height: 94px;
+  border-color: rgba(129,140,248,.25);
+}
+.ap-node-active .ap-ring {
+  opacity: 1;
+  animation: ap-ring-out 1.8s ease-out infinite;
+}
+.ap-node-active .ap-ring2 {
+  opacity: 1;
+  animation: ap-ring-out 1.8s ease-out .45s infinite;
+}
+/* Green node (done step) — green rings */
+.ap-node-green.ap-node-active .ap-ring  { border-color: rgba(52,211,153,.6); }
+.ap-node-green.ap-node-active .ap-ring2 { border-color: rgba(52,211,153,.25); }
+
+@keyframes ap-ring-out {
+  0%   { transform: scale(.78); opacity: .9; }
+  60%  { opacity: .25; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+/* Node card — glass dark pill */
+.ap-node-card {
+  width: 58px; height: 58px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 4px 18px rgba(0,0,0,.32);
+  color: rgba(148,163,184,.55);
+  transition:
+    background    .4s ease,
+    border-color  .4s ease,
+    box-shadow    .4s ease,
+    color         .35s ease;
+  position: relative;
+  z-index: 1;
+}
+.ap-node-card:hover {
+  border-color: rgba(129,140,248,.22);
+  box-shadow: 0 4px 24px rgba(129,140,248,.12), 0 4px 18px rgba(0,0,0,.32);
+}
+
+/* Active — indigo glow */
+.ap-node-active .ap-node-card {
+  background: rgba(99,102,241,.13);
+  border-color: rgba(99,102,241,.42);
+  box-shadow:
+    0 0 0 1px rgba(99,102,241,.18),
+    0 0 36px rgba(99,102,241,.38),
+    0 4px 20px rgba(0,0,0,.3);
+  color: #c7d2fe;
+}
+/* Highlight step (Calendar Sync) — stronger glow */
+.ap-node-hl.ap-node-active .ap-node-card {
+  background: rgba(99,102,241,.19);
+  border-color: rgba(99,102,241,.55);
+  box-shadow:
+    0 0 0 1px rgba(99,102,241,.25),
+    0 0 52px rgba(99,102,241,.48),
+    0 4px 20px rgba(0,0,0,.3);
+}
+/* Done step — green glow */
+.ap-node-green.ap-node-active .ap-node-card {
+  background: rgba(16,185,129,.12);
+  border-color: rgba(16,185,129,.44);
+  box-shadow:
+    0 0 0 1px rgba(16,185,129,.18),
+    0 0 36px rgba(16,185,129,.38),
+    0 4px 20px rgba(0,0,0,.3);
+  color: #6ee7b7;
+}
+/* Done (passed) steps — faint indigo tint */
+.ap-node-done .ap-node-card {
+  border-color: rgba(129,140,248,.14);
+  color: rgba(129,140,248,.5);
+}
+
+.ap-node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Labels below each node */
+.ap-node-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  max-width: 96px;
+  text-align: center;
+}
+.ap-node-type {
+  font-family: var(--mono);
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(100,116,139,.6);
+  transition: color .35s ease;
+}
+.ap-node-active .ap-node-type  { color: rgba(129,140,248,.8); }
+.ap-node-green.ap-node-active .ap-node-type { color: rgba(52,211,153,.75); }
+
+.ap-node-name {
+  font-size: 11.5px; font-weight: 500;
+  color: rgba(148,163,184,.55);
+  line-height: 1.35;
+  transition: color .35s ease, font-weight .35s ease;
+}
+.ap-node-active .ap-node-name  { color: rgba(241,245,249,.95); font-weight: 600; }
+.ap-node-done   .ap-node-name  { color: rgba(129,140,248,.55); }
+.ap-node-green.ap-node-active .ap-node-name { color: #ecfdf5; }
+
+/* ── Connector segment ── */
+.ap-segment {
+  flex: 1;
+  min-width: 18px;
+  /* Vertical align: center the 2px line on the 58px node card.
+     58/2 = 29px from top of node; segment height = 10px; center of segment = 5px.
+     So margin-top = 29 - 5 = 24px  */
+  height: 10px;
+  align-self: flex-start;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;   /* clips particles at segment edges */
+}
+
+.ap-line-track {
+  position: relative;
+  width: 100%;
+  height: 2px;
+}
+
+/* Dim base line */
+.ap-line-base {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: rgba(255,255,255,.06);
+}
+
+/* Flowing gradient shimmer — GPU-only (background-position) */
+.ap-line-flow {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg,
+    transparent                    0%,
+    rgba(129,140,248,.45)         28%,
+    rgba(139, 92,246,.85)         50%,
+    rgba(129,140,248,.45)         72%,
+    transparent                  100%
+  );
+  background-size: 220% 100%;
+  animation: ap-flow 2.6s linear infinite;
+}
+
+@keyframes ap-flow {
+  0%   { background-position:  120% 0; }
+  100% { background-position: -120% 0; }
+}
+
+/* Glowing particle dots */
+.ap-dot {
+  position: absolute;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #818cf8;
+  box-shadow: 0 0 7px 2px rgba(129,140,248,.8);
+  top: 50%;
+  margin-top: -2.5px;
+  animation: ap-particle var(--s, 2s) var(--d, 0s) linear infinite;
+}
+
+@keyframes ap-particle {
+  0%   { left: -5px;              opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left: calc(100% + 5px);  opacity: 0; }
+}
+
+/* ── Status row ── */
+.ap-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 38px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.ap-status-orb {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #818cf8;
+  box-shadow: 0 0 8px rgba(129,140,248,.8);
+  animation: ap-live-pulse 1.6s ease infinite;
+  flex-shrink: 0;
+}
+
+.ap-status-txt {
+  font-family: var(--mono);
+  font-size: 13px; font-weight: 500;
+  color: rgba(129,140,248,.9);
+  letter-spacing: .02em;
+  /* Re-mount via key change fires this every step */
+  animation: ap-status-in .4s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes ap-status-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* ── Metrics row ── */
+.ap-metrics {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 44px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1) .38s,
+              transform .8s cubic-bezier(.16,1,.3,1) .38s;
+}
+.ap-visible .ap-metrics { opacity: 1; transform: translateY(0); }
+
+.ap-metric-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.ap-metric-sep {
+  width: 1px;
+  height: 38px;
+  background: rgba(255,255,255,.07);
+  margin: 0 36px;
+  flex-shrink: 0;
+}
+
+.ap-metric-num {
+  font-family: var(--display);
+  font-size: 28px; font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -.025em;
+  text-align: center;
+}
+
+.ap-metric-lbl {
+  font-size: 12px;
+  color: rgba(100,116,139,.75);
+  margin-top: 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ap-metric-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ── Shared keyframes ── */
+@keyframes ap-live-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .45; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .ap-section { padding: 80px 0 64px; }
+
+  .ap-pipeline-wrap {
+    padding: 44px 20px 34px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .ap-pipeline  { min-width: 580px; }
+
+  .ap-live-badge {
+    position: static;
+    margin-bottom: 22px;
+    display: inline-flex;
+  }
+
+  .ap-metrics { flex-wrap: wrap; gap: 24px; }
+  .ap-metric-sep { display: none; }
+  .ap-metric-item { min-width: 120px; justify-content: center; }
+  .ap-metric-num  { font-size: 22px; }
+}
+
