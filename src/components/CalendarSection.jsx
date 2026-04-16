@@ -65,13 +65,11 @@ export default function CalendarSection() {
       <div className="container">
         {/* Section header */}
         <div className="cal-header an">
-          <div className="eyebrow">AI Scheduling</div>
           <h2 className="st">
             Automate your schedule <span>with AI</span>
           </h2>
           <p className="sd">
-            FlowMind syncs your calendar, auto-schedules meetings, and handles recurring tasks
-            — so your day runs itself.
+            Sync meetings, trigger workflows, and manage events automatically.
           </p>
         </div>
 

@@ -88,13 +88,11 @@ export default function Features() {
     <section className="section" id="features">
       <div className="container">
         <div className="fh an-scale">
-          <div className="eyebrow">Built for AI Automation Founders</div>
           <h2 className="st">
-            Every screen your AI SaaS needs — <span>at $49</span>
+            Everything you need to <span>build an AI SaaS</span>
           </h2>
           <p className="sd">
-            Not just aesthetics. Every element is placed and worded to drive signups, reduce bounce,
-            and build instant credibility from the moment a visitor lands on your AI product.
+            Pre-built pages, dashboards, and systems designed for automation products.
           </p>
         </div>
 

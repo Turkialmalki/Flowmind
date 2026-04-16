@@ -281,6 +281,11 @@ export default function DashboardReveal() {
         <div ref={glowRef} className="sdr-glow" aria-hidden="true" />
         <div ref={bgOverlayRef} className="sdr-bg-overlay" aria-hidden="true" />
 
+        <div className="sdr-header">
+          <h2 className="st">Your AI automation system in action</h2>
+          <p className="sd">Real-time workflows, automation performance, and live insights.</p>
+        </div>
+
         <div ref={panelRef} className="ndb-panel"
           style={{ opacity: 0.85, transform: 'translateY(40px) scale(0.92)', willChange: 'transform, opacity, box-shadow' }}>
 

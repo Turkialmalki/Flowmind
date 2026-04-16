@@ -207,11 +207,10 @@ export default function AutomationPipeline() {
             Automation Pipeline
           </div>
           <h2 className="ap-title">
-            Watch your workflow<br />run in real time
+            Automate workflows<br />across your tools
           </h2>
           <p className="ap-subtitle">
-            FlowMind orchestrates complex multi-step processes across your
-            entire tool stack — automatically, every time.
+            From trigger to action — powered by AI and real-time integrations.
           </p>
         </div>
 

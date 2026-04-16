@@ -22,15 +22,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <section className="home-section-intro an">
-        <div className="container">
-          <div className="hsi-inner">
-            <div className="eyebrow">Live Dashboard</div>
-            <h2 className="st">See how your AI automation system works</h2>
-            <p className="sd">Monitor workflows, track performance, and manage automations in real time.</p>
-          </div>
-        </div>
-      </section>
       <DashboardReveal />
       <CalendarSection />
       <AutomationPipeline />

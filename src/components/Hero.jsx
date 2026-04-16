@@ -286,12 +286,11 @@ export default function Hero() {
         >
           <h1>
             <span className="h1-line-1">AI Automation SaaS</span>
-            <span className="h1-line-2">In Days, Not Months</span>
+            <span className="h1-line-2">Ready to Launch in Minutes</span>
           </h1>
 
           <p className="hsub">
-            The complete template for AI founders — workflow dashboard,
-            AI demo, auth, integrations, and every conversion page. Zero design required.
+            Build and ship automation workflows, integrations, and AI-powered tools without starting from scratch.
           </p>
 
           <div className="ha">
