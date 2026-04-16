@@ -266,8 +266,7 @@ export default function AutomationsPage() {
             Build powerful<br /><span>AI automations</span>
           </h1>
           <p className={`aup-subtitle an${heroVisible ? ' v' : ''}`} style={{ transitionDelay: '160ms' }}>
-            Stop doing repetitive work manually. FlowMind gives you a visual workflow builder
-            backed by GPT-4 — so you can automate anything from lead routing to data pipelines.
+            Stop wasting time on repetitive work. Build automation workflows powered by AI — from lead routing to data pipelines — all in one system.
           </p>
 
           <div className={`aup-hero-pills an${heroVisible ? ' v' : ''}`} style={{ transitionDelay: '240ms' }}>
@@ -342,7 +341,7 @@ export default function AutomationsPage() {
           <h2 className="aup-cta-title">Ready to automate?</h2>
           <p className="aup-cta-sub">Join 12,000+ teams running FlowMind automations today.</p>
           <div className="aup-cta-btns">
-            <Link to="/signup" className="btn btn-g">Start Free Trial</Link>
+            <Link to="/book-demo" className="btn btn-g">Book a Demo</Link>
             <Link to="/demo" className="btn btn-o">See Live Demo</Link>
           </div>
         </div>

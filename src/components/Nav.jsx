@@ -177,30 +177,6 @@ const companyItems = [
     badge: '$49',
   },
   {
-    to: '/login',
-    label: 'Sign In',
-    desc: 'Access your dashboard',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" /><polyline points="10 17 15 12 10 7" /><line x1="15" y1="12" x2="3" y2="12" />
-      </svg>
-    ),
-    color: 'var(--t3)',
-    bg: 'var(--bg3)',
-  },
-  {
-    to: '/signup',
-    label: 'Sign Up',
-    desc: 'Create your account free',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="20" y1="8" x2="20" y2="14" /><line x1="23" y1="11" x2="17" y2="11" />
-      </svg>
-    ),
-    color: 'var(--emerald)',
-    bg: 'var(--emerald-bg)',
-  },
-  {
     to: '/license',
     label: 'License',
     desc: 'Usage rights & terms',
@@ -352,9 +328,6 @@ export default function Nav() {
           </ul>
 
           <div className="nr">
-            <Link to="/login" className="btn btn-o" style={{ fontSize: '13px', padding: '9px 20px' }}>
-              Sign In
-            </Link>
             <Link to="/pricing" className="nav-get-template">
               Get Template
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -395,7 +368,6 @@ export default function Nav() {
         </div>
 
         <div className="mm-footer">
-          <Link to="/login" className="btn btn-o" style={{ width: '100%', justifyContent: 'center' }} onClick={closeMenu}>Sign In</Link>
           <Link to="/pricing" className="btn btn-g" style={{ width: '100%', justifyContent: 'center' }} onClick={closeMenu}>Get Template — $49</Link>
         </div>
       </div>
