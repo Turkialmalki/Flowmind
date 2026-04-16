@@ -96,7 +96,7 @@ const STEPS = [
   },
 ]
 
-const STEP_MS = 1200   // ms each step stays active
+const STEP_MS = 1200
 const METRICS = [
   { n: '847K',  l: 'Workflows today' },
   { n: '1.2s',  l: 'Avg. completion' },
@@ -104,13 +104,19 @@ const METRICS = [
   { n: '12+',   l: 'Integrations' },
 ]
 
+// ── Lerp helper ────────────────────────────────────────────────────────────
+const lerp = (a, b, t) => a + (b - a) * Math.max(0, Math.min(1, t))
+
 // ── Component ──────────────────────────────────────────────────────────────
 export default function AutomationPipeline() {
-  const [activeStep, setActiveStep] = useState(-1)
-  const [visible,    setVisible]    = useState(false)
+  const [activeStep, setActiveStep]       = useState(-1)
+  const [visible, setVisible]             = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [parallaxOffset, setParallaxOffset] = useState(0)
+  const [hoveredNode, setHoveredNode]     = useState(null)
   const sectionRef = useRef(null)
 
-  // Scroll-reveal — fires once when ≥12% of section enters viewport
+  // ── Intersection observer — fires once ──────────────────────────────────
   useEffect(() => {
     const el = sectionRef.current
     if (!el) return
@@ -122,14 +128,36 @@ export default function AutomationPipeline() {
     return () => obs.disconnect()
   }, [])
 
-  // Short delay before animation kicks off (lets reveal animation play first)
+  // ── Scroll-progress tracking ────────────────────────────────────────────
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+
+    const onScroll = () => {
+      const rect     = el.getBoundingClientRect()
+      const winH     = window.innerHeight
+
+      // Expansion: 0 when section top is at 85% viewport height → 1 when at 15%
+      const prog = (winH * 0.85 - rect.top) / (winH * 0.7)
+      setScrollProgress(Math.max(0, Math.min(1, prog)))
+
+      // Parallax raw offset (px scrolled since section entered viewport)
+      const rawOffset = Math.max(0, winH - rect.top)
+      setParallaxOffset(rawOffset)
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll() // seed on mount
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // ── Cycle steps ─────────────────────────────────────────────────────────
   useEffect(() => {
     if (!visible) return
     const t = setTimeout(() => setActiveStep(0), 700)
     return () => clearTimeout(t)
   }, [visible])
 
-  // Cycle steps
   useEffect(() => {
     if (activeStep < 0) return
     const t = setTimeout(() => setActiveStep(s => (s + 1) % STEPS.length), STEP_MS)
@@ -138,15 +166,38 @@ export default function AutomationPipeline() {
 
   const statusText = activeStep >= 0 ? STEPS[activeStep].status : 'Initializing…'
 
+  // ── Derived scroll-driven values ─────────────────────────────────────────
+  const expandWidth  = `${lerp(85, 100, scrollProgress)}%`
+  const expandScale  = lerp(0.96, 1, scrollProgress)
+  const expandRadius = Math.round(lerp(20, 0, scrollProgress))
+  const glowAlpha    = lerp(0.04, 0.22, scrollProgress)
+  const glowSpread   = Math.round(lerp(40, 120, scrollProgress))
+
+  // Parallax layer offsets
+  const bgParallax  = parallaxOffset * -0.05   // Layer 1: slower  (background)
+  const fxParallax  = parallaxOffset *  0.07   // Layer 3: faster  (foreground fx)
+
   return (
     <section
       ref={sectionRef}
       className={`ap-section${visible ? ' ap-visible' : ''}`}
       aria-label="Automation Pipeline"
     >
-      {/* Ambient radial glows */}
-      <div className="ap-bg-glow" aria-hidden="true" />
+      {/* ── Layer 1: Ambient radial glows (parallax — slower) ── */}
+      <div
+        className="ap-bg-glow"
+        aria-hidden="true"
+        style={{ transform: `translate3d(0, ${bgParallax}px, 0)` }}
+      />
 
+      {/* ── Layer 3: Floating orbs (parallax — faster) ── */}
+      <div
+        className="ap-fx-layer"
+        aria-hidden="true"
+        style={{ transform: `translate3d(0, ${fxParallax}px, 0)` }}
+      />
+
+      {/* ── Layer 2: Core content (normal scroll) ── */}
       <div className="container ap-container">
 
         {/* ── Section header ── */}
@@ -164,74 +215,128 @@ export default function AutomationPipeline() {
           </p>
         </div>
 
-        {/* ── Pipeline card ── */}
-        <div className="ap-pipeline-wrap">
+        {/* ── Expansion shell — scroll-driven geometry ── */}
+        <div
+          className="ap-expand-shell"
+          style={{
+            width:          expandWidth,
+            transform:      `scale(${expandScale})`,
+            transformOrigin:'top center',
+          }}
+        >
+          {/* ── Pipeline card ── */}
+          <div
+            className="ap-pipeline-wrap"
+            style={{
+              borderRadius: `${expandRadius}px`,
+              boxShadow: [
+                `0 0 0 1px rgba(129,140,248,${lerp(0.05, 0.18, scrollProgress)})`,
+                `0 28px 72px rgba(0,0,0,${lerp(0.45, 0.3, scrollProgress)})`,
+                `inset 0 1px 0 rgba(255,255,255,0.045)`,
+                `0 0 ${glowSpread}px rgba(91,91,214,${glowAlpha})`,
+              ].join(', '),
+            }}
+          >
 
-          {/* LIVE badge */}
-          <div className="ap-live-badge">
-            <span className="ap-live-dot" />
-            <span className="ap-live-word">LIVE</span>
-            <span className="ap-live-sub">Running automation</span>
-          </div>
+            {/* LIVE badge */}
+            <div className="ap-live-badge">
+              <span className="ap-live-dot" />
+              <span className="ap-live-word">LIVE</span>
+              <span className="ap-live-sub">Running automation</span>
+            </div>
 
-          {/* Nodes + connectors */}
-          <div className="ap-pipeline">
-            {STEPS.map((step, i) => (
-              <Fragment key={step.id}>
+            {/* Nodes + connectors */}
+            <div className="ap-pipeline">
+              {STEPS.map((step, i) => (
+                <Fragment key={step.id}>
 
-                {/* ── Node ── */}
-                <div className="ap-pipeline-node">
-                  <div
-                    className={[
-                      'ap-node',
-                      activeStep === i        ? 'ap-node-active' : '',
-                      activeStep > i          ? 'ap-node-done'   : '',
-                      step.highlight          ? 'ap-node-hl'     : '',
-                      step.isGreen            ? 'ap-node-green'  : '',
-                    ].filter(Boolean).join(' ')}
-                  >
-                    {/* Pulsing rings — only animate when .ap-node-active */}
-                    <div className="ap-ring"  aria-hidden="true" />
-                    <div className="ap-ring ap-ring2" aria-hidden="true" />
+                  {/* ── Node ── */}
+                  <div className="ap-pipeline-node">
+                    <div
+                      className={[
+                        'ap-node',
+                        activeStep === i ? 'ap-node-active' : '',
+                        activeStep > i  ? 'ap-node-done'   : '',
+                        step.highlight  ? 'ap-node-hl'     : '',
+                        step.isGreen    ? 'ap-node-green'  : '',
+                        hoveredNode === i && activeStep !== i ? 'ap-node-hover' : '',
+                      ].filter(Boolean).join(' ')}
+                      onMouseEnter={() => setHoveredNode(i)}
+                      onMouseLeave={() => setHoveredNode(null)}
+                    >
+                      {/* Pulsing rings */}
+                      <div className="ap-ring"  aria-hidden="true" />
+                      <div className="ap-ring ap-ring2" aria-hidden="true" />
 
-                    {/* Glass card */}
-                    <div className="ap-node-card">
-                      <div className="ap-node-icon">{step.icon}</div>
+                      {/* Hover glow ring */}
+                      {hoveredNode === i && (
+                        <div className="ap-hover-ring" aria-hidden="true" />
+                      )}
+
+                      {/* Glass card */}
+                      <div className="ap-node-card">
+                        <div className="ap-node-icon">{step.icon}</div>
+                      </div>
+                    </div>
+
+                    {/* Label block */}
+                    <div className="ap-node-labels">
+                      <span className="ap-node-type">{step.sublabel}</span>
+                      <span className="ap-node-name">{step.label}</span>
                     </div>
                   </div>
 
-                  {/* Label block */}
-                  <div className="ap-node-labels">
-                    <span className="ap-node-type">{step.sublabel}</span>
-                    <span className="ap-node-name">{step.label}</span>
-                  </div>
-                </div>
-
-                {/* ── Connector (not after last node) ── */}
-                {i < STEPS.length - 1 && (
-                  <div className="ap-segment">
-                    <div className="ap-line-track">
-                      <div className="ap-line-base" />
-                      <div className="ap-line-flow" />
-                      {/* Two offset particles per segment */}
-                      <span className="ap-dot" style={{ '--d': '0s',     '--s': '2s'   }} />
-                      <span className="ap-dot" style={{ '--d': '-1s',    '--s': '2s'   }} />
+                  {/* ── Connector ── */}
+                  {i < STEPS.length - 1 && (
+                    <div className="ap-segment">
+                      <div className="ap-line-track">
+                        <div className="ap-line-base" />
+                        <div
+                          className="ap-line-flow"
+                          style={{ opacity: 0.5 + scrollProgress * 0.5 }}
+                        />
+                        {/* Particles — speed up with scroll progress */}
+                        <span
+                          className="ap-dot"
+                          style={{
+                            '--d': '0s',
+                            '--s': `${lerp(2, 1.2, scrollProgress)}s`,
+                          }}
+                        />
+                        <span
+                          className="ap-dot"
+                          style={{
+                            '--d': '-1s',
+                            '--s': `${lerp(2, 1.2, scrollProgress)}s`,
+                          }}
+                        />
+                        {/* Trail blur dot — appears at higher scroll progress */}
+                        {scrollProgress > 0.4 && (
+                          <span
+                            className="ap-dot ap-dot-trail"
+                            style={{
+                              '--d': '-0.5s',
+                              '--s': `${lerp(2, 1.2, scrollProgress)}s`,
+                              opacity: (scrollProgress - 0.4) * 1.2,
+                            }}
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-              </Fragment>
-            ))}
-          </div>
+                </Fragment>
+              ))}
+            </div>
 
-          {/* ── Status text ── */}
-          <div className="ap-status-row">
-            <span className="ap-status-orb" />
-            {/* key change re-mounts element → CSS fade-in fires each change */}
-            <span key={statusText} className="ap-status-txt">{statusText}</span>
-          </div>
+            {/* ── Status text ── */}
+            <div className="ap-status-row">
+              <span className="ap-status-orb" />
+              <span key={statusText} className="ap-status-txt">{statusText}</span>
+            </div>
 
-        </div>{/* /ap-pipeline-wrap */}
+          </div>{/* /ap-pipeline-wrap */}
+        </div>{/* /ap-expand-shell */}
 
         {/* ── Metrics row ── */}
         <div className="ap-metrics">

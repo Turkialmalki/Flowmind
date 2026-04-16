@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const releases = [
@@ -145,6 +145,19 @@ export default function ChangelogPage() {
 
   const filtered = filter === 'all' ? releases : releases.filter(r => r.tag.toLowerCase().includes(filter))
 
+  // Re-observe .an elements after filter changes so entries animate in
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const obs = new IntersectionObserver(
+        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v') }),
+        { threshold: 0.05 }
+      )
+      document.querySelectorAll('.an:not(.v)').forEach(el => obs.observe(el))
+      return () => obs.disconnect()
+    }, 40)
+    return () => clearTimeout(t)
+  }, [filter])
+
   return (
     <div className="changelog-page">
       {/* Hero */}
@@ -165,9 +178,9 @@ export default function ChangelogPage() {
             </p>
             <div className="cl-filter-bar">
               {[
-                { id: 'all', label: 'All updates' },
+                { id: 'all', label: 'All' },
+                { id: 'feature', label: 'Updates' },
                 { id: 'major', label: 'Major' },
-                { id: 'feature', label: 'Features' },
               ].map(f => (
                 <button
                   key={f.id}

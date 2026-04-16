@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import DashboardReveal from '../components/DashboardReveal'
+import CalendarSection from '../components/CalendarSection'
 import AutomationPipeline from '../components/AutomationPipeline'
 import SocialProof from '../components/SocialProof'
 import WhySection from '../components/WhySection'
@@ -21,7 +22,17 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <section className="home-section-intro an">
+        <div className="container">
+          <div className="hsi-inner">
+            <div className="eyebrow">Live Dashboard</div>
+            <h2 className="st">See how your AI automation system works</h2>
+            <p className="sd">Monitor workflows, track performance, and manage automations in real time.</p>
+          </div>
+        </div>
+      </section>
       <DashboardReveal />
+      <CalendarSection />
       <AutomationPipeline />
       <SocialProof />
       <WhySection />

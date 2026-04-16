@@ -20,6 +20,8 @@ import DemoPage from './pages/DemoPage'
 import LicensePage from './pages/LicensePage'
 import PrivacyPage from './pages/PrivacyPage'
 import NotFoundPage from './pages/NotFoundPage'
+import IntegrationsPage from './pages/IntegrationsPage'
+import AutomationsPage from './pages/AutomationsPage'
 
 export default function App() {
   return (
@@ -42,6 +44,8 @@ export default function App() {
           <Route path="/blog/post" element={<BlogPostPage />} />
           <Route path="/docs" element={<DocsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/integrations" element={<IntegrationsPage />} />
+          <Route path="/automations" element={<AutomationsPage />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

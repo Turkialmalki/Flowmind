@@ -100,12 +100,13 @@ const chartData = {
 
 /* ── Nav items ── */
 const navItems = [
-  { label: 'Overview', path: 'overview', icon: <><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></> },
+  { label: 'Overview',  path: 'overview',  icon: <><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></> },
   { label: 'Analytics', path: 'analytics', icon: <><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></> },
-  { label: 'Workflows', path: 'users', icon: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></> },
-  { label: 'Revenue', path: 'revenue', icon: <><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></> },
-  { label: 'Reports', path: 'reports', icon: <><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></> },
-  { label: 'Settings', path: 'settings', icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.68 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" /></> },
+  { label: 'Workflows', path: 'users',     icon: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></> },
+  { label: 'Calendar',  path: 'calendar',  icon: <><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></> },
+  { label: 'Revenue',   path: 'revenue',   icon: <><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></> },
+  { label: 'Reports',   path: 'reports',   icon: <><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></> },
+  { label: 'Settings',  path: 'settings',  icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.68 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" /></> },
 ]
 
 /* ── Workflow table data ── */
@@ -343,6 +344,155 @@ function ReportsView() {
   )
 }
 
+/* ── Calendar view ── */
+const CAL_DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+const CAL_EVENTS = {
+  3:  [{ label: 'AI-synced meeting', color: '#5b5bd6', time: '10:00' }],
+  7:  [{ label: 'Auto-generated report', color: '#059669', time: '09:00' }],
+  10: [{ label: 'Lead sync workflow', color: '#0ea5e9', time: '14:30' }],
+  14: [{ label: 'AI-synced meeting', color: '#5b5bd6', time: '11:00' }, { label: 'Invoice automation', color: '#d97706', time: '15:00' }],
+  17: [{ label: 'Auto-generated report', color: '#059669', time: '09:00' }],
+  21: [{ label: 'AI-synced meeting', color: '#5b5bd6', time: '10:30' }],
+  24: [{ label: 'Churn risk check', color: '#e11d48', time: '08:00' }],
+  28: [{ label: 'Monthly summary report', color: '#059669', time: '09:00' }],
+}
+
+const UPCOMING_AUTOS = [
+  { label: 'Lead Scoring Run', time: 'Today, 3:00 PM', color: '#5b5bd6', icon: '⚡' },
+  { label: 'Weekly Summary Report', time: 'Mon, 9:00 AM', color: '#059669', icon: '📊' },
+  { label: 'CRM Sync Workflow', time: 'Mon, 10:00 AM', color: '#0ea5e9', icon: '🔄' },
+  { label: 'Invoice Automation', time: 'Tue, 8:00 AM', color: '#d97706', icon: '💳' },
+  { label: 'Churn Risk Alert Check', time: 'Wed, 9:00 AM', color: '#e11d48', icon: '🎯' },
+]
+
+function CalendarView() {
+  const today = 14
+  const [selectedDay, setSelectedDay] = useState(today)
+  const daysInMonth = 30
+  const firstDay = 2 // April 2026 starts on Wednesday
+
+  const cells = []
+  for (let i = 0; i < firstDay; i++) cells.push(null)
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d)
+
+  const selectedEvents = CAL_EVENTS[selectedDay] || []
+
+  return (
+    <div className="dash-cal-layout">
+
+      {/* ── Calendar panel ── */}
+      <div className="dash-cal-panel">
+        <div className="dash-cal-header">
+          <div className="dash-chart-title">April 2026</div>
+          <div className="dash-cal-nav">
+            <button className="dash-cal-nav-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button className="dash-cal-nav-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div className="dash-cal-grid">
+          {CAL_DAYS.map(d => (
+            <div key={d} className="dash-cal-day-header">{d}</div>
+          ))}
+          {cells.map((day, i) => {
+            if (day === null) return <div key={`e-${i}`} className="dash-cal-cell dash-cal-empty" />
+            const hasEvents = CAL_EVENTS[day]
+            const isToday   = day === today
+            const isSelected = day === selectedDay
+            return (
+              <button
+                key={day}
+                className={[
+                  'dash-cal-cell',
+                  isToday    ? 'dash-cal-today' : '',
+                  isSelected ? 'dash-cal-selected' : '',
+                  hasEvents  ? 'dash-cal-has-events' : '',
+                ].filter(Boolean).join(' ')}
+                onClick={() => setSelectedDay(day)}
+              >
+                {day}
+                {hasEvents && (
+                  <div className="dash-cal-dots">
+                    {hasEvents.slice(0, 3).map((e, j) => (
+                      <span key={j} className="dash-cal-dot" style={{ background: e.color }} />
+                    ))}
+                  </div>
+                )}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Selected day events */}
+        <div className="dash-cal-events">
+          <div className="dash-cal-events-title">
+            April {selectedDay} — {selectedEvents.length > 0 ? `${selectedEvents.length} event${selectedEvents.length > 1 ? 's' : ''}` : 'No events'}
+          </div>
+          {selectedEvents.length === 0 && (
+            <div className="dash-cal-no-events">No automated events scheduled for this day.</div>
+          )}
+          {selectedEvents.map((ev, i) => (
+            <div key={i} className="dash-cal-event-item">
+              <div className="dash-cal-event-bar" style={{ background: ev.color }} />
+              <div className="dash-cal-event-body">
+                <div className="dash-cal-event-label">{ev.label}</div>
+                <div className="dash-cal-event-time">{ev.time}</div>
+              </div>
+              <span className="dash-cal-ai-tag">AI-synced</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Upcoming automations panel ── */}
+      <div className="dash-cal-side">
+        <div className="dash-cal-side-card">
+          <div className="dash-chart-title" style={{ marginBottom: '4px' }}>Upcoming Automations</div>
+          <div className="dash-chart-sub" style={{ marginBottom: '16px' }}>Next scheduled workflow runs</div>
+          <div className="dash-upcoming-list">
+            {UPCOMING_AUTOS.map((a, i) => (
+              <div key={i} className="dash-upcoming-item">
+                <div className="dash-upcoming-icon">{a.icon}</div>
+                <div className="dash-upcoming-body">
+                  <div className="dash-upcoming-name">{a.label}</div>
+                  <div className="dash-upcoming-time" style={{ color: a.color }}>{a.time}</div>
+                </div>
+                <div className="dash-upcoming-dot" style={{ background: a.color }} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="dash-cal-side-card">
+          <div className="dash-chart-title" style={{ marginBottom: '4px' }}>Scheduled Workflows</div>
+          <div className="dash-chart-sub" style={{ marginBottom: '16px' }}>Recurring automation schedules</div>
+          {[
+            { label: 'Lead Scoring Engine', schedule: 'Every day at 3 PM', runs: '24 runs/week', color: '#5b5bd6' },
+            { label: 'CRM Sync', schedule: 'Every Mon & Thu', runs: '8 runs/week', color: '#0ea5e9' },
+            { label: 'Weekly Reports', schedule: 'Every Mon 9 AM', runs: '4 runs/month', color: '#059669' },
+            { label: 'Churn Risk Check', schedule: 'Every Wed 9 AM', runs: '4 runs/month', color: '#e11d48' },
+          ].map(({ label, schedule, runs, color }) => (
+            <div key={label} className="dash-sched-item">
+              <div className="dash-sched-dot" style={{ background: color }} />
+              <div className="dash-sched-body">
+                <div className="dash-sched-name">{label}</div>
+                <div className="dash-sched-schedule">{schedule}</div>
+              </div>
+              <div className="dash-sched-runs">{runs}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
 /* ── Main dashboard ── */
 export default function DashboardPage() {
   const [activeNav, setActiveNav] = useState('overview')
@@ -379,6 +529,7 @@ export default function DashboardPage() {
     overview: { title: 'Dashboard Overview', sub: 'Your automation system at a glance — updated in real time' },
     analytics: { title: 'Analytics', sub: 'Deep dive into workflow performance and automation insights' },
     users: { title: 'Workflows', sub: 'Manage workflow runs, statuses, and automation activity' },
+    calendar: { title: 'Calendar', sub: 'AI-synced events, scheduled workflows, and upcoming automations' },
     revenue: { title: 'Revenue', sub: 'MRR, churn, LTV, and revenue trends' },
     reports: { title: 'Reports', sub: 'Scheduled reports and automation data exports' },
     settings: { title: 'Settings', sub: 'Account, integrations, and automation settings' },
@@ -402,7 +553,7 @@ export default function DashboardPage() {
 
         <div className="dash-nav-section">
           <div className="dash-nav-label">Main</div>
-          {navItems.slice(0, 5).map(({ label, path, icon }) => (
+          {navItems.slice(0, 6).map(({ label, path, icon }) => (
             <button
               key={path}
               className={`dash-nav-item${activeNav === path ? ' active' : ''}`}
@@ -411,6 +562,7 @@ export default function DashboardPage() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">{icon}</svg>
               {label}
               {path === 'users' && <span className="dash-nav-badge">23</span>}
+              {path === 'calendar' && <span className="dash-nav-badge" style={{ background: 'rgba(91,91,214,0.12)', color: 'var(--indigo)' }}>5</span>}
             </button>
           ))}
         </div>
@@ -421,7 +573,7 @@ export default function DashboardPage() {
             className={`dash-nav-item${activeNav === 'settings' ? ' active' : ''}`}
             onClick={() => setActiveNav('settings')}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">{navItems[5].icon}</svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">{navItems[6].icon}</svg>
             Settings
           </button>
           <Link to="/" className="dash-nav-item">
@@ -433,10 +585,10 @@ export default function DashboardPage() {
         </div>
 
         <div className="dash-user-card">
-          <div className="dash-user-avatar">AK</div>
+          <div className="dash-user-avatar">TA</div>
           <div className="dash-user-info">
-            <div className="dash-user-name">Alex Kim</div>
-            <div className="dash-user-email">alex@startup.io</div>
+            <div className="dash-user-name">Turki AlMalki</div>
+            <div className="dash-user-email">turki@flowmind.ai</div>
           </div>
           <div className="dash-user-plan">Pro</div>
         </div>
@@ -486,7 +638,7 @@ export default function DashboardPage() {
                 </div>
               )}
             </div>
-            <div className="dash-avatar-btn">AK</div>
+            <div className="dash-avatar-btn">TA</div>
           </div>
         </div>
 
@@ -686,6 +838,131 @@ export default function DashboardPage() {
                 </div>
               </div>
 
+              {/* Charts row — Pie + Bar */}
+              <div className="dash-charts-row">
+                {/* Pie chart — task distribution */}
+                <div className="dash-chart-card">
+                  <div className="dash-chart-header">
+                    <div>
+                      <div className="dash-chart-title">Task Distribution</div>
+                      <div className="dash-chart-sub">Workflow runs by category</div>
+                    </div>
+                  </div>
+                  <div className="dash-pie-wrap">
+                    <svg viewBox="0 0 140 140" width="140" height="140">
+                      <defs>
+                        <filter id="pie-glow">
+                          <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="rgba(91,91,214,0.4)" />
+                        </filter>
+                      </defs>
+                      {/* Pie segments using stroke-dasharray on circles */}
+                      {/* Total circumference for r=54: 2*PI*54 = 339.3 */}
+                      <circle cx="70" cy="70" r="54" fill="none" stroke="#e8edf5" strokeWidth="22" />
+                      {/* Email (38%) */}
+                      <circle cx="70" cy="70" r="54" fill="none" stroke="#5b5bd6" strokeWidth="22"
+                        strokeDasharray="128.9 210.4" strokeDashoffset="0"
+                        strokeLinecap="butt" transform="rotate(-90 70 70)" />
+                      {/* Lead Routing (26%) */}
+                      <circle cx="70" cy="70" r="54" fill="none" stroke="#0ea5e9" strokeWidth="22"
+                        strokeDasharray="88.2 251.1" strokeDashoffset="-128.9"
+                        strokeLinecap="butt" transform="rotate(-90 70 70)" />
+                      {/* Data Processing (22%) */}
+                      <circle cx="70" cy="70" r="54" fill="none" stroke="#059669" strokeWidth="22"
+                        strokeDasharray="74.6 264.7" strokeDashoffset="-217.1"
+                        strokeLinecap="butt" transform="rotate(-90 70 70)" />
+                      {/* Other (14%) */}
+                      <circle cx="70" cy="70" r="54" fill="none" stroke="#d97706" strokeWidth="22"
+                        strokeDasharray="47.5 291.8" strokeDashoffset="-291.7"
+                        strokeLinecap="butt" transform="rotate(-90 70 70)" />
+                      <text x="70" y="67" textAnchor="middle" fill="#0f172a" fontSize="18" fontWeight="700" fontFamily="Inter,sans-serif">847K</text>
+                      <text x="70" y="81" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter,sans-serif">total runs</text>
+                    </svg>
+                    <div className="dash-pie-legend">
+                      {[
+                        { label: 'Email Automation', pct: '38%', color: '#5b5bd6' },
+                        { label: 'Lead Routing', pct: '26%', color: '#0ea5e9' },
+                        { label: 'Data Processing', pct: '22%', color: '#059669' },
+                        { label: 'Other', pct: '14%', color: '#d97706' },
+                      ].map(({ label, pct, color }) => (
+                        <div key={label} className="dash-pie-legend-row">
+                          <div className="dash-pie-legend-dot" style={{ background: color }} />
+                          <span className="dash-pie-legend-label">{label}</span>
+                          <span className="dash-pie-legend-pct" style={{ color }}>{pct}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bar chart — workflow performance */}
+                <div className="dash-chart-card">
+                  <div className="dash-chart-header">
+                    <div>
+                      <div className="dash-chart-title">Workflow Performance</div>
+                      <div className="dash-chart-sub">Runs per workflow this week</div>
+                    </div>
+                  </div>
+                  <div className="dash-bar-wrap">
+                    {[
+                      { label: 'Email Nurture', runs: 248, max: 300, color: '#5b5bd6' },
+                      { label: 'Lead Scoring', runs: 285, max: 300, color: '#0ea5e9' },
+                      { label: 'Onboarding', runs: 63,  max: 300, color: '#059669' },
+                      { label: 'Invoicing', runs: 156, max: 300, color: '#d97706' },
+                      { label: 'Churn Check', runs: 89,  max: 300, color: '#e11d48' },
+                    ].map(({ label, runs, max, color }) => (
+                      <div key={label} className="dash-bar-row">
+                        <div className="dash-bar-label">{label}</div>
+                        <div className="dash-bar-track">
+                          <div
+                            className="dash-bar-fill"
+                            style={{ width: `${(runs / max) * 100}%`, background: color }}
+                          />
+                        </div>
+                        <div className="dash-bar-val">{runs}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Upcoming Automations + Scheduled Workflows mini widgets */}
+              <div className="dash-bottom-grid dash-upcoming-grid">
+                <div className="dash-upcoming-widget">
+                  <div className="dash-chart-title" style={{ marginBottom: '4px' }}>Upcoming Automations</div>
+                  <div className="dash-chart-sub" style={{ marginBottom: '14px' }}>Next scheduled runs</div>
+                  {UPCOMING_AUTOS.slice(0, 4).map((a, i) => (
+                    <div key={i} className="dash-upcoming-item">
+                      <div className="dash-upcoming-icon">{a.icon}</div>
+                      <div className="dash-upcoming-body">
+                        <div className="dash-upcoming-name">{a.label}</div>
+                        <div className="dash-upcoming-time" style={{ color: a.color }}>{a.time}</div>
+                      </div>
+                      <div className="dash-upcoming-dot" style={{ background: a.color }} />
+                    </div>
+                  ))}
+                  <button className="dash-link-btn" style={{ marginTop: '12px', fontSize: '12px' }} onClick={() => setActiveNav('calendar')}>View calendar →</button>
+                </div>
+                <div className="dash-sched-widget">
+                  <div className="dash-chart-title" style={{ marginBottom: '4px' }}>Scheduled Workflows</div>
+                  <div className="dash-chart-sub" style={{ marginBottom: '14px' }}>Recurring automation schedules</div>
+                  {[
+                    { label: 'Lead Scoring Engine', schedule: 'Daily · 3 PM', color: '#5b5bd6' },
+                    { label: 'CRM Sync', schedule: 'Mon & Thu', color: '#0ea5e9' },
+                    { label: 'Weekly Reports', schedule: 'Mon · 9 AM', color: '#059669' },
+                    { label: 'Churn Risk Check', schedule: 'Wed · 9 AM', color: '#e11d48' },
+                  ].map(({ label, schedule, color }) => (
+                    <div key={label} className="dash-sched-item">
+                      <div className="dash-sched-dot" style={{ background: color }} />
+                      <div className="dash-sched-body">
+                        <div className="dash-sched-name">{label}</div>
+                        <div className="dash-sched-schedule">{schedule}</div>
+                      </div>
+                    </div>
+                  ))}
+                  <button className="dash-link-btn" style={{ marginTop: '12px', fontSize: '12px' }} onClick={() => setActiveNav('calendar')}>Manage schedules →</button>
+                </div>
+              </div>
+
               {/* Quick actions + Revenue mini */}
               <div className="dash-bottom-grid">
                 <div className="dash-quick-actions">
@@ -730,6 +1007,9 @@ export default function DashboardPage() {
               </div>
             </>
           )}
+
+          {/* ── Calendar tab ── */}
+          {activeNav === 'calendar' && <CalendarView />}
 
           {/* ── Analytics tab ── */}
           {activeNav === 'analytics' && <AnalyticsView />}

@@ -64,9 +64,9 @@ export default function BlogPostPage() {
             </p>
             <div className="post-meta-row">
               <div className="post-author-card">
-                <div className="blog-avatar" style={{ background: '#5b5bd6' }}>A</div>
+                <div className="blog-avatar" style={{ background: '#5b5bd6' }}>T</div>
                 <div>
-                  <div className="post-author-name">Alex Kim</div>
+                  <div className="post-author-name">Turki AlMalki</div>
                   <div className="post-author-title">Founder, FlowMind</div>
                 </div>
               </div>
@@ -218,14 +218,13 @@ join 500+ teams who've used FlowMind to ship faster."`}
 
               {/* Author bio */}
               <div className="post-author-bio an">
-                <div className="blog-avatar" style={{ background: '#5b5bd6', width: '52px', height: '52px', fontSize: '20px', flexShrink: 0 }}>A</div>
+                <div className="blog-avatar" style={{ background: '#5b5bd6', width: '52px', height: '52px', fontSize: '20px', flexShrink: 0 }}>T</div>
                 <div>
-                  <div className="post-bio-name">Alex Kim</div>
-                  <div className="post-bio-title">Founder of FlowMind · 4× SaaS founder</div>
+                  <div className="post-bio-name">Turki AlMalki</div>
+                  <div className="post-bio-title">Founder of FlowMind · SaaS builder</div>
                   <div className="post-bio-desc">
-                    Alex built four SaaS products from zero to revenue. He created FlowMind after
-                    spending 3 months redesigning landing pages for early-stage founders and noticing
-                    the same conversion problems over and over.
+                    Turki built FlowMind after spending months helping early-stage founders fix their
+                    landing pages and noticing the same conversion problems over and over. He ships fast and iterates even faster.
                   </div>
                 </div>
               </div>

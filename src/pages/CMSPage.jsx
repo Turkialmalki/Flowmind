@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const features = [
@@ -100,7 +100,7 @@ const SAMPLE_POSTS = [
     tagColor: '#7c3aed',
     title: 'The Real Cost of Building vs Buying AI Infrastructure',
     excerpt: 'We calculated it. 18 months of engineering time versus a $49 template. The math is not even close.',
-    author: 'Alex Kim',
+    author: 'Turki AlMalki',
     date: 'Mar 20, 2026',
     read: '10 min',
     img: '#7c3aed',
@@ -118,6 +118,19 @@ const categories = [
 
 export default function CMSPage() {
   const [activeTab, setActiveTab] = useState('blog')
+
+  // Re-observe .an elements whenever tab changes so scroll reveal fires
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const obs = new IntersectionObserver(
+        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v') }),
+        { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+      )
+      document.querySelectorAll('.an:not(.v)').forEach(el => obs.observe(el))
+      return () => obs.disconnect()
+    }, 40)
+    return () => clearTimeout(t)
+  }, [activeTab])
 
   return (
     <div className="cms-page">

@@ -285,24 +285,21 @@ export default function Hero() {
           style={{ willChange: 'transform, opacity' }}
         >
           <h1>
-            <span className="h1-line-1">Ship Your AI Automation SaaS</span>
+            <span className="h1-line-1">AI Automation SaaS</span>
             <span className="h1-line-2">In Days, Not Months</span>
           </h1>
 
           <p className="hsub">
-            The complete React template for AI founders — workflow dashboard,
+            The complete template for AI founders — workflow dashboard,
             AI demo, auth, integrations, and every conversion page. Zero design required.
           </p>
 
           <div className="ha">
             <Link to="/pricing" className="btn btn-g btn-xl hero-cta-primary">
-              Get Template — $49
+              Get Template
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </Link>
-            <Link to="/demo" className="btn btn-o btn-xl">
-              Live Demo
             </Link>
           </div>
 

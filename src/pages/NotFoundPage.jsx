@@ -32,22 +32,21 @@ export default function NotFoundPage() {
             </svg>
           </div>
 
-          <h1 className="nfp-title">Workflow not found</h1>
+          <h1 className="nfp-title">This page doesn't exist yet</h1>
           <p className="nfp-desc">
-            This automation doesn't exist yet — or it may have been moved.
-            Let's get you back on track.
+            Let's get you back to your automation dashboard.
           </p>
 
           <div className="nfp-actions">
-            <Link to="/dashboard" className="btn btn-g btn-xl">
-              Back to Dashboard
+            <Link to="/" className="btn btn-g btn-xl">
+              Go Home
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
             </Link>
-            <Link to="/docs" className="btn btn-o">
-              Browse Docs
+            <Link to="/dashboard" className="btn btn-o">
+              Dashboard
             </Link>
           </div>
 

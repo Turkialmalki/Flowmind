@@ -223,7 +223,9 @@ export default function SetupPage() {
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
-                {openFaq === i && <div className="setup-faq-a">{faq.a}</div>}
+                <div className="setup-faq-body" style={{ maxHeight: openFaq === i ? '300px' : '0' }}>
+                  <div className="setup-faq-a">{faq.a}</div>
+                </div>
               </div>
             ))}
           </div>

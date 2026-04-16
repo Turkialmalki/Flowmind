@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const categories = ['All', 'Growth', 'Design', 'Launch', 'Product', 'Revenue']
@@ -9,7 +9,7 @@ const posts = [
     tagColor: '#5b5bd6',
     title: 'The Complete Guide to AI SaaS Landing Pages That Convert',
     excerpt: 'Most AI SaaS landing pages fail at the same five things. Here\'s what the top 1% do differently — and how to implement it in under a day.',
-    author: 'Alex Kim',
+    author: 'Turki AlMalki',
     date: 'Apr 5, 2026',
     read: '12 min',
     featured: true,
@@ -70,19 +70,68 @@ const posts = [
     tagColor: '#0ea5e9',
     title: 'From Zero to 100 Users: A Launch Day Playbook',
     excerpt: 'The exact sequence of channels, messages, and timing we use to get the first 100 users before spending a dollar on ads.',
-    author: 'Alex Kim',
+    author: 'Turki AlMalki',
     date: 'Mar 8, 2026',
     read: '14 min',
     avatar: '#5b5bd6',
   },
 ]
 
+const MORE_POSTS = [
+  {
+    tag: 'Design',
+    tagColor: '#d97706',
+    title: 'Building a Design System for AI Products in 2026',
+    excerpt: 'The component patterns, color systems, and interaction principles that make AI SaaS interfaces feel premium and trustworthy.',
+    author: 'Turki AlMalki',
+    date: 'Feb 28, 2026',
+    read: '9 min',
+    avatar: '#d97706',
+  },
+  {
+    tag: 'Product',
+    tagColor: '#e11d48',
+    title: 'The Onboarding Checklist That Doubled Our Activation Rate',
+    excerpt: 'How a simple 5-step checklist in our dashboard reduced time-to-value from 4 days to 18 minutes.',
+    author: 'Maya Chen',
+    date: 'Feb 20, 2026',
+    read: '7 min',
+    avatar: '#e11d48',
+  },
+  {
+    tag: 'Growth',
+    tagColor: '#5b5bd6',
+    title: 'SEO for AI SaaS: Rank on Terms Your Competitors Ignore',
+    excerpt: 'The long-tail keyword strategy that brought 3,200 organic visitors in 90 days without a single backlink campaign.',
+    author: 'Jordan Park',
+    date: 'Feb 12, 2026',
+    read: '10 min',
+    avatar: '#0ea5e9',
+  },
+]
+
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [showMore, setShowMore] = useState(false)
   const featured = posts[0]
   const rest = posts.slice(1)
 
+  // Re-observe .an elements after category/load-more changes
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const obs = new IntersectionObserver(
+        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v') }),
+        { threshold: 0.05 }
+      )
+      document.querySelectorAll('.an:not(.v)').forEach(el => obs.observe(el))
+      return () => obs.disconnect()
+    }, 40)
+    return () => clearTimeout(t)
+  }, [activeCategory, showMore])
+
   const filtered = activeCategory === 'All' ? rest : rest.filter(p => p.tag === activeCategory)
+  const morePosts = activeCategory === 'All' ? MORE_POSTS : MORE_POSTS.filter(p => p.tag === activeCategory)
+  const displayedMore = showMore ? morePosts : []
 
   return (
     <div className="blog-page">
@@ -159,7 +208,7 @@ export default function BlogPage() {
           </div>
 
           <div className="blog-grid">
-            {filtered.map((post) => (
+            {[...filtered, ...displayedMore].map((post) => (
               <Link to="/blog/post" key={post.title} className="blog-card an">
                 <div className="blog-card-top">
                   <div className="blog-tag" style={{ color: post.tagColor, background: post.tagColor + '14' }}>{post.tag}</div>
@@ -178,7 +227,7 @@ export default function BlogPage() {
             ))}
           </div>
 
-          {filtered.length === 0 && (
+          {filtered.length === 0 && morePosts.length === 0 && (
             <div className="blog-empty">
               <div style={{ fontSize: '40px', marginBottom: '16px' }}>📭</div>
               <div style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: '18px', marginBottom: '8px' }}>No posts in this category yet</div>
@@ -187,9 +236,9 @@ export default function BlogPage() {
             </div>
           )}
 
-          {filtered.length > 0 && (
+          {(filtered.length > 0 || morePosts.length > 0) && !showMore && morePosts.length > 0 && (
             <div className="blog-load-more an">
-              <button className="btn btn-o">Load more articles</button>
+              <button className="btn btn-o" onClick={() => setShowMore(true)}>Load more articles</button>
             </div>
           )}
         </div>

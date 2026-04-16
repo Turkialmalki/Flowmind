@@ -36,8 +36,8 @@ function DashMockFull() {
           ))}
         </div>
         <div className="db-nav-item" style={{ marginTop: 'auto' }}>
-          <div className="db-avatar" style={{ width: '16px', height: '16px', fontSize: '7px', flexShrink: 0 }}>A</div>
-          Alex Kim
+          <div className="db-avatar" style={{ width: '16px', height: '16px', fontSize: '7px', flexShrink: 0 }}>T</div>
+          Turki AlMalki
         </div>
       </div>
       <div className="db-main">
