@@ -17,8 +17,6 @@ import SetupPage from './pages/SetupPage'
 import ChangelogPage from './pages/ChangelogPage'
 import DemoPage from './pages/DemoPage'
 import DashboardPage from './pages/DashboardPage'
-import LoginPage from './pages/LoginPage'
-import SignupPage from './pages/SignupPage'
 import LicensePage from './pages/LicensePage'
 import PrivacyPage from './pages/PrivacyPage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -73,8 +71,6 @@ export default function App() {
           <Route path="/setup" element={<SetupPage />} />
           <Route path="/changelog" element={<ChangelogPage />} />
           <Route path="/demo" element={<DemoPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
           <Route path="/license" element={<LicensePage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/blog" element={<BlogPage />} />

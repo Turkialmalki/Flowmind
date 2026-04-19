@@ -198,6 +198,15 @@ const highlights = [
 export default function DemoPage() {
   return (
     <div className="demo-page">
+      {/* Demo preview banner */}
+      <div className="demo-preview-banner">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        Demo Preview — view-only experience. Ready to launch?&nbsp;
+        <Link to="/pricing" className="demo-banner-link">Get the template →</Link>
+      </div>
+
       {/* Hero */}
       <section className="iph">
         <div className="iph-bg">
@@ -217,7 +226,7 @@ export default function DemoPage() {
             </p>
             <div className="demo-hero-actions">
               <Link to="/pricing" className="btn btn-g btn-lg">Get FlowMind — $49</Link>
-              <Link to="/dashboard" className="btn btn-o btn-lg">Full Dashboard →</Link>
+              <Link to="/book-demo" className="btn btn-o btn-lg">Book a Demo →</Link>
             </div>
           </div>
         </div>
@@ -284,8 +293,6 @@ export default function DemoPage() {
               { path: '/cms', label: 'CMS & Blog', desc: 'Blog system with categories, search, and SEO', tag: 'Content' },
               { path: '/blog', label: 'Blog', desc: 'Post grid, featured article, and single post view', tag: 'Content' },
               { path: '/docs', label: 'Documentation', desc: 'Sidebar navigation with code blocks and search', tag: 'Content' },
-              { path: '/login', label: 'Login', desc: 'Social auth + email login with loading states', tag: 'Auth' },
-              { path: '/signup', label: 'Signup', desc: 'Multi-step registration with social providers', tag: 'Auth' },
               { path: '/setup', label: 'Setup Guide', desc: 'Step-by-step onboarding with expandable steps', tag: 'Onboarding' },
               { path: '/changelog', label: 'Changelog', desc: 'Timeline of releases with expand/collapse', tag: 'Content' },
             ].map((page) => (

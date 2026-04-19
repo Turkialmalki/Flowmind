@@ -18,10 +18,39 @@ import Pricing from '../components/Pricing'
 import FAQ from '../components/FAQ'
 import FinalCTA from '../components/FinalCTA'
 
+const WHATS_INCLUDED = [
+  { icon: '🏠', label: 'Landing page' },
+  { icon: '📊', label: 'SaaS dashboard UI' },
+  { icon: '⚡', label: 'Automation pipeline' },
+  { icon: '📅', label: 'AI calendar system' },
+  { icon: '📄', label: 'Pricing, blog & docs pages' },
+  { icon: '📱', label: 'Fully responsive design' },
+]
+
 export default function Home() {
   return (
     <>
       <Hero />
+
+      {/* What's included strip */}
+      <section className="whats-included-section">
+        <div className="container">
+          <div className="wi-header an">
+            <div className="eyebrow" style={{ justifyContent: 'center' }}>What's included</div>
+            <p className="wi-sub">Launch-ready pages and systems. One payment — everything yours.</p>
+          </div>
+          <div className="wi-grid an">
+            {WHATS_INCLUDED.map(item => (
+              <div key={item.label} className="wi-item">
+                <span className="wi-icon">{item.icon}</span>
+                <span className="wi-label">{item.label}</span>
+              </div>
+            ))}
+          </div>
+          <p className="wi-tagline an">Designed for modern SaaS products · Launch faster with a real product system</p>
+        </div>
+      </section>
+
       <DashboardReveal />
       <CalendarSection />
       <AutomationPipeline />

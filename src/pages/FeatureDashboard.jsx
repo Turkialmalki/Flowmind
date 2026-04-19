@@ -142,7 +142,7 @@ export default function FeatureDashboard() {
                 editable in Framer without touching code.
               </p>
               <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '28px' }}>
-                <Link to="/dashboard" className="btn btn-g btn-lg">View Live Dashboard</Link>
+                <Link to="/demo" className="btn btn-g btn-lg">View Live Demo</Link>
                 <Link to="/pricing" className="btn btn-o btn-lg">Get Template</Link>
               </div>
             </div>
@@ -217,8 +217,8 @@ export default function FeatureDashboard() {
             <h2 className="st">See the dashboard in <span>action right now</span></h2>
             <p className="sd" style={{ margin: '0 auto 36px' }}>Explore the full interactive dashboard demo — no signup required.</p>
             <div className="ctac">
-              <Link to="/dashboard" className="ctab-cta-btn">
-                Open Live Dashboard
+              <Link to="/demo" className="ctab-cta-btn">
+                View Live Demo
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link to="/pricing" className="btn btn-o">Get Template — $49</Link>
