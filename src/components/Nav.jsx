@@ -18,7 +18,7 @@ const productItems = [
     bg: 'var(--indigo-g)',
   },
   {
-    to: '/dashboard',
+    to: '/demo',
     label: 'Dashboard UI',
     desc: 'Real-time analytics & metrics',
     icon: (

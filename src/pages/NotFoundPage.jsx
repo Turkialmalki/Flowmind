@@ -5,7 +5,7 @@ const quickLinks = [
   { to: '/pricing', label: 'Pricing' },
   { to: '/blog', label: 'Blog' },
   { to: '/docs', label: 'Docs' },
-  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/demo', label: 'Live Demo' },
 ]
 
 export default function NotFoundPage() {
@@ -45,8 +45,8 @@ export default function NotFoundPage() {
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
             </Link>
-            <Link to="/dashboard" className="btn btn-o">
-              Dashboard
+            <Link to="/demo" className="btn btn-o">
+              Live Demo
             </Link>
           </div>
 

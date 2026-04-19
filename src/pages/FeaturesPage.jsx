@@ -116,7 +116,7 @@ export default function FeaturesPage() {
             </p>
             <div className="iph-actions">
               <Link to="/pricing" className="btn btn-g btn-lg">Get FlowMind — $49</Link>
-              <Link to="/dashboard" className="btn btn-o btn-lg">View Live Demo</Link>
+              <Link to="/demo" className="btn btn-o btn-lg">View Live Demo</Link>
             </div>
           </div>
         </div>
@@ -381,7 +381,7 @@ export default function FeaturesPage() {
                 Get FlowMind — $49
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
-              <Link to="/dashboard" className="btn btn-o">View Live Demo</Link>
+              <Link to="/demo" className="btn btn-o">View Live Demo</Link>
             </div>
           </div>
         </div>
