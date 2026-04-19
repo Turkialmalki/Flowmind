@@ -196,7 +196,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Link to="/signup" className={plan.ctaClass} style={plan.pop ? { padding: '15px', fontSize: '16px' } : {}}>
+              <Link to="/book-demo" className={plan.ctaClass} style={plan.pop ? { padding: '15px', fontSize: '16px' } : {}}>
                 {plan.cta}
                 {plan.showArrow && <ArrowIcon />}
               </Link>

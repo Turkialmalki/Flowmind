@@ -143,7 +143,7 @@ export default function PricingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link to="/signup" className={plan.ctaClass} style={plan.pop ? { padding: '14px' } : {}}>
+                  <Link to="/book-demo" className={plan.ctaClass} style={plan.pop ? { padding: '14px' } : {}}>
                     {plan.cta}
                     {plan.showArrow && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>}
                   </Link>
@@ -268,7 +268,14 @@ export default function PricingPage() {
                       </svg>
                     </div>
                   </button>
-                  <div className="fqa" style={{ maxHeight: isOpen ? '300px' : '0' }}>
+                  <div
+                    className="fqa"
+                    style={{
+                      maxHeight: isOpen ? '400px' : '0',
+                      overflow: 'hidden',
+                      transition: 'max-height 0.35s cubic-bezier(0.4,0,0.2,1)',
+                    }}
+                  >
                     <div className="fqai">{faq.a}</div>
                   </div>
                 </div>
@@ -314,11 +321,11 @@ export default function PricingPage() {
             <h2 className="st">Start building your AI SaaS<br /><span>this week — not next quarter</span></h2>
             <p className="sd" style={{ margin: '0 auto 36px' }}>500+ founders already launched. Join them today.</p>
             <div className="ctac">
-              <Link to="/signup" className="ctab-cta-btn">
+              <Link to="/book-demo" className="ctab-cta-btn">
                 Get Pro — $49 One-Time
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
-              <Link to="/dashboard" className="btn btn-o">View Live Demo</Link>
+              <Link to="/demo" className="btn btn-o">View Live Demo</Link>
             </div>
           </div>
         </div>

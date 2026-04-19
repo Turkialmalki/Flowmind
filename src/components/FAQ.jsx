@@ -64,7 +64,14 @@ export default function FAQ() {
                   {faq.q}
                   <div className="fqic"><PlusIcon /></div>
                 </button>
-                <div className="fqa" style={{ maxHeight: isOpen ? '300px' : '0' }}>
+                <div
+                  className="fqa"
+                  style={{
+                    maxHeight: isOpen ? '400px' : '0',
+                    overflow: 'hidden',
+                    transition: 'max-height 0.35s cubic-bezier(0.4,0,0.2,1)',
+                  }}
+                >
                   <div className="fqai">{faq.a}</div>
                 </div>
               </div>

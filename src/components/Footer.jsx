@@ -36,11 +36,11 @@ export default function Footer() {
           <div>
             <div className="fct">Product</div>
             <ul className="flk">
+              <li><Link to="/">Home</Link></li>
               <li><Link to="/features">Features</Link></li>
               <li><Link to="/integrations">Integrations</Link></li>
               <li><Link to="/automations">Automations</Link></li>
               <li><Link to="/pricing">Pricing</Link></li>
-              <li><Link to="/dashboard">Dashboard</Link></li>
             </ul>
           </div>
 
@@ -51,18 +51,18 @@ export default function Footer() {
               <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/changelog">Changelog</Link></li>
               <li><Link to="/setup">Setup Guide</Link></li>
-              <li><Link to="/ai-demo">Help Center</Link></li>
+              <li><Link to="/demo">Live Demo</Link></li>
             </ul>
           </div>
 
           <div>
             <div className="fct">Company</div>
             <ul className="flk">
+              <li><Link to="/book-demo">Book Demo</Link></li>
               <li><Link to="/pricing">Get Template</Link></li>
-              <li><Link to="/login">Sign In</Link></li>
-              <li><Link to="/signup">Sign Up</Link></li>
               <li><Link to="/license">License</Link></li>
               <li><Link to="/privacy">Privacy</Link></li>
+              <li><Link to="/404">404 Page</Link></li>
             </ul>
           </div>
         </div>
