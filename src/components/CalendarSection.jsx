@@ -74,10 +74,23 @@ export default function CalendarSection() {
         </div>
 
         <div className="cal-layout">
-          {/* Calendar card */}
-          <div className="cal-card an">
+          {/* Calendar card — 3D tilt wrapper + scroll-reveal + float */}
+          <div className="cal-card-3d">
+          <div className="cal-card an-scale">
+            {/* Time sweep — radar-style scan line across the grid */}
+            {visible && <div className="cal-time-sweep" aria-hidden="true" />}
             <div className="cal-card-header">
-              <div className="cal-card-title">April 2026</div>
+              <div className="cal-card-header-left">
+                <div className="cal-card-title">April 2026</div>
+                <div className="cal-live-badge">
+                  <span className="cal-live-dot" />
+                  LIVE
+                </div>
+                <div className="cal-ai-sync">
+                  <span className="cal-sync-dot" />
+                  AI Sync Active
+                </div>
+              </div>
               <div className="cal-card-legend">
                 <div className="cal-legend-item">
                   <div className="cal-legend-dot" style={{ background: '#5b5bd6' }} />
@@ -153,10 +166,11 @@ export default function CalendarSection() {
               )}
             </div>
           </div>
+          </div>{/* /cal-card-3d */}
 
-          {/* Side info */}
-          <div className="cal-side an">
-            <div className="cal-side-card">
+          {/* Side info — staggered scroll reveal */}
+          <div className="cal-side">
+            <div className="cal-side-card an-scale" style={{ transitionDelay: '0.1s' }}>
               <div className="cal-side-icon" style={{ color: '#5b5bd6', background: 'rgba(91,91,214,0.08)' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <rect x="3" y="4" width="18" height="18" rx="2"/>
@@ -172,7 +186,7 @@ export default function CalendarSection() {
               </p>
             </div>
 
-            <div className="cal-side-card">
+            <div className="cal-side-card an-scale" style={{ transitionDelay: '0.22s' }}>
               <div className="cal-side-icon" style={{ color: '#059669', background: 'rgba(5,150,105,0.08)' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
@@ -184,7 +198,7 @@ export default function CalendarSection() {
               </p>
             </div>
 
-            <div className="cal-side-card">
+            <div className="cal-side-card an-scale" style={{ transitionDelay: '0.34s' }}>
               <div className="cal-side-icon" style={{ color: '#7c3aed', background: 'rgba(124,58,237,0.08)' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <circle cx="12" cy="12" r="3"/>

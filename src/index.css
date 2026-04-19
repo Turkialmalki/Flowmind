@@ -8833,3 +8833,201 @@ kbd {
   .bd2-card { padding: 28px 20px; }
   .bd2-microtrust { flex-direction: column; align-items: center; gap: 8px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PREMIUM MOTION v2 — CINEMATIC DEPTH · CALENDAR WOW · MICRO-INTERACTIONS
+   2026-04
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. SCROLL DEPTH — "zoom into product" blur-clear entry ──────────────── */
+.sd-reveal {
+  animation: sd-blur-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes sd-blur-in {
+  from { filter: blur(6px); }
+  to   { filter: blur(0);   }
+}
+
+/* ── 2. AN-SCALE ENHANCED — blur layered onto existing scale+opacity reveal ─ */
+.an-scale {
+  filter: blur(6px);
+  transition: opacity 0.82s var(--ease2), transform 0.82s var(--ease2), filter 0.85s var(--ease2);
+}
+.an-scale.v { filter: blur(0); }
+
+/* ── 3. HERO TRUST SIGNAL ROW — "Used by 100+ AI founders" ──────────────── */
+.h-trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 14px 0 8px;
+  animation: fadeUp 0.55s var(--ease2) 0.50s both;
+}
+.h-trust-avatars {
+  display: flex;
+  margin-right: 4px;
+}
+.h-trust-av {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  margin-right: -7px;
+  flex-shrink: 0;
+  transition: transform 0.2s var(--ease2);
+}
+.h-trust-av:nth-child(1) { background: linear-gradient(135deg, #6366f1, #818cf8); }
+.h-trust-av:nth-child(2) { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+.h-trust-av:nth-child(3) { background: linear-gradient(135deg, #ec4899, #f472b6); }
+.h-trust-av:nth-child(4) { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+.h-trust-av:nth-child(5) { background: linear-gradient(135deg, #10b981, #34d399); z-index: 1; margin-right: 0; }
+.h-trust-row:hover .h-trust-av { margin-right: -3px; }
+.h-trust-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.68);
+  margin-left: 14px;
+  letter-spacing: 0.01em;
+}
+.h-trust-label strong {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ── 4. WORKFLOW NODE TOOLTIPS + ENHANCED HOVER GLOW ─────────────────────── */
+.hwf-node { position: relative; }
+
+.hwf-node[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background: rgba(8, 14, 28, 0.94);
+  color: #e2e8f0;
+  font-size: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 9px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.16s var(--ease), transform 0.16s var(--ease);
+  z-index: 30;
+  font-family: var(--sans);
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+.hwf-node[data-tip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Stronger glow on node hover */
+.hwf-node:not(.hwf-active):hover .hwf-node-icon {
+  border-color: rgba(91, 91, 214, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(91, 91, 214, 0.10), 0 0 12px rgba(91, 91, 214, 0.18) !important;
+  background: rgba(91, 91, 214, 0.07) !important;
+  color: #5b5bd6 !important;
+  transition: all 0.18s var(--ease) !important;
+}
+.hwf-node.hwf-active:hover .hwf-node-icon {
+  box-shadow:
+    0 0 0 4px rgba(91, 91, 214, 0.18),
+    0 0 20px rgba(91, 91, 214, 0.45),
+    0 0 40px rgba(91, 91, 214, 0.20) !important;
+}
+
+/* ── 5. CALENDAR AI SYNC ACTIVE BADGE ────────────────────────────────────── */
+.cal-ai-sync {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 650;
+  color: #5b5bd6;
+  background: rgba(91, 91, 214, 0.07);
+  border: 1px solid rgba(91, 91, 214, 0.18);
+  border-radius: 100px;
+  padding: 2px 9px 2px 5px;
+  font-family: var(--sans);
+  letter-spacing: 0.01em;
+  user-select: none;
+  white-space: nowrap;
+}
+/* Spinning sync ring */
+.cal-sync-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(91, 91, 214, 0.22);
+  border-top-color: #5b5bd6;
+  flex-shrink: 0;
+  animation: cal-sync-spin 0.85s linear infinite;
+}
+@keyframes cal-sync-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── 6. CALENDAR TIME SWEEP — radar scan line ────────────────────────────── */
+.cal-card { position: relative; }
+.cal-time-sweep {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(91, 91, 214, 0.35) 30%,
+    rgba(91, 91, 214, 0.80) 50%,
+    rgba(91, 91, 214, 0.35) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 1px;
+  animation: cal-time-sweep 3.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: 0.4s;
+}
+@keyframes cal-time-sweep {
+  0%   { top: 62px;  opacity: 0;   box-shadow: none; }
+  5%   { opacity: 1;               box-shadow: 0 0 10px rgba(91,91,214,.40), 0 0 24px rgba(91,91,214,.15); }
+  88%  { opacity: 0.65;            box-shadow: 0 0 8px rgba(91,91,214,.28); }
+  100% { top: 380px; opacity: 0;   box-shadow: none; }
+}
+
+/* ── 7. ENHANCED EVENT DOT GLOW ─────────────────────────────────────────── */
+.cal-has-event .cal-event-dot {
+  filter: brightness(1.12);
+  box-shadow: 0 0 6px 1px rgba(91, 91, 214, 0.35);
+}
+.cal-cell.cal-today .cal-event-dot {
+  box-shadow: 0 0 8px rgba(91, 91, 214, 0.55), 0 0 18px rgba(91, 91, 214, 0.22);
+}
+/* Green task events */
+.cal-has-event[class*="cal-cell"] .cal-event-dot[style*="059669"] {
+  box-shadow: 0 0 6px 1px rgba(5, 150, 105, 0.40);
+}
+
+/* ── 8. RESPONSIVE GUARDS ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .h-trust-row { display: none; }
+  .cal-time-sweep { display: none; }
+}
+/* Hide AI Sync badge in the narrow range where header might overflow */
+@media (max-width: 1100px) and (min-width: 961px) {
+  .cal-ai-sync { display: none; }
+}
+@media (max-width: 768px) {
+  .cal-ai-sync { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sd-reveal { animation: none; }
+  .an-scale  { filter: none; transition-property: opacity, transform; }
+  .an-scale.v { filter: none; }
+  .cal-time-sweep { animation: none; display: none; }
+  .cal-sync-dot   { animation: none; }
+}

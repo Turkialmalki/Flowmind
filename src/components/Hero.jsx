@@ -286,7 +286,7 @@ export default function Hero() {
         >
           <h1>
             <span className="h1-line-1">AI Automation SaaS</span>
-            <span className="h1-line-2">Ready to Launch in Minutes</span>
+            <span className="h1-line-2">Ready to Launch</span>
           </h1>
 
           <p className="hsub">
@@ -300,6 +300,18 @@ export default function Hero() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
+          </div>
+
+          {/* Social trust signal — "Used by 100+ AI founders" */}
+          <div className="h-trust-row">
+            <div className="h-trust-avatars">
+              <div className="h-trust-av" />
+              <div className="h-trust-av" />
+              <div className="h-trust-av" />
+              <div className="h-trust-av" />
+              <div className="h-trust-av" />
+            </div>
+            <span className="h-trust-label">Used by <strong>100+</strong> AI founders</span>
           </div>
 
           <p className="h-micro-trust">One-time payment · Lifetime updates · Full source code</p>
@@ -410,28 +422,28 @@ export default function Hero() {
                 <span className="hwf-badge">LIVE</span>
               </div>
               <div className="hwf-nodes">
-                <div className="hwf-node">
+                <div className="hwf-node" data-tip="Detects calendar events">
                   <div className="hwf-node-icon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                   </div>
                   <span className="hwf-node-label">New Meeting</span>
                 </div>
                 <span className="hwf-arrow">→</span>
-                <div className="hwf-node">
+                <div className="hwf-node" data-tip="Analyzes conflicts + priority">
                   <div className="hwf-node-icon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
                   </div>
                   <span className="hwf-node-label">AI Checks</span>
                 </div>
                 <span className="hwf-arrow">→</span>
-                <div className="hwf-node hwf-active">
+                <div className="hwf-node hwf-active" data-tip="Syncing… 98% match">
                   <div className="hwf-node-icon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                   </div>
                   <span className="hwf-node-label">Sync Cal</span>
                 </div>
                 <span className="hwf-arrow">→</span>
-                <div className="hwf-node">
+                <div className="hwf-node" data-tip="Alerts team instantly">
                   <div className="hwf-node-icon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                   </div>
