@@ -5715,6 +5715,7 @@ kbd {
 .hero-flex .h1-line-2          { animation: fadeUp 0.70s var(--ease2) 0.22s both; }
 .hero-flex .hc .hsub           { animation: fadeUp 0.65s var(--ease2) 0.36s both; }
 .hero-flex .hc .ha             { animation: fadeUp 0.65s var(--ease2) 0.50s both !important; }
+.hero-flex .hc .h-urgency-copy { animation: fadeUp 0.55s var(--ease2) 0.55s both; }
 .hero-flex .hc .h-micro-trust  { animation: fadeUp 0.55s var(--ease2) 0.62s both; }
 
 /* Hide 3rd card on mobile — too cramped */
@@ -8627,7 +8628,7 @@ kbd {
 }
 
 /* ── LEFT COLUMN ── */
-.bd2-left { animation: fadeUp 0.6s var(--ease2) 0.1s both; }
+.bd2-left { animation: none; }
 
 .bd2-title {
   font-family: var(--display);
@@ -8697,7 +8698,7 @@ kbd {
 .bd2-trust-text strong { color: #94a3b8; }
 
 /* ── RIGHT COLUMN ── */
-.bd2-right { animation: fadeUp 0.6s var(--ease2) 0.2s both; }
+.bd2-right { animation: none; }
 
 .bd2-card {
   background: rgba(17,24,39,0.85);
@@ -9142,3 +9143,26 @@ kbd {
   margin-top: 10px;
   line-height: 1.5;
 }
+
+/* ── BOOK DEMO v2 — ELEMENT STAGGER ENTRANCE ──────────────────────────────
+   Panels no longer animate as blocks. Instead each element enters in sequence,
+   creating a premium cascading reveal. Duration: 0.45–0.60s / stagger: 0.08s.
+   fill-mode: both — ensures elements start invisible before their delay fires. */
+
+/* Left column */
+.bd2-left .eyebrow               { animation: fadeUp 0.55s var(--ease2) 0.05s both; }
+.bd2-title                       { animation: fadeUp 0.60s var(--ease2) 0.13s both; }
+.bd2-subtitle                    { animation: fadeUp 0.55s var(--ease2) 0.21s both; }
+.bd2-benefits                    { animation: fadeUp 0.55s var(--ease2) 0.29s both; }
+.bd2-testimonial                 { animation: fadeUp 0.55s var(--ease2) 0.37s both; }
+.bd2-left .bd2-trust-row         { animation: fadeUp 0.55s var(--ease2) 0.45s both; }
+
+/* Right column — card unit then form fields */
+.bd2-card                        { animation: fadeUp 0.65s var(--ease2) 0.13s both; }
+.bd2-card-header                 { animation: fadeUp 0.50s var(--ease2) 0.21s both; }
+.bd2-form .bd2-field:nth-child(1){ animation: fadeUp 0.45s var(--ease2) 0.28s both; }
+.bd2-form .bd2-field:nth-child(2){ animation: fadeUp 0.45s var(--ease2) 0.36s both; }
+.bd2-form .bd2-field:nth-child(3){ animation: fadeUp 0.45s var(--ease2) 0.44s both; }
+.bd2-form .bd2-field:nth-child(4){ animation: fadeUp 0.45s var(--ease2) 0.52s both; }
+.bd2-submit                      { animation: fadeUp 0.45s var(--ease2) 0.60s both; }
+.bd2-direct-purchase             { animation: fadeUp 0.45s var(--ease2) 0.68s both; }

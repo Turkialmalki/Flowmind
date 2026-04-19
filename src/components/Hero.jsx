@@ -300,9 +300,6 @@ export default function Hero() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
-            <Link to="/demo" className="btn btn-o btn-xl">
-              Live Demo
-            </Link>
           </div>
 
           <p className="h-urgency-copy">No design. No setup. Just launch.</p>

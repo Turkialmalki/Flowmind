@@ -259,7 +259,7 @@ export default function PricingPage() {
             {faqs.map((faq, i) => {
               const isOpen = openFaq === i
               return (
-                <div key={i} className={`fqi${isOpen ? ' open' : ''} faq-item an`}>
+                <div key={i} className={`fqi${isOpen ? ' open' : ''} faq-item`}>
                   <button className="fqq" onClick={() => setOpenFaq(isOpen ? -1 : i)}>
                     {faq.q}
                     <div className="fqic">
