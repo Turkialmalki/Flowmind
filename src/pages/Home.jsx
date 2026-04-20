@@ -33,7 +33,7 @@ export default function Home() {
       <Hero />
 
       {/* What's included strip */}
-      <section className="whats-included-section">
+      {/* <section className="whats-included-section">
         <div className="container">
           <div className="wi-header an">
             <div className="eyebrow" style={{ justifyContent: 'center' }}>What's included</div>
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
           <p className="wi-tagline an">Designed for modern SaaS products · Launch faster with a real product system</p>
         </div>
-      </section>
+      </section> */}
 
       <DashboardReveal />
       <CalendarSection />

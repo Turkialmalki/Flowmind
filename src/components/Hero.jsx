@@ -1,6 +1,14 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+const TRUST_AVATARS = [
+  { src: 'https://randomuser.me/api/portraits/women/44.jpg', name: 'Sarah',  role: 'AI Founder' },
+  { src: 'https://randomuser.me/api/portraits/men/22.jpg',   name: 'Omar',   role: 'SaaS Builder' },
+  { src: 'https://randomuser.me/api/portraits/women/68.jpg', name: 'Lina',   role: 'Product Designer' },
+  { src: 'https://randomuser.me/api/portraits/men/79.jpg',   name: 'James',  role: 'Tech Founder' },
+  { src: 'https://randomuser.me/api/portraits/women/26.jpg', name: 'Priya',  role: 'AI Builder' },
+]
+
 // Linear interpolation — the core of inertia smoothing
 function lerp(a, b, t) { return a + (b - a) * t }
 
@@ -307,11 +315,12 @@ export default function Hero() {
           {/* Social trust signal — "Used by 100+ AI founders" */}
           <div className="h-trust-row">
             <div className="h-trust-avatars">
-              <div className="h-trust-av" />
-              <div className="h-trust-av" />
-              <div className="h-trust-av" />
-              <div className="h-trust-av" />
-              <div className="h-trust-av" />
+              {TRUST_AVATARS.map((av, i) => (
+                <div key={i} className="h-trust-av-wrap">
+                  <img className="h-trust-av" src={av.src} alt={av.name} loading="lazy" />
+                  <span className="h-trust-tooltip">{av.name} — {av.role}</span>
+                </div>
+              ))}
             </div>
             <span className="h-trust-label">Used by <strong>100+</strong> AI founders</span>
           </div>

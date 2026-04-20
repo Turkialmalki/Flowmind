@@ -8867,23 +8867,51 @@ kbd {
 }
 .h-trust-avatars {
   display: flex;
+  align-items: center;
   margin-right: 4px;
 }
-.h-trust-av {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.28);
-  margin-right: -7px;
+.h-trust-av-wrap {
+  position: relative;
+  margin-right: -8px;
   flex-shrink: 0;
-  transition: transform 0.2s var(--ease2);
+  z-index: 1;
+  transition: transform 0.25s ease;
 }
-.h-trust-av:nth-child(1) { background: linear-gradient(135deg, #6366f1, #818cf8); }
-.h-trust-av:nth-child(2) { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
-.h-trust-av:nth-child(3) { background: linear-gradient(135deg, #ec4899, #f472b6); }
-.h-trust-av:nth-child(4) { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
-.h-trust-av:nth-child(5) { background: linear-gradient(135deg, #10b981, #34d399); z-index: 1; margin-right: 0; }
-.h-trust-row:hover .h-trust-av { margin-right: -3px; }
+.h-trust-av-wrap:last-child { margin-right: 0; }
+.h-trust-av-wrap:nth-child(1) { z-index: 5; }
+.h-trust-av-wrap:nth-child(2) { z-index: 4; }
+.h-trust-av-wrap:nth-child(3) { z-index: 3; }
+.h-trust-av-wrap:nth-child(4) { z-index: 2; }
+.h-trust-av-wrap:nth-child(5) { z-index: 1; }
+.h-trust-av-wrap:hover { transform: translateY(-4px) scale(1.12); z-index: 10; }
+.h-trust-av {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  object-fit: cover;
+  object-position: center top;
+}
+.h-trust-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 10, 22, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+.h-trust-av-wrap:hover .h-trust-tooltip { opacity: 1; }
 .h-trust-label {
   font-size: 12.5px;
   font-weight: 500;
@@ -8893,7 +8921,8 @@ kbd {
 }
 .h-trust-label strong {
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.92);
+  color: #fff;
+  letter-spacing: -0.01em;
 }
 
 /* ── 4. WORKFLOW NODE TOOLTIPS + ENHANCED HOVER GLOW ─────────────────────── */
