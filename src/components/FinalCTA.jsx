@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 
-const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
-
 const trustItems = [
   {
     label: 'Instant access after purchase',
@@ -82,18 +80,16 @@ export default function FinalCTA() {
 
           {/* CTAs */}
           <div className="ctac">
-            <a
-              href={GUMROAD}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/book-demo"
               className="ctab-cta-btn"
               style={{ textDecoration: 'none' }}
             >
-              Get FlowMind — $49
+              Get FlowMind
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
             <Link to="/demo" className="btn btn-o btn-lg">See Live Demo</Link>
           </div>
 

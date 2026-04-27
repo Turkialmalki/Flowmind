@@ -1,6 +1,5 @@
 import { useState } from 'react'
-
-const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
+import { Link } from 'react-router-dom'
 
 const proFeatures = [
   'All 12 pages included',
@@ -78,16 +77,14 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={GUMROAD}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/book-demo"
                 className="btn btn-g pbn"
                 style={{ padding: '14px', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
               >
-                Get FlowMind — $49
+                Get FlowMind
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '16px', height: '16px' }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </a>
+              </Link>
               <div className="p-guarantee">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                 One-time payment · No subscription · Lifetime access
@@ -100,7 +97,7 @@ export default function PricingPage() {
             {[
               { icon: '⚡', text: 'Instant delivery after purchase' },
               { icon: '♾️', text: 'Free lifetime updates' },
-              { icon: '🔒', text: 'Secure checkout via Gumroad' },
+              { icon: '🔒', text: 'Secure checkout' },
               { icon: '🌍', text: '500+ founders worldwide' },
             ].map((item) => (
               <div key={item.text} className="pricing-trust-item">
@@ -195,7 +192,7 @@ export default function PricingPage() {
             <div className="pricing-guarantee-card">
               <div className="pricing-guarantee-icon">🔒</div>
               <div className="pricing-guarantee-title">Secure Checkout</div>
-              <div className="pricing-guarantee-desc">All payments processed via Gumroad with 256-bit encryption. Your data is safe.</div>
+              <div className="pricing-guarantee-desc">All payments are processed securely. Your data is safe.</div>
             </div>
             <div className="pricing-guarantee-card">
               <div className="pricing-guarantee-icon">⚡</div>
@@ -224,16 +221,14 @@ export default function PricingPage() {
             <h2 className="st">Get your AI SaaS template<br /><span>today — not next quarter</span></h2>
             <p className="sd" style={{ margin: '0 auto 36px' }}>500+ founders already launched. One-time purchase. Instant access.</p>
             <div className="ctac">
-              <a
-                href={GUMROAD}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/book-demo"
                 className="ctab-cta-btn"
                 style={{ textDecoration: 'none' }}
               >
-                Get FlowMind — $49 One-Time
+                Get FlowMind
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '18px', height: '18px' }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </a>
+              </Link>
             </div>
             <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--t3)', marginTop: '16px' }}>
               This is a one-time purchase template — not a hosted SaaS product.

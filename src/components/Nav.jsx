@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import LogoIcon from './LogoIcon'
 
-const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
-
 /* ── Dropdown data ── */
 
 const productItems = [
@@ -166,10 +164,10 @@ const resourceItems = [
 
 const companyItems = [
   {
-    to: GUMROAD,
+    to: '/book-demo',
     label: 'Get Template',
-    desc: 'One-time purchase — $49',
-    external: true,
+    desc: 'Book a demo or get started',
+    external: false,
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
@@ -355,10 +353,8 @@ export default function Nav() {
           </ul>
 
           <div className="nr">
-            <a
-              href={GUMROAD}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/book-demo"
               className="nav-get-template"
               style={{ textDecoration: 'none' }}
             >
@@ -366,7 +362,7 @@ export default function Nav() {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           <button className="nm" onClick={() => setMobileOpen(true)} aria-label="Open menu">
@@ -401,16 +397,14 @@ export default function Nav() {
         </div>
 
         <div className="mm-footer">
-          <a
-            href={GUMROAD}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/book-demo"
             className="btn btn-g"
             style={{ width: '100%', justifyContent: 'center', textDecoration: 'none' }}
             onClick={closeMenu}
           >
-            Get Template — $49
-          </a>
+            Get Template
+          </Link>
         </div>
       </div>
     </>

@@ -341,7 +341,7 @@ export default function AutomationsPage() {
           <h2 className="aup-cta-title">Ready to automate?</h2>
           <p className="aup-cta-sub">Get the complete automation template — one-time purchase, instant access.</p>
           <div className="aup-cta-btns">
-            <a href="https://turkialmalki.gumroad.com/l/flowmind" target="_blank" rel="noopener noreferrer" className="btn btn-g" style={{ textDecoration: 'none' }}>Get FlowMind — $49</a>
+            <Link to="/book-demo" className="btn btn-g" style={{ textDecoration: 'none' }}>Get FlowMind</Link>
             <Link to="/demo" className="btn btn-o">See Live Demo</Link>
           </div>
         </div>

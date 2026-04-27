@@ -1,4 +1,4 @@
-const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
+import { Link } from 'react-router-dom'
 
 function BoltIcon() {
   return (
@@ -119,16 +119,14 @@ export default function Pricing() {
                 </li>
               ))}
             </ul>
-            <a
-              href={GUMROAD}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/book-demo"
               className="btn btn-g pbn"
               style={{ padding: '15px', fontSize: '16px', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
             >
               Get FlowMind
               <ArrowIcon />
-            </a>
+            </Link>
             <div className="p-savings-note">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />

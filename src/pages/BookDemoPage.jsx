@@ -264,28 +264,6 @@ export default function BookDemoPage() {
                     </div>
                   </form>
 
-                  {/* Direct purchase option */}
-                  <div className="bd2-direct-purchase">
-                    <div className="bd2-divider-row">
-                      <span className="bd2-divider-line" />
-                      <span className="bd2-divider-text">or purchase directly</span>
-                      <span className="bd2-divider-line" />
-                    </div>
-                    <a
-                      href="https://gumroad.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-o bd2-gumroad-btn"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
-                      </svg>
-                      Buy on Gumroad — $49
-                    </a>
-                    <p className="bd2-purchase-note">
-                      You'll receive instant access to all files after completing your purchase.
-                    </p>
-                  </div>
                 </div>
               )}
             </div>

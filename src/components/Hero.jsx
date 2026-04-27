@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-
-const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
+import { Link } from 'react-router-dom'
 
 const TRUST_AVATARS = [
   { src: 'https://randomuser.me/api/portraits/women/44.jpg', name: 'Sarah',  role: 'AI Founder' },
@@ -303,10 +302,8 @@ export default function Hero() {
           </p>
 
           <div className="ha">
-            <a
-              href={GUMROAD}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/book-demo"
               className="btn btn-g btn-xl hero-cta-primary"
               style={{ textDecoration: 'none' }}
             >
@@ -314,7 +311,7 @@ export default function Hero() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           <p className="h-urgency-copy">One-time purchase · Downloadable template · No subscription</p>

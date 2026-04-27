@@ -58,7 +58,7 @@ export default function Footer() {
           <div>
             <div className="fct">Company</div>
             <ul className="flk">
-              <li><a href="https://turkialmalki.gumroad.com/l/flowmind" target="_blank" rel="noopener noreferrer">Get Template</a></li>
+              <li><Link to="/book-demo">Get Template</Link></li>
               <li><Link to="/terms">Terms &amp; Conditions</Link></li>
               <li><Link to="/license">License</Link></li>
               <li><Link to="/privacy">Privacy</Link></li>

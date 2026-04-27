@@ -47,7 +47,7 @@ export default function TermsPage() {
               <ul>
                 <li>FlowMind is sold as a <strong>one-time payment</strong>. There are no recurring fees, subscriptions, or hidden charges.</li>
                 <li>After payment is confirmed, you receive instant access to the template files via your purchase email.</li>
-                <li>All payments are processed securely through Gumroad or Lemon Squeezy.</li>
+                <li>All payments are processed securely at checkout.</li>
               </ul>
             </div>
 

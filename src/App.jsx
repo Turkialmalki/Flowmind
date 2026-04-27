@@ -23,6 +23,7 @@ import IntegrationsPage from './pages/IntegrationsPage'
 import AutomationsPage from './pages/AutomationsPage'
 import BookDemoPage from './pages/BookDemoPage'
 import TermsPage from './pages/TermsPage'
+import DashboardPage from './pages/DashboardPage'
 
 export default function App() {
   useEffect(() => {
@@ -78,6 +79,7 @@ export default function App() {
           <Route path="/integrations" element={<IntegrationsPage />} />
           <Route path="/automations" element={<AutomationsPage />} />
           <Route path="/book-demo" element={<BookDemoPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
