@@ -193,7 +193,7 @@ Checks at each breakpoint:
 BaseBox is a complete AI SaaS system template — not just a landing page.
 
 Includes: High-converting home page (16 sections), full dashboard UI, 
-auth screens, CMS-powered blog, docs, pricing, changelog, and more.
+CMS-powered blog, docs, pricing, changelog, and more.
 
 14 pages. 14 Framer Code Components. 2 CMS collections. 
 Everything structured, editable, and ready to launch.

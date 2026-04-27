@@ -320,28 +320,6 @@ export default function ProductScreens() {
           </div>
         </div>
 
-        {/* ─ Auth screens ─ */}
-        <div className="screen-block rev an">
-          <div className="screen-label">
-            <span className="screen-badge">Auth Screens</span>
-            <h3 className="screen-t">Ready-to-use auth flows so you launch faster</h3>
-            <p className="screen-d">
-              Login and signup screens designed to minimize friction and maximize completions. No blank
-              page when users click "Get Started" — the onboarding experience is built and beautiful
-              from day one.
-            </p>
-            <ul className="screen-list">
-              <CheckItem>Clean login with social auth (Google, GitHub)</CheckItem>
-              <CheckItem>Signup page with trust signals</CheckItem>
-              <CheckItem>Email verification and password reset</CheckItem>
-              <CheckItem>Fully responsive, accessible markup</CheckItem>
-            </ul>
-          </div>
-          <div className="screen-mock">
-            <AuthMocks />
-          </div>
-        </div>
-
         {/* ─ Settings + Empty States ─ */}
         <div className="screens-2col an">
           <div className="screen-mini">

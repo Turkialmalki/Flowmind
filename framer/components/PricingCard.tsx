@@ -250,7 +250,6 @@ PricingCard.defaultProps = {
   features: [
     "All 6 marketing pages",
     "Full dashboard UI kit",
-    "Auth screens (login, signup, reset)",
     "Settings & profile screens",
     "Empty states for every screen",
     "Framer CMS (blog, team, changelog)",

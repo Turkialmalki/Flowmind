@@ -25,14 +25,6 @@ const ACTIVITY_FEED = [
   { icon: '💰', text: 'quickdemo.ai hit $5K MRR this week', time: '52m ago', color: '#059669' },
 ]
 
-function TypingDots() {
-  return (
-    <span className="ai-typing-dots">
-      <span /><span /><span />
-    </span>
-  )
-}
-
 function ActivityFeed() {
   const [items, setItems] = useState(ACTIVITY_FEED.slice(0, 4))
   const nextIdxRef = useRef(4)
@@ -72,24 +64,16 @@ function ActivityFeed() {
 
 export default function LiveAIDemo() {
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [typedText, setTypedText] = useState('')
-  const [isTyping, setIsTyping] = useState(false)
+  const [messages, setMessages] = useState([
+    {
+      role: 'ai',
+      content: 'Growth forecast for next 90 days based on current trajectory...',
+    },
+  ])
   const [inputFocused, setInputFocused] = useState(false)
-  const [isReady, setIsReady] = useState(false)
 
   const inputRef = useRef(null)
   const messagesRef = useRef(null)
-  const sectionRef = useRef(null)
-  const hasAutoPlayedRef = useRef(false)
-  const typingCleanupRef = useRef(null)
-  const pendingTimersRef = useRef([])
-  const userInteractedRef = useRef(false)
-
-  useEffect(() => {
-    setIsReady(true)
-  }, [])
 
   const scrollToBottom = () => {
     if (messagesRef.current) {
@@ -97,127 +81,28 @@ export default function LiveAIDemo() {
     }
   }
 
-  const clearTyping = () => {
-    if (typingCleanupRef.current) {
-      typingCleanupRef.current()
-      typingCleanupRef.current = null
-    }
-    setIsTyping(false)
-    setTypedText('')
-  }
-
-  const typeResponse = (text, onDone) => {
-    clearTyping()
-    if (!text) return
-    setIsTyping(true)
-    setTypedText('')
-    let i = 0
-    const speed = Math.max(10, Math.min(20, Math.floor(2400 / text.length)))
-    const tick = setInterval(() => {
-      i++
-      setTypedText(text.slice(0, i))
-      scrollToBottom()
-      if (i >= text.length) {
-        clearInterval(tick)
-        typingCleanupRef.current = null
-        setIsTyping(false)
-        onDone?.(text)
-      }
-    }, speed)
-    typingCleanupRef.current = () => clearInterval(tick)
-  }
-
   const sendMessage = (text) => {
     const trimmed = (text || '').trim()
-    if (!trimmed || loading || isTyping) return
-
-    userInteractedRef.current = true
-    const userMsg = { role: 'user', text: trimmed }
-    setMessages(prev => [...prev, userMsg])
-    setInput('')
-    setLoading(true)
-    scrollToBottom()
+    if (!trimmed) return
 
     const responseKey = Object.keys(DEMO_RESPONSES).find(k =>
       trimmed.toLowerCase().includes(k)
     ) || 'default'
 
-    const tid = setTimeout(() => {
-      setLoading(false)
-      setMessages(prev => [...prev, { role: 'ai', text: '' }])
-      typeResponse(DEMO_RESPONSES[responseKey], (finalText) => {
-        setMessages(prev => {
-          const next = [...prev]
-          next[next.length - 1] = { role: 'ai', text: finalText }
-          return next
-        })
-        setTypedText('')
-        setTimeout(scrollToBottom, 50)
-      })
-    }, 1100)
+    const userMsg = { role: 'user', content: trimmed }
+    const botMsg = { role: 'ai', content: DEMO_RESPONSES[responseKey] }
 
-    pendingTimersRef.current.push(tid)
+    setMessages(prev => [...prev, userMsg, botMsg])
+    setInput('')
+    setTimeout(scrollToBottom, 50)
   }
 
   const handleSuggestion = (key) => {
     const s = SUGGESTIONS.find(s => s.key === key)
-    const text = s?.label.replace(/^[^\w\s]+\s*/, '') || ''
+    if (!s) return
+    const text = s.label.replace(/^[^\w\s]+\s*/, '')
     sendMessage(text)
   }
-
-  const handleReset = () => {
-    clearTyping()
-    pendingTimersRef.current.forEach(clearTimeout)
-    pendingTimersRef.current = []
-    setMessages([])
-    setInput('')
-    setLoading(false)
-    hasAutoPlayedRef.current = false
-    userInteractedRef.current = false
-    setTimeout(() => inputRef.current?.focus(), 100)
-  }
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAutoPlayedRef.current) {
-          hasAutoPlayedRef.current = true
-          const t1 = setTimeout(() => {
-            if (userInteractedRef.current) return
-            const demoInput = 'Analyze my growth'
-            setMessages([{ role: 'user', text: demoInput }])
-            setLoading(true)
-            const t2 = setTimeout(() => {
-              if (userInteractedRef.current) {
-                setLoading(false)
-                return
-              }
-              setLoading(false)
-              setMessages(prev => [...prev, { role: 'ai', text: '' }])
-              typeResponse(DEMO_RESPONSES.growth, (finalText) => {
-                setMessages(prev => {
-                  const next = [...prev]
-                  next[next.length - 1] = { role: 'ai', text: finalText }
-                  return next
-                })
-                setTypedText('')
-              })
-            }, 1200)
-            pendingTimersRef.current.push(t2)
-          }, 600)
-          pendingTimersRef.current.push(t1)
-        }
-      },
-      { threshold: 0.3 }
-    )
-    if (sectionRef.current) obs.observe(sectionRef.current)
-    return () => {
-      obs.disconnect()
-      clearTyping()
-      pendingTimersRef.current.forEach(clearTimeout)
-      pendingTimersRef.current = []
-    }
-  }, [])
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -226,11 +111,10 @@ export default function LiveAIDemo() {
     }
   }
 
-  const canInteract = !loading && !isTyping && isReady
-  const isEmpty = messages.length === 0
+  const safeMessages = Array.isArray(messages) ? messages : []
 
   return (
-    <section className="section ai-demo-section" id="demo" ref={sectionRef}>
+    <section className="section ai-demo-section" id="demo">
       <div className="ai-demo-bg-orb ai-demo-bg-orb1" />
       <div className="ai-demo-bg-orb ai-demo-bg-orb2" />
       <div className="ai-demo-bg-orb ai-demo-bg-orb3" />
@@ -273,32 +157,11 @@ export default function LiveAIDemo() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <div className="ai-demo-model-tag">GPT-4o · Streaming</div>
-                {messages.length > 0 && (
-                  <button className="ai-demo-reset-btn" onClick={handleReset} title="Reset demo">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="1 4 1 10 7 10" />
-                      <path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
-                    </svg>
-                    Reset
-                  </button>
-                )}
               </div>
             </div>
 
             <div className="ai-demo-messages" ref={messagesRef}>
-              {isEmpty && (
-                <div className="ai-demo-empty">
-                  <div className="ai-demo-empty-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-                    </svg>
-                  </div>
-                  <div className="ai-demo-empty-text">Ask your AI assistant anything</div>
-                  <div className="ai-demo-empty-sub">Hit one of the prompts below or type your own</div>
-                </div>
-              )}
-
-              {messages.map((msg, i) => (
+              {safeMessages.map((msg, i) => (
                 <div key={i} className={`ai-msg ai-msg-${msg.role}`}>
                   {msg.role === 'ai' && (
                     <div className="ai-msg-avatar">
@@ -308,41 +171,23 @@ export default function LiveAIDemo() {
                     </div>
                   )}
                   <div className="ai-msg-bubble">
-                    {msg.role === 'ai' && i === messages.length - 1 && isTyping
-                      ? <>{typedText}<span className="ai-cursor" /></>
-                      : msg.text}
+                    {msg.content}
                   </div>
                 </div>
               ))}
-
-              {loading && (
-                <div className="ai-msg ai-msg-ai">
-                  <div className="ai-msg-avatar">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" />
-                    </svg>
-                  </div>
-                  <div className="ai-msg-bubble ai-loading-bubble">
-                    <TypingDots />
-                  </div>
-                </div>
-              )}
             </div>
 
-            {(isEmpty || (!loading && !isTyping && messages.length > 0)) && (
-              <div className="ai-suggestions">
-                {SUGGESTIONS.map((s) => (
-                  <button
-                    key={s.key}
-                    className="ai-suggestion-chip"
-                    onClick={() => handleSuggestion(s.key)}
-                    disabled={!canInteract}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
-            )}
+            <div className="ai-suggestions">
+              {SUGGESTIONS.map((s) => (
+                <button
+                  key={s.key}
+                  className="ai-suggestion-chip"
+                  onClick={() => handleSuggestion(s.key)}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
 
             <div className="ai-demo-input-wrap">
               <input
@@ -354,12 +199,11 @@ export default function LiveAIDemo() {
                 onKeyDown={handleKeyDown}
                 onFocus={() => setInputFocused(true)}
                 onBlur={() => setInputFocused(false)}
-                disabled={!canInteract}
               />
               <button
                 className="ai-demo-send ai-demo-send-lg"
                 onClick={() => sendMessage(input)}
-                disabled={!input.trim() || !canInteract}
+                disabled={!input.trim()}
               >
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
