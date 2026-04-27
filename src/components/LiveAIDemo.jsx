@@ -35,19 +35,19 @@ function TypingDots() {
 
 function ActivityFeed() {
   const [items, setItems] = useState(ACTIVITY_FEED.slice(0, 4))
-  const [nextIdx, setNextIdx] = useState(4)
+  const nextIdxRef = useRef(4)
 
   useEffect(() => {
     const iv = setInterval(() => {
       setItems(prev => {
         const next = [...prev]
-        next.unshift({ ...ACTIVITY_FEED[nextIdx % ACTIVITY_FEED.length], time: 'just now' })
+        next.unshift({ ...ACTIVITY_FEED[nextIdxRef.current % ACTIVITY_FEED.length], time: 'just now' })
+        nextIdxRef.current++
         return next.slice(0, 4)
       })
-      setNextIdx(i => i + 1)
     }, 4000)
     return () => clearInterval(iv)
-  }, [nextIdx])
+  }, [])
 
   return (
     <div className="ai-activity">
@@ -77,10 +77,19 @@ export default function LiveAIDemo() {
   const [typedText, setTypedText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [inputFocused, setInputFocused] = useState(false)
+  const [isReady, setIsReady] = useState(false)
+
   const inputRef = useRef(null)
   const messagesRef = useRef(null)
   const sectionRef = useRef(null)
-  const [hasAutoPlayed, setHasAutoPlayed] = useState(false)
+  const hasAutoPlayedRef = useRef(false)
+  const typingCleanupRef = useRef(null)
+  const pendingTimersRef = useRef([])
+  const userInteractedRef = useRef(false)
+
+  useEffect(() => {
+    setIsReady(true)
+  }, [])
 
   const scrollToBottom = () => {
     if (messagesRef.current) {
@@ -88,7 +97,18 @@ export default function LiveAIDemo() {
     }
   }
 
+  const clearTyping = () => {
+    if (typingCleanupRef.current) {
+      typingCleanupRef.current()
+      typingCleanupRef.current = null
+    }
+    setIsTyping(false)
+    setTypedText('')
+  }
+
   const typeResponse = (text, onDone) => {
+    clearTyping()
+    if (!text) return
     setIsTyping(true)
     setTypedText('')
     let i = 0
@@ -99,17 +119,19 @@ export default function LiveAIDemo() {
       scrollToBottom()
       if (i >= text.length) {
         clearInterval(tick)
+        typingCleanupRef.current = null
         setIsTyping(false)
         onDone?.(text)
       }
     }, speed)
-    return () => clearInterval(tick)
+    typingCleanupRef.current = () => clearInterval(tick)
   }
 
   const sendMessage = (text) => {
-    const trimmed = text.trim()
+    const trimmed = (text || '').trim()
     if (!trimmed || loading || isTyping) return
 
+    userInteractedRef.current = true
     const userMsg = { role: 'user', text: trimmed }
     setMessages(prev => [...prev, userMsg])
     setInput('')
@@ -120,7 +142,7 @@ export default function LiveAIDemo() {
       trimmed.toLowerCase().includes(k)
     ) || 'default'
 
-    setTimeout(() => {
+    const tid = setTimeout(() => {
       setLoading(false)
       setMessages(prev => [...prev, { role: 'ai', text: '' }])
       typeResponse(DEMO_RESPONSES[responseKey], (finalText) => {
@@ -133,36 +155,43 @@ export default function LiveAIDemo() {
         setTimeout(scrollToBottom, 50)
       })
     }, 1100)
+
+    pendingTimersRef.current.push(tid)
   }
 
   const handleSuggestion = (key) => {
     const s = SUGGESTIONS.find(s => s.key === key)
-    // Strip the emoji prefix before sending
-    const text = s?.label.replace(/^[\u{1F300}-\u{1FAD6}\u{1F000}-\u{1F9FF}]\s*/u, '') || ''
+    const text = s?.label.replace(/^[^\w\s]+\s*/, '') || ''
     sendMessage(text)
   }
 
   const handleReset = () => {
+    clearTyping()
+    pendingTimersRef.current.forEach(clearTimeout)
+    pendingTimersRef.current = []
     setMessages([])
     setInput('')
-    setTypedText('')
-    setIsTyping(false)
     setLoading(false)
-    setHasAutoPlayed(false)
+    hasAutoPlayedRef.current = false
+    userInteractedRef.current = false
     setTimeout(() => inputRef.current?.focus(), 100)
   }
 
-  // Auto-play demo on first scroll into view
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAutoPlayed && messages.length === 0) {
-          setHasAutoPlayed(true)
-          setTimeout(() => {
+        if (entry.isIntersecting && !hasAutoPlayedRef.current) {
+          hasAutoPlayedRef.current = true
+          const t1 = setTimeout(() => {
+            if (userInteractedRef.current) return
             const demoInput = 'Analyze my growth'
             setMessages([{ role: 'user', text: demoInput }])
             setLoading(true)
-            setTimeout(() => {
+            const t2 = setTimeout(() => {
+              if (userInteractedRef.current) {
+                setLoading(false)
+                return
+              }
               setLoading(false)
               setMessages(prev => [...prev, { role: 'ai', text: '' }])
               typeResponse(DEMO_RESPONSES.growth, (finalText) => {
@@ -174,14 +203,21 @@ export default function LiveAIDemo() {
                 setTypedText('')
               })
             }, 1200)
+            pendingTimersRef.current.push(t2)
           }, 600)
+          pendingTimersRef.current.push(t1)
         }
       },
       { threshold: 0.3 }
     )
     if (sectionRef.current) obs.observe(sectionRef.current)
-    return () => obs.disconnect()
-  }, [hasAutoPlayed, messages.length])
+    return () => {
+      obs.disconnect()
+      clearTyping()
+      pendingTimersRef.current.forEach(clearTimeout)
+      pendingTimersRef.current = []
+    }
+  }, [])
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -190,7 +226,7 @@ export default function LiveAIDemo() {
     }
   }
 
-  const canInteract = !loading && !isTyping
+  const canInteract = !loading && !isTyping && isReady
   const isEmpty = messages.length === 0
 
   return (
@@ -200,7 +236,6 @@ export default function LiveAIDemo() {
       <div className="ai-demo-bg-orb ai-demo-bg-orb3" />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Section Header — dominant and centered */}
         <div className="fh an ai-demo-header">
           <div className="eyebrow">Live AI Demo</div>
           <h2 className="st ai-demo-st">
@@ -212,7 +247,6 @@ export default function LiveAIDemo() {
             No setup needed. Plug in your API key and go live.
           </p>
 
-          {/* Feature pills */}
           <div className="ai-demo-feature-pills">
             <div className="ai-demo-pill">
               <span className="ai-demo-pill-dot" style={{ background: '#059669' }} />
@@ -230,7 +264,6 @@ export default function LiveAIDemo() {
         </div>
 
         <div className={`ai-demo-grid an${inputFocused ? ' ai-demo-grid-focused' : ''}`}>
-          {/* Chat panel */}
           <div className={`ai-demo-chat${inputFocused ? ' focused' : ''}`}>
             <div className="ai-demo-chat-header">
               <div className="ai-demo-chat-status">
@@ -296,7 +329,6 @@ export default function LiveAIDemo() {
               )}
             </div>
 
-            {/* Suggestions — show when empty or after response */}
             {(isEmpty || (!loading && !isTyping && messages.length > 0)) && (
               <div className="ai-suggestions">
                 {SUGGESTIONS.map((s) => (
@@ -312,12 +344,11 @@ export default function LiveAIDemo() {
               </div>
             )}
 
-            {/* Input row */}
             <div className="ai-demo-input-wrap">
               <input
                 ref={inputRef}
                 className="ai-demo-input ai-demo-input-lg"
-                placeholder="Ask your AI assistant anything… (press Enter to send)"
+                placeholder="Try: Analyze my growth"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -336,13 +367,11 @@ export default function LiveAIDemo() {
               </button>
             </div>
 
-            {/* Enter hint */}
             <div className="ai-demo-input-hint">
               <kbd>↵ Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line
             </div>
           </div>
 
-          {/* Side panel */}
           <div className="ai-demo-side">
             <ActivityFeed />
 
