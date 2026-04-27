@@ -1,132 +1,123 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="720" height="720">
   <defs>
-    <radialGradient id="t-bg" cx="50%" cy="46%" r="70%">
-      <stop offset="0%" stop-color="#0e1135"/>
-      <stop offset="55%" stop-color="#07091c"/>
-      <stop offset="100%" stop-color="#030410"/>
-    </radialGradient>
-    <radialGradient id="t-glow-c" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.55"/>
-      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="t-glow2" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.30"/>
-      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="t-logo-g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#818cf8"/>
-      <stop offset="100%" stop-color="#a78bfa"/>
+    <linearGradient id="t-label-g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8e7cff"/>
+      <stop offset="100%" stop-color="#c4b5fd"/>
     </linearGradient>
-    <linearGradient id="t-btn-g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#8b5cf6"/>
+    <linearGradient id="t-ch-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b5bd6" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#5b5bd6" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="t-streak" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#6366f1" stop-opacity="0"/>
-      <stop offset="50%"  stop-color="#6366f1" stop-opacity="0.28"/>
-      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    <linearGradient id="t-panel-top" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#5b5bd6" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#5b5bd6" stop-opacity="0.80"/>
+      <stop offset="70%"  stop-color="#8e7cff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8e7cff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="t-streak2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#8b5cf6" stop-opacity="0"/>
-      <stop offset="50%"  stop-color="#8b5cf6" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="t-ring" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.2"/>
-    </linearGradient>
-
-    <filter id="t-glow-sm">
-      <feGaussianBlur stdDeviation="3" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="t-glow-md" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="12" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="t-glow-xl" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur stdDeviation="32" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
     <pattern id="t-dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-      <circle cx="1" cy="1" r="1.1" fill="#6366f1" opacity="0.09"/>
+      <circle cx="1" cy="1" r="1" fill="rgba(15,23,42,0.045)"/>
     </pattern>
-    <pattern id="t-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-      <path d="M60,0 L0,0 L0,60" fill="none" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.06"/>
-    </pattern>
+    <filter id="t-panel-sh" x="-12%" y="-8%" width="136%" height="136%">
+      <feDropShadow dx="0" dy="48" stdDeviation="36" flood-color="#0f172a" flood-opacity="0.22"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#5b5bd6" flood-opacity="0.16"/>
+    </filter>
+    <filter id="t-dot-g" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="t-pc"><rect x="44" y="44" width="632" height="534" rx="18"/></clipPath>
   </defs>
 
-  <!-- Background -->
-  <rect width="720" height="720" fill="url(#t-bg)"/>
+  <!-- ═══ BACKGROUND — same as hero ═══ -->
+  <rect width="720" height="720" fill="#0a0b26"/>
+  <!-- Purple glow upper-left -->
+  <ellipse cx="130" cy="150" rx="380" ry="330" fill="rgba(108,92,231,0.28)"/>
+  <!-- Lavender glow upper-right -->
+  <ellipse cx="590" cy="110" rx="320" ry="280" fill="rgba(124,77,255,0.18)"/>
+  <!-- Secondary bloom -->
+  <ellipse cx="360" cy="230" rx="300" ry="240" fill="rgba(142,124,255,0.12)"/>
+  <!-- Bottom vignette -->
+  <ellipse cx="360" cy="770" rx="480" ry="220" fill="rgba(4,6,18,0.72)"/>
+  <!-- Dot grid -->
   <rect width="720" height="720" fill="url(#t-dots)"/>
-  <rect width="720" height="720" fill="url(#t-grid)"/>
 
-  <!-- Ambient orbs -->
-  <ellipse cx="360" cy="300" rx="480" ry="380" fill="url(#t-glow-c)"/>
-  <ellipse cx="500" cy="500" rx="280" ry="220" fill="url(#t-glow2)"/>
+  <!-- ═══ DASHBOARD PANEL (WHITE) ═══ -->
+  <g filter="url(#t-panel-sh)">
 
-  <!-- Light streaks -->
-  <rect x="0" y="220" width="720" height="1.5" fill="url(#t-streak)"  opacity="0.9"/>
-  <rect x="0" y="480" width="720" height="1"   fill="url(#t-streak2)" opacity="0.6"/>
-  <rect x="0" y="340" width="720" height="1"   fill="url(#t-streak)"  opacity="0.4"/>
+    <g clip-path="url(#t-pc)">
+      <!-- White panel body -->
+      <rect x="44" y="44" width="632" height="534" fill="#ffffff"/>
 
-  <!-- Outer decorative ring -->
-  <circle cx="360" cy="310" r="190" fill="none" stroke="url(#t-ring)" stroke-width="1" stroke-dasharray="4,8" opacity="0.4"/>
-  <circle cx="360" cy="310" r="230" fill="none" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.10"/>
+      <!-- Browser chrome -->
+      <rect x="44" y="44" width="632" height="38" fill="#f1f5f9"/>
+      <line x1="44" y1="82" x2="676" y2="82" stroke="rgba(15,23,42,0.07)" stroke-width="1"/>
+      <circle cx="64"  cy="63" r="5" fill="#ff5f57"/>
+      <circle cx="82"  cy="63" r="5" fill="#febc2e"/>
+      <circle cx="100" cy="63" r="5" fill="#28c840"/>
+      <rect x="250" y="52" width="220" height="20" rx="10" fill="#e8edf5"/>
+      <text x="360" y="66" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">your-ai-startup.com/dashboard</text>
 
-  <!-- Center logo mark — large, glowing -->
-  <g filter="url(#t-glow-xl)">
-    <rect x="304" y="254" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.22"/>
-    <rect x="358" y="254" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.12"/>
-    <rect x="304" y="308" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.10"/>
-    <rect x="358" y="308" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.05"/>
+      <!-- Page header -->
+      <text x="64" y="106" fill="#0f172a" font-family="system-ui,sans-serif" font-size="13" font-weight="700">Overview</text>
+      <line x1="44" y1="118" x2="676" y2="118" stroke="rgba(15,23,42,0.07)" stroke-width="1"/>
+
+      <!-- BIG METRIC — hero premium card style, center-focus -->
+      <text x="360" y="158" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.10em" text-anchor="middle">AUTOMATION ACCURACY</text>
+      <text x="360" y="244" fill="#0f172a" font-family="system-ui,sans-serif" font-size="88" font-weight="800" letter-spacing="-0.04em" text-anchor="middle">94.8%</text>
+      <!-- Delta badge -->
+      <rect x="220" y="256" width="280" height="26" rx="13" fill="rgba(5,150,105,0.08)" stroke="rgba(5,150,105,0.24)" stroke-width="1"/>
+      <text x="360" y="273" fill="#059669" font-family="system-ui,sans-serif" font-size="11" font-weight="700" text-anchor="middle">↑ +4.2% vs last month</text>
+
+      <!-- CHART CARD -->
+      <rect x="60" y="296" width="600" height="152" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <!-- Chart title -->
+      <text x="76" y="318" fill="#0f172a" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Automation Runs</text>
+      <!-- Period tab: 30d active -->
+      <rect x="606" y="306" width="38" height="18" rx="9" fill="#5b5bd6"/>
+      <text x="625" y="319" fill="#ffffff" font-family="system-ui,sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">30d</text>
+      <!-- Grid lines -->
+      <line x1="60" y1="334" x2="660" y2="334" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
+      <line x1="60" y1="358" x2="660" y2="358" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
+      <line x1="60" y1="382" x2="660" y2="382" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
+      <line x1="60" y1="406" x2="660" y2="406" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
+      <!-- Sparkline -->
+      <path d="M68,428 C120,414 190,398 270,376 C350,354 426,332 510,310 C572,294 622,284 652,280" fill="none" stroke="#5b5bd6" stroke-width="8" stroke-opacity="0.10" stroke-linecap="round"/>
+      <path d="M68,428 C120,414 190,398 270,376 C350,354 426,332 510,310 C572,294 622,284 652,280" fill="none" stroke="#5b5bd6" stroke-width="2" stroke-linecap="round"/>
+      <path d="M68,428 C120,414 190,398 270,376 C350,354 426,332 510,310 C572,294 622,284 652,280 L652,440 L68,440 Z" fill="url(#t-ch-fill)"/>
+      <circle cx="652" cy="280" r="8"  fill="rgba(91,91,214,0.14)"/>
+      <circle cx="652" cy="280" r="3.5" fill="#5b5bd6" stroke="#f1f5f9" stroke-width="2" filter="url(#t-dot-g)"/>
+
+      <!-- KPI CARDS ROW -->
+      <rect x="60" y="460" width="190" height="70" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <rect x="68" y="484" width="3" height="26" rx="1.5" fill="#5b5bd6"/>
+      <text x="80" y="477" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.08em">WORKFLOWS</text>
+      <text x="80" y="508" fill="#0f172a" font-family="system-ui,sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">847K</text>
+
+      <rect x="265" y="460" width="190" height="70" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <rect x="273" y="484" width="3" height="26" rx="1.5" fill="#059669"/>
+      <text x="285" y="477" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.08em">AI TASKS</text>
+      <text x="285" y="508" fill="#0f172a" font-family="system-ui,sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">1.2M</text>
+
+      <rect x="470" y="460" width="190" height="70" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <rect x="478" y="484" width="3" height="26" rx="1.5" fill="#10b981"/>
+      <text x="490" y="477" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.08em">ACTIVE NOW</text>
+      <text x="490" y="508" fill="#0f172a" font-family="system-ui,sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">1,240</text>
+
+    </g>
+
+    <!-- Panel border -->
+    <rect x="44" y="44" width="632" height="534" rx="18" fill="none" stroke="rgba(15,23,42,0.13)" stroke-width="1.5"/>
+    <!-- Top glow accent -->
+    <rect x="44" y="44" width="632" height="2" rx="1" fill="url(#t-panel-top)"/>
+
   </g>
-  <g filter="url(#t-glow-md)">
-    <rect x="304" y="254" width="48" height="48" rx="12" fill="#6366f1"/>
-    <rect x="358" y="254" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.55"/>
-    <rect x="304" y="308" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.28"/>
-    <rect x="358" y="308" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.12"/>
-  </g>
 
-  <!-- Brand name -->
-  <text x="360" y="406" fill="url(#t-logo-g)" font-family="system-ui,sans-serif" font-size="72" font-weight="800" letter-spacing="-0.04em" text-anchor="middle" filter="url(#t-glow-sm)">FlowMind</text>
-
-  <!-- Divider line -->
-  <line x1="220" y1="432" x2="500" y2="432" stroke="#6366f1" stroke-width="1" stroke-opacity="0.20"/>
-
-  <!-- Sub tagline -->
-  <text x="360" y="466" fill="#64748b" font-family="system-ui,sans-serif" font-size="18" font-weight="500" text-anchor="middle" letter-spacing="0.04em">AI SaaS TEMPLATE</text>
-
-  <!-- Pill badge -->
-  <rect x="264" y="492" width="192" height="36" rx="18" fill="url(#t-btn-g)" fill-opacity="0.12"/>
-  <rect x="264" y="492" width="192" height="36" rx="18" fill="none" stroke="url(#t-btn-g)" stroke-width="1" stroke-opacity="0.35"/>
-  <circle cx="290" cy="510" r="4" fill="#10b981"/>
-  <text x="360" y="515" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13" font-weight="600" text-anchor="middle" letter-spacing="0.02em">Launch in Days</text>
-
-  <!-- Bottom micro stats -->
-  <text x="204" y="572" fill="#2a3550" font-family="system-ui,sans-serif" font-size="12" font-weight="600" text-anchor="middle">847K</text>
-  <text x="204" y="586" fill="#1a2240" font-family="system-ui,sans-serif" font-size="10" text-anchor="middle">Workflows</text>
-
-  <text x="360" y="572" fill="#2a3550" font-family="system-ui,sans-serif" font-size="12" font-weight="600" text-anchor="middle">94.8%</text>
-  <text x="360" y="586" fill="#1a2240" font-family="system-ui,sans-serif" font-size="10" text-anchor="middle">Accuracy</text>
-
-  <text x="516" y="572" fill="#2a3550" font-family="system-ui,sans-serif" font-size="12" font-weight="600" text-anchor="middle">20+</text>
-  <text x="516" y="586" fill="#1a2240" font-family="system-ui,sans-serif" font-size="10" text-anchor="middle">Pages</text>
-
-  <!-- Stat dividers -->
-  <line x1="282" y1="566" x2="282" y2="588" stroke="#1a2240" stroke-width="1"/>
-  <line x1="438" y1="566" x2="438" y2="588" stroke="#1a2240" stroke-width="1"/>
-
-  <!-- domain footer -->
-  <text x="360" y="650" fill="#1a2240" font-family="'SF Mono',monospace" font-size="12" text-anchor="middle">tryflowmind.com</text>
+  <!-- Large "AI SaaS" label — high contrast, readable at small size -->
+  <text x="360" y="654" fill="url(#t-label-g)" font-family="system-ui,sans-serif" font-size="72" font-weight="800" letter-spacing="-0.04em" text-anchor="middle">AI SaaS</text>
 
   <!-- Corner accents -->
-  <g filter="url(#t-glow-sm)" opacity="0.45">
-    <line x1="0"   y1="0"   x2="60"  y2="0"   stroke="#6366f1" stroke-width="2"/>
-    <line x1="0"   y1="0"   x2="0"   y2="60"  stroke="#6366f1" stroke-width="2"/>
-    <line x1="720" y1="720" x2="660" y2="720" stroke="#8b5cf6" stroke-width="2"/>
-    <line x1="720" y1="720" x2="720" y2="660" stroke="#8b5cf6" stroke-width="2"/>
-  </g>
+  <line x1="0"   y1="0"   x2="56"  y2="0"   stroke="#5b5bd6" stroke-width="2" stroke-opacity="0.22"/>
+  <line x1="0"   y1="0"   x2="0"   y2="56"  stroke="#5b5bd6" stroke-width="2" stroke-opacity="0.22"/>
+  <line x1="720" y1="720" x2="664" y2="720" stroke="#8e7cff" stroke-width="2" stroke-opacity="0.22"/>
+  <line x1="720" y1="720" x2="720" y2="664" stroke="#8e7cff" stroke-width="2" stroke-opacity="0.22"/>
 </svg>
