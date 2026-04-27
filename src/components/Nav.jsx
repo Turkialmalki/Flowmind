@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import LogoIcon from './LogoIcon'
 
+const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
+
 /* ── Dropdown data ── */
 
 const productItems = [
@@ -164,9 +166,10 @@ const resourceItems = [
 
 const companyItems = [
   {
-    to: '/pricing',
+    to: GUMROAD,
     label: 'Get Template',
     desc: 'One-time purchase — $49',
+    external: true,
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
@@ -236,23 +239,36 @@ function NavDropdown({ label, items, groupLabel, wide }) {
       <div className={`nav-dd-panel${open ? ' open' : ''}${wide ? ' wide' : ''}`}>
         <div className="nav-dd-inner">
           {groupLabel && <div className="nav-dd-label-row">{groupLabel}</div>}
-          {items.map((item) => (
-            <Link key={item.to + item.label} to={item.to} className="nav-dd-item" onClick={() => setOpen(false)}>
-              <span className="nav-dd-icon" style={{ background: item.bg, color: item.color }}>
-                {item.icon}
-              </span>
-              <div className="nav-dd-text">
-                <div className="nav-dd-name">
-                  {item.label}
-                  {item.badge && <span className="nav-dd-badge">{item.badge}</span>}
+          {items.map((item) => {
+            const inner = (
+              <>
+                <span className="nav-dd-icon" style={{ background: item.bg, color: item.color }}>
+                  {item.icon}
+                </span>
+                <div className="nav-dd-text">
+                  <div className="nav-dd-name">
+                    {item.label}
+                    {item.badge && <span className="nav-dd-badge">{item.badge}</span>}
+                  </div>
+                  <div className="nav-dd-desc">{item.desc}</div>
                 </div>
-                <div className="nav-dd-desc">{item.desc}</div>
-              </div>
-              <svg className="nav-dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
-          ))}
+                <svg className="nav-dd-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </>
+            )
+            return item.external
+              ? (
+                <a key={item.to + item.label} href={item.to} className="nav-dd-item" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} style={{ textDecoration: 'none' }}>
+                  {inner}
+                </a>
+              )
+              : (
+                <Link key={item.to + item.label} to={item.to} className="nav-dd-item" onClick={() => setOpen(false)}>
+                  {inner}
+                </Link>
+              )
+          })}
         </div>
       </div>
     </li>
@@ -273,14 +289,25 @@ function MobileGroup({ label, items, onClose }) {
       </button>
       {open && (
         <div className="mm-sub">
-          {items.map((item) => (
-            <Link key={item.to + item.label} to={item.to} className="mm-sub-link" onClick={onClose}>
-              <span className="mm-sub-icon" style={{ background: item.bg, color: item.color }}>
-                {item.icon}
-              </span>
-              {item.label}
-            </Link>
-          ))}
+          {items.map((item) =>
+            item.external
+              ? (
+                <a key={item.to + item.label} href={item.to} className="mm-sub-link" target="_blank" rel="noopener noreferrer" onClick={onClose} style={{ textDecoration: 'none' }}>
+                  <span className="mm-sub-icon" style={{ background: item.bg, color: item.color }}>
+                    {item.icon}
+                  </span>
+                  {item.label}
+                </a>
+              )
+              : (
+                <Link key={item.to + item.label} to={item.to} className="mm-sub-link" onClick={onClose}>
+                  <span className="mm-sub-icon" style={{ background: item.bg, color: item.color }}>
+                    {item.icon}
+                  </span>
+                  {item.label}
+                </Link>
+              )
+          )}
         </div>
       )}
     </div>
@@ -328,12 +355,18 @@ export default function Nav() {
           </ul>
 
           <div className="nr">
-            <Link to="/pricing" className="nav-get-template">
+            <a
+              href={GUMROAD}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-get-template"
+              style={{ textDecoration: 'none' }}
+            >
               Get Template
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </Link>
+            </a>
           </div>
 
           <button className="nm" onClick={() => setMobileOpen(true)} aria-label="Open menu">
@@ -368,7 +401,16 @@ export default function Nav() {
         </div>
 
         <div className="mm-footer">
-          <Link to="/pricing" className="btn btn-g" style={{ width: '100%', justifyContent: 'center' }} onClick={closeMenu}>Get Template — $49</Link>
+          <a
+            href={GUMROAD}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-g"
+            style={{ width: '100%', justifyContent: 'center', textDecoration: 'none' }}
+            onClick={closeMenu}
+          >
+            Get Template — $49
+          </a>
         </div>
       </div>
     </>

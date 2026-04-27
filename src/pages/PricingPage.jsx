@@ -1,80 +1,29 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
-const plans = [
-  {
-    id: 'starter',
-    name: 'Starter',
-    desc: 'The core marketing pages to get your AI SaaS in front of users today.',
-    monthly: 29, annual: 19,
-    urgency: 'Launch price — increases soon',
-    features: ['Home page (all sections)', 'Pricing page', 'Fully responsive design', 'Lifetime updates', 'Framer template file'],
-    cta: 'Get Starter',
-    ctaClass: 'btn btn-o pbn',
-    pop: false,
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    badge: 'Most Popular',
-    desc: 'The complete FlowMind kit — every screen, page, and UI component you need to launch and grow.',
-    monthly: 49, annual: 35,
-    urgency: 'Save $50 vs hiring a designer',
-    features: [
-      'All 12 pages included',
-      'Full dashboard UI kit',
-      'Auth screens (login, signup, reset)',
-      'Settings & profile screens',
-      'Blog + CMS integration',
-      'Empty states for every screen',
-      'Animations & micro-interactions',
-      'Lifetime updates + priority support',
-      'Commercial license',
-    ],
-    cta: 'Get Pro — Best Value',
-    ctaClass: 'btn btn-g pbn',
-    showArrow: true,
-    pop: true,
-  },
-  {
-    id: 'team',
-    name: 'Team',
-    desc: 'Pro + extended license for agencies. Unlimited client projects, Figma source included.',
-    monthly: 99, annual: 69,
-    urgency: 'Extended commercial license',
-    features: ['Everything in Pro', 'Extended commercial license', 'Figma source file', 'Unlimited client projects', '1-on-1 setup call', 'Priority Slack support'],
-    cta: 'Get Team License',
-    ctaClass: 'btn btn-p pbn',
-    pop: false,
-  },
-]
+const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
 
-const compareFeatures = [
-  { feature: 'Pages included', starter: '2', pro: '12', team: '12' },
-  { feature: 'Dashboard UI kit', starter: '—', pro: '✓', team: '✓' },
-  { feature: 'Auth screens', starter: '—', pro: '✓', team: '✓' },
-  { feature: 'Blog + CMS', starter: '—', pro: '✓', team: '✓' },
-  { feature: 'Settings pages', starter: '—', pro: '✓', team: '✓' },
-  { feature: 'Empty states', starter: '—', pro: '✓', team: '✓' },
-  { feature: 'Animations', starter: 'Basic', pro: 'Full', team: 'Full' },
-  { feature: 'Lifetime updates', starter: '✓', pro: '✓', team: '✓' },
-  { feature: 'Commercial license', starter: 'Personal', pro: 'Personal', team: 'Extended' },
-  { feature: 'Figma source file', starter: '—', pro: '—', team: '✓' },
-  { feature: '1-on-1 setup call', starter: '—', pro: '—', team: '✓' },
-  { feature: 'Unlimited client projects', starter: '—', pro: '—', team: '✓' },
+const proFeatures = [
+  'All 12 pages included',
+  'Full dashboard UI kit',
+  'Auth screens (login, signup, reset)',
+  'Settings & profile screens',
+  'Blog + CMS integration',
+  'Empty states for every screen',
+  'Animations & micro-interactions',
+  'Lifetime updates + priority support',
+  'Commercial license',
 ]
 
 const faqs = [
   { q: 'Is this a one-time payment?', a: 'Yes. You pay once and own the template forever. No subscriptions, no recurring fees. You also get free lifetime updates — every new screen or improvement we ship.' },
-  { q: 'What\'s the difference between Pro and Starter?', a: 'Starter includes just the landing pages (Home + Pricing). Pro includes every page in the system — dashboard, auth, blog, settings, docs, and all 12 pages listed above, plus lifetime priority support.' },
-  { q: 'Can I use this for client projects?', a: 'Starter and Pro include a personal license — use on your own projects. The Team plan includes an extended commercial license for unlimited client work and delivery.' },
-  { q: 'Is there a trial or refund policy?', a: 'Due to the digital nature of the product, we don\'t offer refunds. We provide a complete live demo with every screen visible before purchase so you know exactly what you\'re getting.' },
+  { q: 'What exactly do I receive after purchase?', a: 'You receive instant access to the complete FlowMind React template — every page, UI component, and screen listed above. All files are downloadable and yours to keep forever.' },
+  { q: 'Can I use this for client projects?', a: 'Yes. FlowMind includes a commercial license — use it on your own products or for client projects. You cannot resell or redistribute the template files themselves.' },
+  { q: 'Is there a trial or refund policy?', a: 'Due to the digital nature of the product, all sales are final. We provide a complete live demo with every screen visible before purchase so you know exactly what you\'re getting.' },
   { q: 'How do the lifetime updates work?', a: 'Every new screen, section, design improvement, or bug fix we ship is available to all buyers. You\'ll get a notification and can pull the latest version anytime — no extra charge.' },
-  { q: 'Do I need to know Framer to use this?', a: 'No. Framer\'s visual editor lets you change text, images, colors, and layout without writing any code. If you can use Figma or Canva, you can edit FlowMind.' },
+  { q: 'Do I need to know React/coding to use this?', a: 'Basic familiarity with React helps. The template is clean, well-structured code — if you\'re a developer or working with one, you\'ll be up and running in under an hour.' },
 ]
 
 export default function PricingPage() {
-  const [annual, setAnnual] = useState(false)
   const [openFaq, setOpenFaq] = useState(0)
 
   return (
@@ -88,72 +37,62 @@ export default function PricingPage() {
         </div>
         <div className="container">
           <div className="iph-inner">
-            <div className="eyebrow">Pricing</div>
+            <div className="eyebrow">Simple, one-time pricing</div>
             <h1 className="iph-title">
-              One payment. <span>Everything included.</span><br />Launch this week.
+              One payment. <span>Everything included.</span>
             </h1>
             <p className="iph-desc">
               No subscriptions. No hidden fees. Buy once, own it forever.
               Instant access the moment you purchase.
             </p>
-            {/* Billing toggle */}
-            <div className="pricing-toggle an">
-              <span className={!annual ? 'active' : ''}>Monthly</span>
-              <button className={`pricing-toggle-btn${annual ? ' annual' : ''}`} onClick={() => setAnnual(!annual)}>
-                <div className="pricing-toggle-thumb" />
-              </button>
-              <span className={annual ? 'active' : ''}>
-                Annual
-                <span className="pricing-save-badge">Save 30%</span>
-              </span>
-            </div>
+            <p style={{ fontSize: '14px', color: 'var(--t3)', marginTop: '8px' }}>
+              This is a one-time purchase template — not a hosted SaaS product.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Plans */}
+      {/* Single plan */}
       <section style={{ paddingBottom: '80px' }}>
         <div className="container">
-          <div className="prg">
-            {plans.map((plan) => {
-              const price = annual ? plan.annual : plan.monthly
-              const orig = annual ? plan.monthly : null
-              return (
-                <div key={plan.id} className={`pc an${plan.pop ? ' pop' : ''}`}>
-                  {plan.badge && <div className="pbg">{plan.badge}</div>}
-                  <div className="pn">{plan.name}</div>
-                  <div className="pde">{plan.desc}</div>
-                  {orig && <div className="p-orig">${orig}/mo</div>}
-                  <div className="pam">
-                    <span className="pcr">$</span>
-                    <span className="pvl">{price}</span>
-                    {annual && <span style={{ fontSize: '14px', color: 'var(--t3)', alignSelf: 'flex-end', marginBottom: '6px' }}>/mo</span>}
-                  </div>
-                  {annual && <div style={{ fontSize: '12px', color: 'var(--emerald)', fontWeight: 600, marginBottom: '8px' }}>Billed annually — ${price * 12}/yr</div>}
-                  <div className="p-urgency">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
-                    {plan.urgency}
-                  </div>
-                  <div className="pdivider" />
-                  <ul className="pfl">
-                    {plan.features.map((f) => (
-                      <li key={f}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/book-demo" className={plan.ctaClass} style={plan.pop ? { padding: '14px' } : {}}>
-                    {plan.cta}
-                    {plan.showArrow && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>}
-                  </Link>
-                  <div className="p-guarantee">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                    One-time payment · No subscription
-                  </div>
-                </div>
-              )
-            })}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
+            <div className="pc pop an" style={{ maxWidth: '440px', width: '100%' }}>
+              <div className="pbg">⭐ Most Popular</div>
+              <div className="pn">FlowMind Pro</div>
+              <div className="pde">The complete FlowMind kit — every screen, page, and UI component you need to launch and grow.</div>
+              <div className="p-orig">$99</div>
+              <div className="pam">
+                <span className="pcr">$</span>
+                <span className="pvl">49</span>
+              </div>
+              <div className="p-urgency">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '14px', height: '14px' }}><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+                Save $50 vs hiring a designer
+              </div>
+              <div className="pdivider" />
+              <ul className="pfl">
+                {proFeatures.map((f) => (
+                  <li key={f}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={GUMROAD}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-g pbn"
+                style={{ padding: '14px', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+              >
+                Get FlowMind — $49
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '16px', height: '16px' }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </a>
+              <div className="p-guarantee">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                One-time payment · No subscription · Lifetime access
+              </div>
+            </div>
           </div>
 
           {/* Trust strip */}
@@ -161,7 +100,7 @@ export default function PricingPage() {
             {[
               { icon: '⚡', text: 'Instant delivery after purchase' },
               { icon: '♾️', text: 'Free lifetime updates' },
-              { icon: '🔒', text: 'Secure checkout via Lemon Squeezy' },
+              { icon: '🔒', text: 'Secure checkout via Gumroad' },
               { icon: '🌍', text: '500+ founders worldwide' },
             ].map((item) => (
               <div key={item.text} className="pricing-trust-item">
@@ -173,44 +112,8 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Comparison table */}
-      <section className="section" style={{ background: 'var(--bg2)' }}>
-        <div className="container">
-          <div className="fh an">
-            <div className="eyebrow">Compare Plans</div>
-            <h2 className="st">Everything side by <span>side</span></h2>
-          </div>
-          <div className="pricing-compare-table an">
-            <div className="pct-header">
-              <div className="pct-feature-col">Feature</div>
-              {plans.map((p) => (
-                <div key={p.id} className={`pct-plan-col${p.pop ? ' pop' : ''}`}>
-                  {p.name}
-                  {p.pop && <div className="pct-popular-tag">Popular</div>}
-                </div>
-              ))}
-            </div>
-            {compareFeatures.map((row) => (
-              <div key={row.feature} className="pct-row">
-                <div className="pct-feature">{row.feature}</div>
-                {[row.starter, row.pro, row.team].map((val, i) => (
-                  <div key={i} className={`pct-val${plans[i].pop ? ' pop' : ''}`}>
-                    {val === '✓'
-                      ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                      : val === '—'
-                      ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--bg4)" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      : <span>{val}</span>
-                    }
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Value comparison */}
-      <section className="section">
+      <section className="section" style={{ background: 'var(--bg2)' }}>
         <div className="container">
           <div className="fh an">
             <div className="eyebrow">Value Comparison</div>
@@ -248,7 +151,7 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="section" style={{ background: 'var(--bg2)' }}>
+      <section className="section">
         <div className="container">
           <div className="fqh an">
             <div className="eyebrow">FAQ</div>
@@ -292,7 +195,7 @@ export default function PricingPage() {
             <div className="pricing-guarantee-card">
               <div className="pricing-guarantee-icon">🔒</div>
               <div className="pricing-guarantee-title">Secure Checkout</div>
-              <div className="pricing-guarantee-desc">All payments processed via Lemon Squeezy with 256-bit encryption. Your data is safe.</div>
+              <div className="pricing-guarantee-desc">All payments processed via Gumroad with 256-bit encryption. Your data is safe.</div>
             </div>
             <div className="pricing-guarantee-card">
               <div className="pricing-guarantee-icon">⚡</div>
@@ -307,7 +210,7 @@ export default function PricingPage() {
             <div className="pricing-guarantee-card">
               <div className="pricing-guarantee-icon">💬</div>
               <div className="pricing-guarantee-title">Priority Support</div>
-              <div className="pricing-guarantee-desc">Pro and Team buyers get priority support directly from the FlowMind team. Real humans.</div>
+              <div className="pricing-guarantee-desc">Get priority support directly from the FlowMind creator. Real human, fast response.</div>
             </div>
           </div>
         </div>
@@ -318,15 +221,23 @@ export default function PricingPage() {
         <div className="container">
           <div className="ctab">
             <div className="eyebrow">Ready?</div>
-            <h2 className="st">Start building your AI SaaS<br /><span>this week — not next quarter</span></h2>
-            <p className="sd" style={{ margin: '0 auto 36px' }}>500+ founders already launched. Join them today.</p>
+            <h2 className="st">Get your AI SaaS template<br /><span>today — not next quarter</span></h2>
+            <p className="sd" style={{ margin: '0 auto 36px' }}>500+ founders already launched. One-time purchase. Instant access.</p>
             <div className="ctac">
-              <Link to="/book-demo" className="ctab-cta-btn">
-                Get Pro — $49 One-Time
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-              <Link to="/demo" className="btn btn-o">View Live Demo</Link>
+              <a
+                href={GUMROAD}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ctab-cta-btn"
+                style={{ textDecoration: 'none' }}
+              >
+                Get FlowMind — $49 One-Time
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '18px', height: '18px' }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </a>
             </div>
+            <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--t3)', marginTop: '16px' }}>
+              This is a one-time purchase template — not a hosted SaaS product.
+            </p>
           </div>
         </div>
       </section>

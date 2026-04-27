@@ -225,8 +225,8 @@ export default function DemoPage() {
               Click the tabs, change the timeframes, and explore the full dashboard system.
             </p>
             <div className="demo-hero-actions">
-              <Link to="/pricing" className="btn btn-g btn-lg">Get FlowMind — $49</Link>
-              <Link to="/book-demo" className="btn btn-o btn-lg">Book a Demo →</Link>
+              <a href="https://turkialmalki.gumroad.com/l/flowmind" target="_blank" rel="noopener noreferrer" className="btn btn-g btn-lg" style={{ textDecoration: 'none' }}>Get FlowMind — $49</a>
+              <Link to="/pricing" className="btn btn-o btn-lg">View Pricing →</Link>
             </div>
           </div>
         </div>

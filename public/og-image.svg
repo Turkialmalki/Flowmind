@@ -1,336 +1,230 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
   <defs>
-    <radialGradient id="bg" cx="38%" cy="40%" r="72%">
-      <stop offset="0%" stop-color="#0d1030"/>
-      <stop offset="55%" stop-color="#07091c"/>
-      <stop offset="100%" stop-color="#030410"/>
-    </radialGradient>
-    <radialGradient id="orb1" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.42"/>
-      <stop offset="60%" stop-color="#6366f1" stop-opacity="0.10"/>
-      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="orb2" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.26"/>
-      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="orb3" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="panel-glow" cx="50%" cy="0%" r="80%">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="brand-g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#818cf8"/>
-      <stop offset="100%" stop-color="#a78bfa"/>
+    <!-- Headline gradient (indigo → lavender) matching --grad -->
+    <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8e7cff"/>
+      <stop offset="100%" stop-color="#c4b5fd"/>
     </linearGradient>
+    <!-- CTA button gradient matching --grad2 -->
     <linearGradient id="btn-g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#8b5cf6"/>
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="50%" stop-color="#7c4dff"/>
+      <stop offset="100%" stop-color="#8e7cff"/>
     </linearGradient>
-    <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.38"/>
-      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    <!-- Chart fill: rgba(91,91,214,0.14) → 0 -->
+    <linearGradient id="ch-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b5bd6" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#5b5bd6" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="chart-line" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#8b5cf6"/>
+    <!-- Panel top glow accent line -->
+    <linearGradient id="panel-top" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#5b5bd6" stop-opacity="0"/>
+      <stop offset="28%"  stop-color="#5b5bd6" stop-opacity="0.80"/>
+      <stop offset="68%"  stop-color="#8e7cff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8e7cff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="panel-bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#131929"/>
-      <stop offset="100%" stop-color="#0b0f1c"/>
-    </linearGradient>
-    <linearGradient id="streak1" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="streak2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="top-border" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0"/>
-      <stop offset="40%" stop-color="#6366f1" stop-opacity="0.7"/>
-      <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
-    </linearGradient>
-
-    <filter id="glow-sm">
-      <feGaussianBlur stdDeviation="3" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-md" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="8" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="panel-shadow" x="-4%" y="-4%" width="108%" height="120%">
-      <feDropShadow dx="0" dy="24" stdDeviation="48" flood-color="#6366f1" flood-opacity="0.14"/>
-      <feDropShadow dx="0" dy="8"  stdDeviation="20" flood-color="#000"    flood-opacity="0.55"/>
-    </filter>
-    <filter id="float-shadow" x="-12%" y="-12%" width="124%" height="140%">
-      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#000" flood-opacity="0.55"/>
-      <feDropShadow dx="0" dy="2"  stdDeviation="6"  flood-color="#6366f1" flood-opacity="0.18"/>
-    </filter>
-
-    <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-      <circle cx="1" cy="1" r="1" fill="#6366f1" opacity="0.09"/>
+    <!-- Dot grid -->
+    <pattern id="dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgba(15,23,42,0.045)"/>
     </pattern>
-
-    <clipPath id="panel-clip">
-      <rect x="598" y="52" width="648" height="620" rx="16"/>
-    </clipPath>
-    <clipPath id="chart-clip">
-      <rect x="614" y="296" width="616" height="186"/>
-    </clipPath>
+    <!-- Panel glow shadow -->
+    <filter id="panel-sh" x="-12%" y="-8%" width="136%" height="136%">
+      <feDropShadow dx="0" dy="48" stdDeviation="40" flood-color="#0f172a" flood-opacity="0.22"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#5b5bd6" flood-opacity="0.14"/>
+    </filter>
+    <!-- Card shadow -->
+    <filter id="card-sh" x="-20%" y="-20%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.16"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4"  flood-color="#5b5bd6" flood-opacity="0.10"/>
+    </filter>
+    <!-- Dot glow -->
+    <filter id="dot-g" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Panel clip -->
+    <clipPath id="pc"><rect x="556" y="0" width="692" height="760" rx="20"/></clipPath>
   </defs>
 
-  <!-- Background -->
-  <rect width="1280" height="720" fill="url(#bg)"/>
+  <!-- ═══ BACKGROUND — matches hero-bg-image CSS exactly ═══ -->
+  <rect width="1280" height="720" fill="#0a0b26"/>
+  <!-- Purple glow upper-left (108,92,231 = #6c5ce7) -->
+  <ellipse cx="230" cy="158" rx="500" ry="430" fill="rgba(108,92,231,0.28)"/>
+  <!-- Lavender glow upper-right (#7c4dff) -->
+  <ellipse cx="1050" cy="130" rx="420" ry="360" fill="rgba(124,77,255,0.18)"/>
+  <!-- Secondary bloom center -->
+  <ellipse cx="820"  cy="230" rx="330" ry="260" fill="rgba(142,124,255,0.12)"/>
+  <!-- Bottom depth vignette -->
+  <ellipse cx="640"  cy="820" rx="720" ry="280" fill="rgba(4,6,18,0.72)"/>
+  <!-- Dot grid (matches .hg from hero CSS) -->
   <rect width="1280" height="720" fill="url(#dots)"/>
 
-  <!-- Ambient orbs -->
-  <ellipse cx="300"  cy="300"  rx="520" ry="400" fill="url(#orb1)"/>
-  <ellipse cx="1080" cy="580"  rx="380" ry="290" fill="url(#orb2)"/>
-  <ellipse cx="980"  cy="100"  rx="300" ry="220" fill="url(#orb3)"/>
+  <!-- ═══ LEFT COPY ═══ -->
 
-  <!-- Light streaks (motion feel) -->
-  <rect x="0"   y="168" width="1280" height="1.5" fill="url(#streak1)" opacity="0.8"/>
-  <rect x="0"   y="420" width="1280" height="1"   fill="url(#streak2)" opacity="0.6"/>
-  <rect x="0"   y="580" width="1280" height="1"   fill="url(#streak1)" opacity="0.4"/>
+  <!-- Logo mark 2×2 — matches hero nav logo squares -->
+  <rect x="56" y="56" width="16" height="16" rx="4"  fill="#5b5bd6"/>
+  <rect x="76" y="56" width="16" height="16" rx="4"  fill="#5b5bd6" fill-opacity="0.50"/>
+  <rect x="56" y="76" width="16" height="16" rx="4"  fill="#5b5bd6" fill-opacity="0.24"/>
+  <rect x="76" y="76" width="16" height="16" rx="4"  fill="#5b5bd6" fill-opacity="0.09"/>
+  <text x="106" y="73" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="19" font-weight="800" letter-spacing="-0.03em">FlowMind</text>
 
-  <!-- ── LEFT: BRAND + COPY ── -->
+  <!-- h1 line 1 — white, matches hero -->
+  <text x="56" y="202" fill="#ffffff" font-family="system-ui,sans-serif" font-size="52" font-weight="800" letter-spacing="-0.04em">AI Automation SaaS</text>
+  <!-- h1 line 2 — gradient, 0.60em of line 1 = 31px, matches hero CSS -->
+  <text x="56" y="248" fill="url(#hg)" font-family="system-ui,sans-serif" font-size="32" font-weight="800" letter-spacing="-0.02em">Ready to Launch</text>
 
-  <!-- Logo mark (2×2 grid) -->
-  <rect x="58"  y="58"  width="20" height="20" rx="5" fill="#6366f1"/>
-  <rect x="84"  y="58"  width="20" height="20" rx="5" fill="#6366f1" fill-opacity="0.55"/>
-  <rect x="58"  y="84"  width="20" height="20" rx="5" fill="#6366f1" fill-opacity="0.28"/>
-  <rect x="84"  y="84"  width="20" height="20" rx="5" fill="#6366f1" fill-opacity="0.12"/>
-  <text x="116" y="80" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">FlowMind</text>
+  <!-- Subtext — matches .hsub from hero -->
+  <text x="56" y="294" fill="rgba(255,255,255,0.60)" font-family="system-ui,sans-serif" font-size="16" font-weight="400" letter-spacing="-0.01em">Build and ship automation workflows,</text>
+  <text x="56" y="318" fill="rgba(255,255,255,0.60)" font-family="system-ui,sans-serif" font-size="16" font-weight="400" letter-spacing="-0.01em">integrations, and AI-powered tools.</text>
 
-  <!-- Eyebrow pill -->
-  <rect x="58" y="162" width="206" height="28" rx="14" fill="#6366f1" fill-opacity="0.10"/>
-  <rect x="58" y="162" width="206" height="28" rx="14" fill="none" stroke="#6366f1" stroke-width="1" stroke-opacity="0.32"/>
-  <circle cx="80" cy="176" r="4.5" fill="#10b981"/>
-  <text x="95" y="181" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12" font-weight="600" letter-spacing="0.07em">AI AUTOMATION TEMPLATE</text>
+  <!-- CTA button — matches .btn-g.btn-xl -->
+  <rect x="56" y="348" width="182" height="48" rx="24" fill="url(#btn-g)"/>
+  <text x="147" y="378" fill="#ffffff" font-family="system-ui,sans-serif" font-size="15" font-weight="700" letter-spacing="-0.01em" text-anchor="middle">Get Template  →</text>
 
-  <!-- Main headline -->
-  <text x="58" y="268" fill="url(#brand-g)" font-family="system-ui,sans-serif" font-size="64" font-weight="800" letter-spacing="-0.04em">FlowMind</text>
-  <text x="58" y="342" fill="#e8e9ff" font-family="system-ui,sans-serif" font-size="38" font-weight="700" letter-spacing="-0.02em">AI Automation</text>
-  <text x="58" y="390" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="38" font-weight="700" letter-spacing="-0.02em">SaaS Template</text>
+  <!-- Urgency copy — matches .h-urgency-copy -->
+  <text x="56" y="422" fill="rgba(255,255,255,0.45)" font-family="system-ui,sans-serif" font-size="12" font-weight="400">No design. No setup. Just launch.</text>
 
-  <!-- Tagline -->
-  <text x="58" y="438" fill="#475569" font-family="system-ui,sans-serif" font-size="16" font-weight="400" letter-spacing="0.01em">No design. No setup. Just launch.</text>
+  <!-- Trust row — avatar circles + label -->
+  <circle cx="72"  cy="460" r="15" fill="#6c5ce7" fill-opacity="0.55" stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+  <circle cx="90"  cy="460" r="15" fill="#5b5bd6" fill-opacity="0.60" stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+  <circle cx="108" cy="460" r="15" fill="#7c4dff" fill-opacity="0.50" stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+  <circle cx="126" cy="460" r="15" fill="#5b5bd6" fill-opacity="0.55" stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+  <circle cx="144" cy="460" r="15" fill="#8e7cff" fill-opacity="0.50" stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+  <text x="72"  y="465" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">S</text>
+  <text x="90"  y="465" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">O</text>
+  <text x="108" y="465" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">L</text>
+  <text x="126" y="465" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">J</text>
+  <text x="144" y="465" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle">P</text>
+  <text x="165" y="465" fill="rgba(255,255,255,0.68)" font-family="system-ui,sans-serif" font-size="12" font-weight="400">Used by <tspan font-weight="700" fill="rgba(255,255,255,0.90)">100+</tspan> AI founders</text>
 
-  <!-- Feature badges row -->
-  <rect x="58"  y="470" width="122" height="26" rx="13" fill="#6366f1" fill-opacity="0.12"/>
-  <rect x="58"  y="470" width="122" height="26" rx="13" fill="none" stroke="#6366f1" stroke-width="1" stroke-opacity="0.28"/>
-  <text x="119" y="487" fill="#818cf8" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">Dashboard UI</text>
+  <!-- ═══ PREMIUM FLOATING CARD — matches .hero-premium-card ═══ -->
+  <g filter="url(#card-sh)">
+    <rect x="498" y="26" width="178" height="160" rx="14" fill="rgba(255,255,255,0.95)" stroke="rgba(255,255,255,0.80)" stroke-width="1.5"/>
+    <!-- Card header: icon + label + live dot -->
+    <rect x="512" y="42" width="20" height="20" rx="6" fill="rgba(91,91,214,0.08)"/>
+    <text x="522" y="56" fill="#5b5bd6" font-family="system-ui,sans-serif" font-size="11" font-weight="700" text-anchor="middle">⚡</text>
+    <text x="538" y="56" fill="#334155" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">AI Insights</text>
+    <circle cx="665" cy="52" r="3.5" fill="#10b981"/>
+    <!-- Metric: 94.8% -->
+    <text x="512" y="96" fill="#0f172a" font-family="system-ui,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.03em">94.8%</text>
+    <text x="512" y="112" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="500">Automation Accuracy</text>
+    <!-- Sparkline — matches hpc-spark paths -->
+    <path d="M512,150 C526,146 540,148 554,139 C568,130 580,131 594,124 L624,118 L624,152 Z" fill="rgba(91,91,214,0.10)"/>
+    <polyline points="512,150 526,146 540,148 554,139 568,130 580,131 594,124 624,118" stroke="#5b5bd6" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Footer -->
+    <line x1="512" y1="158" x2="662" y2="158" stroke="rgba(15,23,42,0.07)" stroke-width="1"/>
+    <circle cx="518" cy="167" r="3" fill="#10b981"/>
+    <text x="526" y="171" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="500">1,240 requests today</text>
+  </g>
 
-  <rect x="190" y="470" width="152" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.12"/>
-  <rect x="190" y="470" width="152" height="26" rx="13" fill="none" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.28"/>
-  <text x="266" y="487" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">Automation Workflows</text>
+  <!-- ═══ DASHBOARD PANEL (WHITE — matches .dw) ═══ -->
+  <g filter="url(#panel-sh)">
 
-  <rect x="352" y="470" width="94" height="26" rx="13" fill="#0ea5e9" fill-opacity="0.10"/>
-  <rect x="352" y="470" width="94" height="26" rx="13" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-opacity="0.24"/>
-  <text x="399" y="487" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="11" font-weight="600" text-anchor="middle">20+ Pages</text>
+    <g clip-path="url(#pc)">
+      <!-- White panel body — matches .dw background: #fff -->
+      <rect x="556" y="0" width="692" height="760" fill="#ffffff"/>
 
-  <!-- CTA button -->
-  <rect x="58" y="526" width="178" height="48" rx="24" fill="url(#btn-g)"/>
-  <!-- button glow -->
-  <rect x="58" y="526" width="178" height="48" rx="24" fill="none" stroke="rgba(139,92,246,0.4)" stroke-width="1.5"/>
-  <text x="147" y="555" fill="#ffffff" font-family="system-ui,sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="-0.01em">Get Template →</text>
+      <!-- Browser chrome — matches .db background: var(--bg2) = #f1f5f9 -->
+      <rect x="556" y="0" width="692" height="40" fill="#f1f5f9"/>
+      <line x1="556" y1="40" x2="1248" y2="40" stroke="rgba(15,23,42,0.07)" stroke-width="1"/>
+      <!-- Traffic lights — matches .dd div colors -->
+      <circle cx="578" cy="20" r="5" fill="#ff5f57"/>
+      <circle cx="596" cy="20" r="5" fill="#febc2e"/>
+      <circle cx="614" cy="20" r="5" fill="#28c840"/>
+      <!-- URL bar — matches .du -->
+      <rect x="706" y="10" width="240" height="20" rx="10" fill="#e8edf5"/>
+      <text x="826" y="24" fill="#94a3b8" font-family="monospace" font-size="9.5" text-anchor="middle">your-ai-startup.com/dashboard</text>
 
-  <!-- Trust badge -->
-  <rect x="252" y="526" width="186" height="48" rx="24" fill="#f1f5f9" fill-opacity="0.05"/>
-  <rect x="252" y="526" width="186" height="48" rx="24" fill="none" stroke="#2a3550" stroke-width="1.5"/>
-  <!-- tiny avatars -->
-  <circle cx="278" cy="550" r="10" fill="#6366f1"/>
-  <circle cx="294" cy="550" r="10" fill="#8b5cf6"/>
-  <circle cx="310" cy="550" r="10" fill="#ec4899"/>
-  <text x="327" y="554" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12" font-weight="600">100+ founders</text>
+      <!-- Page header -->
+      <text x="576" y="66" fill="#0f172a" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Overview</text>
+      <text x="576" y="83" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10">Your automation workspace</text>
+      <line x1="556" y1="96" x2="1248" y2="96" stroke="rgba(15,23,42,0.07)" stroke-width="1"/>
 
-  <!-- Bottom domain line -->
-  <line x1="58" y1="622" x2="520" y2="622" stroke="#1e2a40" stroke-width="1"/>
-  <circle cx="68" cy="638" r="4" fill="#10b981"/>
-  <text x="80" y="642" fill="#2d3d55" font-family="'SF Mono',monospace" font-size="12">tryflowmind.com</text>
+      <!-- ── STAT CARDS (3 columns) — matches .ds ── -->
+      <!-- Card 1: Workflows Run -->
+      <rect x="572" y="108" width="210" height="86" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <text x="588" y="127" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7.5" font-weight="600" letter-spacing="0.08em">WORKFLOWS RUN</text>
+      <text x="588" y="163" fill="#0f172a" font-family="system-ui,sans-serif" font-size="28" font-weight="800" letter-spacing="-0.03em">847K</text>
+      <text x="588" y="181" fill="#059669" font-family="system-ui,sans-serif" font-size="9" font-weight="600">↑ 23% this week</text>
 
-  <!-- ── RIGHT: PRODUCT PANEL ── -->
-  <g filter="url(#panel-shadow)">
-    <rect x="598" y="52" width="648" height="620" rx="16" fill="url(#panel-bg)"/>
+      <!-- Card 2: Automation Rate -->
+      <rect x="794" y="108" width="210" height="86" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <text x="810" y="127" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7.5" font-weight="600" letter-spacing="0.08em">AUTOMATION RATE</text>
+      <text x="810" y="163" fill="#0f172a" font-family="system-ui,sans-serif" font-size="28" font-weight="800" letter-spacing="-0.03em">94.2%</text>
+      <text x="810" y="181" fill="#059669" font-family="system-ui,sans-serif" font-size="9" font-weight="600">↑ 3.1% vs last week</text>
 
-    <!-- top glow bar -->
-    <rect x="598" y="52" width="648" height="3" rx="1.5" fill="url(#top-border)"/>
+      <!-- Card 3: AI Tasks -->
+      <rect x="1016" y="108" width="216" height="86" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <text x="1032" y="127" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7.5" font-weight="600" letter-spacing="0.08em">AI TASKS</text>
+      <text x="1032" y="163" fill="#0f172a" font-family="system-ui,sans-serif" font-size="28" font-weight="800" letter-spacing="-0.03em">1.2M</text>
+      <text x="1032" y="181" fill="#059669" font-family="system-ui,sans-serif" font-size="9" font-weight="600">↑ 3.4K today</text>
 
-    <g clip-path="url(#panel-clip)">
+      <!-- ── CHART CARD — matches .dch ── -->
+      <rect x="572" y="206" width="660" height="202" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
 
-      <!-- Title bar -->
-      <rect x="598" y="52" width="648" height="42" fill="#090b18"/>
-      <line x1="598" y1="94" x2="1246" y2="94" stroke="#1a2240" stroke-width="1"/>
-      <circle cx="625" cy="73" r="5.5" fill="#ff5f57"/>
-      <circle cx="646" cy="73" r="5.5" fill="#febc2e"/>
-      <circle cx="667" cy="73" r="5.5" fill="#28c840"/>
-      <rect x="838" y="63" width="220" height="20" rx="10" fill="#0d1225"/>
-      <text x="948" y="77" fill="#2a3550" font-family="'SF Mono',monospace" font-size="10" text-anchor="middle">app.tryflowmind.com/dashboard</text>
+      <!-- Chart header: title + period tabs -->
+      <text x="588" y="228" fill="#0f172a" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Automation Runs</text>
+      <!-- Period tabs — matches .dtb buttons -->
+      <rect x="1108" y="216" width="32" height="18" rx="9" fill="#e8edf5"/>
+      <text x="1124" y="229" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">24h</text>
+      <rect x="1146" y="216" width="32" height="18" rx="9" fill="#e8edf5"/>
+      <text x="1162" y="229" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">7d</text>
+      <rect x="1184" y="216" width="36" height="18" rx="9" fill="#5b5bd6"/>
+      <text x="1202" y="229" fill="#ffffff" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">30d</text>
 
-      <!-- Sidebar -->
-      <rect x="598" y="94" width="114" height="578" fill="#090b18"/>
-      <line x1="712" y1="94" x2="712" y2="672" stroke="#1a2240" stroke-width="1"/>
+      <!-- Chart grid lines — matches .dch svg lines stroke="rgba(15,23,42,.05)" -->
+      <line x1="572" y1="252" x2="1232" y2="252" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
+      <line x1="572" y1="284" x2="1232" y2="284" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
+      <line x1="572" y1="316" x2="1232" y2="316" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
+      <line x1="572" y1="348" x2="1232" y2="348" stroke="rgba(15,23,42,0.05)" stroke-width="1"/>
 
-      <!-- sidebar logo -->
-      <rect x="612" y="112" width="10" height="10" rx="2.5" fill="#6366f1"/>
-      <rect x="626" y="112" width="10" height="10" rx="2.5" fill="#6366f1" fill-opacity="0.50"/>
-      <rect x="612" y="126" width="10" height="10" rx="2.5" fill="#6366f1" fill-opacity="0.28"/>
-      <rect x="626" y="126" width="10" height="10" rx="2.5" fill="#6366f1" fill-opacity="0.12"/>
-      <text x="644" y="124" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Flow</text>
+      <!-- Chart sparkline — matches 30d path from PERIOD_DATA -->
+      <!-- Shadow/glow -->
+      <path d="M580,388 C640,374 710,356 800,336 C882,318 952,296 1040,272 C1106,254 1162,244 1224,234" fill="none" stroke="#5b5bd6" stroke-width="9" stroke-opacity="0.09" stroke-linecap="round"/>
+      <!-- Main stroke -->
+      <path d="M580,388 C640,374 710,356 800,336 C882,318 952,296 1040,272 C1106,254 1162,244 1224,234" fill="none" stroke="#5b5bd6" stroke-width="2" stroke-linecap="round"/>
+      <!-- Fill area -->
+      <path d="M580,388 C640,374 710,356 800,336 C882,318 952,296 1040,272 C1106,254 1162,244 1224,234 L1224,400 L580,400 Z" fill="url(#ch-fill)"/>
+      <!-- Endpoint dot — matches circle in hero SVG: fill="#5B5BD6" stroke="white" -->
+      <circle cx="1224" cy="234" r="8"   fill="rgba(91,91,214,0.14)"/>
+      <circle cx="1224" cy="234" r="4"   fill="#5b5bd6" stroke="#f1f5f9" stroke-width="2" filter="url(#dot-g)"/>
 
-      <!-- nav items -->
-      <rect x="606" y="148" width="100" height="28" rx="7" fill="#6366f1" fill-opacity="0.14"/>
-      <rect x="606" y="156" width="3" height="12" rx="1.5" fill="#6366f1"/>
-      <text x="618" y="167" fill="#6366f1" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Overview</text>
-      <text x="618" y="196" fill="#374151" font-family="system-ui,sans-serif" font-size="11">Workflows</text>
-      <text x="618" y="220" fill="#374151" font-family="system-ui,sans-serif" font-size="11">Analytics</text>
-      <text x="618" y="244" fill="#374151" font-family="system-ui,sans-serif" font-size="11">AI Tasks</text>
-      <text x="618" y="268" fill="#374151" font-family="system-ui,sans-serif" font-size="11">Integrations</text>
-
-      <!-- Main area -->
-      <rect x="712" y="94" width="534" height="578" fill="#111827"/>
-
-      <!-- top nav -->
-      <line x1="712" y1="140" x2="1246" y2="140" stroke="#1a2240" stroke-width="1"/>
-      <text x="730" y="124" fill="#6366f1" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Overview</text>
-      <rect x="730" y="135" width="48" height="2.5" rx="1.25" fill="#6366f1"/>
-      <text x="796" y="124" fill="#374151" font-family="system-ui,sans-serif" font-size="11">Workflows</text>
-      <text x="866" y="124" fill="#374151" font-family="system-ui,sans-serif" font-size="11">AI Tasks</text>
-      <!-- live pill -->
-      <rect x="1148" y="114" width="54" height="20" rx="10" fill="#059669" fill-opacity="0.10"/>
-      <rect x="1148" y="114" width="54" height="20" rx="10" fill="none" stroke="#059669" stroke-width="1" stroke-opacity="0.26"/>
-      <circle cx="1162" cy="124" r="3.5" fill="#10b981"/>
-      <text x="1172" y="128" fill="#059669" font-family="system-ui,sans-serif" font-size="10" font-weight="700">Live</text>
-      <!-- avatar -->
-      <rect x="1212" y="112" width="26" height="26" rx="8" fill="url(#btn-g)"/>
-      <text x="1225" y="129" fill="#fff" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">FM</text>
-
-      <!-- Metric headline -->
-      <text x="730" y="170" fill="#64748b" font-family="system-ui,sans-serif" font-size="9" font-weight="600" letter-spacing="0.12em">AUTOMATION ACCURACY</text>
-      <text x="730" y="210" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="48" font-weight="800" letter-spacing="-0.04em">94.8%</text>
-      <rect x="730" y="220" width="156" height="20" rx="10" fill="#059669" fill-opacity="0.10"/>
-      <rect x="730" y="220" width="156" height="20" rx="10" fill="none" stroke="#059669" stroke-width="1" stroke-opacity="0.22"/>
-      <text x="740" y="234" fill="#059669" font-family="system-ui,sans-serif" font-size="10" font-weight="700">↑ +4.2% vs last month</text>
-
-      <!-- Period tabs -->
-      <rect x="1134" y="156" width="36" height="22" rx="7" fill="#1a2240"/>
-      <text x="1152" y="171" fill="#64748b" font-family="system-ui,sans-serif" font-size="10" font-weight="600" text-anchor="middle">7d</text>
-      <rect x="1176" y="156" width="42" height="22" rx="7" fill="#6366f1" fill-opacity="0.16"/>
-      <text x="1197" y="171" fill="#6366f1" font-family="system-ui,sans-serif" font-size="10" font-weight="600" text-anchor="middle">30d</text>
-
-      <!-- Chart card -->
-      <rect x="720" y="256" width="516" height="200" rx="12" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
-      <line x1="720" y1="296" x2="1236" y2="296" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
-      <line x1="720" y1="336" x2="1236" y2="336" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
-      <line x1="720" y1="376" x2="1236" y2="376" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
-      <line x1="720" y1="416" x2="1236" y2="416" stroke="#1a2240" stroke-width="1" stroke-dasharray="4,10"/>
-
-      <g clip-path="url(#chart-clip)">
-        <path d="M614,468 C654,468 668,450 714,450 C762,450 776,432 822,432 C870,432 884,444 930,444 C978,444 992,418 1038,418 C1086,418 1100,396 1146,396 C1194,396 1208,370 1230,362" fill="url(#chart-fill)"/>
-        <path d="M614,468 C654,468 668,450 714,450 C762,450 776,432 822,432 C870,432 884,444 930,444 C978,444 992,418 1038,418 C1086,418 1100,396 1146,396 C1194,396 1208,370 1230,362" fill="none" stroke="#6366f1" stroke-width="8" stroke-opacity="0.14" stroke-linecap="round"/>
-        <path d="M614,468 C654,468 668,450 714,450 C762,450 776,432 822,432 C870,432 884,444 930,444 C978,444 992,418 1038,418 C1086,418 1100,396 1146,396 C1194,396 1208,370 1230,362" fill="none" stroke="url(#chart-line)" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="1230" cy="362" r="10" fill="#6366f1" fill-opacity="0.12"/>
-        <circle cx="1230" cy="362" r="4"  fill="#6366f1" stroke="#0d1220" stroke-width="2.5" filter="url(#glow-sm)"/>
-        <line x1="1230" y1="362" x2="1230" y2="482" stroke="#6366f1" stroke-width="1" stroke-opacity="0.08" stroke-dasharray="3,5"/>
-      </g>
-
-      <!-- KPI cards row -->
-      <!-- Workflows Run -->
-      <rect x="720" y="468" width="120" height="86" rx="11" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
-      <rect x="720" y="498" width="3"   height="36" rx="1.5" fill="#818cf8"/>
-      <text x="732" y="488" fill="#4b5563" font-family="system-ui,sans-serif" font-size="9" font-weight="600" letter-spacing="0.08em">WORKFLOWS</text>
-      <text x="732" y="524" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="-0.03em">847K</text>
-      <rect x="778" y="478" width="52" height="14" rx="7" fill="#818cf8" fill-opacity="0.12"/>
-      <text x="804" y="489" fill="#818cf8" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">↑ +23%</text>
-      <polyline points="732,542 742,534 752,526 762,518 772,508 782,498 792,488 802,478 812,468" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-      <!-- AI Tasks -->
-      <rect x="850" y="468" width="120" height="86" rx="11" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
-      <rect x="850" y="498" width="3"   height="36" rx="1.5" fill="#34d399"/>
-      <text x="862" y="488" fill="#4b5563" font-family="system-ui,sans-serif" font-size="9" font-weight="600" letter-spacing="0.08em">AI TASKS</text>
-      <text x="862" y="524" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="-0.03em">1.2M</text>
-      <rect x="908" y="478" width="50" height="14" rx="7" fill="#34d399" fill-opacity="0.12"/>
-      <text x="933" y="489" fill="#34d399" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">↑ +18%</text>
-      <polyline points="862,542 872,535 882,529 892,521 902,512 912,503 922,494 932,484 942,474" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-      <!-- Accuracy -->
-      <rect x="980" y="468" width="120" height="86" rx="11" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
-      <rect x="980" y="498" width="3"   height="36" rx="1.5" fill="#60a5fa"/>
-      <text x="992" y="488" fill="#4b5563" font-family="system-ui,sans-serif" font-size="9" font-weight="600" letter-spacing="0.08em">ACCURACY</text>
-      <text x="992" y="524" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="-0.03em">94.8%</text>
-      <rect x="1038" y="478" width="52" height="14" rx="7" fill="#60a5fa" fill-opacity="0.12"/>
-      <text x="1064" y="489" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">↑ +4.2%</text>
-      <polyline points="992,542 1002,534 1012,527 1022,519 1032,510 1042,501 1052,491 1062,482 1072,472" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-      <!-- Active Now -->
-      <rect x="1110" y="468" width="126" height="86" rx="11" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
-      <rect x="1110" y="498" width="3"   height="36" rx="1.5" fill="#f472b6"/>
-      <text x="1122" y="488" fill="#4b5563" font-family="system-ui,sans-serif" font-size="9" font-weight="600" letter-spacing="0.08em">ACTIVE NOW</text>
-      <text x="1122" y="524" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="-0.03em">1,240</text>
-      <rect x="1172" y="478" width="52" height="14" rx="7" fill="#f472b6" fill-opacity="0.12"/>
-      <text x="1198" y="489" fill="#f472b6" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">↑ +3.4K</text>
-      <polyline points="1122,542 1132,538 1142,541 1152,535 1162,527 1172,519 1182,510 1192,500 1202,490 1212,480 1222,470" fill="none" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-      <!-- Workflow pipeline strip -->
-      <rect x="720" y="566" width="516" height="60" rx="11" fill="#0d1220" stroke="#1a2240" stroke-width="1"/>
-      <!-- live dot -->
-      <circle cx="740" cy="584" r="4" fill="#10b981"/>
-      <circle cx="740" cy="584" r="8" fill="#10b981" fill-opacity="0.14"/>
-      <text x="754" y="580" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Calendar Automation</text>
-      <text x="754" y="594" fill="#374151" font-family="system-ui,sans-serif" font-size="9">Running · step 3 of 4</text>
-      <!-- nodes -->
-      <rect x="736" y="604" width="64" height="16" rx="8" fill="#6366f1" fill-opacity="0.14"/>
-      <text x="768" y="615" fill="#818cf8" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">New Meeting</text>
-      <text x="808" y="615" fill="#374151" font-family="system-ui,sans-serif" font-size="9">→</text>
-      <rect x="820" y="604" width="56" height="16" rx="8" fill="#6366f1" fill-opacity="0.14"/>
-      <text x="848" y="615" fill="#818cf8" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">AI Checks</text>
-      <text x="884" y="615" fill="#374151" font-family="system-ui,sans-serif" font-size="9">→</text>
-      <rect x="896" y="604" width="58" height="16" rx="8" fill="#6366f1" fill-opacity="0.30"/>
-      <rect x="896" y="604" width="58" height="16" rx="8" fill="none" stroke="#6366f1" stroke-width="1" stroke-opacity="0.5"/>
-      <text x="925" y="615" fill="#c7d2fe" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle">Sync Cal</text>
-      <text x="962" y="615" fill="#374151" font-family="system-ui,sans-serif" font-size="9">→</text>
-      <rect x="974" y="604" width="68" height="16" rx="8" fill="#6366f1" fill-opacity="0.08"/>
-      <text x="1008" y="615" fill="#4b5563" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Notify Slack</text>
-
-      <!-- panel right: AI insight floating card -->
-      <rect x="1050" y="564" width="178" height="62" rx="11" fill="#111827"/>
-      <rect x="1050" y="564" width="178" height="62" rx="11" fill="none" stroke="#6366f1" stroke-width="1" stroke-opacity="0.32"/>
-      <rect x="1050" y="564" width="178" height="2.5" rx="1.25" fill="url(#btn-g)" opacity="0.6"/>
-      <circle cx="1068" cy="581" r="4.5" fill="#6366f1" fill-opacity="0.18"/>
-      <circle cx="1068" cy="581" r="2.5" fill="#818cf8"/>
-      <text x="1080" y="578" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">AI Insights</text>
-      <text x="1080" y="592" fill="#4b5563" font-family="system-ui,sans-serif" font-size="9">live · 1,240 req/day</text>
-      <text x="1062" y="618" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="18" font-weight="700" letter-spacing="-0.02em">94.8%</text>
-      <text x="1138" y="618" fill="#34d399" font-family="system-ui,sans-serif" font-size="11" font-weight="600"> accuracy</text>
+      <!-- ── WORKFLOW ROW — matches .hwf card preview ── -->
+      <rect x="572" y="420" width="660" height="76" rx="10" fill="#f1f5f9" stroke="rgba(15,23,42,0.07)" stroke-width="1.5"/>
+      <!-- Live dot + title -->
+      <circle cx="590" cy="440" r="4" fill="#10b981"/>
+      <text x="600" y="444" fill="#0f172a" font-family="system-ui,sans-serif" font-size="11.5" font-weight="700">Calendar Automation</text>
+      <!-- LIVE badge -->
+      <rect x="1154" y="430" width="48" height="18" rx="9" fill="rgba(5,150,105,0.08)" stroke="rgba(5,150,105,0.30)" stroke-width="1"/>
+      <text x="1178" y="443" fill="#059669" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">LIVE</text>
+      <!-- Pipeline nodes — matches .hwf-nodes -->
+      <rect x="582" y="454" width="80" height="22" rx="11" fill="#e8edf5" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+      <text x="622" y="469" fill="#64748b" font-family="system-ui,sans-serif" font-size="9" font-weight="500" text-anchor="middle">New Meeting</text>
+      <text x="667" y="469" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">→</text>
+      <rect x="676" y="454" width="62" height="22" rx="11" fill="#5b5bd6"/>
+      <text x="707" y="469" fill="#ffffff" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">AI Checks</text>
+      <text x="743" y="469" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">→</text>
+      <rect x="752" y="452" width="64" height="26" rx="13" fill="rgba(91,91,214,0.08)" stroke="#5b5bd6" stroke-width="1.5"/>
+      <text x="784" y="469" fill="#5b5bd6" font-family="system-ui,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Sync Cal</text>
+      <text x="821" y="469" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">→</text>
+      <rect x="830" y="454" width="78" height="22" rx="11" fill="#e8edf5" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+      <text x="869" y="469" fill="#64748b" font-family="system-ui,sans-serif" font-size="9" font-weight="500" text-anchor="middle">Notify Slack</text>
+      <!-- Status line -->
+      <circle cx="586" cy="483" r="3" fill="#5b5bd6"/>
+      <text x="594" y="487" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9">Running now · step 3 of 4</text>
 
     </g>
-    <!-- Panel border -->
-    <rect x="598" y="52" width="648" height="620" rx="16" fill="none" stroke="#2a3550" stroke-width="1.5"/>
+
+    <!-- Panel border — matches .dw border: 1.5px solid rgba(15,23,42,0.13) -->
+    <rect x="556" y="0" width="692" height="760" rx="20" fill="none" stroke="rgba(15,23,42,0.13)" stroke-width="1.5"/>
+    <!-- Subtle top glow accent (unique to OG image — adds premium feel) -->
+    <rect x="556" y="0" width="692" height="2" rx="1" fill="url(#panel-top)"/>
+
   </g>
 
-  <!-- Floating card: top-right of panel -->
-  <g transform="translate(1142, 18)" filter="url(#float-shadow)">
-    <rect width="156" height="58" rx="14" fill="#111827"/>
-    <rect width="156" height="58" rx="14" fill="none" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.38"/>
-    <rect width="156" height="2" rx="1" fill="url(#btn-g)" opacity="0.55"/>
-    <circle cx="20" cy="20" r="5" fill="#10b981"/>
-    <text x="34" y="16" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Workflow triggered</text>
-    <text x="34" y="30" fill="#4b5563" font-family="system-ui,sans-serif" font-size="9">0.3s ago · 98% match</text>
-    <text x="16" y="50" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="16" font-weight="700">847K runs</text>
-  </g>
-
-  <!-- Decorative corner accents -->
-  <line x1="0"    y1="0"   x2="90"   y2="0"   stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.22" filter="url(#glow-sm)"/>
-  <line x1="0"    y1="0"   x2="0"    y2="90"  stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.22" filter="url(#glow-sm)"/>
-  <line x1="1280" y1="720" x2="1190" y2="720" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.22" filter="url(#glow-sm)"/>
-  <line x1="1280" y1="720" x2="1280" y2="630" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.22" filter="url(#glow-sm)"/>
+  <!-- Corner accents -->
+  <line x1="0"    y1="0"   x2="64"   y2="0"   stroke="#5b5bd6" stroke-width="1.5" stroke-opacity="0.22"/>
+  <line x1="0"    y1="0"   x2="0"    y2="64"  stroke="#5b5bd6" stroke-width="1.5" stroke-opacity="0.22"/>
+  <line x1="1280" y1="720" x2="1216" y2="720" stroke="#8e7cff" stroke-width="1.5" stroke-opacity="0.22"/>
+  <line x1="1280" y1="720" x2="1280" y2="656" stroke="#8e7cff" stroke-width="1.5" stroke-opacity="0.22"/>
 </svg>

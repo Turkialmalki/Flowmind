@@ -16,13 +16,13 @@ import CMSPage from './pages/CMSPage'
 import SetupPage from './pages/SetupPage'
 import ChangelogPage from './pages/ChangelogPage'
 import DemoPage from './pages/DemoPage'
-import DashboardPage from './pages/DashboardPage'
 import LicensePage from './pages/LicensePage'
 import PrivacyPage from './pages/PrivacyPage'
 import NotFoundPage from './pages/NotFoundPage'
 import IntegrationsPage from './pages/IntegrationsPage'
 import AutomationsPage from './pages/AutomationsPage'
 import BookDemoPage from './pages/BookDemoPage'
+import TermsPage from './pages/TermsPage'
 
 export default function App() {
   useEffect(() => {
@@ -57,9 +57,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Standalone route — no Nav/Footer */}
-        <Route path="/dashboard" element={<DashboardPage />} />
-
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/features" element={<FeaturesPage />} />
@@ -73,6 +70,7 @@ export default function App() {
           <Route path="/demo" element={<DemoPage />} />
           <Route path="/license" element={<LicensePage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/post" element={<BlogPostPage />} />
           <Route path="/docs" element={<DocsPage />} />

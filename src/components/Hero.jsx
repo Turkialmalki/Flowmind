@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+
+const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
 
 const TRUST_AVATARS = [
   { src: 'https://randomuser.me/api/portraits/women/44.jpg', name: 'Sarah',  role: 'AI Founder' },
@@ -302,15 +303,21 @@ export default function Hero() {
           </p>
 
           <div className="ha">
-            <Link to="/pricing" className="btn btn-g btn-xl hero-cta-primary">
+            <a
+              href={GUMROAD}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-g btn-xl hero-cta-primary"
+              style={{ textDecoration: 'none' }}
+            >
               Get Template
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </Link>
+            </a>
           </div>
 
-          <p className="h-urgency-copy">No design. No setup. Just launch.</p>
+          <p className="h-urgency-copy">One-time purchase · Downloadable template · No subscription</p>
 
           {/* Social trust signal — "Used by 100+ AI founders" */}
           <div className="h-trust-row">
@@ -325,7 +332,7 @@ export default function Hero() {
             <span className="h-trust-label">Used by <strong>100+</strong> AI founders</span>
           </div>
 
-          <p className="h-micro-trust">One-time payment — lifetime access · Built for AI founders</p>
+          <p className="h-micro-trust">One-time payment · Lifetime access · Downloadable template · Built for AI founders</p>
 
         </div>
 

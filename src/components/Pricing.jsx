@@ -1,26 +1,17 @@
-import { Link } from 'react-router-dom'
-
-function CheckIcon({ color }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-      <path d="M20 6L9 17l-5-5" />
-    </svg>
-  )
-}
-
-function ClockIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 6v6l4 2" />
-    </svg>
-  )
-}
+const GUMROAD = 'https://turkialmalki.gumroad.com/l/flowmind'
 
 function BoltIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
       <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+      <path d="M20 6L9 17l-5-5" />
     </svg>
   )
 }
@@ -41,83 +32,15 @@ function ArrowIcon() {
   )
 }
 
-const plans = [
-  {
-    id: 'starter',
-    name: 'Starter',
-    desc: 'The core marketing pages to get your AI SaaS in front of users today.',
-    orig: '$59',
-    price: '29',
-    urgency: 'Launch price — increases soon',
-    meta: [
-      { icon: <BoltIcon />, text: 'Instant access after purchase' },
-      { icon: <CheckIcon />, text: 'One-time payment, no subscription' },
-    ],
-    features: [
-      'Home page (all sections)',
-      'Pricing page',
-      'Fully responsive design',
-      'Lifetime updates',
-    ],
-    cta: 'Get Starter',
-    ctaClass: 'btn btn-o pbn',
-    guarantee: 'One-time payment',
-    pop: false,
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    badge: '⭐ Best Value — Most Popular',
-    desc: 'The complete FlowMind kit — every screen, page, and UI component you need to launch and grow.',
-    orig: '$99',
-    price: '49',
-    urgency: 'Launch price — save $50 today',
-    meta: [
-      { icon: <BoltIcon />, text: 'Instant access after purchase' },
-      { icon: <CheckIcon />, text: 'One-time payment — no subscription ever' },
-      { icon: <CheckIcon />, text: 'Use on unlimited personal projects' },
-    ],
-    features: [
-      'All 6 marketing pages',
-      'Full dashboard UI kit',
-      'Auth screens (login, signup, reset)',
-      'Settings & profile screens',
-      'Empty states for every screen',
-      'Framer CMS (blog, team, changelog)',
-      'Animations & micro-interactions',
-      'Lifetime updates + priority support',
-    ],
-    cta: 'Get Pro — Launch Today',
-    ctaClass: 'btn btn-g pbn',
-    showArrow: true,
-    guarantee: 'One-time payment · Lifetime updates',
-    savingsNote: 'Saves $3,450+ vs. hiring a designer',
-    pop: true,
-  },
-  {
-    id: 'team',
-    name: 'Team',
-    desc: 'Pro + extended license for agencies and client projects. Unlimited commercial use.',
-    orig: '$199',
-    price: '99',
-    urgency: 'Launch price — 50% off',
-    meta: [
-      { icon: <BoltIcon />, text: 'Instant access after purchase' },
-      { icon: <CheckIcon />, text: 'One-time payment, no subscription' },
-      { icon: <CheckIcon />, text: 'Unlimited client & commercial projects' },
-    ],
-    features: [
-      'Everything in Pro',
-      'Extended commercial license',
-      'Figma source file included',
-      'Unlimited projects',
-      '1-on-1 setup call',
-    ],
-    cta: 'Get Team License',
-    ctaClass: 'btn btn-p pbn',
-    guarantee: 'One-time · Unlimited client use',
-    pop: false,
-  },
+const features = [
+  'All 6 marketing pages',
+  'Full dashboard UI kit',
+  'Auth screens (login, signup, reset)',
+  'Settings & profile screens',
+  'Empty states for every screen',
+  'Framer CMS (blog, team, changelog)',
+  'Animations & micro-interactions',
+  'Lifetime updates + priority support',
 ]
 
 const compareRows = [
@@ -134,13 +57,16 @@ export default function Pricing() {
     <section className="section" id="pricing">
       <div className="container">
         <div className="prh an">
-          <div className="eyebrow">Get FlowMind</div>
+          <div className="eyebrow">Simple, one-time pricing</div>
           <h2 className="st">
-            One payment. <span>Everything included.</span><br />Launch this week.
+            One payment. <span>Everything included.</span>
           </h2>
           <p className="sd">
-            No subscriptions. No hidden fees. Buy once, own it forever.
-            Instant access the moment you purchase — start building in minutes.
+            No subscriptions. No hidden fees. Buy once, own it forever —
+            instant access the moment you purchase.
+          </p>
+          <p style={{ textAlign: 'center', fontSize: '14px', color: 'var(--t3)', marginTop: '-8px', marginBottom: '8px' }}>
+            This is a one-time purchase template — not a hosted SaaS product.
           </p>
           <div className="pr-trust-row">
             <div className="pr-trust-item">
@@ -162,58 +88,58 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="prg">
-          {plans.map((plan) => (
-            <div key={plan.id} className={`pc an${plan.pop ? ' pop' : ''}`}>
-              {plan.badge && <div className="pbg">{plan.badge}</div>}
-              <div className="pn">{plan.name}</div>
-              <div className="pde">{plan.desc}</div>
-              <div className="p-orig">{plan.orig}</div>
-              <div className="pam">
-                <span className="pcr">$</span>
-                <span className="pvl">{plan.price}</span>
-              </div>
-              <div className="p-urgency">
-                <ClockIcon />
-                {plan.urgency}
-              </div>
-              <div className="p-meta">
-                {plan.meta.map((m, i) => (
-                  <div className="p-meta-item" key={i}>
-                    {m.icon}
-                    {m.text}
-                  </div>
-                ))}
-              </div>
-              <div className="pdivider" />
-              <ul className="pfl">
-                {plan.features.map((f) => (
-                  <li key={f}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link to="/book-demo" className={plan.ctaClass} style={plan.pop ? { padding: '15px', fontSize: '16px' } : {}}>
-                {plan.cta}
-                {plan.showArrow && <ArrowIcon />}
-              </Link>
-              {plan.savingsNote && (
-                <div className="p-savings-note">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-                  </svg>
-                  {plan.savingsNote}
-                </div>
-              )}
-              <div className="p-guarantee">
-                <ShieldIcon />
-                {plan.guarantee}
-              </div>
+        {/* Single pricing card — centered */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '56px' }}>
+          <div className="pc pop an" style={{ maxWidth: '440px', width: '100%' }}>
+            <div className="pbg">⭐ Best Value — Most Popular</div>
+            <div className="pn">FlowMind Pro</div>
+            <div className="pde">The complete FlowMind kit — every screen, page, and UI component you need to launch and grow.</div>
+            <div className="p-orig">$99</div>
+            <div className="pam">
+              <span className="pcr">$</span>
+              <span className="pvl">49</span>
             </div>
-          ))}
+            <div className="p-urgency">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '14px', height: '14px' }}><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+              Launch price — save $50 today
+            </div>
+            <div className="p-meta">
+              <div className="p-meta-item"><BoltIcon />Instant access after purchase</div>
+              <div className="p-meta-item"><CheckIcon />One-time payment — no subscription ever</div>
+              <div className="p-meta-item"><CheckIcon />Lifetime access · downloadable template</div>
+            </div>
+            <div className="pdivider" />
+            <ul className="pfl">
+              {features.map((f) => (
+                <li key={f}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={GUMROAD}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-g pbn"
+              style={{ padding: '15px', fontSize: '16px', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+            >
+              Get FlowMind
+              <ArrowIcon />
+            </a>
+            <div className="p-savings-note">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+              </svg>
+              Saves $3,450+ vs. hiring a designer
+            </div>
+            <div className="p-guarantee">
+              <ShieldIcon />
+              One-time payment · Lifetime access
+            </div>
+          </div>
         </div>
 
         {/* Value comparison table */}

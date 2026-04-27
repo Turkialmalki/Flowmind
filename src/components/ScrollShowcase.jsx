@@ -155,9 +155,9 @@ export default function ScrollShowcase() {
                   <div className="ss-activity">
                     <div className="ss-activity-label">Live Activity</div>
                     {[
-                      { dot: 'var(--emerald)', text: 'new_user@startup.io signed up — Pro plan' },
-                      { dot: 'var(--indigo)', text: 'pitch-deck.ai upgraded to annual' },
-                      { dot: 'var(--sky)', text: 'nova-saas.io hit $2K MRR milestone' },
+                      { dot: 'var(--emerald)', text: 'new_user@startup.io purchased FlowMind Pro' },
+                      { dot: 'var(--indigo)', text: 'pitch-deck.ai went live in 48 minutes' },
+                      { dot: 'var(--sky)', text: 'nova-saas.io launched with FlowMind today' },
                     ].map((item, i) => (
                       <div
                         className={`ss-activity-item${step.highlight === 'activity' ? ' ss-activity-active' : ''}`}

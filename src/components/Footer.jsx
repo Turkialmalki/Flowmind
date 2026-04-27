@@ -58,11 +58,10 @@ export default function Footer() {
           <div>
             <div className="fct">Company</div>
             <ul className="flk">
-              <li><Link to="/book-demo">Book Demo</Link></li>
-              <li><Link to="/pricing">Get Template</Link></li>
+              <li><a href="https://turkialmalki.gumroad.com/l/flowmind" target="_blank" rel="noopener noreferrer">Get Template</a></li>
+              <li><Link to="/terms">Terms &amp; Conditions</Link></li>
               <li><Link to="/license">License</Link></li>
               <li><Link to="/privacy">Privacy</Link></li>
-              <li><Link to="/404">404 Page</Link></li>
             </ul>
           </div>
         </div>
@@ -70,7 +69,7 @@ export default function Footer() {
         <div className="fbo">
           <span>© 2026 FlowMind. All rights reserved.</span>
           <div className="fsc">
-            <a href="mailto:hello@flowmind.ai" aria-label="Email us at hello@flowmind.ai">
+            <a href="mailto:turkialmalki202200@gmail.com" aria-label="Email us">
               <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
